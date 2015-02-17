@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1C90AB9D-DC0D-4A40-BB69-FD68BE2DBBD1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Leora.IO</RootNamespace>
+    <AssemblyName>Leora.IO</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.Unity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CSharp\WebAPI\BaseEntity.cs" />
+    <Compile Include="CSharp\WebAPI\Controller.cs" />
+    <Compile Include="CSharp\WebAPI\Dto.cs" />
+    <Compile Include="CSharp\WebAPI\Entity.cs" />
+    <Compile Include="CSharp\WebAPI\Enum.cs" />
+    <Compile Include="CSharp\WebAPI\Global.cs" />
+    <Compile Include="CSharp\WebAPI\OwinStartUp.cs" />
+    <Compile Include="CSharp\WebAPI\UnityConfig.cs" />
+    <Compile Include="CSharp\WebAPI\WebConfig.cs" />
+    <Compile Include="Paths\AngularJS\Common.cs" />
+    <Compile Include="Paths\AngularJS\Configuration.cs" />
+    <Compile Include="Paths\AngularJS\Core.cs" />
+    <Compile Include="Paths\AngularJS\Module.cs" />
+    <Compile Include="Paths\AngularJS\Session.cs" />
+    <Compile Include="Paths\AppPath.cs" />
+    <Compile Include="Paths\ComponentPath.cs" />
+    <Compile Include="Paths\CSharp\Api.cs" />
+    <Compile Include="Paths\CSharp\ApiVersion.cs" />
+    <Compile Include="Paths\CSharp\Data.cs" />
+    <Compile Include="Paths\CSharp\Dto.cs" />
+    <Compile Include="Paths\CSharp\DtoVersion.cs" />
+    <Compile Include="Paths\CSharp\Server.cs" />
+    <Compile Include="Paths\CSharp\Services.cs" />
+    <Compile Include="Paths\CSharp\StartUp.cs" />
+    <Compile Include="Paths\InterfacesPath.cs" />
+    <Compile Include="Paths\ModulePath.cs" />
+    <Compile Include="Paths\ProjectPath.cs" />
+    <Compile Include="Paths\ServicesPath.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeScript\AngularJS\Component.cs" />
+    <Compile Include="TypeScript\AngularJS\DataService.cs" />
+    <Compile Include="TypeScript\AngularJS\DefaultHtml.cs" />
+    <Compile Include="TypeScript\AngularJS\Enum.cs" />
+    <Compile Include="TypeScript\AngularJS\Jasmine\ComponentSpec.cs" />
+    <Compile Include="TypeScript\AngularJS\Less.cs" />
+    <Compile Include="TypeScript\AngularJS\Module.cs" />
+    <Compile Include="TypeScript\AngularJS\RouteResolver.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="JavaScript\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Leora.IO.Configuration\Leora.IO.Configuration.csproj">
+      <Project>{e9f7af68-edc1-4809-98fa-1500acaa1aa2}</Project>
+      <Name>Leora.IO.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.IO.Data\Leora.IO.Data.csproj">
+      <Project>{608143a4-0ecd-49b6-a26b-a34c87eed541}</Project>
+      <Name>Leora.IO.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.IO.ExtensionMethods\Leora.IO.ExtensionMethods.csproj">
+      <Project>{708371b5-4bbd-4e5d-806f-584ed6c37865}</Project>
+      <Name>Leora.IO.ExtensionMethods</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.IO.Models\Leora.IO.Models.csproj">
+      <Project>{ceaaf937-63e3-452c-b9df-71f045ed69bb}</Project>
+      <Name>Leora.IO.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

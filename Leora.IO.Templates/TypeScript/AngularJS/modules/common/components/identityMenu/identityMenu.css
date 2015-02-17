@@ -1,0 +1,14 @@
+﻿#core-identity-menu { 
+    position:relative;
+    float:left;
+}
+
+#core-identity-menu ul { 
+    display:inline;
+    text-decoration:none;
+    list-style: outside none none;
+}
+
+#core-identity-menu ul li { 
+    position:relative;
+}

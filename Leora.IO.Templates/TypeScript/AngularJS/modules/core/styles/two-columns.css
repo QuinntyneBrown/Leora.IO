@@ -1,0 +1,14 @@
+﻿.two-columns .sub-view {
+  postion: relative;
+  float: left;
+}
+.two-columns .sub-menu {
+  width: 250px;
+  postion: relative;
+  float: left;
+}
+.two-columns :after {
+  clear: both;
+  content: "";
+}
+/*# sourceMappingURL=two-columns.css.map */

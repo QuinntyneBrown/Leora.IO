@@ -1,0 +1,30 @@
+﻿module {{ moduleName }}Module {
+
+    "use strict";
+
+    class {{ componentName }} {
+
+        constructor() {
+
+        }
+
+        public static componentId: string = "{{ componentNameCamelCase }}";
+
+        public restrict: string = "E";
+
+        public replace: boolean = true;
+
+		public scope = {};
+
+        public templateUrl: string = "/app/{{ moduleNameCamelCase }}/components/{{ componentNameCamelCase }}/{{ componentNameCamelCase }}.html";
+
+        public link = (scope, element, attributes) => {
+
+
+        }
+
+    }
+
+    angular.module("{{ moduleNameCamelCase }}").directive({{ componentName }}.componentId,() => new {{ componentName }}());
+
+}

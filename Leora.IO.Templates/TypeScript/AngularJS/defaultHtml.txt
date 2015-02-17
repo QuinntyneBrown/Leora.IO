@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" data-ng-app="{{ moduleNameCamelCase }}">
+<head>
+    <title core-title>Security</title>
+    <script src="scripts/prefixfree.js"></script>
+    
+    <link href="Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="app.less" rel="stylesheet" />
+    <base href="/">
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0;
+          maximum-scale=1.0;
+          minimum-scale=1.0;
+          user-saleable=false;" />
+
+</head>
+<body>
+
+    <work-spinner></work-spinner>
+    
+    <alerts></alerts>
+
+    <div id="container">
+        
+        <div id="header">
+            <identity-menu></identity-menu>
+        </div>
+        
+        <div id="view" ng-view="">
+
+        </div>
+    </div>
+
+
+    <script src="scripts/moment.min.js"></script>
+    <script src="scripts/jquery-2.1.3.min.js"></script>        
+    <script src="scripts/jquery.signalR-2.2.0.min.js"></script>
+
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-animate.js"></script>
+    <script src="scripts/angular-route.js"></script>
+    <script src="scripts/angular-sanitize.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

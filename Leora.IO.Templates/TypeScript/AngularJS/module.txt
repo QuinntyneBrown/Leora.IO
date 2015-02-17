@@ -1,0 +1,20 @@
+﻿module {{ moduleName }}Module {
+
+    angular.module("{{ moduleNameCamelCase }}", [
+            "configuration",
+            "common",
+            "core",
+            "session",
+            "ngRoute"
+        ])
+        .config(["$routeProvider", config])
+        .run([run]);
+
+    function config($routeProvider) {
+
+    }
+
+    function run() {
+        
+    }
+} 

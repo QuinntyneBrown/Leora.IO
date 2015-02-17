@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO", "Leora.IO\Leora.IO.csproj", "{1C90AB9D-DC0D-4A40-BB69-FD68BE2DBBD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.FileSystemWatcher", "Leora.IO.FileSystemWatcher\Leora.IO.FileSystemWatcher.csproj", "{DC92B90B-0E4F-4979-8B49-E2C2F2BC10FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.Templates", "Leora.IO.Templates\Leora.IO.Templates.csproj", "{375F5758-CF58-41B8-9338-575E9D124CE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.Configuration", "Leora.IO.Configuration\Leora.IO.Configuration.csproj", "{E9F7AF68-EDC1-4809-98FA-1500ACAA1AA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.Data", "Leora.IO.Data\Leora.IO.Data.csproj", "{608143A4-0ECD-49B6-A26B-A34C87EED541}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.Models", "Leora.IO.Models\Leora.IO.Models.csproj", "{CEAAF937-63E3-452C-B9DF-71F045ED69BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.ExtensionMethods", "Leora.IO.ExtensionMethods\Leora.IO.ExtensionMethods.csproj", "{708371B5-4BBD-4E5D-806F-584ED6C37865}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C90AB9D-DC0D-4A40-BB69-FD68BE2DBBD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C90AB9D-DC0D-4A40-BB69-FD68BE2DBBD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C90AB9D-DC0D-4A40-BB69-FD68BE2DBBD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C90AB9D-DC0D-4A40-BB69-FD68BE2DBBD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC92B90B-0E4F-4979-8B49-E2C2F2BC10FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC92B90B-0E4F-4979-8B49-E2C2F2BC10FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC92B90B-0E4F-4979-8B49-E2C2F2BC10FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC92B90B-0E4F-4979-8B49-E2C2F2BC10FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{375F5758-CF58-41B8-9338-575E9D124CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{375F5758-CF58-41B8-9338-575E9D124CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{375F5758-CF58-41B8-9338-575E9D124CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{375F5758-CF58-41B8-9338-575E9D124CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9F7AF68-EDC1-4809-98FA-1500ACAA1AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9F7AF68-EDC1-4809-98FA-1500ACAA1AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9F7AF68-EDC1-4809-98FA-1500ACAA1AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9F7AF68-EDC1-4809-98FA-1500ACAA1AA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{608143A4-0ECD-49B6-A26B-A34C87EED541}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{608143A4-0ECD-49B6-A26B-A34C87EED541}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{608143A4-0ECD-49B6-A26B-A34C87EED541}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{608143A4-0ECD-49B6-A26B-A34C87EED541}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEAAF937-63E3-452C-B9DF-71F045ED69BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEAAF937-63E3-452C-B9DF-71F045ED69BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEAAF937-63E3-452C-B9DF-71F045ED69BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEAAF937-63E3-452C-B9DF-71F045ED69BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{708371B5-4BBD-4E5D-806F-584ED6C37865}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{708371B5-4BBD-4E5D-806F-584ED6C37865}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{708371B5-4BBD-4E5D-806F-584ED6C37865}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{708371B5-4BBD-4E5D-806F-584ED6C37865}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

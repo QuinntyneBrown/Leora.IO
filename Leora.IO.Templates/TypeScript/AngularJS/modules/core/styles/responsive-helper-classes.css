@@ -1,0 +1,15 @@
+﻿.visible-xs,
+.visible-sm,
+.visible-md,
+.visible-lg {
+  display: none !important;
+}
+@media (max-width: 767px) {
+  .visible-xs {
+    display: block !important;
+  }
+  .hidden-xs {
+    display: none !important;
+  }
+}
+/*# sourceMappingURL=visible.css.map */
