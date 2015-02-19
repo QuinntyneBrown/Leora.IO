@@ -59,6 +59,7 @@
     <Compile Include="CSharp\WebAPI\OwinStartUp.cs" />
     <Compile Include="CSharp\WebAPI\UnityConfig.cs" />
     <Compile Include="CSharp\WebAPI\WebConfig.cs" />
+    <Compile Include="LeoaTxt.cs" />
     <Compile Include="Paths\AngularJS\Common.cs" />
     <Compile Include="Paths\AngularJS\Configuration.cs" />
     <Compile Include="Paths\AngularJS\Core.cs" />
@@ -75,18 +76,22 @@
     <Compile Include="Paths\CSharp\Services.cs" />
     <Compile Include="Paths\CSharp\StartUp.cs" />
     <Compile Include="Paths\InterfacesPath.cs" />
+    <Compile Include="Paths\ModelsPath.cs" />
     <Compile Include="Paths\ModulePath.cs" />
     <Compile Include="Paths\ProjectPath.cs" />
     <Compile Include="Paths\ServicesPath.cs" />
+    <Compile Include="Paths\SolutionPath.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeScript\AngularJS\Component.cs" />
     <Compile Include="TypeScript\AngularJS\DataService.cs" />
     <Compile Include="TypeScript\AngularJS\DefaultHtml.cs" />
     <Compile Include="TypeScript\AngularJS\Enum.cs" />
+    <Compile Include="TypeScript\AngularJS\IndexHtml.cs" />
     <Compile Include="TypeScript\AngularJS\Jasmine\ComponentSpec.cs" />
     <Compile Include="TypeScript\AngularJS\Less.cs" />
     <Compile Include="TypeScript\AngularJS\Module.cs" />
     <Compile Include="TypeScript\AngularJS\RouteResolver.cs" />
+    <Compile Include="TypeScript\AngularJS\Service.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="JavaScript\" />

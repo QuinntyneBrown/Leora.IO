@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Leora.IO.Configuration;
 using Leora.IO.FileSystemWatcher.Contracts;
 using Leora.IO.FileSystemWatcher.Enums;
 using Leora.IO.ExtensionMethods;
@@ -23,32 +24,54 @@ namespace Leora.IO.FileSystemWatcher.Path
                 {
                     var componentName = System.IO.Path.GetFileNameWithoutExtension(fullPath);
                     var moduleName = fullPath.GetModuleName();
-                    Directory.CreateDirectory(fullPath + @"\interfaces");
-                    Directory.CreateDirectory(fullPath + @"\responsive less");
+                    //Directory.CreateDirectory(fullPath + @"\interfaces");
+
+                    if (AppConfiguration.Config.AutoResponsiveEnabled)
+                    {
+                        Directory.CreateDirectory(fullPath + @"\responsive less");
+                        File.WriteAllLines(
+                            string.Format(@"{0}\responsive less\{1}{2}", fullPath, componentName, ".less"),
+                            new List<string>());
+                        File.WriteAllLines(
+                            string.Format(@"{0}\responsive less\{1}{2}", fullPath, componentName, ".xs.less"),
+                            new List<string>());
+                        File.WriteAllLines(
+                            string.Format(@"{0}\responsive less\{1}{2}", fullPath, componentName, ".sm.less"),
+                            new List<string>());
+                        File.WriteAllLines(
+                            string.Format(@"{0}\responsive less\{1}{2}", fullPath, componentName, ".md.less"),
+                            new List<string>());
+                        File.WriteAllLines(
+                            string.Format(@"{0}\responsive less\{1}{2}", fullPath, componentName, ".lg.less"),
+                            new List<string>());
+                    }
+                    else
+                    {
+                        File.WriteAllLines(
+                            string.Format(@"{0}\{1}{2}", fullPath, componentName, ".less"),
+                            new List<string>());
+
+                    }
 
                     File.WriteAllLines(string.Format(@"{0}\{1}{2}", fullPath, componentName, ".html"),
                         new List<string>());
-                    File.WriteAllLines(string.Format(@"{0}\{1}{2}", fullPath, componentName, ".html.ts"),
-                        new List<string>());
+
+                    if (AppConfiguration.Config.CachedTemplatesEnabled)
+                    {
+                        File.WriteAllLines(string.Format(@"{0}\{1}{2}", fullPath, componentName, ".html.ts"),
+                            new List<string>());
+                    }
+
                     File.WriteAllLines(string.Format(@"{0}\{1}{2}", fullPath, componentName, ".ts"),
                         Component.Get(moduleName, componentName));
-                    File.WriteAllLines(string.Format(@"{0}\{1}{2}", fullPath, componentName, "Spec.js"),
-                        ComponentSpec.Get(moduleName, componentName));
-                    File.WriteAllLines(
-                        string.Format(@"{0}\responsive less\{1}{2}", fullPath, componentName, ".less"),
-                        new List<string>());
-                    File.WriteAllLines(
-                        string.Format(@"{0}\responsive less\{1}{2}", fullPath, componentName, ".xs.less"),
-                        new List<string>());
-                    File.WriteAllLines(
-                        string.Format(@"{0}\responsive less\{1}{2}", fullPath, componentName, ".sm.less"),
-                        new List<string>());
-                    File.WriteAllLines(
-                        string.Format(@"{0}\responsive less\{1}{2}", fullPath, componentName, ".md.less"),
-                        new List<string>());
-                    File.WriteAllLines(
-                        string.Format(@"{0}\responsive less\{1}{2}", fullPath, componentName, ".lg.less"),
-                        new List<string>());
+
+                    if (AppConfiguration.Config.AutoJasmineSpecsEnabled)
+                    {
+                        File.WriteAllLines(string.Format(@"{0}\{1}{2}", fullPath, componentName, "Spec.js"),
+                            ComponentSpec.Get(moduleName, componentName));
+                    }
+
+
 
                 }
                 else

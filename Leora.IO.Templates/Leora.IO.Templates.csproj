@@ -44,10 +44,12 @@
   <ItemGroup>
     <Content Include="CSharp\WebAPI\controller.txt" />
     <Content Include="CSharp\WebAPI\webconfig.txt" />
+    <Content Include="leora.txt" />
     <Content Include="TypeScript\AngularJS\component.txt" />
     <Content Include="TypeScript\AngularJS\componentSpec.txt" />
     <Content Include="TypeScript\AngularJS\dataService.txt" />
     <Content Include="TypeScript\AngularJS\defaultHtml.txt" />
+    <Content Include="TypeScript\AngularJS\indexHtml.txt" />
     <Content Include="TypeScript\AngularJS\module.txt" />
     <Content Include="TypeScript\AngularJS\modules\common\components\alertItem\alertItem.html" />
     <Content Include="TypeScript\AngularJS\modules\common\components\alertItem\alertItemSpec.js" />
@@ -70,6 +72,8 @@
     <Content Include="TypeScript\AngularJS\modules\configuration\module.js" />
     <Content Include="TypeScript\AngularJS\modules\configuration\services\configurationService.js" />
     <Content Include="TypeScript\AngularJS\modules\configuration\services\interfaces\IConfigurationService.js" />
+    <Content Include="TypeScript\AngularJS\service.txt" />
+    <Content Include="webConfig.txt" />
     <TypeScriptCompile Include="TypeScript\AngularJS\modules\core\storage\storage.ts" />
     <Content Include="TypeScript\AngularJS\modules\core\styles\app.css" />
     <Content Include="TypeScript\AngularJS\modules\core\styles\app.min.css" />

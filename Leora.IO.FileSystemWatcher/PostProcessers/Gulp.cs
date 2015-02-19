@@ -16,15 +16,19 @@ namespace Leora.IO.FileSystemWatcher.PostProcessers
     {
         public void Process(EventType eventType, string fullPath)
         {
-            if (eventType == EventType.Change && File.Exists(fullPath.GetGulpFile()) && fullPath.IsProjectAppFile())
+            if(AppConfiguration.Config.GulpEnabled)
             {
-                Console.WriteLine("Running Gulp File...");
-                Console.WriteLine(DateTime.Now);
-                ProcessStartInfo startInfo = new ProcessStartInfo();
-                startInfo.FileName = AppConfiguration.Config.GulpFilePath;
-                startInfo.Arguments = string.Format("--gulpfile {0}", fullPath.GetGulpFile());
-                System.Diagnostics.Process.Start(startInfo);                
+                if (eventType == EventType.Change && File.Exists(fullPath.GetGulpFile()) && fullPath.GetProjectDirectory() + "app.js" == fullPath)
+                {
+                    Console.WriteLine("Running Gulp File...");
+                    Console.WriteLine(DateTime.Now);
+                    ProcessStartInfo startInfo = new ProcessStartInfo();
+                    startInfo.FileName = AppConfiguration.Config.GulpFilePath;
+                    startInfo.Arguments = string.Format("--gulpfile {0}", fullPath.GetGulpFile());
+                    System.Diagnostics.Process.Start(startInfo);                
+                }                
             }
+
         }
     }
 }

@@ -57,9 +57,14 @@ namespace Leora.IO.ExtensionMethods
                 );
         }
 
+        public static bool IsAppLessFile(this string fullPath)
+        {
+            return (System.IO.Path.GetExtension(fullPath) == ".less"
+                    && fullPath.Split(System.IO.Path.DirectorySeparatorChar).Where(x => x == "app").FirstOrDefault() != null);
+        }
+
         public static bool IsInsideAppFolder(this string fullPath)
         {
-
             return (System.IO.Directory.GetParent(fullPath).Name == "app");
         }
 
@@ -91,24 +96,46 @@ namespace Leora.IO.ExtensionMethods
         {
             var directories = fullPath.Split(System.IO.Path.DirectorySeparatorChar);
 
-            string projectDirectory = "";
+            var index = 0;
 
-            for (var i = 0; i < directories.Length; i++)
+            string currentDirectory = "";
+
+            try
             {
-                if (directories[i] == "app")
-                {
-                    return projectDirectory;
-                }
 
-                projectDirectory = string.Format(@"{0}{1}\", projectDirectory, directories[i]);
+
+
+
+                for (var i = 0; i < directories.Length; i++)
+                {
+                    currentDirectory = string.Format(@"{0}{1}\", currentDirectory, directories[i]);
+
+                    if (index > 1)
+                    {
+                        foreach (var file in Directory.GetFiles(currentDirectory))
+                        {
+
+                            if (Path.GetExtension(file) == ".csproj")
+                            {
+                                return currentDirectory;
+                            }
+                        }
+                    }
+
+                    index++;
+                }
+            }
+            catch (Exception exception)
+            {
+                
             }
 
-            return projectDirectory;
+            return currentDirectory;
         }
 
         public static string GetGulpFile(this string fullPath)
         {
-            return fullPath.GetProjectDirectory() + @"\gulpfile.js";
+            return fullPath.GetProjectDirectory() + @"gulpfile.js";
         }
 
         public static bool IsProjectAppFile(this string fullPath)
@@ -126,6 +153,31 @@ namespace Leora.IO.ExtensionMethods
         public static string SnakeCase(this string input)
         {
             return string.Concat(input.Select((x, i) => i > 0 && char.IsUpper(x) ? "-" + x.ToString() : x.ToString())).ToLower();
+        }
+
+        public static string GetModelsDirectory(this string input)
+        {
+            return input.GetProjectDirectory() + @"Server/Models";
+        }
+
+        public static string GetServerServicesDirectory(this string input)
+        {
+            return input.GetProjectDirectory() + @"Server/Services";
+        }
+
+        public static string GetServerDirectory(this string input)
+        {
+            return input.GetProjectDirectory() + @"Server";
+        }
+
+        public static string GetServerDataDirectory(this string input)
+        {
+            return input.GetProjectDirectory() + @"Server/Data";
+        }
+
+        public static string GetServerDataContractsDirectory(this string input)
+        {
+            return input.GetProjectDirectory() + @"Server/Data/Contracts";
         }
     }
 }

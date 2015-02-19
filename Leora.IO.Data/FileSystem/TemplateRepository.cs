@@ -21,7 +21,12 @@ namespace Leora.IO.Data.FileSystem
 
         public Template GetByName(string name)
         {
-            throw new NotImplementedException();
+            return new Template()
+            {
+                Lines =
+                    File.ReadAllLines(AppConfiguration.Config.TemplatesPath +
+                                      string.Format(@"{0}.txt", name))
+            };
         }
 
         public IQueryable<Template> GetAll()

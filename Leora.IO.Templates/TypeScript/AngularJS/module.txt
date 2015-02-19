@@ -12,6 +12,18 @@
 
     function config($routeProvider) {
 
+        $routeProvider.when("/{{ moduleNameCamelCase }}",
+            {
+                templateUrl: "app/{{ moduleNameCamelCase }}/templates/index.html",
+                resolve: {
+                    routeData: []
+                },
+                authorizationRequired: false,
+                caseInsensitiveMatch: true
+
+            });
+
+        //$routeProvider.otherwise("/");
     }
 
     function run() {

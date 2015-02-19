@@ -32,6 +32,34 @@ namespace Leora.IO.Configuration
             set { this["templatesPath"] = value; }
         }
 
+        [ConfigurationProperty("gulpEnabled", IsRequired = true)]
+        public bool GulpEnabled
+        {
+            get { return (bool)this["gulpEnabled"]; }
+            set { this["gulpEnabled"] = value; }
+        }
+
+        [ConfigurationProperty("cachedTemplatesEnabled", IsRequired = true)]
+        public bool CachedTemplatesEnabled
+        {
+            get { return (bool)this["cachedTemplatesEnabled"]; }
+            set { this["cachedTemplatesEnabled"] = value; }
+        }
+
+        [ConfigurationProperty("autoJasmineSpecsEnabled", IsRequired = true)]
+        public bool AutoJasmineSpecsEnabled
+        {
+            get { return (bool)this["autoJasmineSpecsEnabled"]; }
+            set { this["autoJasmineSpecsEnabled"] = value; }
+        }
+
+        [ConfigurationProperty("autoResponsiveEnabled", IsRequired = true)]
+        public bool AutoResponsiveEnabled
+        {
+            get { return (bool)this["autoResponsiveEnabled"]; }
+            set { this["autoResponsiveEnabled"] = value; }
+        }
+
         public static AppConfiguration Config
         {
             get { return ConfigurationManager.GetSection("appConfiguration") as AppConfiguration; }

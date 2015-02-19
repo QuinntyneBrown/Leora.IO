@@ -25,6 +25,6 @@
 
     }
 
-    angular.module("{{ moduleNameCamelCase }}").directive({{ componentName }}.componentId,() => new {{ componentName }}());
+    angular.module("{{ moduleNameCamelCase }}").directive({{ componentName }}.componentId,[() => new {{ componentName }}()]);
 
 }

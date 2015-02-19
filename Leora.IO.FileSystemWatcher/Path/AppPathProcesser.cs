@@ -28,33 +28,33 @@ namespace Leora.IO.FileSystemWatcher.Folders
 
                     var templatesDirectory = moduleDirectory + @"\templates";
 
-                    File.WriteAllLines(moduleDirectory + @"\default.html", new string[0]);
+                    //File.WriteAllLines(moduleDirectory + @"\default.html", new string[0]);
 
                     File.WriteAllLines(moduleDirectory + @"\module.ts", new string[0]);
 
                     Directory.CreateDirectory(componentsDirectory);
 
-                    File.WriteAllLines(string.Format(componentsDirectory + @"\{0}Editor.ts", moduleName), new string[0]);
+                    //File.WriteAllLines(string.Format(componentsDirectory + @"\{0}Editor.ts", moduleName), new string[0]);
 
-                    File.WriteAllLines(string.Format(componentsDirectory + @"\{0}List.ts", moduleName), new string[0]);
+                    //File.WriteAllLines(string.Format(componentsDirectory + @"\{0}List.ts", moduleName), new string[0]);
 
                     Directory.CreateDirectory(servicesDirectory);
 
-                    File.WriteAllLines(string.Format(servicesDirectory + @"\{0}RouteResolver.ts", moduleName), new string[0]);
+                    //File.WriteAllLines(string.Format(servicesDirectory + @"\{0}RouteResolver.ts", moduleName), new string[0]);
 
-                    File.WriteAllLines(string.Format(servicesDirectory + @"\{0}Service.ts", moduleName), new string[0]);
+                    //File.WriteAllLines(string.Format(servicesDirectory + @"\{0}Service.ts", moduleName), new string[0]);
 
                     Directory.CreateDirectory(interfacesDirectory);
 
-                    File.WriteAllLines(string.Format(interfacesDirectory + @"\I{0}Service.ts", moduleName), new string[0]);
+                    //File.WriteAllLines(string.Format(interfacesDirectory + @"\I{0}Service.ts", moduleName), new string[0]);
 
                     Directory.CreateDirectory(templatesDirectory);
 
-                    File.WriteAllLines(templatesDirectory + @"\edit.html", new string[0]);
+                    //File.WriteAllLines(templatesDirectory + @"\edit.html", new string[0]);
 
-                    File.WriteAllLines(templatesDirectory + @"\list.html", new string[0]);
+                    //File.WriteAllLines(templatesDirectory + @"\list.html", new string[0]);
 
-                    File.WriteAllLines(templatesDirectory + @"\index.html", new string[0]);
+                    //File.WriteAllLines(templatesDirectory + @"\index.html", new string[0]);
 
                 }
             }

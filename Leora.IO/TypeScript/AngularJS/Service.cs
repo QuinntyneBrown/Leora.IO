@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,13 +8,11 @@ using Leora.IO.Data.Contracts;
 using Leora.IO.ExtensionMethods;
 using Microsoft.Practices.Unity;
 
-
-
 namespace Leora.IO.TypeScript.AngularJS
 {
-    public static class DataService
+    public static class Service
     {
-        static DataService()
+        static Service()
         {
             templateRepository = UnityConfiguration.GetContainer().Resolve<ITemplateRepository>();
         }
@@ -24,7 +21,7 @@ namespace Leora.IO.TypeScript.AngularJS
         {
             var lines = new List<string>();
 
-            foreach (var line in File.ReadAllLines(AppConfiguration.Config.TemplatesPath + @"\TypeScript\Angular\dataService.txt"))
+            foreach (var line in templateRepository.GetByNameLanguageFramework("service","TypeScript","AngularJS").Lines)
             {
                 var newline = line.Replace("{{ moduleNameCamelCase }}", moduleName.CamelCase());
                 newline = newline.Replace("{{ moduleName }}", moduleName.FirstCharToUpper());
@@ -36,6 +33,6 @@ namespace Leora.IO.TypeScript.AngularJS
             return lines.ToArray();
         }
 
-        private static ITemplateRepository templateRepository { get; set; }
+        private static ITemplateRepository templateRepository;
     }
 }

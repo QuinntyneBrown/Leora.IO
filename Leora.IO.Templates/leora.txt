@@ -1,0 +1,170 @@
+﻿[ ] 1. Create an Empty web project inside C:\projects.
+
+	Templates > Visual C# > Web
+
+	Make sure to check "Create Solution for project"
+
+[ ] 2. Add reference to System.Net and System.Net.Http
+
+[ ] 3. Run the following command in the Package Manager Console. Copy all the lines below and paste them in the PM Console. 
+
+	Click "no" to any dialogs or prompts.
+
+	Click return to install the last package. ("EntityFramework")
+
+install-package "AngularJS.Core"
+install-package "AngularJS.Route"
+install-package "AngularJS.Animate"
+install-package "angularjs.TypeScript.DefinitelyTyped"
+install-package "jquery.TypeScript.DefinitelyTyped"
+install-package "bootstrap"
+install-package "FontAwesome"
+install-package "jQuery"
+install-package "Microsoft.AspNet.Cors"
+install-package "Microsoft.AspNet.SignalR"
+install-package "Microsoft.AspNet.SignalR.Core" 
+install-package "Microsoft.AspNet.SignalR.JS"
+install-package "Microsoft.AspNet.SignalR.SystemWeb"
+install-package "Microsoft.AspNet.WebApi"
+install-package "Microsoft.AspNet.WebApi.Client"
+install-package "Microsoft.AspNet.WebApi.Core"
+install-package "Microsoft.AspNet.WebApi.Cors"
+install-package "Microsoft.AspNet.WebApi.WebHost"
+install-package "Microsoft.Owin"
+install-package "Microsoft.Owin.Cors"
+install-package "Microsoft.Owin.Host.SystemWeb"
+install-package "Microsoft.Owin.Security"
+install-package "Microsoft.Owin.Security.Jwt"
+install-package "Microsoft.Owin.Security.OAuth"
+install-package "Microsoft.Web.Infrastructure"
+install-package "Newtonsoft.Json"
+install-package "Owin"
+install-package "SendGrid.SmtpApi"
+install-package "System.IdentityModel.Tokens.Jwt"
+install-package "Unity"
+install-package "Unity.WebAPI"
+install-package "dotless"
+install-package "EntityFramework"
+
+
+[ ] 4. Close solution, exit Visual Studio and re-open project (IMPORTANT)
+
+[ ] 5. Create Server Folder
+
+[ ] 6. Create a Server/StartUp Folder
+
+[ ] 7. Create a Server/Api Folder
+
+[ ] 8. Add a new OwinStartUp File inside the Server/StartUp Folder by right clicking on project and clicking "Add New Item". 
+	Select Web. 
+	Find OWIN Startup class. 
+	Name it OwinStartUp. 
+	Leave it empty.
+
+[ ] 9. Add a new static cs class called WebApiStartUp
+
+[ ] 10. Add the code below to WebApiStartUp
+
+    public static class WebApiStartup
+    {
+        public static void Configure(HttpConfiguration config)
+        {
+            var jSettings = new JsonSerializerSettings();
+
+            jSettings.Formatting = Formatting.Indented;
+            jSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            config.Formatters.JsonFormatter.SerializerSettings = jSettings;
+
+            config.MapHttpAttributeRoutes();
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{action}/{id}",
+                defaults: new {id = RouteParameter.Optional}
+                );
+
+            //config.Routes.MapHttpRoute(
+            //    name: "StrictRESTApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //    );
+
+        }
+    }
+
+	Add
+
+	using Newtonsoft.Json;
+	using Newtonsoft.Json.Serialization;
+	using System.Web.Http;
+
+[ ] 11. Right click project
+	Click Add New Item
+	Select Web
+	Select Global Application Class
+
+[ ] 12. Add the following inside the Application Start function
+
+	GlobalConfiguration.Configure(WebApiStartUp.Configure);
+
+[ ] 13. Add <validation validateIntegratedModeConfiguration="false" /> under handlers in system.webServer
+
+  <system.webServer>
+    <handlers>
+		....
+    </handlers>
+    <validation validateIntegratedModeConfiguration="false" />
+  </system.webServer>
+
+
+[ ] 14. create index.html in root of project
+
+[ ] 15. RUN THE PROJECT
+
+
+DATABASE
+
+[ ] 1. Create a folder called Server/Data
+
+[ ] 2. Create a class called DbContext inside Server/Data
+
+[ ] 3. Inherit from System.Data.Entity.DbContext
+
+[ ] 4. Add a contstructor like the following
+
+        public DbContext()
+            : base(nameOrConnectionString: "{{ your project name }}")
+        {
+            Configuration.ProxyCreationEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
+            Configuration.AutoDetectChangesEnabled = true;
+        }
+
+[ ] 5. Add the following line to the connection string section of your web config above <system.web>
+	
+	Update 2 places with your project name
+
+  <connectionStrings>
+    <add name="{{ your project name }}" connectionString="Data Source=(LocalDb)\v11.0;Initial Catalog={{ your project name }};Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
+  </connectionStrings> 
+
+[ ] 6. enter enable migrations in the package manager console
+
+[ ] 7. Set auto migrations to true
+
+[ ] 8. enter update data base in the package manager console
+
+// Database is created. The next part is how to add tables / entites to the database
+
+[ ] 9. Create a Models folder
+
+[ ] 10. Add classes
+
+[ ] 11. Add a DbSet of your models inside your DbContext
+
+[ ] 12. enter update-database in package manager console
+
+
+
+

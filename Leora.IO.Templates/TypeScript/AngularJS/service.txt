@@ -1,0 +1,13 @@
+﻿module {{ moduleName }}Module {
+    
+    class {{ className }} {
+        
+        public static serviceId: string = "{{ classNameCamelCase }}";
+
+        constructor(private $rootScope, private $window) {
+            
+        }
+    }
+
+    angular.module("{{ moduleNameCamelCase").service({{ className }}.serviceId,["$rootScope","$window",($rootScope,$window) => new {{ className }}($rootScope, $window)]);
+} 
