@@ -15,6 +15,8 @@
 install-package "AngularJS.Core"
 install-package "AngularJS.Route"
 install-package "AngularJS.Animate"
+install-package "Angular.UI.Bootstrap"
+install-package "Angular.UI.UI-Router"
 install-package "angularjs.TypeScript.DefinitelyTyped"
 install-package "jquery.TypeScript.DefinitelyTyped"
 install-package "bootstrap"
@@ -159,7 +161,7 @@ DATABASE
 
 [ ] 9. Create a Models folder
 
-[ ] 10. Add classes
+[ ] 10. Add classes	
 
 [ ] 11. Add a DbSet of your models inside your DbContext
 

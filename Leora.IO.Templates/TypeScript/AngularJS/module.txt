@@ -8,7 +8,8 @@
             "ngRoute"
         ])
         .config(["$routeProvider", config])
-        .run([run]);
+        .run([run])
+		.controller([()=>new {{ moduleName }}Controller()]);
 
     function config($routeProvider) {
 
@@ -29,4 +30,15 @@
     function run() {
         
     }
+
+	class {{ moduleName }}Controller {
+
+        static controllerId: string = "{{ moduleNameCamelCase }}Controller";
+
+        constructor() {
+
+        }
+
+    }
+
 } 
