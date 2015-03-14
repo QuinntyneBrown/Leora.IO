@@ -64,6 +64,7 @@
     <Compile Include="Path\SolutionPathProcessor.cs" />
     <Compile Include="PostProcessers\Gulp.cs" />
     <Compile Include="PostProcessers\JasmineSpecConcater.cs" />
+    <Compile Include="PostProcessers\JSAppStructureGenerator.cs" />
     <Compile Include="PostProcessers\JSConcater.cs" />
     <Compile Include="PostProcessers\LessConcater.cs" />
     <Compile Include="PostProcessers\TemplateCacheGenerator.cs" />

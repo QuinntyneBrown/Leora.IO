@@ -1,26 +1,27 @@
-﻿using System.IO;
-using Leora.IO.Configuration;
+﻿using Leora.IO.Configuration;
 using Leora.IO.ExtensionMethods;
 using Leora.IO.FileSystemWatcher.Contracts;
 using Leora.IO.FileSystemWatcher.Enums;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Leora.IO.FileSystemWatcher.PostProcessers
 {
-    public class JasmineSpecConcater : IFileTriggeredProcesser
+    class JSAppStructureGenerator : IFileTriggeredProcesser
     {
         public void Process(EventType eventType, string fullPath)
         {
-            if (fullPath.IsAppJavaScriptSpecFile())
+            if (fullPath.IsAppJavaScriptFile())
             {
-                Console.WriteLine("Running Jasmine Spec Concater...");
+                Console.WriteLine("Running App Structure Generator...");
 
-                var outFile = fullPath.GetProjectDirectory() + "tests.js";
-
+                var outFile = fullPath.GetProjectDirectory() + "app-structure.txt";
+                
                 try
                 {
                     if (File.Exists(outFile))
@@ -28,17 +29,19 @@ namespace Leora.IO.FileSystemWatcher.PostProcessers
                         File.Delete(outFile);
                     }
 
-                    var jsFiles = Directory.GetFiles(fullPath.GetAppDirectory(), "*.*", System.IO.SearchOption.AllDirectories).Where(x => System.IO.Path.GetExtension(x) == ".js" && x.Contains("Spec.js") == true).ToList();
+                    var jsFiles = Directory.GetFiles(fullPath.GetAppDirectory(), "*.*", System.IO.SearchOption.AllDirectories).Where(x => System.IO.Path.GetExtension(x) == ".ts" && x.Contains("Spec.js") == false).ToList();
 
                     foreach (var file in jsFiles)
                     {
+                        var fileName = file.Replace(file.GetAppDirectory(), @"app\");
+
                         if (!File.Exists(outFile))
                         {
-                            File.WriteAllLines(outFile, File.ReadAllLines(file));
+                            File.WriteAllLines(outFile, new List<string>() { fileName });
                         }
                         else
                         {
-                            File.AppendAllLines(outFile, File.ReadAllLines(file));
+                            File.AppendAllLines(outFile, new List<string>() { fileName });
                         }
                     }
 

@@ -1,15 +1,14 @@
-﻿module {{ moduleName }}Module {
+﻿module app.{{ moduleNameCamelCase }} {
 
-    angular.module("{{ moduleNameCamelCase }}", [
-            "configuration",
-            "common",
-            "core",
-            "session",
+    angular.module("app.{{ moduleNameCamelCase }}", [
+            "app.configuration",
+            "app.common",
+            "app.core",
+            "app.session",
             "ngRoute"
         ])
         .config(["$routeProvider", config])
-        .run([run])
-		.controller([()=>new {{ moduleName }}Controller()]);
+        .run([run]);
 
     function config($routeProvider) {
 
@@ -31,14 +30,14 @@
         
     }
 
-	class {{ moduleName }}Controller {
-
-        static controllerId: string = "{{ moduleNameCamelCase }}Controller";
+	export class {{ moduleName }}Controller {
 
         constructor() {
 
         }
 
     }
+
+	angular.module("app.{{ moduleNameCamelCase }}").controller("{{ moduleNameCamelCase }}Controller", [{{ moduleName }}Controller]);
 
 } 

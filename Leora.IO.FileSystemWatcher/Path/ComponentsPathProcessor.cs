@@ -20,7 +20,7 @@ namespace Leora.IO.FileSystemWatcher.Path
         {
             if (eventType == EventType.Created && fullPath.IsInsideComponentsFolder())
             {
-                if (ComponentPath.IsComponentFolder(fullPath))
+                if (ComponentPath.IsComponentFolder(fullPath) && fullPath.IsDirectory())
                 {
                     var componentName = System.IO.Path.GetFileNameWithoutExtension(fullPath);
                     var moduleName = fullPath.GetModuleName();

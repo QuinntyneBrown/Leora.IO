@@ -9,6 +9,14 @@ namespace Leora.IO.ExtensionMethods
 {
     public static class StringExtensions
     {
+
+        public static Boolean IsDirectory(this string input)
+        {
+            FileAttributes attr = File.GetAttributes(input);
+
+            return ((attr & FileAttributes.Directory) == FileAttributes.Directory);
+        }
+
         public static string CamelCase(this string input)
         {
             return input.First().ToString().ToLower() + input.Substring(1); 
@@ -54,6 +62,14 @@ namespace Leora.IO.ExtensionMethods
             return (System.IO.Path.GetExtension(fullPath) == ".js"
                     && fullPath.Split(System.IO.Path.DirectorySeparatorChar).Where(x => x == "app").FirstOrDefault() != null
                     && fullPath.Contains("Spec.js") == false
+                );
+        }
+
+        public static bool IsAppJavaScriptSpecFile(this string fullPath)
+        {
+            return (System.IO.Path.GetExtension(fullPath) == ".js"
+                    && fullPath.Split(System.IO.Path.DirectorySeparatorChar).Where(x => x == "app").FirstOrDefault() != null
+                    && fullPath.Contains("Spec.js") == true
                 );
         }
 

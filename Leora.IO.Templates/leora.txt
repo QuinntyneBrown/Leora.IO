@@ -17,6 +17,7 @@ install-package "AngularJS.Route"
 install-package "AngularJS.Animate"
 install-package "Angular.UI.Bootstrap"
 install-package "Angular.UI.UI-Router"
+install-package "AngularJS.Sanitize"
 install-package "angularjs.TypeScript.DefinitelyTyped"
 install-package "jquery.TypeScript.DefinitelyTyped"
 install-package "bootstrap"
@@ -39,6 +40,7 @@ install-package "Microsoft.Owin.Security"
 install-package "Microsoft.Owin.Security.Jwt"
 install-package "Microsoft.Owin.Security.OAuth"
 install-package "Microsoft.Web.Infrastructure"
+install-package "Moment.js"
 install-package "Newtonsoft.Json"
 install-package "Owin"
 install-package "SendGrid.SmtpApi"
@@ -67,7 +69,7 @@ install-package "EntityFramework"
 
 [ ] 10. Add the code below to WebApiStartUp
 
-    public static class WebApiStartup
+    public static class WebApiStartUp
     {
         public static void Configure(HttpConfiguration config)
         {

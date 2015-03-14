@@ -1,30 +1,67 @@
-﻿module {{ moduleName }}Module {
+﻿module app.{{ moduleNameCamelCase }} {
 
     "use strict";
 
-    class {{ componentName }} {
+    class {{ componentName }}  implements ng.IDirective {
 
         constructor() {
-
+            this.link = this._link.bind(this);
         }
 
-        public static componentId: string = "{{ componentNameCamelCase }}";
+		static instance(): ng.IDirective {
+            return new {{ componentName }}();
+        }
 
-        public restrict: string = "E";
+		// ng.I{{ componentName }}Scope
+
+		link: (scope: any, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) => void;
+
+        _link(scope: any, element: ng.IAugmentedJQuery, attributes: ng.IAttributes) {
+
+            scope.{{ componentNameCamelCase }} = this;
+
+            scope.{{ componentNameCamelCase }}.element = element[0];
+
+            scope.{{ componentNameCamelCase }}.attributes = attributes;
+
+        }
 
         public replace: boolean = true;
 
-		public scope = {};
+        public scope: any = {};
 
         public templateUrl: string = "/app/{{ moduleNameCamelCase }}/components/{{ componentNameCamelCase }}/{{ componentNameCamelCase }}.html";
 
-        public link = (scope, element, attributes) => {
+        public restrict: string = "E";   
 
+		
+        private _attributes: ng.IAttributes;
 
+        public set attributes(attributes: ng.IAttributes) {
+
+            this._attributes = attributes;
         }
+
+        public get attributes() {
+
+            return this._attributes;
+        }
+
+
+        private _element: HTMLElement;
+
+        public set element(element: HTMLElement) {
+
+            this._element = element;
+        }
+
+        public get element() {
+
+            return this._element;
+        }		     
 
     }
 
-    angular.module("{{ moduleNameCamelCase }}").directive({{ componentName }}.componentId,[() => new {{ componentName }}()]);
+    angular.module("app.{{ moduleNameCamelCase }}").directive("{{ componentNameCamelCase }}",[{{ componentName }}.instance]);
 
 }

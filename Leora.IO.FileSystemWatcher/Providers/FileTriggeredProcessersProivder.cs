@@ -23,6 +23,7 @@ namespace Leora.IO.FileSystemWatcher.Providers
             processers.Add(new JasmineSpecConcater());
             processers.Add(new LessConcater());
             processers.Add(new TemplateCacheGenerator());
+            processers.Add(new JSAppStructureGenerator());
             return processers;
         }
     }

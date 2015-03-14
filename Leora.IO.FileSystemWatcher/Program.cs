@@ -3,6 +3,7 @@ using System.IO;
 using Leora.IO.Configuration;
 using Leora.IO.FileSystemWatcher.Contracts;
 using Leora.IO.FileSystemWatcher.Enums;
+using Leora.IO.FileSystemWatcher.PostProcessers;
 using Leora.IO.FileSystemWatcher.Providers;
 using Microsoft.Practices.Unity;
 using Leora.IO.Data.Contracts;
@@ -28,6 +29,10 @@ namespace Leora.IO.FileSystemWatcher
             watcher.Changed += OnChanged;
             watcher.Created += OnCreated;
             watcher.Deleted += OnDeleted;
+
+            Console.WriteLine(Console.Read());
+
+           
             while (Console.Read() != 'q');
         }
 
