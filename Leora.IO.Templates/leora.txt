@@ -1,10 +1,115 @@
-﻿[ ] 1. Create an Empty web project inside C:\projects.
+﻿
+/// MICROSERVICE
 
-	Templates > Visual C# > Web
+1.	a. Create C# Library Called [ReourceName]Api
+	b. Create C# Web Application called [ResourceName]Api.IISHost
+	c. Create C# Library Called [ReourceName]Api.UnitTests
+
+2. Add the following references in both projects
+
+	System.Net, 
+	System.Net.Http
+	System.Net.Http.Formatting
+	System.IdentityModel
+	System.Runtime.Caching
+	Common (Common.dll \Common\Common\bin\Release\Common.dll)
+
+3.	C# Library
+	a. install nuget pacakge EntityFramework manually
+	b. Add the following nuget packages using the package manager console
+
+	install-package "container"
+	install-package "Microsoft.AspNet.Cors" 
+	install-package "Microsoft.AspNet.WebApi.Client"
+	install-package "Microsoft.AspNet.WebApi.Core"
+	install-package "Microsoft.AspNet.WebApi.Cors"
+	install-package "Microsoft.AspNet.SignalR"
+	install-package "Microsoft.AspNet.SignalR.Core"
+	install-package "Microsoft.AspNet.SignalR.SystemWeb"
+	install-package "Microsoft.Owin"
+	install-package "Microsoft.Owin.Cors"
+	install-package "Microsoft.Owin.Security"
+	install-package "Microsoft.Owin.Security.Jwt"
+	install-package "Microsoft.Owin.Security.OAuth"
+	install-package "Microsoft.Web.Infrastructure"
+	install-package "Newtonsoft.Json"
+	install-package "Owin"
+	install-package "System.IdentityModel.Tokens.Jwt"
+	install-package "Strathweb.CacheOutput.WebApi2"
+	install-package "Unity"
+	install-package "Unity.WebAPI"
+
+	IISHost
+	a. Add the following nuget pacakges using the package manager console
+	install-package "Microsoft.AspNet.Cors"
+	install-package "Microsoft.AspNet.WebApi"
+	install-package "Microsoft.AspNet.WebApi.Client"
+	install-package "Microsoft.AspNet.WebApi.Core"
+	install-package "Microsoft.AspNet.WebApi.Cors"
+	install-package "Microsoft.AspNet.WebApi.WebHost"
+	install-package "Microsoft.Owin"
+	install-package "Microsoft.Owin.Cors"
+	install-package "Microsoft.Owin.Host.SystemWeb"
+	install-package "Microsoft.Owin.Security"
+	install-package "Microsoft.Owin.Security.Jwt"
+	install-package "Microsoft.Owin.Security.OAuth"
+	install-package "Microsoft.Web.Infrastructure"
+	install-package "Newtonsoft.Json"
+	install-package "Owin"
+
+	Angular SPA
+
+	SelfHost
+	install-package "Microsoft.Owin"
+	install-package "Microsoft.AspNet.WebApi.Owin"
+	install-package "Microsoft.AspNet.WebApi.Client"
+	install-package "Microsoft.AspNet.WebApi.Core"
+	install-package "Microsoft.AspNet.WebApi.SelfHost"
+	install-package "Newtonsoft.Json" version="6.0.4"
+	install-package "Unity"
+	install-package "Unity.WebAPI"
+	install-package "Microsoft.AspNet.WebApi.OwinSelfHost"
+
+	Acceptance Tests Api
+
+	install-package "EntityFramework"
+	install-package "EntityFramework.Testing"
+	install-package "EntityFramework.Testing.Moq" 
+	install-package "Microsoft.AspNet.Mvc"
+	install-package "Microsoft.AspNet.Razor"
+	install-package "Microsoft.AspNet.WebPages"
+	install-package "Microsoft.Web.Infrastructure"
+	install-package "Moq" 
+
+4. C# Library - Create Folders
+	md "Controllers" "Models" "Data" "Data/Contracts" "Services" "Dtos" "Services/Contracts" 
+
+
+
+5. Add Connection Strings and Configuration configs
+
+[ ] 1. Create an Empty web project inside C:\projects.
+
+	File -> New -> Project
+
+	Under
+		Templates > Visual C# > Web
+			Select ASP.NET Web Application
 
 	Make sure to check "Create Solution for project"
 
-[ ] 2. Add reference to System.Net and System.Net.Http
+[ ] 2. Add reference to 
+	Right click project Icon -> Select Add -> Reference
+
+System.Net, 
+System.Net.Http
+System.Net.Http.Formatting
+System.IdentityModel
+System.Runtime.Caching
+
+Common.dll C:\Projects\Leora.IO\Common\bin\Release\Common.dll
+
+	
 
 [ ] 3. Run the following command in the Package Manager Console. Copy all the lines below and paste them in the PM Console. 
 
@@ -12,17 +117,14 @@
 
 	Click return to install the last package. ("EntityFramework")
 
-install-package "AngularJS.Core"
-install-package "AngularJS.Route"
-install-package "AngularJS.Animate"
-install-package "Angular.UI.Bootstrap"
-install-package "Angular.UI.UI-Router"
-install-package "AngularJS.Sanitize"
-install-package "angularjs.TypeScript.DefinitelyTyped"
-install-package "jquery.TypeScript.DefinitelyTyped"
-install-package "bootstrap"
-install-package "FontAwesome"
-install-package "jQuery"
+//Core and Services
+
+System.ComponentModel.DataAnnotations
+
+install-package "EntityFramework" - issue at command line. Install using GUI
+
+
+install-package "EntityFramework"
 install-package "Microsoft.AspNet.Cors"
 install-package "Microsoft.AspNet.SignalR"
 install-package "Microsoft.AspNet.SignalR.Core" 
@@ -40,79 +142,171 @@ install-package "Microsoft.Owin.Security"
 install-package "Microsoft.Owin.Security.Jwt"
 install-package "Microsoft.Owin.Security.OAuth"
 install-package "Microsoft.Web.Infrastructure"
-install-package "Moment.js"
 install-package "Newtonsoft.Json"
 install-package "Owin"
+
+install-package "Moq"
+install-package "NUnit"
+
 install-package "SendGrid.SmtpApi"
 install-package "System.IdentityModel.Tokens.Jwt"
+install-package "Strathweb.CacheOutput.WebApi2"
 install-package "Unity"
 install-package "Unity.WebAPI"
+
+install-package "AngularJS.Core"
+install-package "AngularJS.Route"
+install-package "AngularJS.Animate"
+install-package "Angular.UI.Bootstrap"
+install-package "Angular.UI.UI-Router"
+install-package "AngularJS.Sanitize"
+install-package "angularjs.TypeScript.DefinitelyTyped"
+install-package "jquery.TypeScript.DefinitelyTyped"
+install-package "bootstrap"
+install-package "FontAwesome"
+install-package "jQuery"
+install-package "stacktrace.js"
+install-package "stacktrace-js.TypeScript.DefinitelyTyped"
+install-package "Modernizr"
+install-package "Moment.js"
+install-package "modernizr.TypeScript.DefinitelyTyped"
+install-package "lodash.TypeScript.DefinitelyTyped"
+install-package "lodash"
+install-package "jasmine.TypeScript.DefinitelyTyped"
+install-package "html2canvas.TypeScript.DefinitelyTyped"
+install-package "angular-moment"
+install-package "Moment.js"
+install-package "ng-infinite-scroll"
+install-package "angular-ui-router.TypeScript.DefinitelyTyped"
+install-package "moment.TypeScript.DefinitelyTyped"
+install-package "numeraljs.TypeScript.DefinitelyTyped"
 install-package "dotless"
-install-package "EntityFramework"
+install-package "numeral"
+
+Add to \Scripts\typings\stacktrace-js\stacktrace-js.d.ts
+
+declare var printStackTrace: any;
+
+add html2canvas.js manual, not on nuget
+
+add typeScriptApp.d.ts to scripts\typings and add the following
+
+	/// <reference path="jquery/jquery.d.ts" />
+	/// <reference path="angularjs/angular.d.ts" />
+	/// <reference path="angular-ui-router/angular-ui-router.d.ts" />
+	/// <reference path="angularjs/angular-route.d.ts" />
+	/// <reference path="modernizr/modernizr.d.ts" />
+	/// <reference path="html2canvas/html2canvas.d.ts" />
+	/// <reference path="jasmine/jasmine.d.ts" />
+	/// <reference path="lodash/lodash.d.ts" />
+	/// <reference path="stacktrace-js/stacktrace-js.d.ts" />
+
+	//{
+
+
+
+	//}
+
+
+The following typings have to be added manually
 
 
 [ ] 4. Close solution, exit Visual Studio and re-open project (IMPORTANT)
 
-[ ] 5. Create Server Folder
+[ ] 5. Create application FOLDERS INSIDE Project dir by running the following in the command line:
+ 
+	md "Server" "Server/StartUp" "Server/Api" "Server/Models" "Server/Data" "Server/Data/Contracts" "Server/Services" "Server/Dtos" "Server/Services/Contracts" "src" 
 
-[ ] 6. Create a Server/StartUp Folder
+	xcopy C:\Projects\Leora.IO\Leora.IO.AngularSeed\ [Your Project Directory] /s /e
 
-[ ] 7. Create a Server/Api Folder
+	xcopy C:\Projects\Leora.IO\Leora.IO.AngularSeed\src C:\Projects\DocsApi\DocsApi\src /s /e
 
-[ ] 8. Add a new OwinStartUp File inside the Server/StartUp Folder by right clicking on project and clicking "Add New Item". 
-	Select Web. 
-	Find OWIN Startup class. 
+	xcopy C:\Projects\Leora.IO\Leora.IO.AngularSeed\src C:\Projects\PhotographyApp\PhotographyApp\src /s /e
+
+
+	xcopy C:\Projects\Leora.IO\Leora.IO.AngularSeed\gulpfile.config.js C:\Projects\ProductsApi\ProductsApi\src /s /e
+
+	xcopy C:\Projects\Leora.IO\Leora.IO.AngularSeed\src C:\Projects\ProductsApi\ProductsApi\src /s /e
+
+	xcopy C:\Projects\Leora.IO\Leora.IO.AngularSeed\src C:\Projects\ProductsApi\ProductsApi\src /s /e
+
+	xcopy C:\Projects\Leora.IO\Leora.IO.AngularSeed\scripts\jasmine C:\Projects\DocsApi\DocsApi\scripts\jasmine /s /e /d
+
+
+	.c Click "show all files" icon
+
+		.d Click greyed out Sever and src folders, right click -> "include in project""
+
+[ ] 5 b. Delete App_Start Folder with UnityConfig inside
+
+[ ] 6.  right click on Server/StartUp folder
+
+		Select Add - > New Item. Under Visual C# - Web Select Owin StartUp Class 
+		 
 	Name it OwinStartUp. 
+	
 	Leave it empty.
 
-[ ] 9. Add a new static cs class called WebApiStartUp
+[ ] 7. right click on Server/StartUp and Add new item called WebApiStartUp
+		Select Add - > New Item. Under Visual C# select Class and name it WebApiStartUp
+	
 
-[ ] 10. Add the code below to WebApiStartUp
+[ ] 8. Add the code below to WebApiStartUp
 
     public static class WebApiStartUp
-    {
-        public static void Configure(HttpConfiguration config)
-        {
-            var jSettings = new JsonSerializerSettings();
+		{
+			public static void Configure(HttpConfiguration config)
+			{
+				var jSettings = new JsonSerializerSettings();
 
-            jSettings.Formatting = Formatting.Indented;
-            jSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
-            config.Formatters.JsonFormatter.SerializerSettings = jSettings;
+				jSettings.Formatting = Formatting.Indented;
+				jSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+				config.Formatters.Remove(config.Formatters.XmlFormatter);
+				config.Formatters.JsonFormatter.SerializerSettings = jSettings;
 
-            config.MapHttpAttributeRoutes();
+				config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{action}/{id}",
-                defaults: new {id = RouteParameter.Optional}
-                );
+				config.Routes.MapHttpRoute(
+					name: "DefaultApi",
+					routeTemplate: "api/{controller}/{action}/{id}",
+					defaults: new {id = RouteParameter.Optional}
+					);
 
-            //config.Routes.MapHttpRoute(
-            //    name: "StrictRESTApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //    );
+				//config.Routes.MapHttpRoute(
+				//    name: "StrictRESTApi",
+				//    routeTemplate: "api/{controller}/{id}",
+				//    defaults: new { id = RouteParameter.Optional }
+				//    );
 
-        }
+			}
     }
 
-	Add
+	Add the code below to top of WebApiStartUp class (replace old using statements)
 
 	using Newtonsoft.Json;
 	using Newtonsoft.Json.Serialization;
 	using System.Web.Http;
 
-[ ] 11. Right click project
+[ ] 9. Right click project
 	Click Add New Item
-	Select Web
+	Under Visual C# -" Select Web
 	Select Global Application Class
+	Click Add
 
-[ ] 12. Add the following inside the Application Start function
+[ ] 10. Add the code below inside the Application_Start function
 
 	GlobalConfiguration.Configure(WebApiStartUp.Configure);
 
-[ ] 13. Add <validation validateIntegratedModeConfiguration="false" /> under handlers in system.webServer
+	* To Resolve red code highlighted words, select the word and press ctrl + ".". Click the first item from the popover.
+
+
+[ ] 11. 
+
+Open Web.config
+
+Go to "</handlers>"
+
+Add <validation validateIntegratedModeConfiguration="false" /> after </handlers> in web.config
 
   <system.webServer>
     <handlers>
@@ -121,10 +315,23 @@ install-package "EntityFramework"
     <validation validateIntegratedModeConfiguration="false" />
   </system.webServer>
 
+  [] 12.
 
-[ ] 14. create index.html in root of project
+	<configSections>
+		<section name="commonConfiguration" type="Common.Config.CommonConfiguration, Common" />
+	</configSections>
 
-[ ] 15. RUN THE PROJECT
+	<commonConfiguration internalSecret="password" jwtKey="UHxNtYMRYwvfpO1dS4pWLKL0M3DgOj30EbN4SoBWgfc=" jwtIssuer="localhost" jwtAudience="all"></commonConfiguration>
+
+	<connectionStrings>
+		<!--<add name="deliveryManager" connectionString="Server=tcp:h8zy2gig0k.database.windows.net,1433;Database=gladiator;User ID=gladiator@h8zy2gig0k;Password=P@ssw0rd;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" providerName="System.Data.SqlClient" />-->
+		<add name="deliveryManager" connectionString="Data Source=(LocalDb)\v11.0;Initial Catalog=deliveryManager;Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
+	</connectionStrings>
+
+[ ] 13. create index.html in root of project
+
+[ ] 14. RUN THE PROJECT
+
 
 
 DATABASE
@@ -171,4 +378,176 @@ DATABASE
 
 
 
+INSTALL NODE
 
+1. npm init (click thorugh options)
+
+2. Add the following under   "license": "ISC",
+
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
+    "gulp-clean": "^0.3.1",
+    "gulp-debug": "^2.0.1",
+    "gulp-inject": "^1.2.0",
+    "gulp-rimraf": "^0.1.1",
+    "gulp-sourcemaps": "^1.5.1",
+    "gulp-tslint": "^1.4.4",
+    "gulp-typescript": "^2.5.0",
+    "protractor": "~1.5.0",
+    "protractor-trx-reporter": "~0.1.2",
+    "superstatic": "^2.0.2"
+  }
+
+3. Enter npm install in the command line
+
+4. Add gulpfile.config.js and add the following code.
+
+'use strict';
+var GulpConfig = (function () {
+
+    function GulpConfig() {
+
+        this.source = './src/';
+        this.sourceApp = this.source + 'app/';
+
+        this.tsOutputPath = this.source + '/js';
+        this.allJavaScript = [this.source + '/js/**/*.js'];
+        this.allLess = [this.source + '**/*.less'];
+        this.allTypeScript = this.sourceApp + '/**/*.ts!(*.unit.ts)';
+        this.allFiles = [this.allLess, this.allTypeScript];
+
+        this.typings = './scripts/typings/';
+        this.libraryTypeScriptDefinitions = './scripts/typings/**/*.ts';
+        this.appTypeScriptReferences = this.typings + 'typeScriptApp.d.ts';
+    }
+    return GulpConfig;
+})();
+module.exports = GulpConfig;
+
+
+5. Add gulpfile.js and add the following code.
+
+'use strict';
+
+var gulp = require('gulp'),
+    debug = require('gulp-debug'),
+    inject = require('gulp-inject'),
+    tsc = require('gulp-typescript'),
+    tslint = require('gulp-tslint'),
+    sourcemaps = require('gulp-sourcemaps'),
+    clean = require('gulp-clean'),
+    concat = require('gulp-concat'),
+    Config = require('./gulpfile.config');
+
+var config = new Config();
+
+/**
+ * Generates the app.d.ts references file dynamically from all application *.ts files.
+ */
+gulp.task('gen-ts-refs', function () {
+    var target = gulp.src(config.appTypeScriptReferences);
+    var sources = gulp.src([config.allTypeScript], { read: false });
+    return target.pipe(inject(sources, {
+        starttag: '//{',
+        endtag: '//}',
+        transform: function (filepath) {
+            return '/// <reference path="../..' + filepath + '" />';
+        }
+    })).pipe(gulp.dest(config.typings));
+});
+
+/**
+ * Lint all custom TypeScript files.
+ */
+gulp.task('ts-lint', function () {
+    return gulp.src(config.allTypeScript).pipe(tslint()).pipe(tslint.report('prose'));
+});
+
+/**
+ * Compile TypeScript and include references to library and app .d.ts files.
+ */
+gulp.task('compile-ts', ['clean-ts'], function () {
+    var sourceTsFiles = [config.allTypeScript,                //path to typescript files
+                         config.libraryTypeScriptDefinitions, //reference to library .d.ts files
+                         config.appTypeScriptReferences];     //reference to app.d.ts files
+
+    var tsResult = gulp.src(sourceTsFiles)
+                       .pipe(sourcemaps.init())
+                       .pipe(tsc({
+                           target: 'ES5',
+                           declarationFiles: false,
+                           noExternalResolve: true
+                       }));
+
+    tsResult.dts.pipe(gulp.dest(config.tsOutputPath));
+    return tsResult.js
+                    .pipe(sourcemaps.write('.'))
+                    .pipe(gulp.dest(config.tsOutputPath));
+});
+
+
+gulp.task('concat-compiled-ts', ['compile-ts'], function () {
+    return gulp.src(config.allJavaScript)
+      .pipe(concat('app.js'))
+      .pipe(gulp.dest('.'));
+});
+
+gulp.task('concat-less', function () {
+    return gulp.src(config.allLess)
+      .pipe(concat('app.less'))
+      .pipe(gulp.dest('.'));
+});
+
+/**
+ * Remove all generated JavaScript files from TypeScript compiltion.
+ */
+gulp.task('clean-ts', function () {
+    var typeScriptGenFiles = [config.tsOutputPath,            // path to generated JS files
+                              config.sourceApp + '**/*.js',    // path to all JS files auto gen'd by editor
+                              config.sourceApp + '**/*.js.map' // path to all sourcemap files auto gen'd by editor
+    ];
+
+    // delete the files
+    return gulp.src(typeScriptGenFiles, { read: false })
+        .pipe(clean());
+});
+
+gulp.task('clean-less', function () {
+    var lessGenFiles = [config.sourceApp + '**/*.css',    // path to all CSS files auto gen'd by editor
+                              config.sourceApp + '**/*.css.map' // path to all sourcemap files auto gen'd by editor
+    ];
+
+    // delete the files
+    return gulp.src(lessGenFiles, { read: false })
+        .pipe(clean());
+});
+
+gulp.task('watch', function () {
+    gulp.watch([config.allFiles], ['clean-ts', 'clean-less', 'compile-ts', 'concat-less', 'concat-compiled-ts']);
+});
+
+gulp.task('default', ['clean-ts', 'clean-less', 'compile-ts', 'concat-compiled-ts', 'concat-less', 'watch']);
+
+
+
+
+VNext
+
+install-package "Microsoft.AspNet.Mvc" -version 6.0.0-beta4
+
+
+
+
+Self Host
+
+install-package "container" 
+install-package "Microsoft.AspNet.Cors" 
+install-package "Microsoft.AspNet.WebApi.Client" 
+install-package "Microsoft.AspNet.WebApi.Core" 
+install-package "Microsoft.AspNet.WebApi.Cors" 
+install-package "Microsoft.Owin" 
+install-package "Microsoft.Owin.Cors" 
+install-package "Microsoft.Owin.Security" 
+install-package "Newtonsoft.Json" 
+install-package "Owin" 

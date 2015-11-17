@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using Leora.IO.Configuration;
 using Leora.IO.FileSystemWatcher.Contracts;
 using Leora.IO.FileSystemWatcher.Enums;
@@ -16,6 +17,7 @@ namespace Leora.IO.FileSystemWatcher
 
         static void Main(string[] args)
         {
+     
             Console.WriteLine("Leora IO File System Watcher. Press \'q\' to quit.");
 
             RegisterComponents();
@@ -30,11 +32,15 @@ namespace Leora.IO.FileSystemWatcher
             watcher.Created += OnCreated;
             watcher.Deleted += OnDeleted;
 
-            Console.WriteLine(Console.Read());
+            string input;
 
-           
-            while (Console.Read() != 'q');
+            do
+            {
+                input = Console.ReadLine();
+
+            } while (Console.Read() != 'q');
         }
+
 
         private static void OnChanged(object source, FileSystemEventArgs e)
         {
@@ -66,5 +72,7 @@ namespace Leora.IO.FileSystemWatcher
             container.RegisterType<ITemplateRepository, Leora.IO.Data.FileSystem.TemplateRepository>();
             UnityConfiguration.Container = container;
         }
+
+
     }
 }

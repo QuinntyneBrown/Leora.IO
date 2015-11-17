@@ -1,0 +1,30 @@
+﻿<div class="app-header">
+    <div>
+        <div class="left">
+            <h1 id="app-title">            
+                {{ appTitle() }}
+            </h1>
+            
+            <ul>
+                <li data-ng-repeat="link in navigationLinks">
+                    <a data-ng-if="link.authenticationRequired == isAuthenticated()" href="{{ link.url }}">{{ link.caption }}</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="right">
+            
+            
+            <ul data-ng-if="isAuthenticated()">
+                <li>
+                    <a href="#/userPreferences" >{{ getCurrentUser().givenname + ' ' + getCurrentUser().surname }}</a>
+                </li>
+                <li>
+                    <a href="#/login">Logout</a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

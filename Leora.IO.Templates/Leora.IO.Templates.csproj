@@ -96,6 +96,7 @@
     <Content Include="TypeScript\AngularJS\routeResolver.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="leaoraXCopy.bat" />
     <None Include="TypeScript\AngularJS\modules\common\components\alertItem\responsive less\alertItem.less" />
     <None Include="TypeScript\AngularJS\modules\common\components\alertItem\responsive less\alertItem.lg.less" />
     <None Include="TypeScript\AngularJS\modules\common\components\alertItem\responsive less\alertItem.md.less" />

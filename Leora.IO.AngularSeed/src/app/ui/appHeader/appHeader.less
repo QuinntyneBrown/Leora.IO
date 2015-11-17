@@ -1,0 +1,68 @@
+﻿.app-header {
+    background-color: rgb(34,34,34);
+    height: 50px;
+    border-bottom-style:solid;
+    border-bottom-width: 4px;
+    border-bottom-color: rgb(34,34,34);  
+    width:100%;    
+    color:rgb(221,221,221);
+    position: fixed;
+    top:0px;
+    z-index:999;
+}
+
+
+.app-header h1, .app-header ul, .app-header ul li {
+    float:left;
+    display:inline-block;
+    margin-left:10px;    
+}
+
+.app-header .username {
+    float:right;
+    display:inline-block;
+    margin-right:10px;    
+}
+
+.app-header h1 {    
+    line-height:50px;
+    vertical-align:middle;
+    font-size:16px;
+    line-height:50px;
+    margin:0;
+}
+
+
+.app-header ul li a, .app-header a {
+                color:rgb(221,221,221);
+                text-decoration:none;
+                display:inline-block;
+                line-height:50px;
+                vertical-align:middle;
+                margin-right:10px;
+                margin-bottom:0;
+                margin-right:0;
+                margin-top:0;
+}
+
+.app-header > div {
+                  max-width:1024px;
+                  margin:0 auto;
+              }
+
+.app-header .hamburger-button {
+    margin-top:13px;
+    display:none;
+    margin-right:10px;  
+}
+
+@media(max-width: 500px) {
+    .app-header ul, .app-header .username {
+        display:none;
+    }
+
+    .app-header .hamburger-button {
+        display:inline-block;
+    }
+
+}

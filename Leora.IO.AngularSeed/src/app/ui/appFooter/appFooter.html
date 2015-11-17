@@ -1,0 +1,7 @@
+﻿<div class="footer">
+    
+    <div data-ng-if="appManager.commands.length > 0">
+        <a data-ng-repeat="command in appManager.commands" data-ng-click="command.onClick()">{{ command.caption }}</a>
+    </div>
+
+</div>

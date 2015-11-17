@@ -95,23 +95,28 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="JavaScript\" />
+    <Folder Include="libs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Leora.IO.Configuration\Leora.IO.Configuration.csproj">
       <Project>{e9f7af68-edc1-4809-98fa-1500acaa1aa2}</Project>
       <Name>Leora.IO.Configuration</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Leora.IO.Data\Leora.IO.Data.csproj">
       <Project>{608143a4-0ecd-49b6-a26b-a34c87eed541}</Project>
       <Name>Leora.IO.Data</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Leora.IO.ExtensionMethods\Leora.IO.ExtensionMethods.csproj">
       <Project>{708371b5-4bbd-4e5d-806f-584ed6c37865}</Project>
       <Name>Leora.IO.ExtensionMethods</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Leora.IO.Models\Leora.IO.Models.csproj">
       <Project>{ceaaf937-63e3-452c-b9df-71f045ed69bb}</Project>
       <Name>Leora.IO.Models</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

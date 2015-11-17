@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6E985A09-34E0-4B8D-9A75-AF944D9DD10E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Leora.IO.AngularSeed</RootNamespace>
+    <AssemblyName>Leora.IO.AngularSeed</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="src\app\abstractDataTypes\abstractDataTypes.d.ts" />
+    <TypeScriptCompile Include="src\app\abstractDataTypes\abstractDataTypes.module.ts" />
+    <TypeScriptCompile Include="src\app\abstractDataTypes\controllers\paginatedListController.ts" />
+    <TypeScriptCompile Include="src\app\abstractDataTypes\services\linkedList.ts" />
+    <TypeScriptCompile Include="src\app\abstractDataTypes\services\list.spec.ts" />
+    <TypeScriptCompile Include="src\app\abstractDataTypes\services\list.ts" />
+    <TypeScriptCompile Include="src\app\abstractDataTypes\services\paginatedList.spec.ts" />
+    <TypeScriptCompile Include="src\app\abstractDataTypes\services\paginatedList.ts" />
+    <TypeScriptCompile Include="src\app\abstractDataTypes\services\pagniatedListView.spec.ts" />
+    <TypeScriptCompile Include="src\app\abstractDataTypes\services\pagniatedListView.ts" />
+    <TypeScriptCompile Include="src\app\abstractDataTypes\services\pipeAsync.ts" />
+    <TypeScriptCompile Include="src\app\abstractDataTypes\services\pipePrioritizedAsync.ts" />
+    <TypeScriptCompile Include="src\app\abstractDataTypes\services\queueAsync.ts" />
+    <TypeScriptCompile Include="src\app\abstractDataTypes\services\queuePrioritizedAsync.ts" />
+    <TypeScriptCompile Include="src\app\abstractDataTypes\services\sequentialPromiseList.spec.ts" />
+    <TypeScriptCompile Include="src\app\abstractDataTypes\services\sequentialPromiseList.ts" />
+    <TypeScriptCompile Include="src\app\common\common.d.ts" />
+    <TypeScriptCompile Include="src\app\common\common.module.ts" />
+    <TypeScriptCompile Include="src\app\common\directives\workSpinner.spec.ts" />
+    <TypeScriptCompile Include="src\app\common\directives\workSpinner.ts" />
+    <TypeScriptCompile Include="src\app\common\enums\formFactor.ts" />
+    <TypeScriptCompile Include="src\app\common\enums\httpStatusCode.ts" />
+    <TypeScriptCompile Include="src\app\common\enums\stateResolutionPriority.ts" />
+    <TypeScriptCompile Include="src\app\common\enums\xhrReadyState.ts" />
+    <TypeScriptCompile Include="src\app\common\filters\formatNumber.spec.ts" />
+    <TypeScriptCompile Include="src\app\common\filters\formatNumber.ts" />
+    <TypeScriptCompile Include="src\app\common\filters\highlight.spec.ts" />
+    <TypeScriptCompile Include="src\app\common\filters\highlight.ts" />
+    <TypeScriptCompile Include="src\app\common\functions\convertObjectToCamelCase.ts" />
+    <TypeScriptCompile Include="src\app\common\functions\fire.ts" />
+    <TypeScriptCompile Include="src\app\common\functions\formDecode.ts" />
+    <TypeScriptCompile Include="src\app\common\functions\formEncode.ts" />
+    <TypeScriptCompile Include="src\app\common\functions\fromCacheOrService.ts" />
+    <TypeScriptCompile Include="src\app\common\functions\getStringFromUrl.ts" />
+    <TypeScriptCompile Include="src\app\common\functions\numeral.ts" />
+    <TypeScriptCompile Include="src\app\common\functions\pathRegExp.ts" />
+    <TypeScriptCompile Include="src\app\common\helpers\uiHelper.ts" />
+    <TypeScriptCompile Include="src\app\common\services\apiEndpointProvider.spec.ts" />
+    <TypeScriptCompile Include="src\app\common\services\apiEndpointProvider.ts" />
+    <TypeScriptCompile Include="src\app\common\services\applicationProvider.ts" />
+    <TypeScriptCompile Include="src\app\common\services\commonStorage.spec.ts" />
+    <TypeScriptCompile Include="src\app\common\services\commonStorage.ts" />
+    <TypeScriptCompile Include="src\app\common\services\dataService.spec.ts" />
+    <TypeScriptCompile Include="src\app\common\services\dataService.ts" />
+    <TypeScriptCompile Include="src\app\common\services\JQuery.ts" />
+    <TypeScriptCompile Include="src\app\common\services\localStorageService.ts" />
+    <TypeScriptCompile Include="src\app\common\services\metadataService.ts" />
+    <TypeScriptCompile Include="src\app\common\services\prioritizedPromisesService.spec.ts" />
+    <TypeScriptCompile Include="src\app\common\services\prioritizedPromisesService.ts" />
+    <TypeScriptCompile Include="src\app\common\services\requestCounter.spec.ts" />
+    <TypeScriptCompile Include="src\app\common\services\requestCounter.ts" />
+    <TypeScriptCompile Include="src\app\common\services\sessionProvider.ts" />
+    <TypeScriptCompile Include="src\app\common\services\sessionStorageProperty.ts" />
+    <TypeScriptCompile Include="src\app\common\services\stateDeactivatorProvider.ts" />
+    <TypeScriptCompile Include="src\app\common\services\StateManagerProvider.spec.ts" />
+    <TypeScriptCompile Include="src\app\common\services\stateManagerProvider.ts" />
+    <TypeScriptCompile Include="src\app\common\services\stateParamsHelper.spec.ts" />
+    <TypeScriptCompile Include="src\app\common\services\stateParamsHelper.ts" />
+    <TypeScriptCompile Include="src\app\common\services\stateResolverProvider.spec.ts" />
+    <TypeScriptCompile Include="src\app\common\services\stateResolverProvider.ts" />
+    <TypeScriptCompile Include="src\app\common\services\storage.ts" />
+    <TypeScriptCompile Include="src\app\common\services\storageProperty.ts" />
+    <TypeScriptCompile Include="src\app\common\services\versionInterceptor.ts" />
+    <TypeScriptCompile Include="src\app\configuration\configuration.d.ts" />
+    <TypeScriptCompile Include="src\app\configuration\configuration.module.ts" />
+    <TypeScriptCompile Include="src\app\configuration\services\configurationManager.spec.ts" />
+    <TypeScriptCompile Include="src\app\configuration\services\configurationManager.ts" />
+    <TypeScriptCompile Include="src\app\configuration\services\configurationService.spec.ts" />
+    <TypeScriptCompile Include="src\app\configuration\services\configurationService.ts" />
+    <TypeScriptCompile Include="src\app\diagnostics\diagnostics.d.ts" />
+    <TypeScriptCompile Include="src\app\diagnostics\diagnostics.module.ts" />
+    <TypeScriptCompile Include="src\app\diagnostics\functions\getWatchersCount.ts" />
+    <TypeScriptCompile Include="src\app\diagnostics\functions\printStackTrace.ts" />
+    <TypeScriptCompile Include="src\app\diagnostics\services\diagnosticsManager.spec.ts" />
+    <TypeScriptCompile Include="src\app\diagnostics\services\diagnosticsManager.ts" />
+    <TypeScriptCompile Include="src\app\diagnostics\services\errorRedirectProvider.ts" />
+    <TypeScriptCompile Include="src\app\diagnostics\services\features.spec.ts" />
+    <TypeScriptCompile Include="src\app\diagnostics\services\features.ts" />
+    <TypeScriptCompile Include="src\app\diagnostics\services\modernizrService.spec.ts" />
+    <TypeScriptCompile Include="src\app\diagnostics\services\modernizrService.ts" />
+    <TypeScriptCompile Include="src\app\diagnostics\services\requestProfiler.spec.ts" />
+    <TypeScriptCompile Include="src\app\diagnostics\services\requestProfiler.ts" />
+    <TypeScriptCompile Include="src\app\feedback\controllers\feedbackModalController.spec.ts" />
+    <TypeScriptCompile Include="src\app\feedback\controllers\feedbackModalController.ts" />
+    <TypeScriptCompile Include="src\app\feedback\directives\feedbackTile\feedbackTile.spec.ts" />
+    <TypeScriptCompile Include="src\app\feedback\directives\feedbackTile\feedbackTile.ts" />
+    <TypeScriptCompile Include="src\app\feedback\feedback.d.ts" />
+    <TypeScriptCompile Include="src\app\feedback\feedback.module.ts" />
+    <TypeScriptCompile Include="src\app\feedback\services\exceptionHandler.spec.ts" />
+    <TypeScriptCompile Include="src\app\feedback\services\exceptionHandler.ts" />
+    <TypeScriptCompile Include="src\app\feedback\services\feedbackChatHub.ts" />
+    <TypeScriptCompile Include="src\app\feedback\services\feedbackManager.spec.ts" />
+    <TypeScriptCompile Include="src\app\feedback\services\feedbackManager.ts" />
+    <TypeScriptCompile Include="src\app\feedback\services\feedbackModalService.spec.ts" />
+    <TypeScriptCompile Include="src\app\feedback\services\feedbackModalService.ts" />
+    <TypeScriptCompile Include="src\app\feedback\services\feedbackService.spec.ts" />
+    <TypeScriptCompile Include="src\app\feedback\services\feedbackService.ts" />
+    <TypeScriptCompile Include="src\app\i18n\filters\translate.spec.ts" />
+    <TypeScriptCompile Include="src\app\i18n\filters\translate.ts" />
+    <TypeScriptCompile Include="src\app\i18n\i18n.d.ts" />
+    <TypeScriptCompile Include="src\app\i18n\i18n.module.ts" />
+    <TypeScriptCompile Include="src\app\i18n\services\cultureCodeInterceptor.spec.ts" />
+    <TypeScriptCompile Include="src\app\i18n\services\cultureCodeInterceptor.ts" />
+    <TypeScriptCompile Include="src\app\i18n\services\i18nManager.spec.ts" />
+    <TypeScriptCompile Include="src\app\i18n\services\i18nManager.ts" />
+    <TypeScriptCompile Include="src\app\i18n\services\i18nService.spec.ts" />
+    <TypeScriptCompile Include="src\app\i18n\services\i18nService.ts" />
+    <TypeScriptCompile Include="src\app\i18n\services\numeral.spec.ts" />
+    <TypeScriptCompile Include="src\app\i18n\services\numeral.ts" />
+    <TypeScriptCompile Include="src\app\i18n\services\phrasesProvider.spec.ts" />
+    <TypeScriptCompile Include="src\app\i18n\services\phrasesProvider.ts" />
+    <TypeScriptCompile Include="src\app\security\controllers\loginController.spec.ts" />
+    <TypeScriptCompile Include="src\app\security\controllers\loginController.ts" />
+    <TypeScriptCompile Include="src\app\security\directives\login\login.ts" />
+    <TypeScriptCompile Include="src\app\security\security.d.ts" />
+    <TypeScriptCompile Include="src\app\security\security.module.ts" />
+    <TypeScriptCompile Include="src\app\security\security.states.ts" />
+    <TypeScriptCompile Include="src\app\security\services\authorizationInterceptor.spec.ts" />
+    <TypeScriptCompile Include="src\app\security\services\authorizationInterceptor.ts" />
+    <TypeScriptCompile Include="src\app\security\services\loginRedirectProvider.spec.ts" />
+    <TypeScriptCompile Include="src\app\security\services\loginRedirectProvider.ts" />
+    <TypeScriptCompile Include="src\app\security\services\securityManager.spec.ts" />
+    <TypeScriptCompile Include="src\app\security\services\securityManager.ts" />
+    <TypeScriptCompile Include="src\app\security\services\securityModalService.spec.ts" />
+    <TypeScriptCompile Include="src\app\security\services\securityModalService.ts" />
+    <TypeScriptCompile Include="src\app\security\services\securityService.spec.ts" />
+    <TypeScriptCompile Include="src\app\security\services\securityService.ts" />
+    <TypeScriptCompile Include="src\app\ui\appFooter\appFooter.spec.ts" />
+    <TypeScriptCompile Include="src\app\ui\appFooter\appFooter.ts" />
+    <TypeScriptCompile Include="src\app\ui\appFooter\appFooterConfigProvider.ts" />
+    <TypeScriptCompile Include="src\app\ui\appFooter\appFooterManager.ts" />
+    <TypeScriptCompile Include="src\app\ui\appHeader\appHeader.spec.ts" />
+    <TypeScriptCompile Include="src\app\ui\appHeader\appHeader.ts" />
+    <TypeScriptCompile Include="src\app\ui\appHeader\appHeaderConfigProvider.ts" />
+    <TypeScriptCompile Include="src\app\ui\formGroup\formGroup.spec.ts" />
+    <TypeScriptCompile Include="src\app\ui\formGroup\formGroup.ts" />
+    <TypeScriptCompile Include="src\app\ui\manualWorkSpinner\manualWorkSpinner.spec.ts" />
+    <TypeScriptCompile Include="src\app\ui\manualWorkSpinner\manualWorkSpinner.ts" />
+    <TypeScriptCompile Include="src\app\ui\modal\modalService.spec.ts" />
+    <TypeScriptCompile Include="src\app\ui\modal\modalServiceProvider.ts" />
+    <TypeScriptCompile Include="src\app\ui\paginatedImageListViewer\paginatedImageListViewer.spec.ts" />
+    <TypeScriptCompile Include="src\app\ui\paginatedImageListViewer\paginatedImageListViewer.ts" />
+    <TypeScriptCompile Include="src\app\ui\paginatedListView\pagniatedListView.spec.ts" />
+    <TypeScriptCompile Include="src\app\ui\paginatedListView\pagniatedListView.ts" />
+    <TypeScriptCompile Include="src\app\ui\popover\popover.spec.ts" />
+    <TypeScriptCompile Include="src\app\ui\popover\popover.ts" />
+    <TypeScriptCompile Include="src\app\ui\popover\popoverService.spec.ts" />
+    <TypeScriptCompile Include="src\app\ui\popover\PopoverService.ts" />
+    <TypeScriptCompile Include="src\app\ui\rating\rating.spec.ts" />
+    <TypeScriptCompile Include="src\app\ui\rating\rating.ts" />
+    <TypeScriptCompile Include="src\app\ui\tiles\tiles.spec.ts" />
+    <TypeScriptCompile Include="src\app\ui\tiles\tiles.ts" />
+    <TypeScriptCompile Include="src\app\ui\tile\tile.spec.ts" />
+    <TypeScriptCompile Include="src\app\ui\tile\tile.ts" />
+    <TypeScriptCompile Include="src\app\ui\tile\tileConfigsProvider.ts" />
+    <TypeScriptCompile Include="src\app\ui\ui.d.ts" />
+    <TypeScriptCompile Include="src\app\ui\ui.module.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="package.json" />
+    <None Include="src\app\common\common.less" />
+    <None Include="src\app\feedback\directives\feedbackTile\feedbackTile.less" />
+    <None Include="src\app\ui\appFooter\appFooter.less" />
+    <None Include="src\app\ui\appHeader\appHeader.less" />
+    <None Include="src\app\ui\paginatedImageListViewer\paginatedImageListViewer.less" />
+    <None Include="src\app\ui\rating\rating.less" />
+    <None Include="src\app\ui\tiles\tiles.less" />
+    <None Include="src\app\ui\tile\tile.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="gulpfile.config.js" />
+    <Content Include="gulpfile.js" />
+    <Content Include="karma.conf.js" />
+    <Content Include="scripts\jasmine\boot.js" />
+    <Content Include="scripts\jasmine\console.js" />
+    <Content Include="scripts\jasmine\jasmine-html.js" />
+    <Content Include="scripts\jasmine\jasmine.css" />
+    <Content Include="scripts\jasmine\jasmine.js" />
+    <Content Include="scripts\jasmine\jasmine_favicon.png" />
+    <Content Include="specRunner.html" />
+    <Content Include="src\app\feedback\directives\feedbackTile\feedbackTile.html" />
+    <Content Include="src\app\feedback\views\partials\feedbackModal.html" />
+    <Content Include="src\app\security\directives\login\login.html" />
+    <Content Include="src\app\security\partials\login.html" />
+    <Content Include="src\app\security\views\login.html" />
+    <Content Include="src\app\security\views\partials\login.html" />
+    <Content Include="src\app\ui\appFooter\appFooter.html" />
+    <Content Include="src\app\ui\appHeader\appHeader.html" />
+    <Content Include="src\app\ui\manualWorkSpinner\manualWorkSpinner.html" />
+    <Content Include="src\app\ui\modal\default.html" />
+    <Content Include="src\app\ui\paginatedImageListViewer\paginatedImageListViewer.html" />
+    <Content Include="src\app\ui\rating\rating.html" />
+    <Content Include="src\app\ui\tiles\tiles.html" />
+    <Content Include="src\app\ui\tile\tile.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

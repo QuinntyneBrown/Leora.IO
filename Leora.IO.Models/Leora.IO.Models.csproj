@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FeedbackDto.cs" />
     <Compile Include="Template.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -49,6 +49,7 @@
     <ProjectReference Include="..\Leora.IO.Configuration\Leora.IO.Configuration.csproj">
       <Project>{e9f7af68-edc1-4809-98fa-1500acaa1aa2}</Project>
       <Name>Leora.IO.Configuration</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
     <ProjectReference Include="..\Leora.IO.ExtensionMethods\Leora.IO.ExtensionMethods.csproj">
       <Project>{708371b5-4bbd-4e5d-806f-584ed6c37865}</Project>
