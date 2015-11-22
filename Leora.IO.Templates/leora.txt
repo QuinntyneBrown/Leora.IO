@@ -82,7 +82,7 @@
 	install-package "Moq" 
 
 4. C# Library - Create Folders
-	md "Controllers" "Models" "Data" "Data/Contracts" "Services" "Dtos" "Services/Contracts" 
+	md "Server/Controllers" "Server/Models" "Server/Data/Contracts" "Server/Services" "Server/Dtos" "Server/Services/Contracts" 
 
 
 
@@ -144,6 +144,7 @@ install-package "Microsoft.Owin.Security.OAuth"
 install-package "Microsoft.Web.Infrastructure"
 install-package "Newtonsoft.Json"
 install-package "Owin"
+install-package "Microsoft.AspNet.WebApi.Owin"
 
 install-package "Moq"
 install-package "NUnit"
