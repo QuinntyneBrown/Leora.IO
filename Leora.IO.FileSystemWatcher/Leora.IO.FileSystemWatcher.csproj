@@ -119,15 +119,6 @@
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="libs\Leora.IO.Configuration.dll" />
-    <EmbeddedResource Include="libs\Leora.IO.Data.dll" />
-    <EmbeddedResource Include="libs\Leora.IO.dll" />
-    <EmbeddedResource Include="libs\Leora.IO.ExtensionMethods.dll" />
-    <EmbeddedResource Include="libs\Leora.IO.Models.dll" />
-    <EmbeddedResource Include="libs\Microsoft.Practices.Unity.Configuration.dll" />
-    <EmbeddedResource Include="libs\Microsoft.Practices.Unity.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>

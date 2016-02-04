@@ -1,0 +1,2 @@
+﻿class {{ actionName }}Action { constructor() { } }
+
