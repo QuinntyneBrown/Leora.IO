@@ -45,6 +45,7 @@
     <Content Include="CSharp\WebAPI\controller.txt" />
     <Content Include="CSharp\WebAPI\webconfig.txt" />
     <Content Include="leora.txt" />
+    <Content Include="TypeScript\AngularJS\action.txt" />
     <Content Include="TypeScript\AngularJS\component.txt" />
     <Content Include="TypeScript\AngularJS\componentSpec.txt" />
     <Content Include="TypeScript\AngularJS\dataService.txt" />
