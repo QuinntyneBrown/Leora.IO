@@ -1,0 +1,50 @@
+﻿import { CanActivate, Component } from "../../../libs/component-decorators";
+import { GalleryActionCreator } from "../../actions";
+
+@Component({
+    route: "/{{ entityNameSnakeCase }}/edit/:id",
+    templateUrl: "wwwroot/components/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-editor.html",
+    selector: "{{ entityNameSnakeCase }}-editor",
+    providers: ["$location","{{ entityNameCamelCase }}ActionCreator","invokeAsync"]
+})
+@CanActivate(["$route", "invokeAsync", "galleryActionCreator", ($route, invokeAsync, {{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator) => {
+    var id = $route.current.params.id;
+    return invokeAsync({
+        action: {{ entityNameCamelCase }}ActionCreator.getById,
+        params: { id: id }
+    });
+}])
+export class {{ entityNamePascalCase }}EditorComponent {
+    constructor(private $location, private {{ entityNameCamelCase }}ActionCreator, private invokeAsync) { }
+
+    storeOnChange = state => { }
+
+    addOrUpdate = () => {
+        this.invokeAsync({
+            action: this.{{ entityNameCamelCase }}ActionCreator.addOrUpdate,
+            params: {
+                data: {
+                    id: this.id,
+                }
+            }
+        }).then(() => {
+            if (!this.id && this.entities.filter(entity => entity.name === this.name).length > 0) {
+
+            }
+            else {
+
+            }
+        });
+    } 
+    
+    create = () => {
+        this.{{ entityNameCamelCase }}ActionCreator.create();
+    }
+
+    remove = () => this.{{ entityNameCamelCase }}ActionCreator.remove({ id: this.id });
+         
+    id;
+
+	entities;
+    baseUrl;
+}

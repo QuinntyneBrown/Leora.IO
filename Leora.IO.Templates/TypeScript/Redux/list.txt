@@ -1,0 +1,19 @@
+﻿import { CanActivate, Component } from "../../../libs/component-decorators";
+
+@Component({
+    route: "/{{ entityNameCamelCase }}/list",
+    templateUrl: "wwwroot/components/{{ entityNameCamelCase }}/{{ entityNameSnakeCase }}-list.html",
+    selector: "{{ entityNameSnakeCase }}-list",
+    providers: ["$location","{{ entityNameCamelCase }}ActionCreator"]
+})
+@CanActivate([
+    "{{ entityNameCamelCase }}ActionCreator", "invokeAsync",
+    ({{ entityNameCamelCase }}ActionCreator, invokeAsync) => invokeAsync({{ entityNameCamelCase }}ActionCreator.all)
+])
+export class {{ entityNamePascalCase }}ListComponent {
+    constructor(private $location: angular.ILocationService,private {{ entityNameCamelCase }}ActionCreator) { }
+    storeOnChange = state =>  this.entities = state.galleries;   
+    entities;
+    remove = {{ entityNameCamelCase }} => this.{{ entityNameCamelCase }}ActionCreator.remove({ entity: {{ entityNameCamelCase }} });
+    edit = {{ entityNameCamelCase }} => this.{{ entityNameCamelCase }}ActionCreator.edit({ entity: {{ entityNameCamelCase }} });    
+}

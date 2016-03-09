@@ -74,6 +74,11 @@
     <Content Include="TypeScript\AngularJS\modules\configuration\services\configurationService.js" />
     <Content Include="TypeScript\AngularJS\modules\configuration\services\interfaces\IConfigurationService.js" />
     <Content Include="TypeScript\AngularJS\service.txt" />
+    <Content Include="TypeScript\Redux\editor.txt" />
+    <Content Include="TypeScript\Redux\list.txt" />
+    <Content Include="TypeScript\Redux\service.txt" />
+    <Content Include="TypeScript\Redux\reducers.txt" />
+    <Content Include="TypeScript\Redux\actions.txt" />
     <Content Include="webConfig.txt" />
     <TypeScriptCompile Include="TypeScript\AngularJS\modules\core\storage\storage.ts" />
     <Content Include="TypeScript\AngularJS\modules\core\styles\app.css" />

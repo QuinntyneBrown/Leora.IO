@@ -1,0 +1,22 @@
+﻿import { AddOrUpdateGalleryAction, AllsAction, Remove{{ entityNamePascalCase }}Action } from "../actions";
+import { addOrUpdate, pluckOut } from "../../libs";
+
+export const remove{{ entityNamePascalCamelCase }}Reducer = (state, action) => {
+    if (action instanceof Remove{{ entityNamePascalCase }}Action)
+        pluckOut({ items: state.{{ entityNameCamelCase }}s, value: action.entity.id });
+    return state;
+}
+
+export const add{{ entityNamePascalCase }}Reducer = (state, action) => {
+    if (action instanceof AddOrUpdate{{ entityNamePascalCase }}Action) {
+        addOrUpdate({ items: state.{{ entityNameCamelCase }}s, item: action.entity });
+    }
+    return state;
+}
+
+export const all{{ entityNamePascalCase }}sReducer = (state, action) => {
+    if (action instanceof All{{ entityNamePascalCase }}sAction) {
+        state.{{ entityNameCamelCase }}s = action.entities;
+    }
+    return state;
+}

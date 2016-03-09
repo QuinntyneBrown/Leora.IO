@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,26 @@ namespace Leora.IO.ExtensionMethods
         public static string CamelCase(this string input)
         {
             return input.First().ToString().ToLower() + input.Substring(1); 
+        }
+
+        public static string SnakeCaseToPascalCase(this string input)
+        {
+            System.Text.StringBuilder resultBuilder = new System.Text.StringBuilder();
+            foreach (char c in input)
+            {
+                if (!Char.IsLetterOrDigit(c))
+                {
+                    resultBuilder.Append(" ");
+                }
+                else
+                {
+                    resultBuilder.Append(c);
+                }
+            }
+            string result = resultBuilder.ToString();
+            TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+            result = textInfo.ToTitleCase(result).Replace(" ", String.Empty);
+            return result;
         }
 
         public static string FirstCharToUpper(this string input)

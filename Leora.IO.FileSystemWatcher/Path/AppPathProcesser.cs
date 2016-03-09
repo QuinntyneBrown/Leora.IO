@@ -6,6 +6,7 @@ using Leora.IO.ExtensionMethods;
 using Leora.IO.TypeScript.AngularJS;
 using Leora.IO.Paths;
 
+
 namespace Leora.IO.FileSystemWatcher.Folders
 {
     public class AppPathProcesser: IFileTriggeredProcesser
@@ -14,26 +15,26 @@ namespace Leora.IO.FileSystemWatcher.Folders
         {
             if(eventType == EventType.Created && fullPath.IsFeatureFolder())
             {
-                var featureName = fullPath.Split(System.IO.Path.DirectorySeparatorChar)[fullPath.Split(System.IO.Path.DirectorySeparatorChar).Count() - 1];
+                var entityName = fullPath.Split(System.IO.Path.DirectorySeparatorChar)[fullPath.Split(System.IO.Path.DirectorySeparatorChar).Count() - 1];
 
                 // 1. Create componet editor, css html
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.ts", featureName), new string[0]);
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.html", featureName), new string[0]);
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.css", featureName), new string[0]);
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.ts", entityName), TypeScript.Redux.Component.Editor(entityName));
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.html", entityName), new string[0]);
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.css", entityName), new string[0]);
 
                 // 2. Create componet list, css html
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.ts", featureName), new string[0]);
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.html", featureName), new string[0]);
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.css", featureName), new string[0]);
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.ts", entityName), TypeScript.Redux.Component.List(entityName));
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.html", entityName), new string[0]);
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.css", entityName), new string[0]);
 
-                // 3. Create actionCreator
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-actions.ts", featureName), new string[0]);
+ 
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-actions.ts", entityName), TypeScript.Redux.Actions.Get(entityName));
 
                 // 4. Create service
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-service.ts", featureName), new string[0]);
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-service.ts", entityName), TypeScript.Redux.Service.Get(entityName));
 
                 // 15. Create reducers
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-reducers.ts", featureName), new string[0]);
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-reducers.ts", entityName), TypeScript.Redux.Reducers.Get(entityName));
 
             }
         }
