@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Leora.IO.Configuration;
 using Leora.IO.ExtensionMethods;
 using Leora.IO.Data.Contracts;
-using Leora.IO.Data.FileSystem;
 using Microsoft.Practices.Unity;
 
 namespace Leora.IO.TypeScript.AngularJS

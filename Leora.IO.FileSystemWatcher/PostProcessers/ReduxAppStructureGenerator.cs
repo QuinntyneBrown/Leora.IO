@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+//TODO:
+
 namespace Leora.IO.FileSystemWatcher.PostProcessers
 {
     class ReduxAppStructureGenerator : IFileTriggeredProcesser

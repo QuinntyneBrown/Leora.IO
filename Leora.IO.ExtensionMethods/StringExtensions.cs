@@ -10,6 +10,22 @@ namespace Leora.IO.ExtensionMethods
     public static class StringExtensions
     {
 
+        public static Boolean IsFeatureFolder(this string input)
+        {
+            try {
+                if (!File.GetAttributes(input).HasFlag(FileAttributes.Directory))
+                    return false;
+
+                if (input.Split(System.IO.Path.DirectorySeparatorChar)[input.Split(System.IO.Path.DirectorySeparatorChar).Count() - 2] != "wwwroot")
+                    return false;
+
+                return true;
+            }catch
+            {
+                return false;
+            }
+        }
+
         public static Boolean IsDirectory(this string input)
         {
             FileAttributes attr = File.GetAttributes(input);
@@ -118,9 +134,6 @@ namespace Leora.IO.ExtensionMethods
 
             try
             {
-
-
-
 
                 for (var i = 0; i < directories.Length; i++)
                 {

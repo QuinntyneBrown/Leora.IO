@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using Leora.IO.FileSystemWatcher.Contracts;
 using Leora.IO.FileSystemWatcher.Enums;
 using Leora.IO.ExtensionMethods;
@@ -10,6 +11,33 @@ namespace Leora.IO.FileSystemWatcher.Folders
     public class AppPathProcesser: IFileTriggeredProcesser
     {
         public void Process(EventType eventType, string fullPath)
+        {
+            if(eventType == EventType.Created && fullPath.IsFeatureFolder())
+            {
+                var featureName = fullPath.Split(System.IO.Path.DirectorySeparatorChar)[fullPath.Split(System.IO.Path.DirectorySeparatorChar).Count() - 1];
+
+                // 1. Create componet editor, css html
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.ts", featureName), new string[0]);
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.html", featureName), new string[0]);
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.css", featureName), new string[0]);
+
+                // 2. Create componet list, css html
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.ts", featureName), new string[0]);
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.html", featureName), new string[0]);
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.css", featureName), new string[0]);
+
+                // 3. Create actionCreator
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-actions.ts", featureName), new string[0]);
+
+                // 4. Create service
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-service.ts", featureName), new string[0]);
+
+                // 15. Create reducers
+                File.WriteAllLines(string.Format(fullPath + @"\{0}-reducers.ts", featureName), new string[0]);
+
+            }
+        }
+        public void xProcess(EventType eventType, string fullPath)
         {
             if (eventType == EventType.Created && fullPath.IsInsideAppFolder())
             {

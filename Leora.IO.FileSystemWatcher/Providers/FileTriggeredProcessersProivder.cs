@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Leora.IO.FileSystemWatcher.Contracts;
 using Leora.IO.FileSystemWatcher.PostProcessers;
+using Leora.IO.FileSystemWatcher.Folders;
 
 namespace Leora.IO.FileSystemWatcher.Providers
 {
@@ -10,7 +11,7 @@ namespace Leora.IO.FileSystemWatcher.Providers
         {
             var processers = new List<IFileTriggeredProcesser>();
             //processers.Add(new ApiPathProcesser());
-            //processers.Add(new AppPathProcesser());
+            processers.Add(new AppPathProcesser());
             //processers.Add(new ComponentsPathProcessor());
             //processers.Add(new ModulePathProcessor());
             //processers.Add(new ProjectFileProcessor());
@@ -21,7 +22,7 @@ namespace Leora.IO.FileSystemWatcher.Providers
             //processers.Add(new LessConcater());
             //processers.Add(new TemplateCacheGenerator());
             //processers.Add(new JSAppStructureGenerator());
-            processers.Add(new TSSpecFileGenerator());
+            //processers.Add(new TSSpecFileGenerator());
             return processers;
         }
     }
