@@ -1,7 +1,7 @@
-﻿import { AddOrUpdateGalleryAction, AllsAction, Remove{{ entityNamePascalCase }}Action } from "../actions";
-import { addOrUpdate, pluckOut } from "../../libs";
+﻿import { AddOrUpdate{{ entityNamePascalCase }}Action, All{{ entityNamePascalCase }}sAction, Remove{{ entityNamePascalCase }}Action } from "./{{ entityNameSnakeCase }}.actions";
+import { addOrUpdate, pluckOut } from "../core";
 
-export const remove{{ entityNamePascalCamelCase }}Reducer = (state, action) => {
+export const remove{{ entityNamePascalCase }}Reducer = (state, action) => {
     if (action instanceof Remove{{ entityNamePascalCase }}Action)
         pluckOut({ items: state.{{ entityNameCamelCase }}s, value: action.entity.id });
     return state;

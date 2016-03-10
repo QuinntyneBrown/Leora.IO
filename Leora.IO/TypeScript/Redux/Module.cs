@@ -1,17 +1,19 @@
 ﻿using Leora.IO.Configuration;
 using Leora.IO.Data.Contracts;
+using Leora.IO.ExtensionMethods;
 using Microsoft.Practices.Unity;
 using System.Collections.Generic;
-using Leora.IO.ExtensionMethods;
 
 namespace Leora.IO.TypeScript.Redux
 {
-    public static class Reducers
+    public static class Module
     {
-        static Reducers()
+        static Module()
         {
             templateRepository = UnityConfiguration.GetContainer().Resolve<ITemplateRepository>();
         }
+
+        private static ITemplateRepository templateRepository;
 
         public static string[] Get(string entityNameSnakeCase)
         {
@@ -19,7 +21,7 @@ namespace Leora.IO.TypeScript.Redux
             var entityNameCamelCase = entityNamePascalCase.CamelCase();
             var lines = new List<string>();
             var index = 0;
-            foreach (var line in templateRepository.GetByNameLanguageFramework("reducers", "TypeScript", "Redux").Lines)
+            foreach (var line in templateRepository.GetByNameLanguageFramework("module", "TypeScript", "Redux").Lines)
             {
                 var newline = line.Replace("{{ entityNamePascalCase }}", entityNamePascalCase);
                 newline = newline.Replace("{{ entityNameCamelCase }}", entityNameCamelCase);
@@ -29,7 +31,5 @@ namespace Leora.IO.TypeScript.Redux
             }
             return lines.ToArray();
         }
-
-        private static ITemplateRepository templateRepository;
     }
 }

@@ -1,13 +1,13 @@
-﻿import { CanActivate, Component } from "../../../libs/component-decorators";
-import { GalleryActionCreator } from "../../actions";
+﻿import { CanActivate, Component } from "../core/component-decorators";
+import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.actions";
 
 @Component({
     route: "/{{ entityNameSnakeCase }}/edit/:id",
-    templateUrl: "wwwroot/components/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-editor.html",
+    templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-editor.component.html",
     selector: "{{ entityNameSnakeCase }}-editor",
     providers: ["$location","{{ entityNameCamelCase }}ActionCreator","invokeAsync"]
 })
-@CanActivate(["$route", "invokeAsync", "galleryActionCreator", ($route, invokeAsync, {{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator) => {
+@CanActivate(["$route", "invokeAsync", "{{ entityNameCamelCase }}ActionCreator", ($route, invokeAsync, {{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator) => {
     var id = $route.current.params.id;
     return invokeAsync({
         action: {{ entityNameCamelCase }}ActionCreator.getById,
@@ -15,7 +15,7 @@ import { GalleryActionCreator } from "../../actions";
     });
 }])
 export class {{ entityNamePascalCase }}EditorComponent {
-    constructor(private $location, private {{ entityNameCamelCase }}ActionCreator, private invokeAsync) { }
+    constructor(private $location: angular.ILocationService, private {{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator, private invokeAsync) { }
 
     storeOnChange = state => { }
 
@@ -44,7 +44,7 @@ export class {{ entityNamePascalCase }}EditorComponent {
     remove = () => this.{{ entityNameCamelCase }}ActionCreator.remove({ id: this.id });
          
     id;
-
+	name;
 	entities;
     baseUrl;
 }

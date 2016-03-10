@@ -25,6 +25,7 @@ namespace Leora.IO.TypeScript.Redux
             {
                 var newline = line.Replace("{{ entityNamePascalCase }}", entityNamePascalCase);
                 newline = newline.Replace("{{ entityNameCamelCase }}", entityNameCamelCase);
+                newline = newline.Replace("{{ entityNameSnakeCase }}", entityNameSnakeCase);
                 lines.Add(newline);
                 index++;
             }

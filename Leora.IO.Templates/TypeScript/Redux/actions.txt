@@ -1,9 +1,9 @@
-﻿import { IDispatcher } from "../../libs/store";
-import { BaseActionCreator } from "./base-actions";
+﻿import { IDispatcher } from "../core/store";
+import { BaseActionCreator } from "../core/action-creator";
 
 export class {{ entityNamePascalCase }}ActionCreator extends BaseActionCreator {
     constructor($location: angular.ILocationService, dispatcher: IDispatcher, {{ entityNameCamelCase }}Service, guid) {
-        super($location,{{ entityNameCamelCase }}Service,dispatcher,guid,AddOrUpdate{{ entityNamePascalCase }}Action,All{{ entityNamePascalCase }}sAction,Remove{{ entityNamePascalCase }}Action)
+        super($location,{{ entityNameCamelCase }}Service,dispatcher,guid,AddOrUpdate{{ entityNamePascalCase }}Action,All{{ entityNamePascalCase }}sAction,Remove{{ entityNamePascalCase }}Action,SetCurrent{{ entityNamePascalCase }}Action)
     }    
 }
 

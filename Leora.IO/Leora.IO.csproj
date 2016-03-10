@@ -94,6 +94,7 @@
     <Compile Include="TypeScript\AngularJS\Service.cs" />
     <Compile Include="TypeScript\Redux\Actions.cs" />
     <Compile Include="TypeScript\Redux\Component.cs" />
+    <Compile Include="TypeScript\Redux\Module.cs" />
     <Compile Include="TypeScript\Redux\Reducers.cs" />
     <Compile Include="TypeScript\Redux\Service.cs" />
   </ItemGroup>

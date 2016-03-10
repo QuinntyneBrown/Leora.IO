@@ -17,25 +17,21 @@ namespace Leora.IO.FileSystemWatcher.Folders
             {
                 var entityName = fullPath.Split(System.IO.Path.DirectorySeparatorChar)[fullPath.Split(System.IO.Path.DirectorySeparatorChar).Count() - 1];
 
-                // 1. Create componet editor, css html
                 File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.ts", entityName), TypeScript.Redux.Component.Editor(entityName));
                 File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.html", entityName), new string[0]);
                 File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.css", entityName), new string[0]);
 
-                // 2. Create componet list, css html
                 File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.ts", entityName), TypeScript.Redux.Component.List(entityName));
                 File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.html", entityName), new string[0]);
                 File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.css", entityName), new string[0]);
 
- 
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-actions.ts", entityName), TypeScript.Redux.Actions.Get(entityName));
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.actions.ts", entityName), TypeScript.Redux.Actions.Get(entityName));
 
-                // 4. Create service
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-service.ts", entityName), TypeScript.Redux.Service.Get(entityName));
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.service.ts", entityName), TypeScript.Redux.Service.Get(entityName));
 
-                // 15. Create reducers
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-reducers.ts", entityName), TypeScript.Redux.Reducers.Get(entityName));
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.reducers.ts", entityName), TypeScript.Redux.Reducers.Get(entityName));
 
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.module.ts", entityName), TypeScript.Redux.Module.Get(entityName));
             }
         }
         public void xProcess(EventType eventType, string fullPath)

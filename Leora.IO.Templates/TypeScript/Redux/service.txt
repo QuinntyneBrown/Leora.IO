@@ -1,4 +1,4 @@
-﻿import { BaseService } from "./base-service";
+﻿import { BaseService } from "../core/service";
 
 export class {{ entityNamePascalCase }}Service extends BaseService {
     constructor($q: angular.IQService, apiEndpoint, fetch) {
