@@ -16,6 +16,9 @@ namespace Leora.IO.FileSystemWatcher.Folders
             if(eventType == EventType.Created && fullPath.IsFeatureFolder())
             {
                 var entityName = fullPath.Split(System.IO.Path.DirectorySeparatorChar)[fullPath.Split(System.IO.Path.DirectorySeparatorChar).Count() - 1];
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.component.ts", entityName), TypeScript.Redux.Component.Get(entityName));
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.component.html", entityName), new string[0]);
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.component.css", entityName), new string[0]);
 
                 File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.ts", entityName), TypeScript.Redux.Component.Editor(entityName));
                 File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.html", entityName), new string[0]);

@@ -1,50 +1,21 @@
-﻿import { {{ entityNamePascalCase }}EditorComponent } from "./{{ entityNameSnakeCase }}-editor.component";
+﻿require("../core/core.module");
+
+import { {{ entityNamePascalCase }}EditorComponent } from "./{{ entityNameSnakeCase }}-editor.component";
 import { {{ entityNamePascalCase }}ListComponent } from "./{{ entityNameSnakeCase }}-list.component";
+import { {{ entityNamePascalCase }}Component } from "./{{ entityNameSnakeCase }}.component";
 import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.actions";
 import { {{ entityNamePascalCase }}Service } from "./{{ entityNameSnakeCase }}.service";
 import *  as reducers from "./{{ entityNameSnakeCase }}.reducers";
 
-
-require("../libs/angular");
-require("../libs/angular-route");
-require("../libs/jQuery");
-
-require("../libs/rx.all.compat.min")
-require("../libs/angular");
-
-require("./core/addOrUpdate");
-require("./core/apiEndpoint");
-require("./core/authInterceptor");
-require("./core/fetch");
-require("./core/formEncode");
-require("./core/invokeAsync");
-require("./core/login-redirect-provider");
-require("./core/safe-digest");
-require("./core/store");
-require("./core/local-storage-manager-provider");
-require("./core/component-extension");
-require("./core/route-resolver");
-require("./core/route-when-extension");
-
 var app = (<any>angular.module("app.{{ entityNameCamelCase }}", [
-    "addOrUpdate",
-    "apiEndpoint",
-    "authInterceptor",
-    "fetch",
-    "formEncode",
-    "invokeAsync",
-    "localStorageManager",
-    "loginRedirect",
-    "routeResolver",
-    "routeWhenExtension",
-    "safeDigest",
-    "store"    
+    "app.core"    
 ]));
 
 app.service("{{ entityNameCamelCase }}ActionCreator",["$location","dispatcher","{{ entityNameCamelCase }}Service","guid",{{ entityNamePascalCase }}ActionCreator]);
 app.service("{{ entityNameCamelCase }}Service",["$q","apiEndpoint","fetch",{{ entityNamePascalCase }}Service]);
 app.component(({{ entityNamePascalCase }}EditorComponent as any).config);
 app.component(({{ entityNamePascalCase }}ListComponent as any).config);
+app.component(({{ entityNamePascalCase }}Component as any).config);
 
 app.config(["reducersProvider", reducersProvider => {	
 	reducersProvider.configure(reducers.add{{ entityNamePascalCase }}Reducer);

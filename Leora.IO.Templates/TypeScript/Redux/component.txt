@@ -1,0 +1,12 @@
+﻿import { CanActivate, Component } from "../core/component-decorators";
+import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.actions";
+
+@Component({
+    templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}.component.html",
+    selector: "{{ entityNameSnakeCase }}",
+    providers: ["{{ entityNameCamelCase }}ActionCreator"]
+})
+export class {{ entityNamePascalCase }}Component {
+    constructor(private {{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator) { }
+  
+}
