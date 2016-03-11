@@ -1,21 +1,21 @@
-﻿import { AddOrUpdate{{ entityNamePascalCase }}Action, All{{ entityNamePascalCase }}sAction, Remove{{ entityNamePascalCase }}Action } from "./{{ entityNameSnakeCase }}.actions";
+﻿import * as actions from "./{{ entityNameSnakeCase }}.actions";
 import { addOrUpdate, pluckOut } from "../core";
 
 export const remove{{ entityNamePascalCase }}Reducer = (state, action) => {
-    if (action instanceof Remove{{ entityNamePascalCase }}Action)
+    if (action instanceof actions.Remove{{ entityNamePascalCase }}Action)
         pluckOut({ items: state.{{ entityNameCamelCase }}s, value: action.entity.id });
     return state;
 }
 
 export const add{{ entityNamePascalCase }}Reducer = (state, action) => {
-    if (action instanceof AddOrUpdate{{ entityNamePascalCase }}Action) {
+    if (action instanceof actions.AddOrUpdate{{ entityNamePascalCase }}Action) {
         addOrUpdate({ items: state.{{ entityNameCamelCase }}s, item: action.entity });
     }
     return state;
 }
 
 export const all{{ entityNamePascalCase }}sReducer = (state, action) => {
-    if (action instanceof All{{ entityNamePascalCase }}sAction) {
+    if (action instanceof actions.All{{ entityNamePascalCase }}sAction) {
         state.{{ entityNameCamelCase }}s = action.entities;
     }
     return state;

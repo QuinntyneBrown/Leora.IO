@@ -5,7 +5,7 @@ using Leora.IO.FileSystemWatcher.Enums;
 using Leora.IO.ExtensionMethods;
 using Leora.IO.TypeScript.AngularJS;
 using Leora.IO.Paths;
-
+using Leora.IO.Configuration;
 
 namespace Leora.IO.FileSystemWatcher.Folders
 {
@@ -13,20 +13,26 @@ namespace Leora.IO.FileSystemWatcher.Folders
     {
         public void Process(EventType eventType, string fullPath)
         {
-            if(eventType == EventType.Created && fullPath.IsFeatureFolder())
+            if ((eventType == EventType.Created || eventType == EventType.Change)
+                && fullPath.IsFeatureFolder()
+                && Directory.GetFiles(fullPath).Length == 0)
             {
                 var entityName = fullPath.Split(System.IO.Path.DirectorySeparatorChar)[fullPath.Split(System.IO.Path.DirectorySeparatorChar).Count() - 1];
                 File.WriteAllLines(string.Format(fullPath + @"\{0}.component.ts", entityName), TypeScript.Redux.Component.Get(entityName));
                 File.WriteAllLines(string.Format(fullPath + @"\{0}.component.html", entityName), new string[0]);
                 File.WriteAllLines(string.Format(fullPath + @"\{0}.component.css", entityName), new string[0]);
 
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.ts", entityName), TypeScript.Redux.Component.Editor(entityName));
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.html", entityName), new string[0]);
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.css", entityName), new string[0]);
 
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.ts", entityName), TypeScript.Redux.Component.List(entityName));
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.html", entityName), new string[0]);
-                File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.css", entityName), new string[0]);
+                if (AppConfiguration.Config.ReduxCrudMode)
+                {
+                    File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.ts", entityName), TypeScript.Redux.Component.Editor(entityName));
+                    File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.html", entityName), new string[0]);
+                    File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.css", entityName), new string[0]);
+
+                    File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.ts", entityName), TypeScript.Redux.Component.List(entityName));
+                    File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.html", entityName), new string[0]);
+                    File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.css", entityName), new string[0]);                    
+                }
 
                 File.WriteAllLines(string.Format(fullPath + @"\{0}.actions.ts", entityName), TypeScript.Redux.Actions.Get(entityName));
 
@@ -35,11 +41,13 @@ namespace Leora.IO.FileSystemWatcher.Folders
                 File.WriteAllLines(string.Format(fullPath + @"\{0}.reducers.ts", entityName), TypeScript.Redux.Reducers.Get(entityName));
 
                 File.WriteAllLines(string.Format(fullPath + @"\{0}.module.ts", entityName), TypeScript.Redux.Module.Get(entityName));
+
+
             }
         }
         public void xProcess(EventType eventType, string fullPath)
         {
-            if (eventType == EventType.Created && fullPath.IsInsideAppFolder())
+            if (eventType == EventType.Created && fullPath.IsInsideAppFolder() && Directory.GetFiles(fullPath).Length == 0)
             {
                 if(eventType == EventType.Created && AppPath.IsModuleFolder(fullPath))
                 {

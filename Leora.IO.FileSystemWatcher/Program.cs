@@ -31,6 +31,7 @@ namespace Leora.IO.FileSystemWatcher
             watcher.Changed += OnChanged;
             watcher.Created += OnCreated;
             watcher.Deleted += OnDeleted;
+            watcher.Renamed += OnChanged;
 
             string input;
 

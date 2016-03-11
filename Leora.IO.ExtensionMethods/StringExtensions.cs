@@ -20,6 +20,10 @@ namespace Leora.IO.ExtensionMethods
                 if (input.Split(System.IO.Path.DirectorySeparatorChar)[input.Split(System.IO.Path.DirectorySeparatorChar).Count() - 2] != "wwwroot")
                     return false;
 
+                if (input.Split(System.IO.Path.DirectorySeparatorChar)[input.Split(System.IO.Path.DirectorySeparatorChar).Count() - 1].Length >= 9 &&
+                    input.Split(System.IO.Path.DirectorySeparatorChar)[input.Split(System.IO.Path.DirectorySeparatorChar).Count() - 1].ToLower().Substring(0,9) == "newfolder")
+                    return false;
+
                 return true;
             }catch
             {

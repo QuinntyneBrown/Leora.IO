@@ -13,12 +13,10 @@ var app = (<any>angular.module("app.{{ entityNameCamelCase }}", [
 
 app.service("{{ entityNameCamelCase }}ActionCreator",["$location","dispatcher","{{ entityNameCamelCase }}Service","guid",{{ entityNamePascalCase }}ActionCreator]);
 app.service("{{ entityNameCamelCase }}Service",["$q","apiEndpoint","fetch",{{ entityNamePascalCase }}Service]);
-app.component(({{ entityNamePascalCase }}EditorComponent as any).config);
-app.component(({{ entityNamePascalCase }}ListComponent as any).config);
-app.component(({{ entityNamePascalCase }}Component as any).config);
+app.component({{ entityNamePascalCase }}EditorComponent);
+app.component({{ entityNamePascalCase }}ListComponent);
+app.component({{ entityNamePascalCase }}Component);
 
 app.config(["reducersProvider", reducersProvider => {	
-	reducersProvider.configure(reducers.add{{ entityNamePascalCase }}Reducer);
-    reducersProvider.configure(reducers.all{{ entityNamePascalCase }}sReducer);
-    reducersProvider.configure(reducers.remove{{ entityNamePascalCase }}Reducer);
+    for (var reducer in reducers) { reducersProvider.configure(reducers[reducer]); }
 }]);

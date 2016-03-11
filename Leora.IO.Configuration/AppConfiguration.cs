@@ -59,6 +59,13 @@ namespace Leora.IO.Configuration
             get { return (bool)this["autoResponsiveEnabled"]; }
             set { this["autoResponsiveEnabled"] = value; }
         }
+        
+        [ConfigurationProperty("reduxCrudMode", IsRequired = true)]
+        public bool ReduxCrudMode
+        {
+            get { return (bool)this["reduxCrudMode"]; }
+            set { this["reduxCrudMode"] = value; }
+        }
 
         public static AppConfiguration Config
         {
