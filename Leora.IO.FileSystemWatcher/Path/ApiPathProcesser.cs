@@ -8,7 +8,7 @@ using Leora.IO.FileSystemWatcher.Enums;
 
 namespace Leora.IO.FileSystemWatcher.Path
 {
-    public class ApiPathProcesser: IFileTriggeredProcesser
+    public class ApiPathProcesser: Leora.IO.FileSystemWatcher.Path.BaseProcessor
     {
         public void Process(Enums.EventType eventType, string fullPath)
         {
@@ -16,6 +16,11 @@ namespace Leora.IO.FileSystemWatcher.Path
             {
                 
             }
+        }
+
+        public void Process(EventType eventType, string fullPath, Dictionary<string, string> options)
+        {
+            throw new NotImplementedException();
         }
     }
 }

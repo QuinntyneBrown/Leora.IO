@@ -11,7 +11,7 @@ using Leora.IO.Configuration;
 
 namespace Leora.IO.FileSystemWatcher.PostProcessers
 {
-    public class LessConcater: IFileTriggeredProcesser
+    public class LessConcater: Leora.IO.FileSystemWatcher.Path.BaseProcessor
     {
         public void Process(EventType eventType, string fullPath)
         {

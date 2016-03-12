@@ -3,97 +3,93 @@ using System.Linq;
 using Leora.IO.FileSystemWatcher.Contracts;
 using Leora.IO.FileSystemWatcher.Enums;
 using Leora.IO.ExtensionMethods;
-using Leora.IO.TypeScript.AngularJS;
-using Leora.IO.Paths;
 using Leora.IO.Configuration;
+using System.Collections.Generic;
+using Microsoft.CSharp.RuntimeBinder;
 
 namespace Leora.IO.FileSystemWatcher.Folders
 {
-    public class AppPathProcesser: IFileTriggeredProcesser
+    public class AppPathProcesser: Leora.IO.FileSystemWatcher.Path.BaseProcessor
     {
-        public void Process(EventType eventType, string fullPath)
+        public override void Process(EventType eventType, string fullPath)
         {
             if ((eventType == EventType.Created || eventType == EventType.Change)
                 && fullPath.IsFeatureFolder()
                 && Directory.GetFiles(fullPath).Length == 0)
             {
                 var entityName = fullPath.Split(System.IO.Path.DirectorySeparatorChar)[fullPath.Split(System.IO.Path.DirectorySeparatorChar).Count() - 1];
-                File.WriteAllLines(string.Format(fullPath + @"\{0}.component.ts", entityName), TypeScript.Redux.Component.Get(entityName));
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.component.ts", entityName), TypeScript.Redux.Component.Get(new { entityNameSnakeCase = entityName }));
                 File.WriteAllLines(string.Format(fullPath + @"\{0}.component.html", entityName), new string[0]);
                 File.WriteAllLines(string.Format(fullPath + @"\{0}.component.css", entityName), new string[0]);
 
 
                 if (AppConfiguration.Config.ReduxCrudMode)
                 {
-                    File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.ts", entityName), TypeScript.Redux.Component.Editor(entityName));
+                    File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.ts", entityName), TypeScript.Redux.Component.Editor(new { entityNameSnakeCase = entityName }));
                     File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.html", entityName), new string[0]);
                     File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.css", entityName), new string[0]);
 
-                    File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.ts", entityName), TypeScript.Redux.Component.List(entityName));
+                    File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.ts", entityName), TypeScript.Redux.Component.List(new { entityNameSnakeCase = entityName }));
                     File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.html", entityName), new string[0]);
                     File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.css", entityName), new string[0]);                    
                 }
 
-                File.WriteAllLines(string.Format(fullPath + @"\{0}.actions.ts", entityName), TypeScript.Redux.Actions.Get(entityName));
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.actions.ts", entityName), TypeScript.Redux.Actions.Get(new { entityNameSnakeCase = entityName }));
 
-                File.WriteAllLines(string.Format(fullPath + @"\{0}.service.ts", entityName), TypeScript.Redux.Service.Get(entityName));
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.service.ts", entityName), TypeScript.Redux.Service.Get(new { entityNameSnakeCase = entityName }));
 
-                File.WriteAllLines(string.Format(fullPath + @"\{0}.reducers.ts", entityName), TypeScript.Redux.Reducers.Get(entityName));
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.reducers.ts", entityName), TypeScript.Redux.Reducers.Get(new { entityNameSnakeCase = entityName }));
 
-                File.WriteAllLines(string.Format(fullPath + @"\{0}.module.ts", entityName), TypeScript.Redux.Module.Get(entityName));
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.module.ts", entityName), TypeScript.Redux.Module.Get(new { entityNameSnakeCase = entityName }));
 
 
             }
         }
-        public void xProcess(EventType eventType, string fullPath)
+
+        public override void Process(EventType eventType, string fullPath, Dictionary<string, string> options)
         {
-            if (eventType == EventType.Created && fullPath.IsInsideAppFolder() && Directory.GetFiles(fullPath).Length == 0)
+            Process(eventType, fullPath);
+        }
+
+        public override void Process(dynamic options)
+        {
+
+            string fullPath = options.fullPath;
+            string entityNameSnakeCase = options.entityNameSnakeCase;
+            EventType eventType = options.eventType;
+
+            if ((eventType == EventType.Created || eventType == EventType.Change)
+                && fullPath.IsFeatureFolder()
+                && Directory.GetFiles(fullPath).Length == 0)
             {
-                if(eventType == EventType.Created && AppPath.IsModuleFolder(fullPath))
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.component.ts", entityNameSnakeCase), TypeScript.Redux.Component.Get(options));
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.component.html", entityNameSnakeCase), new string[0]);
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.component.css", entityNameSnakeCase), new string[0]);
+
+                try
                 {
+                    if (options.crud == null)
+                    {
+                        File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.ts", entityNameSnakeCase), TypeScript.Redux.Component.Editor(options));
+                        File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.html", entityNameSnakeCase), new string[0]);
+                        File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.css", entityNameSnakeCase), new string[0]);
 
-                    var moduleName = System.IO.Path.GetFileNameWithoutExtension(fullPath);
-
-                    var moduleDirectory = fullPath.GetAppDirectory() + moduleName;
-
-                    var componentsDirectory = moduleDirectory + @"\components";
-
-                    var servicesDirectory = moduleDirectory + @"\services";
-
-                    var interfacesDirectory = moduleDirectory + @"\interfaces";
-
-                    var templatesDirectory = moduleDirectory + @"\templates";
-
-                    //File.WriteAllLines(moduleDirectory + @"\default.html", new string[0]);
-
-                    File.WriteAllLines(moduleDirectory + @"\module.ts", new string[0]);
-
-                    Directory.CreateDirectory(componentsDirectory);
-
-                    //File.WriteAllLines(string.Format(componentsDirectory + @"\{0}Editor.ts", moduleName), new string[0]);
-
-                    //File.WriteAllLines(string.Format(componentsDirectory + @"\{0}List.ts", moduleName), new string[0]);
-
-                    Directory.CreateDirectory(servicesDirectory);
-
-                    //File.WriteAllLines(string.Format(servicesDirectory + @"\{0}RouteResolver.ts", moduleName), new string[0]);
-
-                    //File.WriteAllLines(string.Format(servicesDirectory + @"\{0}Service.ts", moduleName), new string[0]);
-
-                    Directory.CreateDirectory(interfacesDirectory);
-
-                    //File.WriteAllLines(string.Format(interfacesDirectory + @"\I{0}Service.ts", moduleName), new string[0]);
-
-                    Directory.CreateDirectory(templatesDirectory);
-
-                    //File.WriteAllLines(templatesDirectory + @"\edit.html", new string[0]);
-
-                    //File.WriteAllLines(templatesDirectory + @"\list.html", new string[0]);
-
-                    //File.WriteAllLines(templatesDirectory + @"\index.html", new string[0]);
-
+                        File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.ts", entityNameSnakeCase), TypeScript.Redux.Component.List(options));
+                        File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.html", entityNameSnakeCase), new string[0]);
+                        File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.css", entityNameSnakeCase), new string[0]);
+                    }
                 }
+                catch (RuntimeBinderException) { }
+
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.actions.ts", entityNameSnakeCase), TypeScript.Redux.Actions.Get(options));
+
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.service.ts", entityNameSnakeCase), TypeScript.Redux.Service.Get(options));
+
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.reducers.ts", entityNameSnakeCase), TypeScript.Redux.Reducers.Get(options));
+
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.module.ts", entityNameSnakeCase), TypeScript.Redux.Module.Get(options));
             }
+
         }
     }
 }

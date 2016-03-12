@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Leora.IO.FileSystemWatcher.PostProcessers
 {
-    public class JasmineSpecConcater : IFileTriggeredProcesser
+    public class JasmineSpecConcater : Leora.IO.FileSystemWatcher.Path.BaseProcessor
     {
         public void Process(EventType eventType, string fullPath)
         {

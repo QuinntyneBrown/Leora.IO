@@ -4,10 +4,12 @@ using Leora.IO.ExtensionMethods;
 using Leora.IO.FileSystemWatcher.Contracts;
 using Leora.IO.FileSystemWatcher.Enums;
 using System.IO;
+using System.Collections.Generic;
+using Leora.IO.FileSystemWatcher.Path;
 
 namespace Leora.IO.FileSystemWatcher.FolderWatchers
 {
-    public class ProjectFileProcessor : IFileTriggeredProcesser
+    public class ProjectFileProcessor : Leora.IO.FileSystemWatcher.Path.BaseProcessor
     {
         public void Process(EventType eventType, string fullPath)
         {
@@ -18,6 +20,11 @@ namespace Leora.IO.FileSystemWatcher.FolderWatchers
                 File.WriteAllLines(fullPath, WebConfig.Get());
                 
             }
+        }
+
+        public void Process(EventType eventType, string fullPath, Dictionary<string, string> options)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -15,10 +15,11 @@ namespace Leora.IO.TypeScript.Redux
 
         private static ITemplateRepository templateRepository;
 
-        public static string[] Get(string entityNameSnakeCase)
+        public static string[] Get(dynamic options)
         {
-            var entityNamePascalCase = entityNameSnakeCase.SnakeCaseToPascalCase();
-            var entityNameCamelCase = entityNamePascalCase.CamelCase();
+            string entityNameSnakeCase = options.entityNameSnakeCase;
+            string entityNamePascalCase = entityNameSnakeCase.SnakeCaseToPascalCase();
+            string entityNameCamelCase = entityNamePascalCase.CamelCase();
             var lines = new List<string>();
             var index = 0;
             foreach (var line in templateRepository.GetByNameLanguageFramework("component", "TypeScript", "Redux").Lines)
@@ -32,10 +33,11 @@ namespace Leora.IO.TypeScript.Redux
             return lines.ToArray();
         }
 
-        public static string[] List(string entityNameSnakeCase)
+        public static string[] List(dynamic options)
         {
-            var entityNamePascalCase = entityNameSnakeCase.SnakeCaseToPascalCase();
-            var entityNameCamelCase = entityNamePascalCase.CamelCase();
+            string entityNameSnakeCase = options.entityNameSnakeCase;
+            string entityNamePascalCase = entityNameSnakeCase.SnakeCaseToPascalCase();
+            string entityNameCamelCase = entityNamePascalCase.CamelCase();
             var lines = new List<string>();
             var index = 0;
             foreach (var line in templateRepository.GetByNameLanguageFramework("list", "TypeScript", "Redux").Lines)
@@ -49,10 +51,11 @@ namespace Leora.IO.TypeScript.Redux
             return lines.ToArray();
         }
 
-        public static string[] Editor(string entityNameSnakeCase)
+        public static string[] Editor(dynamic options)
         {
-            var entityNamePascalCase = entityNameSnakeCase.SnakeCaseToPascalCase();
-            var entityNameCamelCase = entityNamePascalCase.CamelCase();
+            string entityNameSnakeCase = options.entityNameSnakeCase;
+            string entityNamePascalCase = entityNameSnakeCase.SnakeCaseToPascalCase();
+            string entityNameCamelCase = entityNamePascalCase.CamelCase();
             var lines = new List<string>();
             var index = 0;
             foreach (var line in templateRepository.GetByNameLanguageFramework("editor", "TypeScript", "Redux").Lines)

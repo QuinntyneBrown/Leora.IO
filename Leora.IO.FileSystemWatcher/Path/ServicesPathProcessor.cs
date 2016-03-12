@@ -12,7 +12,7 @@ using Leora.IO.TypeScript.AngularJS;
 
 namespace Leora.IO.FileSystemWatcher.Path
 {
-    public class ServicesPathProcessor: IFileTriggeredProcesser
+    public class ServicesPathProcessor: Leora.IO.FileSystemWatcher.Path.BaseProcessor
     {
         public void Process(Enums.EventType eventType, string fullPath)
         {

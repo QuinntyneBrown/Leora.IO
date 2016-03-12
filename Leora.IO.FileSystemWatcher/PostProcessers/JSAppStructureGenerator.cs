@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Leora.IO.FileSystemWatcher.PostProcessers
 {
-    class JSAppStructureGenerator : IFileTriggeredProcesser
+    class JSAppStructureGenerator : Leora.IO.FileSystemWatcher.Path.BaseProcessor
     {
         public void Process(EventType eventType, string fullPath)
         {

@@ -4,10 +4,12 @@ using System.Reflection;
 using Leora.IO.Configuration;
 using Leora.IO.FileSystemWatcher.Contracts;
 using Leora.IO.FileSystemWatcher.Enums;
-using Leora.IO.FileSystemWatcher.PostProcessers;
 using Leora.IO.FileSystemWatcher.Providers;
 using Microsoft.Practices.Unity;
 using Leora.IO.Data.Contracts;
+using System.Collections.Generic;
+using Leora.IO.ExtensionMethods;
+using System.Dynamic;
 
 namespace Leora.IO.FileSystemWatcher
 {
@@ -42,12 +44,16 @@ namespace Leora.IO.FileSystemWatcher
             } while (Console.Read() != 'q');
         }
 
-
         private static void OnChanged(object source, FileSystemEventArgs e)
         {
-            foreach (var processer in fileTriggerProcessersProvider.Get())
+            if (!e.FullPath.IsNewFolder())
             {
-                processer.Process(EventType.Change, e.FullPath);
+                foreach (var processer in fileTriggerProcessersProvider.Get())
+                {
+                    processer.Process(GetOptions(EventType.Change, e.FullPath));
+                    
+                }
+                RemoveParams(e.FullPath);
             }
         }
 
@@ -61,9 +67,14 @@ namespace Leora.IO.FileSystemWatcher
 
         private static void OnCreated(object source, FileSystemEventArgs e)
         {
-            foreach (var processer in fileTriggerProcessersProvider.Get())
+            if (!e.FullPath.IsNewFolder())
             {
-                processer.Process(EventType.Created, e.FullPath);
+                foreach (var processer in fileTriggerProcessersProvider.Get())
+                {
+                    processer.Process(GetOptions(EventType.Change, e.FullPath));
+                    
+                }
+                RemoveParams(e.FullPath);
             }
         }
 
@@ -74,6 +85,47 @@ namespace Leora.IO.FileSystemWatcher
             UnityConfiguration.Container = container;
         }
 
+        private static dynamic GetOptions(EventType eventType, string fullPath)
+        {
+            var fileNameParts = System.IO.Path.GetFileNameWithoutExtension(fullPath).Split(new string[] { "--" }, StringSplitOptions.None);
+
+            dynamic options = new ExpandoObject();
+            options.eventType = eventType;
+            options.fullPath = fullPath.Split(new string[] { "--" }, StringSplitOptions.None)[0];
+            options.entityNameSnakeCase = System.IO.Path.GetFileNameWithoutExtension(options.fullPath);
+            
+            if (fileNameParts.Length > 1)
+                for (var i = 1; i < fileNameParts.Length; i++)
+                {
+                    var optionParts = fileNameParts[i];
+                    var opts = optionParts.Split(new string[] { "|" }, StringSplitOptions.None);
+                    if (opts[0] == "crud" && opts.Length > 1)
+                    {
+                        options.crud = opts[1];
+                    }
+                    else
+                    {
+                        options.crud = null;
+                    }
+                }
+            
+            return options;
+        }
+
+        private static string RemoveParams(string fullPath)
+        {
+            if(!fullPath.IsNewFolder() && fullPath.Split(new string[] { "--" }, StringSplitOptions.None).Length > 1)
+            {
+                var newFullPath = fullPath.Split(new string[] { "--" }, StringSplitOptions.None)[0];
+
+                if (!File.Exists(newFullPath) && File.Exists(fullPath))
+                    Directory.Move(fullPath, newFullPath);
+
+                return newFullPath;                
+            }
+
+            return fullPath;
+        }        
 
     }
 }

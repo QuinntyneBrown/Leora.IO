@@ -8,7 +8,7 @@ using Leora.IO.FileSystemWatcher.Enums;
 
 namespace Leora.IO.FileSystemWatcher.PostProcessers
 {
-    public class PhraseCollector : IFileTriggeredProcesser
+    public class PhraseCollector : Leora.IO.FileSystemWatcher.Path.BaseProcessor
     {
         public void Process(EventType eventType, string fullPath)
         {

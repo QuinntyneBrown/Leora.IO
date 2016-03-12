@@ -14,7 +14,7 @@ using Leora.IO.Paths;
 
 namespace Leora.IO.FileSystemWatcher.Path
 {
-    public class ComponentsPathProcessor: IFileTriggeredProcesser
+    public class ComponentsPathProcessor: Leora.IO.FileSystemWatcher.Path.BaseProcessor
     {
         public void Process(Enums.EventType eventType, string fullPath)
         {
@@ -119,6 +119,11 @@ namespace Leora.IO.FileSystemWatcher.Path
                     }
                 }
             }
+        }
+
+        public void Process(EventType eventType, string fullPath, Dictionary<string, string> options)
+        {
+            throw new NotImplementedException();
         }
     }
 }

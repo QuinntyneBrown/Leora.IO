@@ -1,5 +1,7 @@
 ﻿require("../core/core.module");
 
+import { {{ entityNamePascalCase }}EditorComponent } from "./{{ entityNameSnakeCase }}-editor.component";
+import { {{ entityNamePascalCase }}ListComponent } from "./{{ entityNameSnakeCase }}-list.component";
 import { {{ entityNamePascalCase }}Component } from "./{{ entityNameSnakeCase }}.component";
 import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.actions";
 import { {{ entityNamePascalCase }}Service } from "./{{ entityNameSnakeCase }}.service";
@@ -11,6 +13,8 @@ var app = (<any>angular.module("app.{{ entityNameCamelCase }}", [
 
 app.service("{{ entityNameCamelCase }}ActionCreator",["$location","dispatcher","{{ entityNameCamelCase }}Service","guid",{{ entityNamePascalCase }}ActionCreator]);
 app.service("{{ entityNameCamelCase }}Service",["$q","apiEndpoint","fetch",{{ entityNamePascalCase }}Service]);
+app.component({{ entityNamePascalCase }}EditorComponent);
+app.component({{ entityNamePascalCase }}ListComponent);
 app.component({{ entityNamePascalCase }}Component);
 
 app.config(["reducersProvider", reducersProvider => {	

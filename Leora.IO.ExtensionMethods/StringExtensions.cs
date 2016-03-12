@@ -11,10 +11,29 @@ namespace Leora.IO.ExtensionMethods
     public static class StringExtensions
     {
 
+        public static Boolean IsNewFolder(this string input)
+        {
+            try
+            {
+                if (!File.GetAttributes(input).HasFlag(FileAttributes.Directory))
+                    return false;
+
+                if (input.Split(System.IO.Path.DirectorySeparatorChar)[input.Split(System.IO.Path.DirectorySeparatorChar).Count() - 1].Length >= 9 &&
+                    input.Split(System.IO.Path.DirectorySeparatorChar)[input.Split(System.IO.Path.DirectorySeparatorChar).Count() - 1].ToLower().Substring(0, 9) == "newfolder")
+                    return true;
+
+                return false;
+            } catch
+            {
+                return false;
+            }
+
+        }
         public static Boolean IsFeatureFolder(this string input)
         {
             try {
-                if (!File.GetAttributes(input).HasFlag(FileAttributes.Directory))
+
+                if (Path.GetExtension(input) != "")
                     return false;
 
                 if (input.Split(System.IO.Path.DirectorySeparatorChar)[input.Split(System.IO.Path.DirectorySeparatorChar).Count() - 2] != "wwwroot")
@@ -22,6 +41,12 @@ namespace Leora.IO.ExtensionMethods
 
                 if (input.Split(System.IO.Path.DirectorySeparatorChar)[input.Split(System.IO.Path.DirectorySeparatorChar).Count() - 1].Length >= 9 &&
                     input.Split(System.IO.Path.DirectorySeparatorChar)[input.Split(System.IO.Path.DirectorySeparatorChar).Count() - 1].ToLower().Substring(0,9) == "newfolder")
+                    return false;
+
+                if (!Directory.Exists(input))
+                    Directory.CreateDirectory(input);
+
+                if (!File.GetAttributes(input).HasFlag(FileAttributes.Directory))
                     return false;
 
                 return true;

@@ -75,6 +75,7 @@
     <Content Include="TypeScript\AngularJS\modules\configuration\services\interfaces\IConfigurationService.js" />
     <Content Include="TypeScript\AngularJS\service.txt" />
     <Content Include="TypeScript\Redux\component.txt" />
+    <Content Include="TypeScript\Redux\module-crud.txt" />
     <Content Include="TypeScript\Redux\module.txt" />
     <Content Include="TypeScript\Redux\editor.txt" />
     <Content Include="TypeScript\Redux\list.txt" />

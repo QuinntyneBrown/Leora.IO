@@ -10,5 +10,8 @@ namespace Leora.IO.FileSystemWatcher.Contracts
     public interface IFileTriggeredProcesser
     {
         void Process(EventType eventType, string fullPath);
+        void Process(EventType eventType, string fullPath, Dictionary<string, string> options);
+        void Process(dynamic options);
+            
     }
 }

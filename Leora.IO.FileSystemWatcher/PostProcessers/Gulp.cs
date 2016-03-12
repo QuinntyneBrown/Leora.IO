@@ -12,7 +12,7 @@ using System.IO;
 
 namespace Leora.IO.FileSystemWatcher.PostProcessers
 {
-    public class Gulp : IFileTriggeredProcesser
+    public class Gulp : Leora.IO.FileSystemWatcher.Path.BaseProcessor
     {
         public void Process(EventType eventType, string fullPath)
         {

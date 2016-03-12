@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Leora.IO.FileSystemWatcher.Path
 {
-    public class SolutionPathProcessor : IFileTriggeredProcesser
+    public class SolutionPathProcessor : Leora.IO.FileSystemWatcher.Path.BaseProcessor
     {
         public void Process(EventType eventType, string fullPath)
         {

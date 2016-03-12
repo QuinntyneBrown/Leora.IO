@@ -4,7 +4,7 @@ using Leora.IO.FileSystemWatcher.Enums;
 
 namespace Leora.IO.FileSystemWatcher.PostProcessers
 {
-    public class TemplateCacheGenerator: IFileTriggeredProcesser
+    public class TemplateCacheGenerator: Leora.IO.FileSystemWatcher.Path.BaseProcessor
     {
         public void Process(EventType eventType, string fullPath)
         {

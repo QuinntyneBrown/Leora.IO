@@ -12,9 +12,9 @@ using Leora.IO.TypeScript.AngularJS;
 
 namespace Leora.IO.FileSystemWatcher.Path
 {
-    public class ModulePathProcessor: IFileTriggeredProcesser
+    public class ModulePathProcessor: Leora.IO.FileSystemWatcher.Path.BaseProcessor
     {
-        public void Process(EventType eventType, string fullPath)
+        public override void Process(EventType eventType, string fullPath)
         {
             if (eventType == EventType.Created && ModulePath.IsInsideModulePath(fullPath))
             {
@@ -28,6 +28,11 @@ namespace Leora.IO.FileSystemWatcher.Path
                     File.WriteAllLines(fullPath, DefaultHtml.Get(fullPath.GetModuleName()));
                 }                
             }
+        }
+
+        public override void Process(EventType eventType, string fullPath, Dictionary<string, string> options)
+        {
+            throw new NotImplementedException();
         }
     }
 }
