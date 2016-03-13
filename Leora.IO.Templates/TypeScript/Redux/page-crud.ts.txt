@@ -1,0 +1,14 @@
+﻿import { CanActivate, Component } from "../core/component-decorators";
+import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.actions";
+
+@Component({
+    route:"/{{ entityNameCamelCase }}s",
+    templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}s-page.component.html",
+    selector: "{{ entityNameSnakeCase }}s-page",
+    providers: ["{{ entityNameCamelCase }}ActionCreator"]
+})
+@CanActivate([
+    "{{ entityNameCamelCase }}ActionCreator", "invokeAsync",
+    ({{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator, invokeAsync) => invokeAsync({{ entityNameCamelCase }}ActionCreator.all)
+])
+export class {{ entityNamePascalCase }}sPageComponent { }

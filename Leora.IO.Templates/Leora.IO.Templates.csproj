@@ -42,6 +42,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSharp\WebAPI\iservice.txt" />
+    <Content Include="CSharp\WebAPI\service.txt" />
     <Content Include="CSharp\WebAPI\controller.txt" />
     <Content Include="CSharp\WebAPI\webconfig.txt" />
     <Content Include="leora.txt" />
@@ -75,10 +77,13 @@
     <Content Include="TypeScript\AngularJS\modules\configuration\services\interfaces\IConfigurationService.js" />
     <Content Include="TypeScript\AngularJS\service.txt" />
     <Content Include="TypeScript\Redux\component.txt" />
+    <Content Include="TypeScript\Redux\editor.html.txt" />
     <Content Include="TypeScript\Redux\module-crud.txt" />
     <Content Include="TypeScript\Redux\module.txt" />
     <Content Include="TypeScript\Redux\editor.txt" />
     <Content Include="TypeScript\Redux\list.txt" />
+    <Content Include="TypeScript\Redux\page-crud.html.txt" />
+    <Content Include="TypeScript\Redux\page-crud.ts.txt" />
     <Content Include="TypeScript\Redux\service.txt" />
     <Content Include="TypeScript\Redux\reducers.txt" />
     <Content Include="TypeScript\Redux\actions.txt" />
@@ -177,6 +182,7 @@
     <None Include="TypeScript\AngularJS\modules\core\styles\view.less" />
     <None Include="TypeScript\AngularJS\modules\core\styles\_reset.less" />
     <None Include="TypeScript\AngularJS\modules\core\styles\_select.less" />
+    <Content Include="TypeScript\Redux\list.html.txt" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="TypeScript\AngularJS\modules\common\components\alertItem\alertItem.ts" />

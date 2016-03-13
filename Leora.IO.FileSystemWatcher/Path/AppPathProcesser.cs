@@ -53,7 +53,6 @@ namespace Leora.IO.FileSystemWatcher.Folders
 
         public override void Process(dynamic options)
         {
-
             string fullPath = options.fullPath;
             string entityNameSnakeCase = options.entityNameSnakeCase;
             EventType eventType = options.eventType;
@@ -71,12 +70,16 @@ namespace Leora.IO.FileSystemWatcher.Folders
                     if (options.crud == null)
                     {
                         File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.ts", entityNameSnakeCase), TypeScript.Redux.Component.Editor(options));
-                        File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.html", entityNameSnakeCase), new string[0]);
+                        File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.html", entityNameSnakeCase), TypeScript.Redux.Component.EditorHtml(options));
                         File.WriteAllLines(string.Format(fullPath + @"\{0}-editor.component.css", entityNameSnakeCase), new string[0]);
 
                         File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.ts", entityNameSnakeCase), TypeScript.Redux.Component.List(options));
-                        File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.html", entityNameSnakeCase), new string[0]);
+                        File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.html", entityNameSnakeCase), TypeScript.Redux.Component.ListHtml(options));
                         File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.css", entityNameSnakeCase), new string[0]);
+
+                        File.WriteAllLines(string.Format(fullPath + @"\{0}s-page.component.ts", entityNameSnakeCase), TypeScript.Redux.Component.Page(options));
+                        File.WriteAllLines(string.Format(fullPath + @"\{0}s-page.component.html", entityNameSnakeCase), TypeScript.Redux.Component.PageHtml(options));
+                        File.WriteAllLines(string.Format(fullPath + @"\{0}s-page.component.css", entityNameSnakeCase), new string[0]);
                     }
                 }
                 catch (RuntimeBinderException) { }
@@ -90,6 +93,21 @@ namespace Leora.IO.FileSystemWatcher.Folders
                 File.WriteAllLines(string.Format(fullPath + @"\{0}.module.ts", entityNameSnakeCase), TypeScript.Redux.Module.Get(options));
             }
 
+            if ((eventType == EventType.Created || eventType == EventType.Change) && fullPath.IsInsideControllerFolder())
+            {
+
+            }
+
+            if ((eventType == EventType.Created || eventType == EventType.Change) && fullPath.IsInsideServiceFolder())
+            {
+
+            }
+
+            if ((eventType == EventType.Created || eventType == EventType.Change) && fullPath.IsInsideDtoFolder())
+            {
+
+            }
         }
+            
     }
 }

@@ -29,6 +29,23 @@ namespace Leora.IO.ExtensionMethods
             }
 
         }
+
+        public static Boolean IsInsideControllerFolder(this string input)
+        {
+            return false;
+        }
+
+        public static Boolean IsInsideServiceFolder(this string input)
+        {
+            return false;
+        }
+
+        public static Boolean IsInsideDtoFolder(this string input)
+        {
+            return false;
+        }
+
+
         public static Boolean IsFeatureFolder(this string input)
         {
             try {

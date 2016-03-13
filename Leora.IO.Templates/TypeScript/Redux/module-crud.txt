@@ -3,6 +3,7 @@
 import { {{ entityNamePascalCase }}EditorComponent } from "./{{ entityNameSnakeCase }}-editor.component";
 import { {{ entityNamePascalCase }}ListComponent } from "./{{ entityNameSnakeCase }}-list.component";
 import { {{ entityNamePascalCase }}Component } from "./{{ entityNameSnakeCase }}.component";
+import { {{ entityNamePascalCase }}sPageComponent } from "./{{ entityNameSnakeCase }}s-page.component";
 import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.actions";
 import { {{ entityNamePascalCase }}Service } from "./{{ entityNameSnakeCase }}.service";
 import *  as reducers from "./{{ entityNameSnakeCase }}.reducers";
@@ -16,6 +17,7 @@ app.service("{{ entityNameCamelCase }}Service",["$q","apiEndpoint","fetch",{{ en
 app.component({{ entityNamePascalCase }}EditorComponent);
 app.component({{ entityNamePascalCase }}ListComponent);
 app.component({{ entityNamePascalCase }}Component);
+app.component({{ entityNamePascalCase }}sPageComponent);
 
 app.config(["reducersProvider", reducersProvider => {	
     for (var reducer in reducers) { reducersProvider.configure(reducers[reducer]); }

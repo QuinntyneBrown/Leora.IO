@@ -1,0 +1,45 @@
+﻿<div class="{{ entityNameCamelCase }}Editor">
+
+    <h1  data-ng-if="!vm.id">Create {{ entityNamePascalCase }} <span data-ng-if="vm.name.length > 0">: {{ vm.name }}</span></h1>
+
+    <h1 data-ng-if="vm.id">Edit {{ entityNamePascalCase }}: {{ vm.name }}</h1>
+
+    <tabs tabs-name="{{ entityNameSnakeCase }}-editor">
+
+        <tab-title>General</tab-title>
+
+        <tab-content>
+            <div>
+                <input class="inputField" type="text" placeholder="{{ entityNamePascalCase }} Name" data-ng-model="vm.name" />
+            </div>
+        </tab-content>
+
+        <tab-title>Abstract</tab-title>
+        
+        <tab-content>
+            <div>
+                <textarea ui-tinymce ng-model="vm.abstract"></textarea>
+            </div>
+        </tab-content>
+
+        <tab-title>Description</tab-title>
+
+        <tab-content>
+            <div>
+                <textarea ui-tinymce ng-model="vm.description"></textarea>
+            </div>
+        </tab-content>
+
+        <tab-title>Tags</tab-title>
+
+        <tab-content>
+
+        </tab-content>
+    </tabs>
+
+    <div>
+        <tr-button on-click="vm.addOrUpdate()" caption="'Save'"></tr-button>
+
+        <tr-button on-click="vm.create()" caption="'Create'"></tr-button>
+    </div>
+</div>
