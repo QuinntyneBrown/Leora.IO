@@ -16,4 +16,4 @@ export class Remove{{ entityNamePascalCase }}Action { constructor(public id, pub
 
 export class {{ entityNamePascalCase }}sFilterAction { constructor(public id, public term) { } }
 
-export class SetCurrent{{ entityNamePascalCase }}Action { constructor(public entity) { } }
+export class SetCurrent{{ entityNamePascalCase }}Action { constructor(public id) { } }

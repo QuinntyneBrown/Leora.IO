@@ -20,3 +20,10 @@ export const all{{ entityNamePascalCase }}sReducer = (state, action) => {
     }
     return state;
 }
+
+export const setCurrent{{ entityNamePascalCase }}Reducer = (state, action) => {
+    if (action instanceof actions.SetCurrent{{ entityNamePascalCase }}Action) {
+        state.current{{ entityNamePascalCase }}Id = action.id;
+    }
+    return state;
+}
