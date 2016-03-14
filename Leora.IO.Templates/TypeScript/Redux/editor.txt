@@ -5,8 +5,10 @@ import { pluck } from "../core/pluck";
 @Component({
     route: "/{{ entityNameSnakeCase }}/edit/:id",
     templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-editor.component.html",
+	styleUrls: ["wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-editor.component.css"],
     selector: "{{ entityNameSnakeCase }}-editor",
-    providers: ["$location","$routeParams","{{ entityNameCamelCase }}ActionCreator","invokeAsync"]
+    providers: ["$location","$routeParams","{{ entityNameCamelCase }}ActionCreator","invokeAsync"],
+	inputs:["onSuccess"]
 })
 @CanActivate(["$q","$route", "invokeAsync", "{{ entityNameCamelCase }}ActionCreator", ($q: angular.IQService, $route, invokeAsync, {{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator) => {
     var id = $route.current.params.id;;
@@ -34,7 +36,10 @@ export class {{ entityNamePascalCase }}EditorComponent {
             params: {
                 data: this.entity
             }
-        }).then(() => { this.entity = {}; });
+        }).then(() => { 
+			this.{{ entityNameCamelCase }}ActionCreator.addOrUpdateSuccess({ entity: this.entity });		
+			this.entity = {}; 
+		});
     } 
     
     create = () => { this.{{ entityNameCamelCase }}ActionCreator.create(); }
@@ -45,5 +50,5 @@ export class {{ entityNamePascalCase }}EditorComponent {
 	name;
 	entity;
 	entities;
-    baseUrl;
+	onSuccess
 }

@@ -4,6 +4,7 @@ import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCas
 @Component({
     route: "/{{ entityNameCamelCase }}/list",
     templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-list.component.html",
+	styleUrls: ["wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-list.component.css"],
     selector: "{{ entityNameSnakeCase }}-list",
     providers: ["$location","{{ entityNameCamelCase }}ActionCreator"]
 })
@@ -15,6 +16,6 @@ export class {{ entityNamePascalCase }}ListComponent {
     constructor(private $location: angular.ILocationService,private {{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator) { }
     storeOnChange = state =>  this.entities = state.{{ entityNameCamelCase }}s;   
     entities;
-    remove = {{ entityNameCamelCase }} => this.{{ entityNameCamelCase }}ActionCreator.remove({ entity: {{ entityNameCamelCase }} });
-    edit = {{ entityNameCamelCase }} => this.{{ entityNameCamelCase }}ActionCreator.edit({ entity: {{ entityNameCamelCase }} });    
+    remove = entity => this.{{ entityNameCamelCase }}ActionCreator.remove({ entity: entity });
+    edit = entity => this.{{ entityNameCamelCase }}ActionCreator.edit({ entity: entity });    
 }

@@ -1,14 +1,21 @@
 ﻿import { CanActivate, Component } from "../core/component-decorators";
-import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.actions";
+import * as actions from "./{{ entityNameSnakeCase }}.actions";
 
 @Component({
     route:"/{{ entityNameCamelCase }}s",
     templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}s-page.component.html",
     selector: "{{ entityNameSnakeCase }}s-page",
-    providers: ["{{ entityNameCamelCase }}ActionCreator"]
+    providers: ["$location","{{ entityNameCamelCase }}ActionCreator"]
 })
 @CanActivate([
     "{{ entityNameCamelCase }}ActionCreator", "invokeAsync",
     ({{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator, invokeAsync) => invokeAsync({{ entityNameCamelCase }}ActionCreator.all)
 ])
-export class {{ entityNamePascalCase }}sPageComponent { }
+export class {{ entityNamePascalCase }}sPageComponent { 
+    constructor(private $location: angular.ILocationService, {{ entityNameCamelCase }}ActionCreator: actions.{{ entityNamePascalCase }}ActionCreator) { }
+    storeOnChange = state => {        
+        if (state.lastTriggeredByAction instanceof actions.SetCurrent{{ entityNamePascalCase }}Action) {
+            this.$location.path("/{{ entityNameCamelCase }}/edit/" + state.lastTriggeredByAction.entity.id);
+        }
+    }
+}

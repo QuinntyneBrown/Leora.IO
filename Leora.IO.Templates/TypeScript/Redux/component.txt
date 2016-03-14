@@ -3,6 +3,7 @@ import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCas
 
 @Component({
     templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}.component.html",
+	styleUrls: ["wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}.component.css"],
     selector: "{{ entityNameSnakeCase }}",
     providers: ["{{ entityNameCamelCase }}ActionCreator"]
 })
