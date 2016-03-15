@@ -9,7 +9,7 @@ import * as actions from "./{{ entityNameSnakeCase }}.actions";
 })
 @CanActivate([
     "{{ entityNameCamelCase }}ActionCreator", "invokeAsync",
-    ({{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator, invokeAsync) => invokeAsync({{ entityNameCamelCase }}ActionCreator.all)
+    ({{ entityNameCamelCase }}ActionCreator: actions.{{ entityNamePascalCase }}ActionCreator, invokeAsync) => invokeAsync({{ entityNameCamelCase }}ActionCreator.all)
 ])
 export class {{ entityNamePascalCase }}sPageComponent { 
     constructor(private $location: angular.ILocationService, {{ entityNameCamelCase }}ActionCreator: actions.{{ entityNamePascalCase }}ActionCreator) { }

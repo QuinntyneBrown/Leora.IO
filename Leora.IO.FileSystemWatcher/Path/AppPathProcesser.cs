@@ -91,6 +91,8 @@ namespace Leora.IO.FileSystemWatcher.Folders
                 File.WriteAllLines(string.Format(fullPath + @"\{0}.reducers.ts", entityNameSnakeCase), TypeScript.Redux.Reducers.Get(options));
 
                 File.WriteAllLines(string.Format(fullPath + @"\{0}.module.ts", entityNameSnakeCase), TypeScript.Redux.Module.Get(options));
+
+                File.WriteAllLines(string.Format(fullPath + @"\{0}.model.ts", entityNameSnakeCase), TypeScript.Redux.Model.Get(options));
             }
 
             if ((eventType == EventType.Created || eventType == EventType.Change) && fullPath.IsInsideControllerFolder())

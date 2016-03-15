@@ -6,7 +6,9 @@ export class {{ entityNamePascalCase }}ActionCreator extends BaseActionCreator {
         super($location,{{ entityNameCamelCase }}Service,dispatcher,guid,AddOrUpdate{{ entityNamePascalCase }}Action,All{{ entityNamePascalCase }}sAction,Remove{{ entityNamePascalCase }}Action,SetCurrent{{ entityNamePascalCase }}Action)
     }    
 
-	addOrUpdateSuccess = options => this.dispatcher.dispatch(new AddOrUpdate{{ entityNamePascalCase }}Success(options.entity));
+	addOrUpdateSuccess = options => this.dispatcher.dispatch(new AddOrUpdate{{ entityNamePascalCase }}SuccessAction(options.entity));
+
+	current{{ entityNamePascalCase }}Removed = () => this.dispatcher.dispatch(new Current{{ entityNamePascalCase }}RemovedAction());
 }
 
 
@@ -20,4 +22,6 @@ export class {{ entityNamePascalCase }}sFilterAction { constructor(public id, pu
 
 export class SetCurrent{{ entityNamePascalCase }}Action { constructor(public id) { } }
 
-export class AddOrUpdate{{ entityNamePascalCase }}Success { constructor(public entity) { } }
+export class AddOrUpdate{{ entityNamePascalCase }}SuccessAction { constructor(public entity) { } }
+
+export class Current{{ entityNamePascalCase }}RemovedAction { constructor() { } }
