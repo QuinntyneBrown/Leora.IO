@@ -82,6 +82,7 @@
     <Compile Include="Path\AppPathProcesser.cs" />
     <Compile Include="Path\BaseProcessor.cs" />
     <Compile Include="Path\ComponentsPathProcessor.cs" />
+    <Compile Include="Path\ModelPathProcessor.cs" />
     <Compile Include="Path\ModulePathProcessor.cs" />
     <Compile Include="Path\ProjectPathProcesser.cs" />
     <Compile Include="Path\ServicesPathProcessor.cs" />

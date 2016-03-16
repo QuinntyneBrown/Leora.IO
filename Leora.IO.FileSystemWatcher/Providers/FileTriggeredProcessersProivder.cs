@@ -12,6 +12,7 @@ namespace Leora.IO.FileSystemWatcher.Providers
             var processers = new List<IFileTriggeredProcesser>();
             //processers.Add(new ApiPathProcesser());
             processers.Add(new AppPathProcesser());
+            processers.Add(new ModelPathProcesser());
             //processers.Add(new ComponentsPathProcessor());
             //processers.Add(new ModulePathProcessor());
             //processers.Add(new ProjectFileProcessor());

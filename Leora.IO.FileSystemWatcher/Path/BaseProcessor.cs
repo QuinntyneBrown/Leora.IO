@@ -9,17 +9,17 @@ namespace Leora.IO.FileSystemWatcher.Path
     {
         public virtual void Process(EventType eventType, string fullPath)
         {
-            throw new NotImplementedException();
+
         }
 
         public virtual void Process(EventType eventType, string fullPath, Dictionary<string, string> options)
         {
-            throw new NotImplementedException();
+
         }
 
         public virtual void Process(dynamic options)
         {
-            throw new NotImplementedException(); 
+
         }
     }
 }
