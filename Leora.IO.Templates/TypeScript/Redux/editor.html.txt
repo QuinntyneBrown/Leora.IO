@@ -1,8 +1,8 @@
 ﻿<div class="{{ entityNameCamelCase }}Editor">
 
-    <h1  data-ng-if="!vm.id">Create {{ entityNamePascalCase }} <span data-ng-if="vm.name.length > 0">: {{ vm.name }}</span></h1>
+    <h1  data-ng-if="!vm.id">Create {{ entityNameTitleCase }} <span data-ng-if="vm.name.length > 0">: {{ vm.name }}</span></h1>
 
-    <h1 data-ng-if="vm.id">Edit {{ entityNamePascalCase }}: {{ vm.name }}</h1>
+    <h1 data-ng-if="vm.id">Edit {{ entityNameTitleCase }}: {{ vm.name }}</h1>
 
     <tabs tabs-name="{{ entityNameSnakeCase }}-editor">
 
@@ -10,7 +10,7 @@
 
         <tab-content>
             <div>
-                <input class="inputField" type="text" placeholder="{{ entityNamePascalCase }} Name" data-ng-model="vm.entity.name" />
+                <input class="inputField" type="text" placeholder="{{ entityNameTitleCase }} Name" data-ng-model="vm.entity.name" />
             </div>
         </tab-content>
 

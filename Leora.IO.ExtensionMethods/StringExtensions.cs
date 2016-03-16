@@ -85,6 +85,21 @@ namespace Leora.IO.ExtensionMethods
             return input.First().ToString().ToLower() + input.Substring(1); 
         }
 
+        public static string PascalCaseToTitleCase(this string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+                return "";
+            StringBuilder newText = new StringBuilder(input.Length * 2);
+            newText.Append(input[0]);
+            for (int i = 1; i < input.Length; i++)
+            {
+                if (char.IsUpper(input[i]) && input[i - 1] != ' ')
+                    newText.Append(' ');
+                newText.Append(input[i]);
+            }
+            return newText.ToString();
+        }
+
         public static string SnakeCaseToPascalCase(this string input)
         {
             System.Text.StringBuilder resultBuilder = new System.Text.StringBuilder();
