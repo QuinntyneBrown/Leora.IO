@@ -21,19 +21,16 @@ export class {{ entityNamePascalCase }}sPageComponent {
     storeOnChange = state => {        
         this.entities = state.{{ entityNameCamelCase }}s;
 
-        if (state.lastTriggeredByAction instanceof actions.SetCurrent{{ entityNamePascalCase }}Action) 
+		if (state.lastTriggeredByAction instanceof actions.SetCurrent{{ entityNamePascalCase }}Action && !state.lastTriggeredByAction.entity) 
+            this.$location.path("/admin/{{ entityNameLowerCase }}s");
+
+        if (state.lastTriggeredByAction instanceof actions.SetCurrent{{ entityNamePascalCase }}Action && state.lastTriggeredByAction.entity) 
             this.$location.path("/admin/{{ entityNameLowerCase }}/edit/" + state.lastTriggeredByAction.entity.id);
         
         if (state.lastTriggeredByAction instanceof actions.Remove{{ entityNamePascalCase }}Action && this.entity && this.entity.id) {
             this.entity = pluck({ value: Number(this.$routeParams["{{ entityNameCamelCase }}Id"]), items: this.entities }) as {{ entityNamePascalCase }};
             if (Object.keys(this.entity).length === 0) { this.$location.path("/admin/{{ entityNameLowerCase }}s"); }
         }
-
-        if (state.lastTriggeredByAction instanceof actions.AddOrUpdate{{ entityNamePascalCase }}Action && !this.entity.id)
-            this.entity = new {{ entityNamePascalCase }}();       
-
-        if (state.lastTriggeredByAction instanceof actions.AddOrUpdate{{ entityNamePascalCase }}Action && this.entity.id)
-            this.$location.path("/admin/{{ entityNameLowerCase }}s");
     }
 
     ngOnInit = () => {

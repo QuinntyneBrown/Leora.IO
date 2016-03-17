@@ -1,4 +1,4 @@
 ﻿<div>
-    <{{ entityNameSnakeCase }}-editor entity="vm.entity" edit="vm.edit" remove="vm.remove" add-or-update="vm.addOrUpdate"></{{ entityNameSnakeCase }}-editor>
+    <{{ entityNameSnakeCase }}-editor entity="vm.entity" edit="vm.edit" remove="vm.remove" add-or-update="vm.addOrUpdate" create="vm.create"></{{ entityNameSnakeCase }}-editor>
     <{{ entityNameSnakeCase }}-list entities="vm.entities" edit="vm.edit" remove="vm.remove"></{{ entityNameSnakeCase }}-list>
 </div>
