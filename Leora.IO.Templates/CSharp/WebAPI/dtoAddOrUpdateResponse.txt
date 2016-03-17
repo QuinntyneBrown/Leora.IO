@@ -1,0 +1,13 @@
+﻿using Chloe.Server.Models;
+
+namespace Chloe.Server.Dtos
+{
+    public class {{ entityNamePascalCase }}AddOrUpdateResponseDto: {{ entityNamePascalCase }}Dto
+    {
+        public {{ entityNamePascalCase }}AddOrUpdateResponseDto({{ entityNamePascalCase }} entity)
+            :base(entity)
+        {
+
+        }
+    }
+}

@@ -25,11 +25,14 @@ namespace Chloe.Server.Controllers
         [AllowAnonymous]
         [HttpGet]
         public IHttpActionResult Get({{ entityNamePascalCase }}AddOrUpdateRequestDto dto) { return Ok(this.service.GetAll()); }
+
+		[Route("getById")]
+        [HttpGet]
+        public IHttpActionResult GetById(int id) { return Ok(this.service.GetById(id)); }
         
         [Route("remove")]
         [HttpDelete]
         public IHttpActionResult Remove(int id) { return Ok(this.service.Remove(id)); }
-
 
         protected readonly I{{ entityNamePascalCase }}Service service;
 

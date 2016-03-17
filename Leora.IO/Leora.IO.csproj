@@ -57,6 +57,7 @@
     <Compile Include="CSharp\WebAPI\Enum.cs" />
     <Compile Include="CSharp\WebAPI\Global.cs" />
     <Compile Include="CSharp\WebAPI\OwinStartUp.cs" />
+    <Compile Include="CSharp\WebAPI\Service.cs" />
     <Compile Include="CSharp\WebAPI\UnityConfig.cs" />
     <Compile Include="CSharp\WebAPI\WebConfig.cs" />
     <Compile Include="LeoaTxt.cs" />

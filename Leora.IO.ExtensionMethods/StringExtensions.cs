@@ -32,7 +32,7 @@ namespace Leora.IO.ExtensionMethods
 
         public static Boolean IsInsideModelFolder(this string input)
         {
-            return input.Split(System.IO.Path.DirectorySeparatorChar)[input.Split(System.IO.Path.DirectorySeparatorChar).Count() - 1].ToLower() == "models";
+            return input.Split(System.IO.Path.DirectorySeparatorChar)[input.Split(System.IO.Path.DirectorySeparatorChar).Count() - 2].ToLower() == "models";
         }
 
         public static Boolean IsInsideControllerFolder(this string input)
