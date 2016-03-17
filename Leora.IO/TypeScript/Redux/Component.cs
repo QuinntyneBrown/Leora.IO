@@ -77,6 +77,7 @@ namespace Leora.IO.TypeScript.Redux
             string entityNamePascalCase = entityNameSnakeCase.SnakeCaseToPascalCase();
             string entityNameCamelCase = entityNamePascalCase.CamelCase();
             string entityNameTitleCase = entityNamePascalCase.PascalCaseToTitleCase();
+            string entityNameLowerCase = entityNamePascalCase.ToLower();
             var lines = new List<string>();
             var index = 0;
             foreach (var line in templateRepository.GetByNameLanguageFramework("editor", "TypeScript", "Redux").Lines)
@@ -85,6 +86,7 @@ namespace Leora.IO.TypeScript.Redux
                 newline = newline.Replace("{{ entityNameCamelCase }}", entityNameCamelCase);
                 newline = newline.Replace("{{ entityNameSnakeCase }}", entityNameSnakeCase);
                 newline = newline.Replace("{{ entityNameTitleCase }}", entityNameTitleCase);
+                newline = newline.Replace("{{ entityNameLowerCase }}", entityNameLowerCase);
                 lines.Add(newline);
                 index++;
             }
@@ -117,6 +119,7 @@ namespace Leora.IO.TypeScript.Redux
             string entityNameSnakeCase = options.entityNameSnakeCase;
             string entityNamePascalCase = entityNameSnakeCase.SnakeCaseToPascalCase();
             string entityNameCamelCase = entityNamePascalCase.CamelCase();
+            string entityNameLowerCase = entityNamePascalCase.ToLower();
             var lines = new List<string>();
             var index = 0;
             foreach (var line in templateRepository.GetByNameLanguageFramework("page-crud.ts", "TypeScript", "Redux").Lines)
@@ -124,6 +127,7 @@ namespace Leora.IO.TypeScript.Redux
                 var newline = line.Replace("{{ entityNamePascalCase }}", entityNamePascalCase);
                 newline = newline.Replace("{{ entityNameCamelCase }}", entityNameCamelCase);
                 newline = newline.Replace("{{ entityNameSnakeCase }}", entityNameSnakeCase);
+                newline = newline.Replace("{{ entityNameLowerCase }}", entityNameLowerCase);
                 lines.Add(newline);
                 index++;
             }

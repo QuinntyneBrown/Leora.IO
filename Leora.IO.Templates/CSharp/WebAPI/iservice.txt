@@ -6,8 +6,8 @@ namespace Chloe.Server.Services.Contracts
     public interface I{{ entityNamePascalCase }}Service
     {
         {{ entityNamePascalCase }}AddOrUpdateResponseDto AddOrUpdate({{ entityNamePascalCase }}AddOrUpdateRequestDto request);
-        ICollection<{{ entityNamePascalCase }}Dto> GetAll();
-        {{ entityNamePascalCase }}Dto GetBySlug(string slug);
+        ICollection<{{ entityNamePascalCase }}Dto> Get();
+        {{ entityNamePascalCase }}Dto GetById(int id);
         dynamic Remove(int id);
     }
 }

@@ -1,8 +1,8 @@
 ﻿<div class="{{ entityNameCamelCase }}Editor">
 
-    <h1  data-ng-if="!vm.id">Create {{ entityNameTitleCase }} <span data-ng-if="vm.name.length > 0">: {{ vm.name }}</span></h1>
+    <h1  data-ng-if="!vm.entity.id">Create {{ entityNameTitleCase }} <span data-ng-if="vm.entity.name.length > 0">: {{ vm.entity.name }}</span></h1>
 
-    <h1 data-ng-if="vm.id">Edit {{ entityNameTitleCase }}: {{ vm.name }}</h1>
+    <h1 data-ng-if="vm.entity.id">Edit {{ entityNameTitleCase }}: {{ vm.entity.name }}</h1>
 
     <tabs tabs-name="{{ entityNameSnakeCase }}-editor">
 
@@ -17,7 +17,7 @@
     </tabs>
 
     <div>
-        <calypso-button on-click="vm.addOrUpdate()" caption="'Save'"></calypso-button>
+        <calypso-button on-click="vm.addOrUpdate({ data: vm.entity })" caption="'Save'"></calypso-button>
 
         <calypso-button on-click="vm.create()" caption="'Create'"></calypso-button>
     </div>

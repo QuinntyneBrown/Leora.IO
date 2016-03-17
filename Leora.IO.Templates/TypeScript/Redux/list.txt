@@ -1,21 +1,11 @@
 ﻿import { CanActivate, Component } from "../core/component-decorators";
-import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.actions";
 
 @Component({
-    route: "/{{ entityNameCamelCase }}/list",
     templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-list.component.html",
 	styleUrls: ["wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-list.component.css"],
     selector: "{{ entityNameSnakeCase }}-list",
-    providers: ["$location","{{ entityNameCamelCase }}ActionCreator"]
+    inputs: ['entities','edit','remove']
 })
-@CanActivate([
-    "{{ entityNameCamelCase }}ActionCreator", "invokeAsync",
-    ({{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator, invokeAsync) => invokeAsync({{ entityNameCamelCase }}ActionCreator.all)
-])
 export class {{ entityNamePascalCase }}ListComponent {
-    constructor(private $location: angular.ILocationService,private {{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator) { }
-    storeOnChange = state =>  this.entities = state.{{ entityNameCamelCase }}s;   
-    entities;
-    remove = entity => this.{{ entityNameCamelCase }}ActionCreator.remove({ entity: entity });
-    edit = entity => this.{{ entityNameCamelCase }}ActionCreator.edit({ entity: entity });    
+    constructor() { }     
 }
