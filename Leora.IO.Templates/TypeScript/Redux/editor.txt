@@ -1,4 +1,6 @@
-﻿import { CanActivate, Component } from "../core/component-decorators";
+﻿require("./{{ entityNameSnakeCase }}-editor.component.css");
+
+import { CanActivate, Component } from "../core/component-decorators";
 
 @Component({
     templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-editor.component.html",

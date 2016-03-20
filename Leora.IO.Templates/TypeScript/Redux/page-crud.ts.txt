@@ -1,4 +1,6 @@
-﻿import { CanActivate, Component } from "../core/component-decorators";
+﻿require("./{{ entityNameSnakeCase }}s-page.component.css");
+
+import { CanActivate, Component } from "../core/component-decorators";
 import * as actions from "./{{ entityNameSnakeCase }}.actions";
 import { pluck } from "../core/pluck";
 import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";

@@ -1,4 +1,6 @@
-﻿import { CanActivate, Component } from "../core/component-decorators";
+﻿require("./{{ entityNameSnakeCase }}.component.css");
+
+import { CanActivate, Component } from "../core/component-decorators";
 import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.actions";
 
 @Component({

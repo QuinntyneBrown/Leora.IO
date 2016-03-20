@@ -24,7 +24,7 @@ namespace Chloe.Server.Controllers
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
-        public IHttpActionResult Get({{ entityNamePascalCase }}AddOrUpdateRequestDto dto) { return Ok(this.service.GetAll()); }
+        public IHttpActionResult Get({{ entityNamePascalCase }}AddOrUpdateRequestDto dto) { return Ok(this.service.Get()); }
 
 		[Route("getById")]
         [HttpGet]
