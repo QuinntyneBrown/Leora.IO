@@ -114,7 +114,7 @@ namespace Leora.IO.TypeScript.Redux
             return lines.ToArray();
         }
 
-        public static string[] Page(dynamic options)
+        public static string[] Container(dynamic options)
         {
             string entityNameSnakeCase = options.entityNameSnakeCase;
             string entityNamePascalCase = entityNameSnakeCase.SnakeCaseToPascalCase();
@@ -122,7 +122,7 @@ namespace Leora.IO.TypeScript.Redux
             string entityNameLowerCase = entityNamePascalCase.ToLower();
             var lines = new List<string>();
             var index = 0;
-            foreach (var line in templateRepository.GetByNameLanguageFramework("page-crud.ts", "TypeScript", "Redux").Lines)
+            foreach (var line in templateRepository.GetByNameLanguageFramework("container-crud.ts", "TypeScript", "Redux").Lines)
             {
                 var newline = line.Replace("{{ entityNamePascalCase }}", entityNamePascalCase);
                 newline = newline.Replace("{{ entityNameCamelCase }}", entityNameCamelCase);
@@ -134,14 +134,14 @@ namespace Leora.IO.TypeScript.Redux
             return lines.ToArray();
         }
 
-        public static string[] PageHtml(dynamic options)
+        public static string[] ContainerHtml(dynamic options)
         {
             string entityNameSnakeCase = options.entityNameSnakeCase;
             string entityNamePascalCase = entityNameSnakeCase.SnakeCaseToPascalCase();
             string entityNameCamelCase = entityNamePascalCase.CamelCase();
             var lines = new List<string>();
             var index = 0;
-            foreach (var line in templateRepository.GetByNameLanguageFramework("page-crud.html", "TypeScript", "Redux").Lines)
+            foreach (var line in templateRepository.GetByNameLanguageFramework("container-crud.html", "TypeScript", "Redux").Lines)
             {
                 var newline = line.Replace("{{ entityNamePascalCase }}", entityNamePascalCase);
                 newline = newline.Replace("{{ entityNameCamelCase }}", entityNameCamelCase);

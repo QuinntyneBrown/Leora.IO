@@ -1,16 +1,17 @@
-﻿require("./{{ entityNameSnakeCase }}s-page.component.css");
+﻿require("./{{ entityNameSnakeCase }}s-container.component.css");
 
-import { CanActivate, Component } from "../core/component-decorators";
+import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
 import * as actions from "./{{ entityNameSnakeCase }}.actions";
 import { pluck } from "../core/pluck";
 import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 
 @Component({
     routes: ["/admin/{{ entityNameLowerCase }}s","/admin/{{ entityNameLowerCase }}/edit/:{{ entityNameCamelCase }}Id"],
-    templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}s-page.component.html",
-    styleUrls: ["wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}s-page.component.css"],
-    selector: "{{ entityNameSnakeCase }}s-page",
-    providers: ["$location","$routeParams","{{ entityNameCamelCase }}ActionCreator"]
+    templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}s-container.component.html",
+    styleUrls: ["wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}s-container.component.css"],
+    selector: "{{ entityNameSnakeCase }}s-container",
+    providers: ["$location","$routeParams","{{ entityNameCamelCase }}ActionCreator"],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 @CanActivate(["$q", "$route", "invokeAsync", "{{ entityNameCamelCase }}ActionCreator", ($q: angular.IQService, $route: angular.route.IRouteService, invokeAsync, {{ entityNameCamelCase }}ActionCreator: actions.{{ entityNamePascalCase }}ActionCreator) => {
     var {{ entityNameCamelCase }}Id = $route.current.params.{{ entityNameCamelCase }}Id;
@@ -18,7 +19,7 @@ import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
     if ({{ entityNameCamelCase }}Id) { promises.push(invokeAsync({ action: {{ entityNameCamelCase }}ActionCreator.getById, params: { id: {{ entityNameCamelCase }}Id } })) };
     return $q.all(promises);
 }])
-export class {{ entityNamePascalCase }}sPageComponent { 
+export class {{ entityNamePascalCase }}sContainerComponent { 
     constructor(private $location: angular.ILocationService, private $routeParams: angular.route.IRouteParamsService, private {{ entityNameCamelCase }}ActionCreator: actions.{{ entityNamePascalCase }}ActionCreator) { }
     storeOnChange = state => {        
         this.entities = state.{{ entityNameCamelCase }}s;

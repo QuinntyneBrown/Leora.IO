@@ -77,9 +77,9 @@ namespace Leora.IO.FileSystemWatcher.Folders
                         File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.html", entityNameSnakeCase), TypeScript.Redux.Component.ListHtml(options));
                         File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.css", entityNameSnakeCase), new string[0]);
 
-                        File.WriteAllLines(string.Format(fullPath + @"\{0}s-page.component.ts", entityNameSnakeCase), TypeScript.Redux.Component.Page(options));
-                        File.WriteAllLines(string.Format(fullPath + @"\{0}s-page.component.html", entityNameSnakeCase), TypeScript.Redux.Component.PageHtml(options));
-                        File.WriteAllLines(string.Format(fullPath + @"\{0}s-page.component.css", entityNameSnakeCase), new string[0]);
+                        File.WriteAllLines(string.Format(fullPath + @"\{0}s-container.component.ts", entityNameSnakeCase), TypeScript.Redux.Component.Container(options));
+                        File.WriteAllLines(string.Format(fullPath + @"\{0}s-container.component.html", entityNameSnakeCase), TypeScript.Redux.Component.ContainerHtml(options));
+                        File.WriteAllLines(string.Format(fullPath + @"\{0}s-container.component.css", entityNameSnakeCase), new string[0]);
                     }
                 }
                 catch (RuntimeBinderException) { }

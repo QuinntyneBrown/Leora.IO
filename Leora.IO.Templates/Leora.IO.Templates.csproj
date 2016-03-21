@@ -86,8 +86,8 @@
     <Content Include="TypeScript\Redux\module.txt" />
     <Content Include="TypeScript\Redux\editor.txt" />
     <Content Include="TypeScript\Redux\list.txt" />
-    <Content Include="TypeScript\Redux\page-crud.html.txt" />
-    <Content Include="TypeScript\Redux\page-crud.ts.txt" />
+    <Content Include="TypeScript\Redux\container-crud.html.txt" />
+    <Content Include="TypeScript\Redux\container-crud.ts.txt" />
     <Content Include="TypeScript\Redux\service.txt" />
     <Content Include="TypeScript\Redux\reducers.txt" />
     <Content Include="TypeScript\Redux\actions.txt" />

@@ -1,12 +1,13 @@
 ﻿require("./{{ entityNameSnakeCase }}-list.component.css");
 
-import { CanActivate, Component } from "../core/component-decorators";
+import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
 
 @Component({
     templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-list.component.html",
 	styleUrls: ["wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-list.component.css"],
     selector: "{{ entityNameSnakeCase }}-list",
-    inputs: ['entities','edit','remove']
+    inputs: ['entities','edit','remove'],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class {{ entityNamePascalCase }}ListComponent {
     constructor() { }     

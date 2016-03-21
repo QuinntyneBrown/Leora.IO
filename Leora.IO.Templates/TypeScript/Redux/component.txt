@@ -1,13 +1,14 @@
 ﻿require("./{{ entityNameSnakeCase }}.component.css");
 
-import { CanActivate, Component } from "../core/component-decorators";
+import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
 import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.actions";
 
 @Component({
     templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}.component.html",
 	styleUrls: ["wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}.component.css"],
     selector: "{{ entityNameSnakeCase }}",
-    providers: ["{{ entityNameCamelCase }}ActionCreator"]
+    providers: ["{{ entityNameCamelCase }}ActionCreator"],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class {{ entityNamePascalCase }}Component {
     constructor(private {{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator) { }
