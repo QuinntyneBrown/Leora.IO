@@ -40,10 +40,11 @@ namespace Chloe.Server.Services
         public ICollection<{{ entityNamePascalCase }}Dto> Get()
         {
             ICollection<{{ entityNamePascalCase }}Dto> response = new HashSet<{{ entityNamePascalCase }}Dto>();
-            repository.GetAll().Where(x => x.IsDeleted == false)
-                .ForEachAsync(x => response.Add(new {{ entityNamePascalCase }}Dto(x)));
+            var entities = repository.GetAll().Where(x => x.IsDeleted == false).ToList();
+            foreach(var entity in entities) { response.Add(new {{ entityNamePascalCase }}Dto(entity)); }    
             return response;
         }
+
 
         public {{ entityNamePascalCase }}Dto GetById(int id)
         {
