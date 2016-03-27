@@ -42,6 +42,7 @@ namespace Leora.IO.FileSystemWatcher.Folders
                     File.WriteAllLines(string.Format(serverFolderPath + @"\Services\{0}Service.cs", entityName), CSharp.WebAPI.Service.Get(entityName));
                     File.WriteAllLines(string.Format(serverFolderPath + @"\Services\Contracts\I{0}Service.cs", entityName), CSharp.WebAPI.Service.GetInterface(entityName));
                     File.WriteAllLines(string.Format(serverFolderPath + @"\Controllers\{0}Controller.cs", entityName), CSharp.WebAPI.Controller.Get(entityName));
+                    File.WriteAllLines(string.Format(serverFolderPath + @"\Exceptions\{0}NotFound.cs", entityName), CSharp.WebAPI.Exception.Get(entityName));
                 }
             }
         }

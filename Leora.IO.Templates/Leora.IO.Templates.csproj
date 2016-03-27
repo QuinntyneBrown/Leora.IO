@@ -45,6 +45,7 @@
     <Content Include="CSharp\WebAPI\dto.txt" />
     <Content Include="CSharp\WebAPI\dtoAddOrUpdateRequest.txt" />
     <Content Include="CSharp\WebAPI\dtoAddOrUpdateResponse.txt" />
+    <Content Include="CSharp\WebAPI\exception.txt" />
     <Content Include="CSharp\WebAPI\iservice.txt" />
     <Content Include="CSharp\WebAPI\service.txt" />
     <Content Include="CSharp\WebAPI\controller.txt" />

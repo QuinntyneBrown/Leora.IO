@@ -55,6 +55,7 @@
     <Compile Include="CSharp\WebAPI\Dto.cs" />
     <Compile Include="CSharp\WebAPI\Entity.cs" />
     <Compile Include="CSharp\WebAPI\Enum.cs" />
+    <Compile Include="CSharp\WebAPI\Exception.cs" />
     <Compile Include="CSharp\WebAPI\Global.cs" />
     <Compile Include="CSharp\WebAPI\OwinStartUp.cs" />
     <Compile Include="CSharp\WebAPI\Service.cs" />

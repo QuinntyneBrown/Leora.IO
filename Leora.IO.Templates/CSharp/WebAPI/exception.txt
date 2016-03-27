@@ -1,0 +1,23 @@
+﻿using System;
+
+namespace Chloe.Server.Exceptions
+{
+    public class {{ entityNamePascalCase }}NotFoundException: NotFoundException
+    {
+        public {{ entityNamePascalCase }}NotFoundException()
+            :base("You Tube Video Not Found")
+        {
+        }
+
+        public {{ entityNamePascalCase }}NotFoundException(string message)
+            :base(message)
+        {
+
+        }
+
+        public {{ entityNamePascalCase }}NotFoundException(string message, Exception inner)
+        {
+
+        }
+    }
+}
