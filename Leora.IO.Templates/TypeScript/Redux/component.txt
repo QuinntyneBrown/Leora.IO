@@ -1,11 +1,9 @@
-﻿require("./{{ entityNameSnakeCase }}.component.css");
-
-import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
+﻿import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
 import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.actions";
 
 @Component({
-    templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}.component.html",
-	styleUrls: ["wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}.component.css"],
+    template: require("./{{ entityNameSnakeCase }}.component.html"),
+    styles: require("./{{ entityNameSnakeCase }}.component.css"),
     selector: "{{ entityNameSnakeCase }}",
     viewProviders: ["{{ entityNameCamelCase }}ActionCreator"],
 	changeDetection: ChangeDetectionStrategy.OnPush

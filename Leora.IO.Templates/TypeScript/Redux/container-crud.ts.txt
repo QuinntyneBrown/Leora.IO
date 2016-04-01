@@ -1,14 +1,12 @@
-﻿require("./{{ entityNameSnakeCase }}s-container.component.css");
-
-import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
+﻿import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
 import * as actions from "./{{ entityNameSnakeCase }}.actions";
 import { pluck } from "../core/pluck";
 import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 
 @Component({
     routes: ["/admin/{{ entityNameLowerCase }}s","/admin/{{ entityNameLowerCase }}/edit/:{{ entityNameCamelCase }}Id"],
-    templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}s-container.component.html",
-    styleUrls: ["wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}s-container.component.css"],
+    template: require("./{{ entityNameSnakeCase }}s-container.component.html"),
+    styles: require("./{{ entityNameSnakeCase }}s-container.component.css"),
     selector: "{{ entityNameSnakeCase }}s-container",
     viewProviders: ["$location","$routeParams","{{ entityNameCamelCase }}ActionCreator"],
 	changeDetection: ChangeDetectionStrategy.OnPush

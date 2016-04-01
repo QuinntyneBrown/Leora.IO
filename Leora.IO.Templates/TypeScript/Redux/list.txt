@@ -1,10 +1,8 @@
-﻿require("./{{ entityNameSnakeCase }}-list.component.css");
-
-import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
+﻿import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
 
 @Component({
-    templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-list.component.html",
-	styleUrls: ["wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-list.component.css"],
+    template: require("./{{ entityNameSnakeCase }}-list.component.html"),
+    styles: require("./{{ entityNameSnakeCase }}-list.component.css"),
     selector: "{{ entityNameSnakeCase }}-list",
     inputs: ['entities','edit','remove'],
 	changeDetection: ChangeDetectionStrategy.OnPush

@@ -1,10 +1,8 @@
-﻿require("./{{ entityNameSnakeCase }}-editor.component.css");
-
-import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
+﻿import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
 
 @Component({
-    templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-editor.component.html",
-	styleUrls: ["wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}-editor.component.css"],
+    template: require("./{{ entityNameSnakeCase }}-editor.component.html"),
+    styles: require("./{{ entityNameSnakeCase }}-editor.component.css"),
     selector: "{{ entityNameSnakeCase }}-editor",
     inputs: ['entity','addOrUpdate','remove','create'],
 	changeDetection: ChangeDetectionStrategy.OnPush
