@@ -7,7 +7,7 @@ import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCas
     templateUrl: "wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}.component.html",
 	styleUrls: ["wwwroot/{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}.component.css"],
     selector: "{{ entityNameSnakeCase }}",
-    providers: ["{{ entityNameCamelCase }}ActionCreator"],
+    viewProviders: ["{{ entityNameCamelCase }}ActionCreator"],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class {{ entityNamePascalCase }}Component {
