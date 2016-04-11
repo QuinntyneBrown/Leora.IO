@@ -9,8 +9,14 @@ using Leora.IO.Data.Contracts;
 using Leora.IO.ExtensionMethods;
 using System.Dynamic;
 
+using static System.Console;
+using static System.IO.File;
+using static System.IO.Path;
+
 namespace Leora.IO.FileSystemWatcher
 {
+
+
     class Program
     {
         private static IFileTriggerProcessersProvider fileTriggerProcessersProvider;
@@ -18,7 +24,7 @@ namespace Leora.IO.FileSystemWatcher
         static void Main(string[] args)
         {
      
-            Console.WriteLine("Leora IO File System Watcher. Press \'q\' to quit.");
+            WriteLine("Leora IO File System Watcher. Press \'q\' to quit.");
 
             RegisterComponents();
 
@@ -37,9 +43,9 @@ namespace Leora.IO.FileSystemWatcher
 
             do
             {
-                input = Console.ReadLine();
+                input = ReadLine();
 
-            } while (Console.Read() != 'q');
+            } while (Read() != 'q');
         }
 
         private static void OnChanged(object source, FileSystemEventArgs e)
@@ -85,12 +91,12 @@ namespace Leora.IO.FileSystemWatcher
 
         private static dynamic GetOptions(EventType eventType, string fullPath)
         {
-            var fileNameParts = System.IO.Path.GetFileNameWithoutExtension(fullPath).Split(new string[] { "--" }, StringSplitOptions.None);
+            var fileNameParts = GetFileNameWithoutExtension(fullPath).Split(new string[] { "--" }, StringSplitOptions.None);
 
             dynamic options = new ExpandoObject();
             options.eventType = eventType;
             options.fullPath = fullPath.Split(new string[] { "--" }, StringSplitOptions.None)[0];
-            options.entityNameSnakeCase = System.IO.Path.GetFileNameWithoutExtension(options.fullPath);
+            options.entityNameSnakeCase = GetFileNameWithoutExtension(options.fullPath);
             
             if (fileNameParts.Length > 1)
                 for (var i = 1; i < fileNameParts.Length; i++)
@@ -125,7 +131,7 @@ namespace Leora.IO.FileSystemWatcher
             {
                 var newFullPath = fullPath.Split(new string[] { "--" }, StringSplitOptions.None)[0];
 
-                if (!File.Exists(newFullPath) && File.Exists(fullPath))
+                if (!Exists(newFullPath) && Exists(fullPath))
                     Directory.Move(fullPath, newFullPath);
 
                 return newFullPath;                
