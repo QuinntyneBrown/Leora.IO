@@ -1,13 +1,11 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
 using Leora.IO.Configuration;
 using Leora.IO.FileSystemWatcher.Contracts;
 using Leora.IO.FileSystemWatcher.Enums;
 using Leora.IO.FileSystemWatcher.Providers;
 using Microsoft.Practices.Unity;
 using Leora.IO.Data.Contracts;
-using System.Collections.Generic;
 using Leora.IO.ExtensionMethods;
 using System.Dynamic;
 
@@ -103,9 +101,18 @@ namespace Leora.IO.FileSystemWatcher
                     {
                         options.crud = opts[1];
                     }
-                    else
+                    else if(opts[0] == "crud")
                     {
                         options.crud = null;
+                    }
+
+                    if (opts[0] == "simple" && opts.Length > 1)
+                    {
+                        options.simple = opts[1];
+                    }
+                    else if(opts[0] == "simple")
+                    {
+                        options.simple = null;
                     }
                 }
             

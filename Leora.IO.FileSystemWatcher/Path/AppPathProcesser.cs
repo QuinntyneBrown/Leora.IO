@@ -6,6 +6,7 @@ using Leora.IO.ExtensionMethods;
 using Leora.IO.Configuration;
 using System.Collections.Generic;
 using Microsoft.CSharp.RuntimeBinder;
+using System;
 
 namespace Leora.IO.FileSystemWatcher.Folders
 {
@@ -80,6 +81,15 @@ namespace Leora.IO.FileSystemWatcher.Folders
                         File.WriteAllLines(string.Format(fullPath + @"\{0}s-container.component.ts", entityNameSnakeCase), TypeScript.Redux.Component.Container(options));
                         File.WriteAllLines(string.Format(fullPath + @"\{0}s-container.component.html", entityNameSnakeCase), TypeScript.Redux.Component.ContainerHtml(options));
                         File.WriteAllLines(string.Format(fullPath + @"\{0}s-container.component.css", entityNameSnakeCase), new string[0]);
+                    }
+                }
+                catch (RuntimeBinderException) { }
+
+                try
+                {
+                    if (options.simple == null)
+                    {
+                        Console.WriteLine("Simple");
                     }
                 }
                 catch (RuntimeBinderException) { }
