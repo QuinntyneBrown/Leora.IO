@@ -5,7 +5,7 @@ namespace Chloe.Server.Exceptions
     public class {{ entityNamePascalCase }}NotFoundException: NotFoundException
     {
         public {{ entityNamePascalCase }}NotFoundException()
-            :base("You Tube Video Not Found")
+            :base("{{ entityNameTitleCase }} Not Found")
         {
         }
 

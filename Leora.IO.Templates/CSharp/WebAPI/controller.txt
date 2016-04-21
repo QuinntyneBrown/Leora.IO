@@ -1,6 +1,8 @@
 ﻿using Chloe.Server.Dtos;
 using Chloe.Server.Services.Contracts;
+using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace Chloe.Server.Controllers
 {
@@ -15,23 +17,28 @@ namespace Chloe.Server.Controllers
 
         [Route("add")]
         [HttpPost]
+		[ResponseType(typeof({{ entityNamePascalCase }}AddOrUpdateResponseDto))]
         public IHttpActionResult Add({{ entityNamePascalCase }}AddOrUpdateRequestDto dto) { return Ok(this.service.AddOrUpdate(dto)); }
 
         [Route("update")]
         [HttpPut]
+		[ResponseType(typeof({{ entityNamePascalCase }}AddOrUpdateResponseDto))]
         public IHttpActionResult Update({{ entityNamePascalCase }}AddOrUpdateRequestDto dto) { return Ok(this.service.AddOrUpdate(dto)); }
 
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
+		[ResponseType(typeof(ICollection<{{ entityNamePascalCase }}Dto>))]
         public IHttpActionResult Get() { return Ok(this.service.Get()); }
 
 		[Route("getById")]
         [HttpGet]
+		[ResponseType(typeof({{ entityNamePascalCase }}Dto))]
         public IHttpActionResult GetById(int id) { return Ok(this.service.GetById(id)); }
         
         [Route("remove")]
         [HttpDelete]
+		[ResponseType(typeof(int))]
         public IHttpActionResult Remove(int id) { return Ok(this.service.Remove(id)); }
 
         protected readonly I{{ entityNamePascalCase }}Service service;

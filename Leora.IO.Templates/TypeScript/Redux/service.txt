@@ -1,5 +1,6 @@
-﻿import { BaseService } from "../core/service";
+﻿import { BaseService, Injectable } from "../core";
 
+@Injectable()
 export class {{ entityNamePascalCase }}Service extends BaseService {
     constructor($q: angular.IQService, apiEndpoint, fetch) {
         super($q, apiEndpoint, fetch)
