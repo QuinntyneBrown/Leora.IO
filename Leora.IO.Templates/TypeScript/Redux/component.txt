@@ -6,6 +6,7 @@ import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCas
     styles: require("./{{ entityNameSnakeCase }}.component.css"),
     selector: "{{ entityNameSnakeCase }}",
     viewProviders: ["{{ entityNameCamelCase }}ActionCreator"],
+	inputs:["{{ entityNameCamelCase }}"],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class {{ entityNamePascalCase }}Component {
