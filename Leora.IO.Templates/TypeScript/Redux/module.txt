@@ -10,8 +10,8 @@ var app = (<any>angular.module("app.{{ entityNameCamelCase }}", [
     "app.core"    
 ]));
 
-provide(app,{{ entityNameCamelCase }}ActionCreator);
-provide(app,{{ entityNameCamelCase }}Service);
+provide(app,{{ entityNamePascalCase }}ActionCreator);
+provide(app,{{ entityNamePascalCase }}Service);
 
 app.component({{ entityNamePascalCase }}Component);
 

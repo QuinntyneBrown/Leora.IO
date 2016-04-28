@@ -13,8 +13,9 @@ var app = (<any>angular.module("app.{{ entityNameCamelCase }}", [
     "app.core"    
 ]));
 
-provide(app,{{ entityNameCamelCase }}ActionCreator);
-provide(app,{{ entityNameCamelCase }}Service);app.component({{ entityNamePascalCase }}EditorComponent);
+provide(app,{{ entityNamePascalCase }}ActionCreator);
+provide(app,{{ entityNamePascalCase }}Service);
+app.component({{ entityNamePascalCase }}EditorComponent);
 app.component({{ entityNamePascalCase }}ListComponent);
 app.component({{ entityNamePascalCase }}Component);
 app.component({{ entityNamePascalCase }}sContainerComponent);
