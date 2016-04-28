@@ -1,5 +1,6 @@
 ﻿require("../core/core.module");
 
+import { provide } from "../core";
 import { {{ entityNamePascalCase }}EditorComponent } from "./{{ entityNameSnakeCase }}-editor.component";
 import { {{ entityNamePascalCase }}ListComponent } from "./{{ entityNameSnakeCase }}-list.component";
 import { {{ entityNamePascalCase }}Component } from "./{{ entityNameSnakeCase }}.component";
@@ -12,9 +13,8 @@ var app = (<any>angular.module("app.{{ entityNameCamelCase }}", [
     "app.core"    
 ]));
 
-app.service("{{ entityNameCamelCase }}ActionCreator",["$location","dispatcher","{{ entityNameCamelCase }}Service","guid",{{ entityNamePascalCase }}ActionCreator]);
-app.service("{{ entityNameCamelCase }}Service",["$q","apiEndpoint","fetch",{{ entityNamePascalCase }}Service]);
-app.component({{ entityNamePascalCase }}EditorComponent);
+provide(app,{{ entityNameCamelCase }}ActionCreator);
+provide(app,{{ entityNameCamelCase }}Service);app.component({{ entityNamePascalCase }}EditorComponent);
 app.component({{ entityNamePascalCase }}ListComponent);
 app.component({{ entityNamePascalCase }}Component);
 app.component({{ entityNamePascalCase }}sContainerComponent);

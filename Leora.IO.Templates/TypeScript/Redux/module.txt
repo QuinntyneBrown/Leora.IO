@@ -1,5 +1,6 @@
 ﻿require("../core/core.module");
 
+import { provide } from "../core";
 import { {{ entityNamePascalCase }}Component } from "./{{ entityNameSnakeCase }}.component";
 import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.actions";
 import { {{ entityNamePascalCase }}Service } from "./{{ entityNameSnakeCase }}.service";
@@ -9,8 +10,9 @@ var app = (<any>angular.module("app.{{ entityNameCamelCase }}", [
     "app.core"    
 ]));
 
-app.service("{{ entityNameCamelCase }}ActionCreator",["$location","dispatcher","{{ entityNameCamelCase }}Service","guid",{{ entityNamePascalCase }}ActionCreator]);
-app.service("{{ entityNameCamelCase }}Service",["$q","apiEndpoint","fetch",{{ entityNamePascalCase }}Service]);
+provide(app,{{ entityNameCamelCase }}ActionCreator);
+provide(app,{{ entityNameCamelCase }}Service);
+
 app.component({{ entityNamePascalCase }}Component);
 
 app.config(["reducersProvider", reducersProvider => {	

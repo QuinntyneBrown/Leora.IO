@@ -1,6 +1,10 @@
-﻿import { IDispatcher } from "../core/store";
+﻿import { IDispatcher, Service } from "../core";
 import { BaseActionCreator } from "../core/action-creator";
 
+@Service({
+	serviceName: "{{ entityNameCamelCase }}ActionCreator",
+	viewProviders:["$location","dispatcher","{{ entityNameCamelCase }}Service", "guid"]
+})
 export class {{ entityNamePascalCase }}ActionCreator extends BaseActionCreator {
     constructor($location: angular.ILocationService, dispatcher: IDispatcher, {{ entityNameCamelCase }}Service, guid) {
         super($location,{{ entityNameCamelCase }}Service,dispatcher,guid,AddOrUpdate{{ entityNamePascalCase }}Action,All{{ entityNamePascalCase }}sAction,Remove{{ entityNamePascalCase }}Action,SetCurrent{{ entityNamePascalCase }}Action)
