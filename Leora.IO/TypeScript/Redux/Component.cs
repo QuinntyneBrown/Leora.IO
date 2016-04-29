@@ -71,6 +71,24 @@ namespace Leora.IO.TypeScript.Redux
             return lines.ToArray();
         }
 
+        public static string[] ListCss(dynamic options)
+        {
+            string entityNameSnakeCase = options.entityNameSnakeCase;
+            string entityNamePascalCase = entityNameSnakeCase.SnakeCaseToPascalCase();
+            string entityNameCamelCase = entityNamePascalCase.CamelCase();
+            var lines = new List<string>();
+            var index = 0;
+            foreach (var line in templateRepository.GetByNameLanguageFramework("list.css", "TypeScript", "Redux").Lines)
+            {
+                var newline = line.Replace("{{ entityNamePascalCase }}", entityNamePascalCase);
+                newline = newline.Replace("{{ entityNameCamelCase }}", entityNameCamelCase);
+                newline = newline.Replace("{{ entityNameSnakeCase }}", entityNameSnakeCase);
+                lines.Add(newline);
+                index++;
+            }
+            return lines.ToArray();
+        }
+
         public static string[] Editor(dynamic options)
         {
             string entityNameSnakeCase = options.entityNameSnakeCase;

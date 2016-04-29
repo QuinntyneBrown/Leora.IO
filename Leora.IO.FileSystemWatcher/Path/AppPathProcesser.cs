@@ -76,7 +76,7 @@ namespace Leora.IO.FileSystemWatcher.Folders
 
                         File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.ts", entityNameSnakeCase), TypeScript.Redux.Component.List(options));
                         File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.html", entityNameSnakeCase), TypeScript.Redux.Component.ListHtml(options));
-                        File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.css", entityNameSnakeCase), new string[0]);
+                        File.WriteAllLines(string.Format(fullPath + @"\{0}-list.component.css", entityNameSnakeCase), TypeScript.Redux.Component.ListCss(options));
 
                         File.WriteAllLines(string.Format(fullPath + @"\{0}s-container.component.ts", entityNameSnakeCase), TypeScript.Redux.Component.Container(options));
                         File.WriteAllLines(string.Format(fullPath + @"\{0}s-container.component.html", entityNameSnakeCase), TypeScript.Redux.Component.ContainerHtml(options));

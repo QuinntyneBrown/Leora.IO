@@ -1,0 +1,18 @@
+﻿.{{ entityNameCamelCase }}-name,
+.{{ entityNameCamelCase }}-actions {
+    position:relative;
+    float:left;
+}
+
+.{{ entityNameCamelCase }}-name {
+    min-width:200px;
+}
+
+.{{ entityNameCamelCase }}-item {
+    height:50px;
+}
+
+.{{ entityNameCamelCase }}-actions {
+    text-transform: uppercase;
+}
+   

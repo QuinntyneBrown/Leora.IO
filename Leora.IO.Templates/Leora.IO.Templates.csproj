@@ -82,6 +82,7 @@
     <Content Include="TypeScript\AngularJS\service.txt" />
     <Content Include="TypeScript\Redux\component.txt" />
     <Content Include="TypeScript\Redux\editor.html.txt" />
+    <Content Include="TypeScript\Redux\list.css.txt" />
     <Content Include="TypeScript\Redux\model.txt" />
     <Content Include="TypeScript\Redux\module-crud.txt" />
     <Content Include="TypeScript\Redux\module.txt" />
