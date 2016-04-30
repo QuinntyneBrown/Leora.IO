@@ -28,6 +28,9 @@ export class {{ entityNamePascalCase }}sContainerComponent {
         if (state.lastTriggeredByAction instanceof actions.SetCurrent{{ entityNamePascalCase }}Action && state.lastTriggeredByAction.entity) 
             this.$location.path("/admin/{{ entityNameLowerCase }}/edit/" + state.lastTriggeredByAction.entity.id);
         
+		if (state.lastTriggeredByAction instanceof actions.AddOrUpdate{{ entityNamePascalCase }}Action)
+            this.entity = new {{ entityNamePascalCase }}();
+
         if (state.lastTriggeredByAction instanceof actions.Remove{{ entityNamePascalCase }}Action && this.entity && this.entity.id) {
             this.entity = pluck({ value: Number(this.$routeParams["{{ entityNameCamelCase }}Id"]), items: this.entities }) as {{ entityNamePascalCase }};
             if (Object.keys(this.entity).length === 0) { this.$location.path("/admin/{{ entityNameLowerCase }}s"); }
@@ -47,6 +50,6 @@ export class {{ entityNamePascalCase }}sContainerComponent {
     create = entity => this.{{ entityNameCamelCase }}ActionCreator.create();
     addOrUpdate = options => this.{{ entityNameCamelCase }}ActionCreator.addOrUpdate({ data: options.data });
 
-    entity;
-    entities;
+    entity: {{ entityNamePascalCase }};
+    entities: Array<{{ entityNamePascalCase }}>;
 }
