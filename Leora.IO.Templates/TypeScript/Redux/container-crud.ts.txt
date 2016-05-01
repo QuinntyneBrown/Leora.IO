@@ -8,7 +8,7 @@ import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
     template: require("./{{ entityNameSnakeCase }}s-container.component.html"),
     styles: [require("./{{ entityNameSnakeCase }}s-container.component.css")],
     selector: "{{ entityNameSnakeCase }}s-container",
-    viewProviders: ["$location","$routeParams","{{ entityNameCamelCase }}ActionCreator"],
+    viewProviders: ["$location","$routeParams","{{ entityNameCamelCase }}ActionCreator","invokeAsync"],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 @CanActivate(["$q", "$route", "invokeAsync", "{{ entityNameCamelCase }}ActionCreator", ($q: angular.IQService, $route: angular.route.IRouteService, invokeAsync, {{ entityNameCamelCase }}ActionCreator: actions.{{ entityNamePascalCase }}ActionCreator) => {
@@ -18,7 +18,7 @@ import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
     return $q.all(promises);
 }])
 export class {{ entityNamePascalCase }}sContainerComponent { 
-    constructor(private $location: angular.ILocationService, private $routeParams: angular.route.IRouteParamsService, private {{ entityNameCamelCase }}ActionCreator: actions.{{ entityNamePascalCase }}ActionCreator) { }
+    constructor(private $location: angular.ILocationService, private $routeParams: angular.route.IRouteParamsService, private {{ entityNameCamelCase }}ActionCreator: actions.{{ entityNamePascalCase }}ActionCreator, private _invokeAsync) { }
     storeOnChange = state => {        
         this.entities = state.{{ entityNameCamelCase }}s;
 
@@ -48,8 +48,18 @@ export class {{ entityNamePascalCase }}sContainerComponent {
     edit = entity => this.{{ entityNameCamelCase }}ActionCreator.edit(entity);
     remove = entity => this.{{ entityNameCamelCase }}ActionCreator.remove(entity);
     create = entity => this.{{ entityNameCamelCase }}ActionCreator.create();
-    addOrUpdate = options => this.{{ entityNameCamelCase }}ActionCreator.addOrUpdate({ data: options.data });
-
+    addOrUpdate = options => {
+        this._invokeAsync({
+            action: this.{{ entityNameCamelCase }}ActionCreator.addOrUpdate,
+            params: { data: options.data }
+        }).then(() => {
+            if (this.$location.path() === "/admin/{{ entityNameLowerCase }}s") {
+                this.entity = new {{ entityNamePascalCase }}();
+            } else {
+                this.$location.path("/admin/{{ entityNameLowerCase }}s")
+            }
+        });        
+    };
     entity: {{ entityNamePascalCase }};
     entities: Array<{{ entityNamePascalCase }}>;
 }

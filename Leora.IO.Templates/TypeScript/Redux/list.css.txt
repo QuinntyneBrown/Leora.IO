@@ -1,18 +1,18 @@
-﻿.{{ entityNameCamelCase }}-name,
-.{{ entityNameCamelCase }}-actions {
+﻿.{{ entityNameCamelCase }}List-name,
+.{{ entityNameCamelCase }}List-actions {
     position:relative;
     float:left;
 }
 
-.{{ entityNameCamelCase }}-name {
+.{{ entityNameCamelCase }}List-name {
     min-width:200px;
 }
 
-.{{ entityNameCamelCase }}-item {
+.{{ entityNameCamelCase }}List-item {
     height:50px;
 }
 
-.{{ entityNameCamelCase }}-actions {
+.{{ entityNameCamelCase }}List-actions {
     text-transform: uppercase;
 }
    
