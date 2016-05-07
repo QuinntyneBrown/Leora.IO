@@ -28,7 +28,7 @@ namespace Leora.IO.FileSystemWatcher.Folders
 
                 foreach (var line in File.ReadAllLines(fullPath))
                 {
-                    if(line.ToLower().Contains("baseentity"))
+                    if(line.Contains(":"))
                     {
                         hasBaseEntity = true;
                     }
