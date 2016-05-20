@@ -1,9 +1,9 @@
-﻿using Leora.Commands.AspNetWebApi2.Contracts;
-using System;
+﻿using System;
+using Leora.Commands.AspNetWebApi2.Contracts;
 
 namespace Leora.Commands.AspNetWebApi2
 {
-    public class GenerateControllerCommand : IGenerateControllerCommand
+    public class GenerateDbContextCommand : IGenerateDbContextCommand
     {
         public int Run(string[] args)
         {
