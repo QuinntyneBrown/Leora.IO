@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Contracts\IGenerateComponentCommand.cs" />
     <Compile Include="GenerateComponentCommand.cs" />
+    <Compile Include="Options\BaseOptions.cs" />
     <Compile Include="Options\GenerateComponentOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

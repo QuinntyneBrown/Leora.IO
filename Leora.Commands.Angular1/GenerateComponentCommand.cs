@@ -16,10 +16,15 @@ namespace Leora.Commands.Angular1
         
         public override int Run(GenerateComponentOptions options)
         {
+            return Run(options.Name, options.Directory);
+        }
+
+        public int Run(string name, string directory)
+        {
             int exitCode = 1;
-            WriteAllLines($"{options.Directory}/{options.Name}.component.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular1Component"), options.Name));
-            WriteAllLines($"{options.Directory}/{options.Name}.component.css", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, "Angular1Component"), options.Name));
-            WriteAllLines($"{options.Directory}/{options.Name}.component.html", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, "Angular1Component"), options.Name));
+            WriteAllLines($"{directory}/{name}.component.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular1Component"), name));
+            WriteAllLines($"{directory}/{name}.component.css", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, "Angular1Component"), name));
+            WriteAllLines($"{directory}/{name}.component.html", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, "Angular1Component"), name));
             return exitCode;
         }
 

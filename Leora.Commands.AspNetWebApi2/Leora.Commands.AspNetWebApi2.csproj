@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,10 +44,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IGenerateControllerCommand.cs" />
+    <Compile Include="Contracts\IGenerateDbContextCommand.cs" />
+    <Compile Include="Contracts\IGenerateDtoCommand.cs" />
+    <Compile Include="Contracts\IGenerateServiceCommand.cs" />
     <Compile Include="GenerateControllerCommand.cs" />
+    <Compile Include="GenerateDbContextCommand.cs" />
     <Compile Include="GenerateDtoCommand.cs" />
     <Compile Include="GenerateServiceCommand.cs" />
+    <Compile Include="GenerateUowCommand.cs" />
+    <Compile Include="Options\BaseOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">
+      <Project>{239C7774-BAB3-4842-B86B-FE813708CE02}</Project>
+      <Name>Leora.Commands.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

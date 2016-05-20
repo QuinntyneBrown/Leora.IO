@@ -44,14 +44,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseCommand.cs" />
     <Compile Include="Contracts\IGenerateActionCreatorCommand.cs" />
     <Compile Include="Contracts\IGenerateComponentCommand.cs" />
+    <Compile Include="Contracts\IGeneratePagedListCommand.cs" />
     <Compile Include="GenerateActionCreatorCommand.cs" />
     <Compile Include="GenerateComponentCommand.cs" />
+    <Compile Include="GenerateContainerCommand.cs" />
     <Compile Include="GenerateCrudFeatureCommand.cs" />
+    <Compile Include="GenerateDataServiceCommand.cs" />
+    <Compile Include="GenerateEditorCommand.cs" />
     <Compile Include="GenerateFeatureCommand.cs" />
+    <Compile Include="GenerateModuleCommand.cs" />
+    <Compile Include="GeneratePagedListCommand.cs" />
+    <Compile Include="GenerateServiceCommand.cs" />
     <Compile Include="GenerateUIComponentCommand.cs" />
+    <Compile Include="Options\BaseOptions.cs" />
+    <Compile Include="Options\GenerateActionCreatorOptions.cs" />
     <Compile Include="Options\GenerateComponentOptions.cs" />
+    <Compile Include="Options\GenerateContainerOptions.cs" />
+    <Compile Include="Options\GenerateCrudFeatureOptions.cs" />
+    <Compile Include="Options\GenerateDataServiceOptions.cs" />
+    <Compile Include="Options\GenerateEditorOptions.cs" />
+    <Compile Include="Options\GenerateFeatureOptions.cs" />
+    <Compile Include="Options\GenerateModuleOptions.cs" />
+    <Compile Include="Options\GeneratePagedListOptions.cs" />
+    <Compile Include="Options\GenerateServiceOptions.cs" />
+    <Compile Include="Options\GenerateUIComponentOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
