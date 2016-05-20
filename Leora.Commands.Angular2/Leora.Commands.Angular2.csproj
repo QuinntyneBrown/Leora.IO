@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FCD1C652-D683-45CD-8FD9-DDEE37B702A5}</ProjectGuid>
+    <ProjectGuid>{29C5A412-7336-45B2-9D3B-2C76DE500F83}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Leora.Commands.AspNetWebApi2</RootNamespace>
-    <AssemblyName>Leora.Commands.AspNetWebApi2</AssemblyName>
+    <RootNamespace>Leora.Commands.Angular2</RootNamespace>
+    <AssemblyName>Leora.Commands.Angular2</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,10 +44,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenerateControllerCommand.cs" />
-    <Compile Include="GenerateDtoCommand.cs" />
-    <Compile Include="GenerateServiceCommand.cs" />
+    <Compile Include="Contracts\IGenerateComponentCommand.cs" />
+    <Compile Include="GenerateComponentCommand.cs" />
+    <Compile Include="Options\GenerateComponentOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">
+      <Project>{239c7774-bab3-4842-b86b-fe813708ce02}</Project>
+      <Name>Leora.Commands.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands\Leora.Commands.csproj">
+      <Project>{62af635d-6669-41d4-be7e-1a7f08771996}</Project>
+      <Name>Leora.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Services.Contracts\Leora.Services.Contracts.csproj">
+      <Project>{a9a20d8a-9e00-40c9-8c4a-ce41a428285a}</Project>
+      <Name>Leora.Services.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Services\Leora.Services.csproj">
+      <Project>{dc37d489-7dfc-4465-89b6-14f4c38a4551}</Project>
+      <Name>Leora.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

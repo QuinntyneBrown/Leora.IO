@@ -37,6 +37,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.Angular1", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.AspNetWebApi2", "Leora.Commands.AspNetWebApi2\Leora.Commands.AspNetWebApi2.csproj", "{FCD1C652-D683-45CD-8FD9-DDEE37B702A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.Angular2", "Leora.Commands.Angular2\Leora.Commands.Angular2.csproj", "{29C5A412-7336-45B2-9D3B-2C76DE500F83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Services", "Leora.Services\Leora.Services.csproj", "{DC37D489-7DFC-4465-89B6-14F4C38A4551}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Services.Contracts", "Leora.Services.Contracts\Leora.Services.Contracts.csproj", "{A9A20D8A-9E00-40C9-8C4A-CE41A428285A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Models", "Leora.Models\Leora.Models.csproj", "{90A53448-6CDD-478B-9060-AE15783E8F8D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +115,22 @@ Global
 		{FCD1C652-D683-45CD-8FD9-DDEE37B702A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCD1C652-D683-45CD-8FD9-DDEE37B702A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCD1C652-D683-45CD-8FD9-DDEE37B702A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29C5A412-7336-45B2-9D3B-2C76DE500F83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29C5A412-7336-45B2-9D3B-2C76DE500F83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29C5A412-7336-45B2-9D3B-2C76DE500F83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29C5A412-7336-45B2-9D3B-2C76DE500F83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC37D489-7DFC-4465-89B6-14F4C38A4551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC37D489-7DFC-4465-89B6-14F4C38A4551}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC37D489-7DFC-4465-89B6-14F4C38A4551}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC37D489-7DFC-4465-89B6-14F4C38A4551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9A20D8A-9E00-40C9-8C4A-CE41A428285A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9A20D8A-9E00-40C9-8C4A-CE41A428285A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9A20D8A-9E00-40C9-8C4A-CE41A428285A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9A20D8A-9E00-40C9-8C4A-CE41A428285A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90A53448-6CDD-478B-9060-AE15783E8F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90A53448-6CDD-478B-9060-AE15783E8F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90A53448-6CDD-478B-9060-AE15783E8F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90A53448-6CDD-478B-9060-AE15783E8F8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
