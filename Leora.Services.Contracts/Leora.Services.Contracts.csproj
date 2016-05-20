@@ -43,6 +43,7 @@
     <Compile Include="INamingConventionConverter.cs" />
     <Compile Include="ITemplateManager.cs" />
     <Compile Include="ITemplateProcessor.cs" />
+    <Compile Include="IZipFileManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
