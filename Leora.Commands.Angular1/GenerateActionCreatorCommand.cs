@@ -1,15 +1,21 @@
-﻿using System;
-using Leora.Commands.Angular1.Contracts;
+﻿using Leora.Commands.Angular1.Contracts;
 using Leora.Commands.Angular1.Options;
-using static CommandLine.Parser;
+using Leora.Services.Contracts;
+using static System.IO.File;
+using Leora.Models;
 
 namespace Leora.Commands.Angular1
 {
-    public class GenerateActionCreatorCommand : IGenerateActionCreatorCommand
+    public class GenerateActionCreatorCommand : BaseCommand<GenerateActionCreatorOptions>, IGenerateActionCreatorCommand
     {
-        public int Run(string[] args)
+        public GenerateActionCreatorCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor)
+            :base(templateManager,templateProcessor) { }
+
+        public override int Run(GenerateActionCreatorOptions options)
         {
-            throw new NotImplementedException();
+            int exitCode = 1;
+            WriteAllLines($"{options.Directory}/{options.Name}.component.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular1ActionCreator"), options.Name));
+            return exitCode;
         }
     }
 }
