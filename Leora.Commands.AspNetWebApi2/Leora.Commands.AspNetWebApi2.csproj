@@ -44,22 +44,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseCommand.cs" />
+    <Compile Include="Contracts\IAspNetWebApi2Command.cs" />
     <Compile Include="Contracts\IGenerateControllerCommand.cs" />
     <Compile Include="Contracts\IGenerateDbContextCommand.cs" />
     <Compile Include="Contracts\IGenerateDtoCommand.cs" />
+    <Compile Include="Contracts\IGenerateExceptionCommand.cs" />
     <Compile Include="Contracts\IGenerateServiceCommand.cs" />
     <Compile Include="GenerateControllerCommand.cs" />
     <Compile Include="GenerateDbContextCommand.cs" />
-    <Compile Include="GenerateDtoCommand.cs" />
+    <Compile Include="GenerateDtosCommand.cs" />
+    <Compile Include="GenerateExceptionCommand.cs" />
     <Compile Include="GenerateServiceCommand.cs" />
     <Compile Include="GenerateUowCommand.cs" />
     <Compile Include="Options\BaseOptions.cs" />
+    <Compile Include="Options\GenerateControllerOptions.cs" />
+    <Compile Include="Options\GenerateDbContextOptions.cs" />
+    <Compile Include="Options\GenerateDtosOptions.cs" />
+    <Compile Include="Options\GenerateExceptionOptions.cs" />
+    <Compile Include="Options\GenerateServiceOptions.cs" />
+    <Compile Include="Options\GenerateUowOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">
       <Project>{239C7774-BAB3-4842-B86B-FE813708CE02}</Project>
       <Name>Leora.Commands.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Models\Leora.Models.csproj">
+      <Project>{90A53448-6CDD-478B-9060-AE15783E8F8D}</Project>
+      <Name>Leora.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Services.Contracts\Leora.Services.Contracts.csproj">
+      <Project>{A9A20D8A-9E00-40C9-8C4A-CE41A428285A}</Project>
+      <Name>Leora.Services.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

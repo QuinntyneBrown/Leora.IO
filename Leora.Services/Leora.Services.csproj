@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DotNetTemplateProcessor.cs" />
     <Compile Include="NamingConventionConverter.cs" />
     <Compile Include="TemplateManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

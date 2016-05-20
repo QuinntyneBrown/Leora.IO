@@ -9,5 +9,10 @@ namespace Leora.Commands.AspNetWebApi2
         {
             throw new NotImplementedException();
         }
+
+        public int Run(string namespacename, string directory, string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

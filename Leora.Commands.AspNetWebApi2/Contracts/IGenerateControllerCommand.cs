@@ -2,7 +2,7 @@
 
 namespace Leora.Commands.AspNetWebApi2.Contracts
 {
-    public interface IGenerateControllerCommand: ICommand
+    public interface IGenerateControllerCommand: IAspNetWebApi2Command
     {
     }
 }

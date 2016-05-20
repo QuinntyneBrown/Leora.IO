@@ -1,8 +1,6 @@
-﻿using Leora.Commands.Contracts;
-
-namespace Leora.Commands.AspNetWebApi2.Contracts
+﻿namespace Leora.Commands.AspNetWebApi2.Contracts
 {
-    public interface IGenerateServiceCommand: ICommand
+    public interface IGenerateServiceCommand: IAspNetWebApi2Command
     {
     }
 }

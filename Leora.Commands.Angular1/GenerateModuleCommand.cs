@@ -18,9 +18,7 @@ namespace Leora.Commands.Angular1
         public int Run(string directory, string name)
         {
             int exitCode = 1;
-            WriteAllLines($"{directory}/{name}.component.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, _componentName), name));
-            WriteAllLines($"{directory}/{name}.component.css", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, _componentName), name));
-            WriteAllLines($"{directory}/{name}.component.html", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, _componentName), name));
+            WriteAllLines($"{directory}/{name}.module.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1Module"), name));
             return exitCode;
         }
 

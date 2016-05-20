@@ -1,20 +1,20 @@
 ﻿using static CommandLine.Parser;
 using Leora.Services.Contracts;
 
-namespace Leora.Commands.Angular1
+namespace Leora.Commands.AspNetWebApi2
 {
-    public abstract class BaseCommand<TOptions> where TOptions: new()
+    public abstract class BaseCommand<TOptions> where TOptions : new()
     {
+        protected readonly IDotNetTemplateProcessor _templateProcessor;
         protected readonly ITemplateManager _templateManager;
-        protected readonly ITemplateProcessor _templateProcessor;
 
-        public BaseCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor)
+        public BaseCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor)
         {
             _templateProcessor = templateProcessor;
             _templateManager = templateManager;
         }
 
-        public int Run(string[] args)
+        public virtual int Run(string[] args)
         {
             var options = new TOptions();
             Default.ParseArguments(args, options);

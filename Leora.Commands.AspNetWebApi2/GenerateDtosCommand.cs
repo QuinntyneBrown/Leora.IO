@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Leora.Commands.AspNetWebApi2
 {
-    public class GenerateDtoCommand
+    public class GenerateDtosCommand
     {
     }
 }

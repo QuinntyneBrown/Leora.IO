@@ -1,13 +1,23 @@
 ﻿using Leora.Commands.AspNetWebApi2.Contracts;
-using System;
+using Leora.Commands.AspNetWebApi2.Options;
+using Leora.Models;
+using Leora.Services.Contracts;
+using static System.IO.File;
 
 namespace Leora.Commands.AspNetWebApi2
 {
-    public class GenerateControllerCommand : IGenerateControllerCommand
+    public class GenerateControllerCommand : BaseCommand<GenerateControllerOptions>, IGenerateControllerCommand
     {
-        public int Run(string[] args)
+        public GenerateControllerCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor)
+            :base(templateManager, templateProcessor) { }
+
+        public override int Run(GenerateControllerOptions options) => Run(options.NameSpace, options.Directory, options.Name);
+        
+        public int Run(string namespacename, string directory, string name)
         {
-            throw new NotImplementedException();
+            int exitCode = 1;
+            WriteAllLines($"{directory}/{name}Controller.cs", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular1Component"), name, namespacename));
+            return exitCode;
         }
     }
 }

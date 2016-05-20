@@ -48,9 +48,15 @@
     <Compile Include="BaseCommand.cs" />
     <Compile Include="Contracts\IGenerateActionCreatorCommand.cs" />
     <Compile Include="Contracts\IGenerateComponentCommand.cs" />
+    <Compile Include="Contracts\IGenerateContainerCommand.cs" />
+    <Compile Include="Contracts\IGenerateCrudFeatureCommand.cs" />
+    <Compile Include="Contracts\IGenerateDataServiceCommand.cs" />
+    <Compile Include="Contracts\IGenerateEditorCommand.cs" />
+    <Compile Include="Contracts\IGenerateFeatureCommand.cs" />
     <Compile Include="Contracts\IGenerateModuleCommand.cs" />
     <Compile Include="Contracts\IGeneratePagedListCommand.cs" />
     <Compile Include="Contracts\IGenerateServiceCommand.cs" />
+    <Compile Include="Contracts\IGenerateUIComponentCommand.cs" />
     <Compile Include="GenerateActionCreatorCommand.cs" />
     <Compile Include="GenerateComponentCommand.cs" />
     <Compile Include="GenerateContainerCommand.cs" />

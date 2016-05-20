@@ -2,7 +2,7 @@
 
 namespace Leora.Commands.AspNetWebApi2.Contracts
 {
-    public interface IGenerateDbContextCommand: ICommand
+    public interface IGenerateDbContextCommand: IAspNetWebApi2Command
     {
     }
 }
