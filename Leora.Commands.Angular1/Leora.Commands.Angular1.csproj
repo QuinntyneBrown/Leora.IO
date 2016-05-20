@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5451BF67-6CE4-4156-B3CA-250C6FE27371}</ProjectGuid>
+    <ProjectGuid>{7701064B-9E44-497B-98BC-2CD18D1486ED}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Leora.Commands.Angular1</RootNamespace>
     <AssemblyName>Leora.Commands.Angular1</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,7 +48,9 @@
     <Compile Include="BaseCommand.cs" />
     <Compile Include="Contracts\IGenerateActionCreatorCommand.cs" />
     <Compile Include="Contracts\IGenerateComponentCommand.cs" />
+    <Compile Include="Contracts\IGenerateModuleCommand.cs" />
     <Compile Include="Contracts\IGeneratePagedListCommand.cs" />
+    <Compile Include="Contracts\IGenerateServiceCommand.cs" />
     <Compile Include="GenerateActionCreatorCommand.cs" />
     <Compile Include="GenerateComponentCommand.cs" />
     <Compile Include="GenerateContainerCommand.cs" />
@@ -74,12 +77,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">
       <Project>{239c7774-bab3-4842-b86b-fe813708ce02}</Project>
       <Name>Leora.Commands.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands\Leora.Commands.csproj">
+      <Project>{62af635d-6669-41d4-be7e-1a7f08771996}</Project>
+      <Name>Leora.Commands</Name>
     </ProjectReference>
     <ProjectReference Include="..\Leora.Models\Leora.Models.csproj">
       <Project>{90a53448-6cdd-478b-9060-ae15783e8f8d}</Project>
@@ -95,6 +99,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,6 +1,7 @@
 ﻿namespace Leora.Commands.Angular1.Options
 {
-    public class GenerateUIComponentOptions
+    public class GenerateUIComponentOptions: BaseOptions
     {
+
     }
 }

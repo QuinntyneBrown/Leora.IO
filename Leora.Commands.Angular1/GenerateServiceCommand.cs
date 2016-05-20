@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Leora.Commands.Angular1.Contracts;
+using Leora.Commands.Angular1.Options;
+using Leora.Models;
+using Leora.Services.Contracts;
+using System;
+using static System.IO.File;
 
 namespace Leora.Commands.Angular1
 {
-    class GenerateServiceCommand
+    public class GenerateServiceCommand : BaseCommand<GenerateServiceOptions>, IGenerateServiceCommand
     {
+        public GenerateServiceCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor)
+            : base(templateManager, templateProcessor)
+        { }
+
+        public override int Run(GenerateServiceOptions options)
+        {
+            int exitCode = 1;
+            WriteAllLines($"{options.Directory}/{options.Name}.component.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1Service"), options.Name));
+            return exitCode;
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Leora.Commands.Angular1.Contracts
 {
-    public interface IGenerateActionCreatorCommand : ICommand
+    public interface IGenerateModuleCommand: ICommand
     {
     }
 }

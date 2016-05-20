@@ -1,9 +1,7 @@
-﻿using Leora.Models;
-
-namespace Leora.Services.Contracts
+﻿namespace Leora.Services.Contracts
 {
     public interface ITemplateManager
     {
-        string[] Get(FileType fileType, string name);
+        string[] Get(Leora.Models.FileType fileType, string name);
     }
 }

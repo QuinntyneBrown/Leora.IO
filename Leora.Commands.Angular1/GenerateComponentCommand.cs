@@ -1,18 +1,16 @@
 ﻿using Leora.Commands.Angular1.Contracts;
-using Leora.Services.Contracts;
-using static System.IO.File;
 using Leora.Commands.Angular1.Options;
 using Leora.Models;
+using Leora.Services.Contracts;
+using System;
+using static System.IO.File;
 
 namespace Leora.Commands.Angular1
 {
     public class GenerateComponentCommand : BaseCommand<GenerateComponentOptions>, IGenerateComponentCommand
     {
         public GenerateComponentCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor)
-            :base(templateManager,templateProcessor)
-        {
-
-        }
+            :base(templateManager,templateProcessor) { }
         
         public override int Run(GenerateComponentOptions options)
         {

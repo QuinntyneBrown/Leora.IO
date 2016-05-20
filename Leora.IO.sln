@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO", "Leora.IO\Leora.IO.csproj", "{1C90AB9D-DC0D-4A40-BB69-FD68BE2DBBD1}"
 EndProject
@@ -33,8 +33,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Legacy", "Legacy", "{19E380
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.Contracts", "Leora.Commands.Contracts\Leora.Commands.Contracts.csproj", "{239C7774-BAB3-4842-B86B-FE813708CE02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.Angular1", "Leora.Commands.Angular1\Leora.Commands.Angular1.csproj", "{5451BF67-6CE4-4156-B3CA-250C6FE27371}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.AspNetWebApi2", "Leora.Commands.AspNetWebApi2\Leora.Commands.AspNetWebApi2.csproj", "{FCD1C652-D683-45CD-8FD9-DDEE37B702A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.Angular2", "Leora.Commands.Angular2\Leora.Commands.Angular2.csproj", "{29C5A412-7336-45B2-9D3B-2C76DE500F83}"
@@ -44,6 +42,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Services.Contracts", "Leora.Services.Contracts\Leora.Services.Contracts.csproj", "{A9A20D8A-9E00-40C9-8C4A-CE41A428285A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Models", "Leora.Models\Leora.Models.csproj", "{90A53448-6CDD-478B-9060-AE15783E8F8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.Angular1", "Leora.Commands.Angular1\Leora.Commands.Angular1.csproj", "{7701064B-9E44-497B-98BC-2CD18D1486ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,10 +107,6 @@ Global
 		{239C7774-BAB3-4842-B86B-FE813708CE02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{239C7774-BAB3-4842-B86B-FE813708CE02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{239C7774-BAB3-4842-B86B-FE813708CE02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5451BF67-6CE4-4156-B3CA-250C6FE27371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5451BF67-6CE4-4156-B3CA-250C6FE27371}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5451BF67-6CE4-4156-B3CA-250C6FE27371}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5451BF67-6CE4-4156-B3CA-250C6FE27371}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FCD1C652-D683-45CD-8FD9-DDEE37B702A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FCD1C652-D683-45CD-8FD9-DDEE37B702A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCD1C652-D683-45CD-8FD9-DDEE37B702A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -131,6 +127,10 @@ Global
 		{90A53448-6CDD-478B-9060-AE15783E8F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90A53448-6CDD-478B-9060-AE15783E8F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90A53448-6CDD-478B-9060-AE15783E8F8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7701064B-9E44-497B-98BC-2CD18D1486ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7701064B-9E44-497B-98BC-2CD18D1486ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7701064B-9E44-497B-98BC-2CD18D1486ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7701064B-9E44-497B-98BC-2CD18D1486ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

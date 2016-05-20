@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Leora.Commands.Contracts;
 
 namespace Leora.Commands.Angular1.Contracts
 {
-    public interface IGeneratePagedListCommand:
+    public interface IGeneratePagedListCommand : ICommand
     {
     }
 }
