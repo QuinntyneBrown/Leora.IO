@@ -5,6 +5,7 @@
         PascalCase,
         CamelCase,
         SnakeCase,
-        TitleCasae,
+        TitleCase,
+        None
     }
 }

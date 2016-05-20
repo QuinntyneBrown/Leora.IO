@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO", "Leora.IO\Leora.IO.csproj", "{1C90AB9D-DC0D-4A40-BB69-FD68BE2DBBD1}"
 EndProject
@@ -44,6 +44,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Models", "Leora.Models\Leora.Models.csproj", "{90A53448-6CDD-478B-9060-AE15783E8F8D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.Angular1", "Leora.Commands.Angular1\Leora.Commands.Angular1.csproj", "{7701064B-9E44-497B-98BC-2CD18D1486ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.React", "Leora.Commands.React\Leora.Commands.React.csproj", "{012098C2-1AD5-49C5-BBBC-5BF58D54C055}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,6 +133,10 @@ Global
 		{7701064B-9E44-497B-98BC-2CD18D1486ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7701064B-9E44-497B-98BC-2CD18D1486ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7701064B-9E44-497B-98BC-2CD18D1486ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{012098C2-1AD5-49C5-BBBC-5BF58D54C055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{012098C2-1AD5-49C5-BBBC-5BF58D54C055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{012098C2-1AD5-49C5-BBBC-5BF58D54C055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{012098C2-1AD5-49C5-BBBC-5BF58D54C055}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

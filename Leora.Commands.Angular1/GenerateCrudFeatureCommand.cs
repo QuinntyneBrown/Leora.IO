@@ -10,10 +10,7 @@ namespace Leora.Commands.Angular1
     public class GenerateCrudFeatureCommand : BaseCommand<GenerateCrudFeatureOptions>, IGenerateComponentCommand
     {
         public GenerateCrudFeatureCommand(ITemplateProcessor templateProcessor, ITemplateManager templateManager)
-            :base(templateManager,templateProcessor)
-        {
-
-        }
+            :base(templateManager,templateProcessor) { }
 
         public override int Run(GenerateCrudFeatureOptions options)
         {

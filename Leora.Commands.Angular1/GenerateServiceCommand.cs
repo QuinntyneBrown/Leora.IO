@@ -16,7 +16,7 @@ namespace Leora.Commands.Angular1
         public override int Run(GenerateServiceOptions options)
         {
             int exitCode = 1;
-            WriteAllLines($"{options.Directory}/{options.Name}.component.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1Service"), options.Name));
+            WriteAllLines($"{options.Directory}/{options.Name}.service.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1Service"), options.Name));
             return exitCode;
         }
     }

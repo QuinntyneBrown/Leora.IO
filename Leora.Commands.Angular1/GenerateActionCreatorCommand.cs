@@ -15,7 +15,7 @@ namespace Leora.Commands.Angular1
         public override int Run(GenerateActionCreatorOptions options)
         {
             int exitCode = 1;
-            WriteAllLines($"{options.Directory}/{options.Name}.component.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1ActionCreator"), options.Name));
+            WriteAllLines($"{options.Directory}/{options.Name}.actions.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1ActionCreator"), options.Name));
             return exitCode;
         }
     }
