@@ -3,18 +3,21 @@ using Leora.Services.Contracts;
 using System.Xml.Linq;
 using System.Linq;
 using System.IO;
+using Leora.Models;
+using System.Collections.Generic;
 
 namespace Leora.Services
 {
     public class ProjectManager : IProjectManager
     {
-        public void Add(string currentDirectory, string fileName)
+        protected readonly XNamespace msbuild = "http://schemas.microsoft.com/developer/msbuild/2003";
+
+        public void Add(string currentDirectory, string fileName, FileType fileType = FileType.TypeScript)
         {
             var relativePathAndProjFile = GetRelativePathAndProjFile($"{currentDirectory}//{fileName}");
-            var csproj = XDocument.Load(relativePathAndProjFile.ProjFile);
-            XNamespace msbuild = "http://schemas.microsoft.com/developer/msbuild/2003";
+            var csproj = XDocument.Load(relativePathAndProjFile.ProjFile);            
             var itemGroups = csproj.Descendants(msbuild + "ItemGroup");
-            var itemGroup = itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "Compile").Any());
+            var itemGroup = GetItemGroup(fileType, itemGroups);
             var item = new XElement(msbuild + "Compile");
             item.SetAttributeValue("Include", relativePathAndProjFile.RelativePath);
             itemGroup.Add(item);
@@ -38,6 +41,18 @@ namespace Leora.Services
                 nestingLevel = nestingLevel + 1;
                 return GetRelativePathAndProjFile(fullFilePath, nestingLevel);
             }
+        }
+
+        public XElement GetItemGroup (FileType fileType, IEnumerable<XElement> itemGroups)
+        {
+            if (fileType == FileType.TypeScript)
+                return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "TypeScriptCompile").Any());
+
+            if (fileType == FileType.Cs)
+                return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "Compile").Any());
+
+            return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "Content").Any());
+            
         }
     }
 

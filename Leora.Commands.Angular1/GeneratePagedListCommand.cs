@@ -8,8 +8,9 @@ namespace Leora.Commands.Angular1
 {
     public class GeneratePagedListCommand : BaseCommand<GeneratePagedListOptions>, IGeneratePagedListCommand
     {
-        public GeneratePagedListCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter)
-            :base(templateManager,templateProcessor) {
+
+        public GeneratePagedListCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
+            :base(templateManager,templateProcessor,namingConventionConverter, projectManager) {
 
         }
 
@@ -27,9 +28,9 @@ namespace Leora.Commands.Angular1
             WriteAllLines($"{directory}\\{cssFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, _componentName, "Angular1"), name));
             WriteAllLines($"{directory}\\{htmlFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, _componentName, "Angular1"), name));
 
-            _projectManager.Add(directory, typeScriptFileName);
-            _projectManager.Add(directory, cssFileName);
-            _projectManager.Add(directory, htmlFileName);
+            _projectManager.Add(directory, typeScriptFileName, FileType.TypeScript);
+            _projectManager.Add(directory, cssFileName, FileType.Css);
+            _projectManager.Add(directory, htmlFileName, FileType.Html);
 
             return exitCode;
         }
