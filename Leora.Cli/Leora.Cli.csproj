@@ -68,6 +68,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Leora.Commands.Angular1\Leora.Commands.Angular1.csproj">
+      <Project>{7701064b-9e44-497b-98bc-2cd18d1486ed}</Project>
+      <Name>Leora.Commands.Angular1</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">
+      <Project>{239c7774-bab3-4842-b86b-fe813708ce02}</Project>
+      <Name>Leora.Commands.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands\Leora.Commands.csproj">
+      <Project>{62AF635D-6669-41D4-BE7E-1A7F08771996}</Project>
+      <Name>Leora.Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Models\Leora.Models.csproj">
       <Project>{90a53448-6cdd-478b-9060-ae15783e8f8d}</Project>
       <Name>Leora.Models</Name>
