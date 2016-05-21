@@ -24,6 +24,8 @@ namespace Leora.Cli
             _commands = new Dictionary<string, Func<string[], int>>
             {
                 ["help"] = HelpCommand.Run,
+                ["generate-angular-action-creator"] = _container.Resolve<IGenerateActionCreatorCommand>().Run,
+                ["generate-angular-component"] = _container.Resolve<IGenerateComponentCommand>().Run,
                 ["generate-angular-paged-list"] = _container.Resolve<IGeneratePagedListCommand>().Run
             };
         }

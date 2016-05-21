@@ -1,1 +1,16 @@
-﻿
+﻿import { IDispatcher, BaseActionCreator, Service } from "../core";
+import { ModalActionCreator } from "../modal/modal.actions";
+
+@Service({
+    serviceName: "{{ entityNameCamelCase }}ActionCreator",
+    viewProviders: ["$location", "dispatcher", "guid", "invokeAsync","modalActionCreator"]
+})
+export class {{ entityNamePascalCase }}ActionCreator extends BaseActionCreator {
+    constructor(dispatcher: IDispatcher, guid, private invokeAsync, private modalActionCreator: ModalActionCreator) {
+        
+    }    
+
+}
+
+
+

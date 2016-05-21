@@ -7,11 +7,19 @@ namespace Leora.Commands.Angular1
     {
         protected readonly ITemplateManager _templateManager;
         protected readonly ITemplateProcessor _templateProcessor;
+        protected readonly INamingConventionConverter _namingConventionConverter;
 
-        public BaseCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor)
+        public BaseCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter)
         {
             _templateProcessor = templateProcessor;
             _templateManager = templateManager;
+            _namingConventionConverter = namingConventionConverter;
+        }
+
+        public BaseCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor)
+            :this(templateManager,templateProcessor,null)
+        {
+ 
         }
 
         public int Run(string[] args)
