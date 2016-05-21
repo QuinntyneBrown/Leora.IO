@@ -1,5 +1,6 @@
 ﻿using Leora.Commands;
 using Leora.Commands.Angular1.Contracts;
+using Leora.Services.Contracts;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,14 @@ namespace Leora.Cli
         private readonly Dictionary<string, Func<string[], int>> _commands;
 
         static void Main(string[] args)
-        {
+        {            
             new Program().ProcessArgs(args);
         }
 
         public Program()
         {
             _container = UnityConfiguration.GetContainer();
+
             _commands = new Dictionary<string, Func<string[], int>>
             {
                 ["help"] = HelpCommand.Run,
