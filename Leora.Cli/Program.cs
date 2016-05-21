@@ -1,6 +1,5 @@
 ﻿using Leora.Commands;
 using Leora.Commands.Angular1.Contracts;
-using Leora.Services.Contracts;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
@@ -28,6 +27,8 @@ namespace Leora.Cli
                 ["help"] = HelpCommand.Run,
                 ["generate-angular-action-creator"] = _container.Resolve<IGenerateActionCreatorCommand>().Run,
                 ["generate-angular-component"] = _container.Resolve<IGenerateComponentCommand>().Run,
+                ["generate-angular-container"] = _container.Resolve<IGenerateContainerCommand>().Run,
+                ["generate-angular-module"] = _container.Resolve<IGenerateModuleCommand>().Run,
                 ["generate-angular-paged-list"] = _container.Resolve<IGeneratePagedListCommand>().Run
             };
         }

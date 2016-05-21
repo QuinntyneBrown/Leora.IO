@@ -20,6 +20,8 @@ namespace Leora.Cli
             container.RegisterType<IGenerateActionCreatorCommand, GenerateActionCreatorCommand>();
             container.RegisterType<IGeneratePagedListCommand, GeneratePagedListCommand>();
             container.RegisterType<IGenerateComponentCommand, GenerateComponentCommand>();
+            container.RegisterType<IGenerateContainerCommand, GenerateContainerCommand>();
+            container.RegisterType<IGenerateModuleCommand, GenerateModuleCommand>();
 
             return container;
         }

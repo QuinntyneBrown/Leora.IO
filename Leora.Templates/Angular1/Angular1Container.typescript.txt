@@ -1,0 +1,65 @@
+﻿import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
+import * as actions from "./{{ entityNameSnakeCase }}.actions";
+import { pluck } from "../core/pluck";
+import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
+
+@Component({
+    routes: ["/admin/{{ entityNameLowerCase }}s","/admin/{{ entityNameLowerCase }}/edit/:{{ entityNameCamelCase }}Id"],
+    template: require("./{{ entityNameSnakeCase }}s-container.component.html"),
+    styles: [require("./{{ entityNameSnakeCase }}s-container.component.css")],
+    selector: "{{ entityNameSnakeCase }}s-container",
+    viewProviders: ["$location","$routeParams","{{ entityNameCamelCase }}ActionCreator","invokeAsync"],
+	changeDetection: ChangeDetectionStrategy.OnPush
+})
+@CanActivate(["$q", "$route", "invokeAsync", "{{ entityNameCamelCase }}ActionCreator", ($q: angular.IQService, $route: angular.route.IRouteService, invokeAsync, {{ entityNameCamelCase }}ActionCreator: actions.{{ entityNamePascalCase }}ActionCreator) => {
+    var {{ entityNameCamelCase }}Id = $route.current.params.{{ entityNameCamelCase }}Id;
+    var promises = [invokeAsync({{ entityNameCamelCase }}ActionCreator.all)];
+    if ({{ entityNameCamelCase }}Id) { promises.push(invokeAsync({ action: {{ entityNameCamelCase }}ActionCreator.getById, params: { id: {{ entityNameCamelCase }}Id } })) };
+    return $q.all(promises);
+}])
+export class {{ entityNamePascalCase }}sContainerComponent { 
+    constructor(private $location: angular.ILocationService, private $routeParams: angular.route.IRouteParamsService, private {{ entityNameCamelCase }}ActionCreator: actions.{{ entityNamePascalCase }}ActionCreator, private _invokeAsync) { }
+    storeOnChange = state => {        
+        this.entities = state.{{ entityNameCamelCase }}s;
+
+		if (state.lastTriggeredByAction instanceof actions.SetCurrent{{ entityNamePascalCase }}Action && !state.lastTriggeredByAction.entity) 
+            this.$location.path("/admin/{{ entityNameLowerCase }}s");
+
+        if (state.lastTriggeredByAction instanceof actions.SetCurrent{{ entityNamePascalCase }}Action && state.lastTriggeredByAction.entity) 
+            this.$location.path("/admin/{{ entityNameLowerCase }}/edit/" + state.lastTriggeredByAction.entity.id);
+        
+		if (state.lastTriggeredByAction instanceof actions.AddOrUpdate{{ entityNamePascalCase }}Action)
+            this.entity = new {{ entityNamePascalCase }}();
+
+        if (state.lastTriggeredByAction instanceof actions.Remove{{ entityNamePascalCase }}Action && this.entity && this.entity.id) {
+            this.entity = pluck({ value: Number(this.$routeParams["{{ entityNameCamelCase }}Id"]), items: this.entities }) as {{ entityNamePascalCase }};
+            if (Object.keys(this.entity).length === 0) { this.$location.path("/admin/{{ entityNameLowerCase }}s"); }
+        }
+    }
+
+    ngOnInit = () => {
+        if (this.$routeParams["{{ entityNameCamelCase }}Id"]) {
+            this.entity = pluck({ value: Number(this.$routeParams["{{ entityNameCamelCase }}Id"]), items: this.entities }) as {{ entityNamePascalCase }};
+        } else {
+            this.entity = new {{ entityNamePascalCase }}();
+        }
+    }
+
+    edit = entity => this.{{ entityNameCamelCase }}ActionCreator.edit(entity);
+    remove = entity => this.{{ entityNameCamelCase }}ActionCreator.remove(entity);
+    create = entity => this.{{ entityNameCamelCase }}ActionCreator.create();
+    addOrUpdate = options => {
+        this._invokeAsync({
+            action: this.{{ entityNameCamelCase }}ActionCreator.addOrUpdate,
+            params: { data: options.data }
+        }).then(() => {
+            if (this.$location.path() === "/admin/{{ entityNameLowerCase }}s") {
+                this.entity = new {{ entityNamePascalCase }}();
+            } else {
+                this.$location.path("/admin/{{ entityNameLowerCase }}s")
+            }
+        });        
+    };
+    entity: {{ entityNamePascalCase }};
+    entities: Array<{{ entityNamePascalCase }}>;
+}

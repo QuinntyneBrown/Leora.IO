@@ -1,0 +1,25 @@
+﻿require("../core/core.module");
+
+import { provide } from "../core";
+import { {{ entityNamePascalCase }}EditorComponent } from "./{{ entityNameSnakeCase }}-editor.component";
+import { {{ entityNamePascalCase }}ListComponent } from "./{{ entityNameSnakeCase }}-list.component";
+import { {{ entityNamePascalCase }}Component } from "./{{ entityNameSnakeCase }}.component";
+import { {{ entityNamePascalCase }}sContainerComponent } from "./{{ entityNameSnakeCase }}s-container.component";
+import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.actions";
+import { {{ entityNamePascalCase }}Service } from "./{{ entityNameSnakeCase }}.service";
+import *  as reducers from "./{{ entityNameSnakeCase }}.reducers";
+
+var app = (<any>angular.module("app.{{ entityNameCamelCase }}", [
+    "app.core"    
+]));
+
+provide(app,{{ entityNamePascalCase }}ActionCreator);
+provide(app,{{ entityNamePascalCase }}Service);
+app.component({{ entityNamePascalCase }}EditorComponent);
+app.component({{ entityNamePascalCase }}ListComponent);
+app.component({{ entityNamePascalCase }}Component);
+app.component({{ entityNamePascalCase }}sContainerComponent);
+
+app.config(["reducersProvider", reducersProvider => {	
+    for (var reducer in reducers) { reducersProvider.configure(reducers[reducer]); }
+}]);

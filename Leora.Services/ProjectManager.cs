@@ -18,7 +18,7 @@ namespace Leora.Services
             var csproj = XDocument.Load(relativePathAndProjFile.ProjFile);            
             var itemGroups = csproj.Descendants(msbuild + "ItemGroup");
             var itemGroup = GetItemGroup(fileType, itemGroups);
-            var item = new XElement(msbuild + "Compile");
+            var item = GetItem(fileType);
             item.SetAttributeValue("Include", relativePathAndProjFile.RelativePath);
             itemGroup.Add(item);
             csproj.Save(relativePathAndProjFile.ProjFile);
@@ -43,15 +43,28 @@ namespace Leora.Services
             }
         }
 
+        public XElement GetItem(FileType fileType)
+        {
+            if(fileType == FileType.TypeScript)
+                return new XElement(msbuild + "TypeScriptCompile");
+
+            if (fileType == FileType.Css || fileType == FileType.Html)
+                return new XElement(msbuild + "Content");
+
+            return new XElement(msbuild + "Compile");
+        }
         public XElement GetItemGroup (FileType fileType, IEnumerable<XElement> itemGroups)
         {
             if (fileType == FileType.TypeScript)
                 return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "TypeScriptCompile").Any());
 
+            if (fileType == FileType.Css || fileType == FileType.Html)
+                return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "Content").Any());
+
             if (fileType == FileType.Cs)
                 return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "Compile").Any());
 
-            return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "Content").Any());
+            throw new NotImplementedException();
             
         }
     }

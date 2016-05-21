@@ -3,12 +3,10 @@ import { ModalActionCreator } from "../modal/modal.actions";
 
 @Service({
     serviceName: "{{ entityNameCamelCase }}ActionCreator",
-    viewProviders: ["$location", "dispatcher", "guid", "invokeAsync","modalActionCreator"]
+    viewProviders: ["dispatcher", "guid", "invokeAsync","modalActionCreator"]
 })
-export class {{ entityNamePascalCase }}ActionCreator extends BaseActionCreator {
-    constructor(dispatcher: IDispatcher, guid, private invokeAsync, private modalActionCreator: ModalActionCreator) {
-        
-    }    
+export class {{ entityNamePascalCase }}ActionCreator {
+    constructor(private dispatcher: IDispatcher, private guid, private invokeAsync, private modalActionCreator: ModalActionCreator) { }    
 
 }
 

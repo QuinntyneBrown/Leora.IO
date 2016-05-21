@@ -2,26 +2,35 @@
 using Leora.Commands.Angular1.Options;
 using Leora.Models;
 using Leora.Services.Contracts;
-using System;
 using static System.IO.File;
 
 namespace Leora.Commands.Angular1
 {
     public class GenerateModuleCommand : BaseCommand<GenerateModuleOptions>, IGenerateModuleCommand
     {
-        public GenerateModuleCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor)
-            : base(templateManager, templateProcessor)
-        { }
+        public GenerateModuleCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
+            : base(templateManager, templateProcessor, namingConventionConverter, projectManager) { }
 
-        public override int Run(GenerateModuleOptions options) => Run(options.Directory, options.Name);
+        public override int Run(GenerateModuleOptions options) => Run(options.Name, options.Directory, options.Crud);
 
-        public int Run(string directory, string name)
+        public int Run(string name, string directory, bool crud)
         {
             int exitCode = 1;
-            WriteAllLines($"{directory}/{name}.module.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1Module"), name));
+
+            var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
+            var typeScriptFileName = $"{ snakeCaseName }-module.component.ts";
+
+            WriteAllLines($"{directory}/{ typeScriptFileName }.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, GetTemplateName(crud)), name));
+
+            _projectManager.Add(directory, typeScriptFileName, FileType.TypeScript);
+
             return exitCode;
         }
 
-        private readonly string _componentName = "Angular1ModuleComponent";
+        public string GetTemplateName(bool crud)
+        {
+            return crud ? "Angular1ModuleCrud"
+                : "Angular1Module";
+        }
     }
 }
