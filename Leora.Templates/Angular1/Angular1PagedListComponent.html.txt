@@ -1,6 +1,6 @@
 ﻿<div class="{{ entityNameSnakeCase }}-paged-list">
     <div class="{{ entityNameSnakeCase }}-paged-list-header">
-        <h1>{{ entityNameTitleCase }}</h1>
+        <h1>{{ entityNameTitleCase }}s</h1>
     </div>
 
     <div class="paged-list-navigation">

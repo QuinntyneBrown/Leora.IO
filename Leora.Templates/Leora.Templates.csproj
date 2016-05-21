@@ -49,6 +49,10 @@
     <EmbeddedResource Include="Angular1\Angular1PagedListComponent.html.txt" />
     <EmbeddedResource Include="Angular1\Angular1PagedListComponent.typescript.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Angular1\Angular1ActionCreator.typescript.txt" />
+    <EmbeddedResource Include="Angular1\Angular1Service.typescript.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

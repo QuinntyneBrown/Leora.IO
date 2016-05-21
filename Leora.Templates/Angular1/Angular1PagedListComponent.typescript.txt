@@ -16,7 +16,7 @@ export class {{ entityNamePascalCase }}PagedListComponent {
     ngOnInit = () => {
         //TODO: Sometimes nul here
         if (this.entities)
-            this.pagedList = toPageListFromInMemory<Article>(this.entities, this.pageNumber, this.pageSize)
+            this.pagedList = toPageListFromInMemory<{{ entityNamePascalCase }}>(this.entities, this.pageNumber, this.pageSize)
     };
 
     entities: Array<{{ entityNamePascalCase }}>;
