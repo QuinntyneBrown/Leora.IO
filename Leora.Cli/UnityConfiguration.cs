@@ -15,6 +15,7 @@ namespace Leora.Cli
             container.RegisterType<ITemplateManager, TemplateManager>();
             container.RegisterType<ITemplateProcessor, TemplateProcessor>();
             container.RegisterType<IDotNetTemplateProcessor, DotNetTemplateProcessor>();
+            container.RegisterType<IProjectManager, ProjectManager>();
 
             container.RegisterType<IGenerateActionCreatorCommand, GenerateActionCreatorCommand>();
             container.RegisterType<IGeneratePagedListCommand, GeneratePagedListCommand>();

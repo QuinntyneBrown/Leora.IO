@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="IDotNetTemplateProcessor.cs" />
     <Compile Include="INamingConventionConverter.cs" />
+    <Compile Include="IProjectManager.cs" />
     <Compile Include="ITemplateManager.cs" />
     <Compile Include="ITemplateProcessor.cs" />
     <Compile Include="IZipFileManager.cs" />

@@ -8,11 +8,9 @@ namespace Leora.Commands.Angular1
 {
     public class GeneratePagedListCommand : BaseCommand<GeneratePagedListOptions>, IGeneratePagedListCommand
     {
-        protected readonly INamingConventionConverter _namingConventionConverter;
-
         public GeneratePagedListCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter)
             :base(templateManager,templateProcessor) {
-            _namingConventionConverter = namingConventionConverter;
+
         }
 
         public override int Run(GeneratePagedListOptions options) => Run(options.Directory, options.Name);
@@ -21,9 +19,18 @@ namespace Leora.Commands.Angular1
         {
             int exitCode = 1;
             name = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
-            WriteAllLines($"{directory}\\{name}-paged-list.component.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, _componentName, "Angular1"), name));
-            WriteAllLines($"{directory}\\{name}-paged-list.component.css", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, _componentName, "Angular1"), name));
-            WriteAllLines($"{directory}\\{name}-paged-list.component.html", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, _componentName, "Angular1"), name));
+            var typeScriptFileName = $"{name}-paged-list.component.ts";
+            var cssFileName = $"{name}-paged-list.component.css";
+            var htmlFileName = $"{name}-paged-list.component.html";
+
+            WriteAllLines($"{directory}\\{typeScriptFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, _componentName, "Angular1"), name));
+            WriteAllLines($"{directory}\\{cssFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, _componentName, "Angular1"), name));
+            WriteAllLines($"{directory}\\{htmlFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, _componentName, "Angular1"), name));
+
+            _projectManager.Add(directory, typeScriptFileName);
+            _projectManager.Add(directory, cssFileName);
+            _projectManager.Add(directory, htmlFileName);
+
             return exitCode;
         }
 
