@@ -1,0 +1,44 @@
+﻿import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
+import { toPageListFromInMemory } from "../paged-list/to-paged-list-from-in-memory";
+import { IPagedList } from "../paged-list/ipaged-list.d";
+import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
+
+@Component({
+    template: require("./{{ entityNameSnakeCase }}-paged-list.component.html"),
+    styles: [require("./{{ entityNameSnakeCase }}-paged-list.component.css")],
+    selector: "{{ entityNameSnakeCase }}-paged-list",
+    inputs: ['entities', 'edit', 'remove', 'pageNumber', 'pageSize'],
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class {{ entityNamePascalCase }}PagedListComponent {
+    constructor() { }
+
+    ngOnInit = () => {
+        //TODO: Sometimes nul here
+        if (this.entities)
+            this.pagedList = toPageListFromInMemory<Article>(this.entities, this.pageNumber, this.pageSize)
+    };
+
+    entities: Array<{{ entityNamePascalCase }}>;
+    pagedList: IPagedList<{{ entityNamePascalCase }}>;
+    pageNumber: number;
+    pageSize: number;
+
+    next = () => {
+        if (this.pageNumber == this.pagedList.totalPages) {
+            this.pageNumber = 1;
+        } else {
+            this.pageNumber = this.pageNumber + 1;
+        }
+        this.ngOnInit();
+    }
+
+    previous = () => {
+        if (this.pageNumber == 1) {
+            this.pageNumber = this.pagedList.totalPages;
+        } else {
+            this.pageNumber = this.pageNumber - 1;
+        }
+        this.ngOnInit();
+    }
+}

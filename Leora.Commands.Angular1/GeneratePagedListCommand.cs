@@ -8,17 +8,22 @@ namespace Leora.Commands.Angular1
 {
     public class GeneratePagedListCommand : BaseCommand<GeneratePagedListOptions>, IGeneratePagedListCommand
     {
-        public GeneratePagedListCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor)
-            :base(templateManager,templateProcessor) { }
+        protected readonly INamingConventionConverter _namingConventionConverter;
+
+        public GeneratePagedListCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter)
+            :base(templateManager,templateProcessor) {
+            _namingConventionConverter = namingConventionConverter;
+        }
 
         public override int Run(GeneratePagedListOptions options) => Run(options.Directory, options.Name);
 
         public int Run(string directory, string name)
         {
             int exitCode = 1;
-            WriteAllLines($"{directory}/{name}.component.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, _componentName), name));
-            WriteAllLines($"{directory}/{name}.component.css", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, _componentName), name));
-            WriteAllLines($"{directory}/{name}.component.html", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, _componentName), name));
+            name = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
+            WriteAllLines($"{directory}\\{name}-paged-list.component.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, _componentName, "Angular1"), name));
+            WriteAllLines($"{directory}\\{name}-paged-list.component.css", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, _componentName, "Angular1"), name));
+            WriteAllLines($"{directory}\\{name}-paged-list.component.html", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, _componentName, "Angular1"), name));
             return exitCode;
         }
 

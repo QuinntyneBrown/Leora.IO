@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leora.Models
+namespace Leora.Templates
 {
-    public enum FileType
+    public class Program
     {
-        TypeScript,
-        Css,
-        Html,
-        Cs
+        public static string Message = "hi;";
     }
 }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using static System.Console;
+
 namespace Leora.Cli
 {
     public class Program
@@ -13,7 +14,7 @@ namespace Leora.Cli
         private readonly Dictionary<string, Func<string[], int>> _commands;
 
         static void Main(string[] args)
-        {            
+        {
             new Program().ProcessArgs(args);
         }
 
@@ -72,10 +73,7 @@ namespace Leora.Cli
             return exitCode;
         }
 
-        private static bool IsArg(string candidate, string longName)
-        {
-            return IsArg(candidate, shortName: null, longName: longName);
-        }
+        private static bool IsArg(string candidate, string longName) => IsArg(candidate, shortName: null, longName: longName);
 
         private static bool IsArg(string candidate, string shortName, string longName)
         {

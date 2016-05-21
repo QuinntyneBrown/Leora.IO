@@ -1,0 +1,27 @@
+﻿<div class="{{ entityNameSnakeCase }}-paged-list">
+    <div class="{{ entityNameSnakeCase }}-paged-list-header">
+        <h1>{{ entityNameTitleCase }}</h1>
+    </div>
+
+    <div class="paged-list-navigation">
+        <span>{{ vm.pageNumber }}</span>
+        <span>of</span>
+        <span>{{ vm.pagedList.totalPages }}</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span data-ng-click="vm.previous()" class="previous">previous</span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span data-ng-click="vm.next()" class="next">next</span>
+    </div>
+
+    <div data-ng-repeat="entity in vm.pagedList.data" class="{{ entityNameSnakeCase }}-paged-list-item">
+        <div class="{{ entityNameSnakeCase }}-paged-list-name">
+            {{ entity.name }}
+        </div>
+        <div class="{{ entityNameSnakeCase }}-paged-list-actions">
+            <span data-ng-click="vm.edit({ entity: this.entity })">edit</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span data-ng-click="vm.remove({ entity: this.entity })">remove</span>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+
+
+</div>

@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Leora.Cli</RootNamespace>
-    <AssemblyName>Leora.Cli</AssemblyName>
+    <AssemblyName>leora</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -91,6 +91,10 @@
     <ProjectReference Include="..\Leora.Services\Leora.Services.csproj">
       <Project>{dc37d489-7dfc-4465-89b6-14f4c38a4551}</Project>
       <Name>Leora.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Templates\Leora.Templates.csproj">
+      <Project>{caf0382e-8a4f-490d-9ceb-3c0506c027c2}</Project>
+      <Name>Leora.Templates</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

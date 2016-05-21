@@ -1,4 +1,6 @@
-﻿using Leora.Services;
+﻿using Leora.Commands.Angular1;
+using Leora.Commands.Angular1.Contracts;
+using Leora.Services;
 using Leora.Services.Contracts;
 using Microsoft.Practices.Unity;
 
@@ -10,6 +12,10 @@ namespace Leora.Cli
         {
             var container = new UnityContainer();
             container.RegisterType<INamingConventionConverter, NamingConventionConverter>();
+            container.RegisterType<ITemplateManager, TemplateManager>();
+            container.RegisterType<ITemplateProcessor, TemplateProcessor>();
+            container.RegisterType<IDotNetTemplateProcessor, DotNetTemplateProcessor>();
+            container.RegisterType<IGeneratePagedListCommand, GeneratePagedListCommand>();
             return container;
         }
     }

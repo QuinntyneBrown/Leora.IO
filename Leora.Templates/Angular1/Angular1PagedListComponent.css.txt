@@ -1,0 +1,21 @@
+﻿.{{ entityNameSnakeCase }}-paged-list-name,
+.{{ entityNameSnakeCase }}-paged-list-actions {
+    position:relative;
+    float:left;
+}
+
+.{{ entityNameSnakeCase }}-paged-list-name {
+    min-width:200px;
+}
+
+.{{ entityNameSnakeCase }}-paged-list-item {
+    height:50px;
+}
+
+.{{ entityNameSnakeCase }}-paged-list-actions {
+    text-transform: uppercase;
+}
+   
+.{{ entityNameSnakeCase }}-paged-list-actions span {
+    cursor:pointer;
+}

@@ -2,6 +2,6 @@
 {
     public interface ITemplateManager
     {
-        string[] Get(Leora.Models.FileType fileType, string name);
+        string[] Get(Leora.Models.FileType fileType, string name, string framework = null);
     }
 }
