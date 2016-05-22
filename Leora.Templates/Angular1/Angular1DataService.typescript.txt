@@ -1,0 +1,15 @@
+﻿import { BaseService, Injectable, Service } from "../core";
+
+@Injectable()
+@Service({
+	serviceName: "{{ entityNameCamelCase }}Service",
+	viewProviders: ["$q","apiEndpoint","fetch"]
+})
+export class {{ entityNamePascalCase }}Service {
+    constructor(private $q: angular.IQService, private apiEndpoint, private fetch) {
+        
+    }
+
+    get baseUri() { return this.apiEndpoint.getBaseUrl() + "/v1/{{ entityNameCamelCase }}"; }
+
+}

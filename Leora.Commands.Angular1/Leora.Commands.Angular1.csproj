@@ -53,6 +53,7 @@
     <Compile Include="Contracts\IGenerateDataServiceCommand.cs" />
     <Compile Include="Contracts\IGenerateEditorCommand.cs" />
     <Compile Include="Contracts\IGenerateFeatureCommand.cs" />
+    <Compile Include="Contracts\IGenerateModelCommand.cs" />
     <Compile Include="Contracts\IGenerateModuleCommand.cs" />
     <Compile Include="Contracts\IGeneratePagedListCommand.cs" />
     <Compile Include="Contracts\IGenerateServiceCommand.cs" />
@@ -61,9 +62,9 @@
     <Compile Include="GenerateComponentCommand.cs" />
     <Compile Include="GenerateContainerCommand.cs" />
     <Compile Include="GenerateCrudFeatureCommand.cs" />
-    <Compile Include="GenerateDataServiceCommand.cs" />
     <Compile Include="GenerateEditorCommand.cs" />
     <Compile Include="GenerateFeatureCommand.cs" />
+    <Compile Include="GenerateModelCommand.cs" />
     <Compile Include="GenerateModuleCommand.cs" />
     <Compile Include="GeneratePagedListCommand.cs" />
     <Compile Include="GenerateServiceCommand.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Options\GenerateDataServiceOptions.cs" />
     <Compile Include="Options\GenerateEditorOptions.cs" />
     <Compile Include="Options\GenerateFeatureOptions.cs" />
+    <Compile Include="Options\GenerateModelOptions.cs" />
     <Compile Include="Options\GenerateModuleOptions.cs" />
     <Compile Include="Options\GeneratePagedListOptions.cs" />
     <Compile Include="Options\GenerateServiceOptions.cs" />

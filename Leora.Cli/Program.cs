@@ -28,8 +28,10 @@ namespace Leora.Cli
                 ["generate-angular-action-creator"] = _container.Resolve<IGenerateActionCreatorCommand>().Run,
                 ["generate-angular-component"] = _container.Resolve<IGenerateComponentCommand>().Run,
                 ["generate-angular-container"] = _container.Resolve<IGenerateContainerCommand>().Run,
+                ["generate-angular-model"] = _container.Resolve<IGenerateModelCommand>().Run,
                 ["generate-angular-module"] = _container.Resolve<IGenerateModuleCommand>().Run,
-                ["generate-angular-paged-list"] = _container.Resolve<IGeneratePagedListCommand>().Run
+                ["generate-angular-paged-list"] = _container.Resolve<IGeneratePagedListCommand>().Run,
+                ["generate-angular-service"] = _container.Resolve<IGenerateServiceCommand>().Run,
             };
         }
 
