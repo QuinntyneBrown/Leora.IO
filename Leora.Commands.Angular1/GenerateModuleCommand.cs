@@ -18,9 +18,9 @@ namespace Leora.Commands.Angular1
             int exitCode = 1;
 
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
-            var typeScriptFileName = $"{ snakeCaseName }-module.component.ts";
+            var typeScriptFileName = $"{ snakeCaseName }.module.ts";
 
-            WriteAllLines($"{directory}/{ typeScriptFileName }.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, GetTemplateName(crud)), name));
+            WriteAllLines($"{directory}//{ typeScriptFileName }", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, GetTemplateName(crud), "Angular1"), name));
 
             _projectManager.Add(directory, typeScriptFileName, FileType.TypeScript);
 

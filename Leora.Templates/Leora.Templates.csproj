@@ -71,11 +71,17 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Angular1\Angular1DataService.typescript.txt" />
-    <Content Include="Angular1\Angular1Container.css.txt" />
-    <Content Include="Angular1\Angular1Container.html.txt" />
-    <Content Include="Angular1\Angular1Container.typescript.txt" />
+    <EmbeddedResource Include="Angular1\Angular1Container.css.txt" />
+    <EmbeddedResource Include="Angular1\Angular1Container.html.txt" />
+    <EmbeddedResource Include="Angular1\Angular1Container.typescript.txt" />
     <EmbeddedResource Include="Angular1\Angular1Model.typescript.txt" />
-    <Content Include="Angular1\Angular1ModuleCrud.typescript.txt" />
+    <EmbeddedResource Include="Angular1\Angular1ListComponent.css.txt" />
+    <EmbeddedResource Include="Angular1\Angular1ListComponent.html.txt" />
+    <EmbeddedResource Include="Angular1\Angular1ListComponent.typescript.txt" />
+    <EmbeddedResource Include="Angular1\Angular1EditorComponent.css.txt" />
+    <EmbeddedResource Include="Angular1\Angular1EditorComponent.html.txt" />
+    <EmbeddedResource Include="Angular1\Angular1EditorComponent.typescript.txt" />
+    <EmbeddedResource Include="Angular1\Angular1ModuleCrud.typescript.txt" />
     <EmbeddedResource Include="Angular1\Angular1Service.typescript.txt" />
     <EmbeddedResource Include="Angular1\Angular1Reducers.typescript.txt" />
     <EmbeddedResource Include="Angular1\Angular1ReducersCrud.typescript.txt" />

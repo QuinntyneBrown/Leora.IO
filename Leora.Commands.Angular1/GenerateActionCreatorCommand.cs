@@ -11,9 +11,9 @@ namespace Leora.Commands.Angular1
         public GenerateActionCreatorCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
             :base(templateManager,templateProcessor, namingConventionConverter,projectManager) { }
 
-        public override int Run(GenerateActionCreatorOptions options) => Run(options.Directory, options.Name, options.Crud);
+        public override int Run(GenerateActionCreatorOptions options) => Run(options.Name, options.Directory, options.Crud);
 
-        public int Run(string directory, string name, bool crud)
+        public int Run(string name, string directory, bool crud)
         {
             int exitCode = 1;
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);

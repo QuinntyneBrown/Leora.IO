@@ -2,7 +2,7 @@
 
 namespace Leora.Commands.Angular1.Contracts
 {
-    public interface IGeneratePagedListCommand : ICommand
+    public interface IGenerateListCommand : ICommand
     {
         int Run(string name, string directory);
     }

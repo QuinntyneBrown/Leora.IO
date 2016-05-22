@@ -6,24 +6,24 @@ using static System.IO.File;
 
 namespace Leora.Commands.Angular1
 {
-    public class GenerateEditorCommand : BaseCommand<GenerateEditorOptions>, IGenerateEditorCommand
+    public class GenerateListCommand : BaseCommand<GenerateListOptions>, IGenerateListCommand
     {
 
-        public GenerateEditorCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
+        public GenerateListCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
             : base(templateManager, templateProcessor, namingConventionConverter, projectManager)
         {
 
         }
 
-        public override int Run(GenerateEditorOptions options) => Run(options.Name, options.Directory);
+        public override int Run(GenerateListOptions options) => Run(options.Name, options.Directory);
 
         public int Run(string name, string directory)
         {
             int exitCode = 1;
             name = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
-            var typeScriptFileName = $"{name}-editor.component.ts";
-            var cssFileName = $"{name}-editor.component.css";
-            var htmlFileName = $"{name}-editor.component.html";
+            var typeScriptFileName = $"{name}-list.component.ts";
+            var cssFileName = $"{name}-list.component.css";
+            var htmlFileName = $"{name}-list.component.html";
 
             WriteAllLines($"{directory}\\{typeScriptFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, _componentName, "Angular1"), name));
             WriteAllLines($"{directory}\\{cssFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, _componentName, "Angular1"), name));
@@ -36,6 +36,6 @@ namespace Leora.Commands.Angular1
             return exitCode;
         }
 
-        private readonly string _componentName = "Angular1EditorComponent";
+        private readonly string _componentName = "Angular1ListComponent";
     }
 }

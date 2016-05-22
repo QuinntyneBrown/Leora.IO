@@ -25,13 +25,16 @@ namespace Leora.Cli
             _commands = new Dictionary<string, Func<string[], int>>
             {
                 ["help"] = HelpCommand.Run,
-                ["generate-angular-action-creator"] = _container.Resolve<IGenerateActionCreatorCommand>().Run,
-                ["generate-angular-component"] = _container.Resolve<IGenerateComponentCommand>().Run,
-                ["generate-angular-container"] = _container.Resolve<IGenerateContainerCommand>().Run,
-                ["generate-angular-model"] = _container.Resolve<IGenerateModelCommand>().Run,
-                ["generate-angular-module"] = _container.Resolve<IGenerateModuleCommand>().Run,
-                ["generate-angular-paged-list"] = _container.Resolve<IGeneratePagedListCommand>().Run,
-                ["generate-angular-service"] = _container.Resolve<IGenerateServiceCommand>().Run,
+                ["ng-action-creator"] = _container.Resolve<IGenerateActionCreatorCommand>().Run,
+                ["ng-component"] = _container.Resolve<IGenerateComponentCommand>().Run,
+                ["ng-container"] = _container.Resolve<IGenerateContainerCommand>().Run,
+                ["ng-editor"] = _container.Resolve<IGenerateEditorCommand>().Run,
+                ["ng-feature"] = _container.Resolve<IGenerateFeatureCommand>().Run,
+                ["ng-list"] = _container.Resolve<IGenerateListCommand>().Run,
+                ["ng-model"] = _container.Resolve<IGenerateModelCommand>().Run,
+                ["ng-module"] = _container.Resolve<IGenerateModuleCommand>().Run,
+                ["ng-paged-list"] = _container.Resolve<IGeneratePagedListCommand>().Run,
+                ["ng-service"] = _container.Resolve<IGenerateServiceCommand>().Run,
             };
         }
 
