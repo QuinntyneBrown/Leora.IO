@@ -36,7 +36,7 @@ namespace Leora.Services
                     return "typescript";
                 case FileType.Html:
                     return "html";
-                case FileType.Cs:
+                case FileType.CSharp:
                     return "cs";
             }
             throw new NotImplementedException();

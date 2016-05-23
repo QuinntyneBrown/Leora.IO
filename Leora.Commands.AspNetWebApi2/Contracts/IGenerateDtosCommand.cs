@@ -1,6 +1,6 @@
 ﻿namespace Leora.Commands.AspNetWebApi2.Contracts
 {
-    public interface IGenerateDtoCommand: IAspNetWebApi2Command
+    public interface IGenerateDtosCommand: IAspNetWebApi2Command
     {
     }
 }

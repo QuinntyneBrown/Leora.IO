@@ -61,7 +61,7 @@ namespace Leora.Services
             if (fileType == FileType.Css || fileType == FileType.Html)
                 return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "Content").Any());
 
-            if (fileType == FileType.Cs)
+            if (fileType == FileType.CSharp)
                 return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "Compile").Any());
 
             throw new NotImplementedException();

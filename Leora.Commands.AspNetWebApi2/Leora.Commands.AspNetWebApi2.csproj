@@ -48,13 +48,15 @@
     <Compile Include="Contracts\IAspNetWebApi2Command.cs" />
     <Compile Include="Contracts\IGenerateControllerCommand.cs" />
     <Compile Include="Contracts\IGenerateDbContextCommand.cs" />
-    <Compile Include="Contracts\IGenerateDtoCommand.cs" />
+    <Compile Include="Contracts\IGenerateDtosCommand.cs" />
     <Compile Include="Contracts\IGenerateExceptionCommand.cs" />
+    <Compile Include="Contracts\IGenerateModelCommand.cs" />
     <Compile Include="Contracts\IGenerateServiceCommand.cs" />
     <Compile Include="GenerateControllerCommand.cs" />
     <Compile Include="GenerateDbContextCommand.cs" />
     <Compile Include="GenerateDtosCommand.cs" />
     <Compile Include="GenerateExceptionCommand.cs" />
+    <Compile Include="GenerateModelCommand.cs" />
     <Compile Include="GenerateServiceCommand.cs" />
     <Compile Include="GenerateUowCommand.cs" />
     <Compile Include="Options\BaseOptions.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="Options\GenerateDbContextOptions.cs" />
     <Compile Include="Options\GenerateDtosOptions.cs" />
     <Compile Include="Options\GenerateExceptionOptions.cs" />
+    <Compile Include="Options\GenerateModelOptions.cs" />
     <Compile Include="Options\GenerateServiceOptions.cs" />
     <Compile Include="Options\GenerateUowOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
