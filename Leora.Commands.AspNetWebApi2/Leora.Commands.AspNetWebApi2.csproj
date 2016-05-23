@@ -75,6 +75,10 @@
       <Project>{90A53448-6CDD-478B-9060-AE15783E8F8D}</Project>
       <Name>Leora.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Leora.Services.AspNetWebApi2\Leora.Services.AspNetWebApi2.csproj">
+      <Project>{bce03bdf-ebcc-4328-82e9-ec67ca529076}</Project>
+      <Name>Leora.Services.AspNetWebApi2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Services.Contracts\Leora.Services.Contracts.csproj">
       <Project>{A9A20D8A-9E00-40C9-8C4A-CE41A428285A}</Project>
       <Name>Leora.Services.Contracts</Name>

@@ -20,7 +20,7 @@ namespace Leora.Commands.Angular1
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
             var typeScriptFileName = $"{ snakeCaseName }.module.ts";
 
-            WriteAllLines($"{directory}//{ typeScriptFileName }", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, GetTemplateName(crud), "Angular1"), name));
+            WriteAllLines($"{directory}//{ typeScriptFileName }", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, GetTemplateName(crud), BluePrintType.Angular1), name));
 
             _projectManager.Add(directory, typeScriptFileName, FileType.TypeScript);
 

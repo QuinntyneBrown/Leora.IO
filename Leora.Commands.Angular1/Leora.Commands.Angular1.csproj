@@ -100,6 +100,10 @@
       <Project>{90a53448-6cdd-478b-9060-ae15783e8f8d}</Project>
       <Name>Leora.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Leora.Services.Angular1\Leora.Services.Angular1.csproj">
+      <Project>{92dba871-9779-4e38-ac8f-8955d371ae80}</Project>
+      <Name>Leora.Services.Angular1</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Services.Contracts\Leora.Services.Contracts.csproj">
       <Project>{a9a20d8a-9e00-40c9-8c4a-ce41a428285a}</Project>
       <Name>Leora.Services.Contracts</Name>

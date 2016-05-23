@@ -1,6 +1,7 @@
 ﻿using Leora.Commands.Angular1.Contracts;
 using Leora.Commands.Angular1.Options;
 using Leora.Models;
+using Leora.Services.Angular1.Contracts;
 using Leora.Services.Contracts;
 using System;
 using static System.IO.Directory;
@@ -18,10 +19,12 @@ namespace Leora.Commands.Angular1
         protected readonly IGenerateListCommand _generateListCommand;
         protected readonly IGenerateEditorCommand _generateEditorCommand;
 
+        protected readonly IMainManager _mainManager;
 
         public GenerateFeatureCommand(ITemplateManager templateManager, 
             ITemplateProcessor templateProcessor, 
             INamingConventionConverter namingConventionConverter, 
+            IMainManager mainManager,
             IProjectManager projectManager,
             IGenerateModelCommand generateModelCommand,
             IGenerateModuleCommand generateModuleCommand,
@@ -34,6 +37,8 @@ namespace Leora.Commands.Angular1
             )
             : base(templateManager, templateProcessor, namingConventionConverter, projectManager)
         {
+            _mainManager = mainManager;
+
             _generateModelCommand = generateModelCommand;
             _generateModuleCommand = generateModuleCommand;
             _generateContainerCommand = generateContainerCommand;
@@ -44,31 +49,32 @@ namespace Leora.Commands.Angular1
             _generateEditorCommand = generateEditorCommand;
         }
 
-        public override int Run(GenerateFeatureOptions options)
-        {
-            return Run(options.Name, options.Directory, options.Crud);
-        }
+        public override int Run(GenerateFeatureOptions options) => Run(options.Name, options.Directory, options.Crud);
 
         public int Run(string name, string directory, bool crud)
         {
             var exitCode = 1;
 
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
-            var newDirectory = $"{directory}\\{snakeCaseName}";
-            CreateDirectory(newDirectory);
+            var path = $"{directory}\\{snakeCaseName}";
+            CreateDirectory(path);
 
-            _generateModelCommand.Run(name, newDirectory);
-            _generateModuleCommand.Run(name, newDirectory, crud);
-            _generateContainerCommand.Run(name, newDirectory);
-            _generateActionCreatorCommand.Run(name, newDirectory, crud);
-            _generateComponentCommand.Run(name, newDirectory);
+            _generateModelCommand.Run(name, path);
+            _generateModuleCommand.Run(name, path, crud);
+            _generateContainerCommand.Run(name, path);
+            _generateActionCreatorCommand.Run(name, path, crud);
+            _generateComponentCommand.Run(name, path);
 
             if (crud)
             {
-                _generateServiceCommand.Run(name, newDirectory, true, false);
-                _generateListCommand.Run(name, newDirectory);
-                _generateEditorCommand.Run(name, newDirectory);
+                _generateServiceCommand.Run(name, path, true, false);
+                _generateListCommand.Run(name, path);
+                _generateEditorCommand.Run(name, path);
             }
+
+            _mainManager.AddToModules(name);
+            _mainManager.AddToRoutes(name);
+
             return exitCode;
         }
     }

@@ -23,10 +23,10 @@ namespace Leora.Commands.Angular1
             var filePath = $"{directory}//{typeScriptFileName}";
 
             if (crud)
-                WriteAllLines(filePath, _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1DataServiceCrud", "Angular1"), name));
+                WriteAllLines(filePath, _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1DataServiceCrud", BluePrintType.Angular1), name));
 
             if (data)
-                WriteAllLines(filePath, _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1DataService", "Angular1"), name));
+                WriteAllLines(filePath, _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1DataService", BluePrintType.Angular1), name));
 
             if (!crud && !data)
                 WriteAllLines(filePath, _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1Service","Angular1"), name));

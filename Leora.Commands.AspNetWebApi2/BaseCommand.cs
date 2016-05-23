@@ -5,13 +5,17 @@ namespace Leora.Commands.AspNetWebApi2
 {
     public abstract class BaseCommand<TOptions> where TOptions : new()
     {
-        protected readonly IDotNetTemplateProcessor _templateProcessor;
         protected readonly ITemplateManager _templateManager;
+        protected readonly IDotNetTemplateProcessor _templateProcessor;
+        protected readonly INamingConventionConverter _namingConventionConverter;
+        protected readonly IProjectManager _projectManager;
 
-        public BaseCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor)
+        public BaseCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
         {
             _templateProcessor = templateProcessor;
             _templateManager = templateManager;
+            _namingConventionConverter = namingConventionConverter;
+            _projectManager = projectManager;
         }
 
         public virtual int Run(string[] args)

@@ -24,9 +24,9 @@ namespace Leora.Commands.Angular1
             var baseFilePath = $"{directory}//{snakeCaseName}";
 
             
-            WriteAllLines($"{baseFilePath}.component.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular1Component", "Angular1"), name));
-            WriteAllLines($"{baseFilePath}.component.css", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, "Angular1Component", "Angular1"), name));
-            WriteAllLines($"{baseFilePath}.component.html", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, "Angular1Component", "Angular1"), name));
+            WriteAllLines($"{baseFilePath}.component.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular1Component", BluePrintType.Angular1), name));
+            WriteAllLines($"{baseFilePath}.component.css", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, "Angular1Component", BluePrintType.Angular1), name));
+            WriteAllLines($"{baseFilePath}.component.html", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, "Angular1Component", BluePrintType.Angular1), name));
 
             _projectManager.Add(directory, typeScriptFileName, FileType.TypeScript);
             _projectManager.Add(directory, cssFileName, FileType.Css);

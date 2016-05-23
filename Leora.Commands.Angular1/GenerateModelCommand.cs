@@ -21,7 +21,7 @@ namespace Leora.Commands.Angular1
             var typeScriptFileName = $"{snakeCaseName}.model.ts";
             var baseFilePath = $"{directory}//{snakeCaseName}";
 
-            WriteAllLines($"{baseFilePath}.model.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular1Model", "Angular1"), name));
+            WriteAllLines($"{baseFilePath}.model.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular1Model", BluePrintType.Angular1), name));
 
             _projectManager.Add(directory, typeScriptFileName, FileType.TypeScript);
 
