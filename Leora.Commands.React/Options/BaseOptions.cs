@@ -1,7 +1,7 @@
 ﻿using CommandLine;
 using static System.Environment;
 
-namespace Leora.Commands.Angular1.Options
+namespace Leora.Commands.React.Options
 {
     public class BaseOptions
     {

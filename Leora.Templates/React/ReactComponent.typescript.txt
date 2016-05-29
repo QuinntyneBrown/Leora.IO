@@ -1,0 +1,29 @@
+﻿import * as React from 'react';
+import * as classNames from 'classnames';
+
+interface I{{ entityNamePascalCase }}Props extends React.Props<any> {
+  onClick?: () => void;
+  type?: string;
+  className?: string;
+  id?: string;
+};
+
+export default function {{ entityNamePascalCase }}({
+  onClick = null,
+  type = '{{ entityNameCamelCase }}',
+  className = '',
+  id = '',
+  children = null
+}: I{{ entityNamePascalCase }}Props) {
+  const {{ entityNameCamelCase }}Classes = classNames('{{ entityNameSnakeCase }}', '{{ entityNameSnakeCase }}-primary', className);
+
+  return (
+    <{{ entityNameSnakeCase }}
+      id={ id }
+      type={ type }
+      className={ {{ entityNameCamelCase }}Classes }
+      onClick={ onClick }>
+      { children }
+    </{{ entityNameSnakeCase }}>
+  );
+}

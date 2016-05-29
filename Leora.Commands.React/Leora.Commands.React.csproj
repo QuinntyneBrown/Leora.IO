@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,12 +44,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BaseCommand.cs" />
+    <Compile Include="Contracts\IGenerateComponentCommand.cs" />
+    <Compile Include="GenerateComponentCommand.cs" />
+    <Compile Include="Options\BaseOptions.cs" />
+    <Compile Include="Options\GenerateComponentOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Contracts\" />
-    <Folder Include="Options\" />
+    <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">
+      <Project>{239c7774-bab3-4842-b86b-fe813708ce02}</Project>
+      <Name>Leora.Commands.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Models\Leora.Models.csproj">
+      <Project>{90a53448-6cdd-478b-9060-ae15783e8f8d}</Project>
+      <Name>Leora.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Services.Contracts\Leora.Services.Contracts.csproj">
+      <Project>{a9a20d8a-9e00-40c9-8c4a-ce41a428285a}</Project>
+      <Name>Leora.Services.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Services\Leora.Services.csproj">
+      <Project>{dc37d489-7dfc-4465-89b6-14f4c38a4551}</Project>
+      <Name>Leora.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Templates\Leora.Templates.csproj">
+      <Project>{caf0382e-8a4f-490d-9ceb-3c0506c027c2}</Project>
+      <Name>Leora.Templates</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

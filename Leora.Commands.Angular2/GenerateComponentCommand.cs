@@ -18,7 +18,6 @@ namespace Leora.Commands.Angular2
         {
             var options = new GenerateComponentOptions();
             Default.ParseArguments(args, options);
-
             return 1;
         }
     }

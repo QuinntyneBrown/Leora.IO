@@ -58,7 +58,6 @@
   <ItemGroup>
     <Folder Include="Angular2\" />
     <Folder Include="AspNetWebApi2\" />
-    <Folder Include="React\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Angular1\Angular1Component.css.txt" />
@@ -86,6 +85,9 @@
     <EmbeddedResource Include="Angular1\Angular1Reducers.typescript.txt" />
     <EmbeddedResource Include="Angular1\Angular1ReducersCrud.typescript.txt" />
     <EmbeddedResource Include="Angular1\Angular1Module.typescript.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="React\ReactComponent.typescript.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

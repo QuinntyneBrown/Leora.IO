@@ -26,7 +26,10 @@ namespace Leora.Cli
             container.RegisterType<IGenerateServiceCommand, GenerateServiceCommand>();
             container.RegisterType<IGenerateEditorCommand, GenerateEditorCommand>();
             container.RegisterType<IGenerateListCommand, GenerateListCommand>();
-            container.RegisterType<IGenerateFeatureCommand, GenerateFeatureCommand>();
+            //container.RegisterType<IGenerateFeatureCommand, GenerateFeatureCommand>();
+
+
+            container.RegisterType<Leora.Commands.React.Contracts.IGenerateComponentCommand, Leora.Commands.React.GenerateComponentCommand>();
 
             return container;
         }
