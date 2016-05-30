@@ -1,5 +1,4 @@
 ﻿import * as React from 'react';
-import * as classNames from 'classnames';
 
 interface I{{ entityNamePascalCase }}Props extends React.Props<any> {
   onClick?: () => void;
@@ -15,15 +14,10 @@ export default function {{ entityNamePascalCase }}({
   id = '',
   children = null
 }: I{{ entityNamePascalCase }}Props) {
-  const {{ entityNameCamelCase }}Classes = classNames('{{ entityNameSnakeCase }}', '{{ entityNameSnakeCase }}-primary', className);
-
   return (
-    <{{ entityNameSnakeCase }}
+    <div>
       id={ id }
-      type={ type }
-      className={ {{ entityNameCamelCase }}Classes }
-      onClick={ onClick }>
-      { children }
-    </{{ entityNameSnakeCase }}>
+	  onClick={ onClick }>
+    </div>
   );
 }

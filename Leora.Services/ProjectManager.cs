@@ -15,13 +15,17 @@ namespace Leora.Services
         public void Add(string currentDirectory, string fileName, FileType fileType = FileType.TypeScript)
         {
             var relativePathAndProjFile = GetRelativePathAndProjFile($"{currentDirectory}//{fileName}");
-            var csproj = XDocument.Load(relativePathAndProjFile.ProjFile);            
-            var itemGroups = csproj.Descendants(msbuild + "ItemGroup");
-            var itemGroup = GetItemGroup(fileType, itemGroups);
-            var item = GetItem(fileType);
-            item.SetAttributeValue("Include", relativePathAndProjFile.RelativePath);
-            itemGroup.Add(item);
-            csproj.Save(relativePathAndProjFile.ProjFile);
+
+            if (relativePathAndProjFile != null)
+            {
+                var csproj = XDocument.Load(relativePathAndProjFile.ProjFile);
+                var itemGroups = csproj.Descendants(msbuild + "ItemGroup");
+                var itemGroup = GetItemGroup(fileType, itemGroups);
+                var item = GetItem(fileType);
+                item.SetAttributeValue("Include", relativePathAndProjFile.RelativePath);
+                itemGroup.Add(item);
+                csproj.Save(relativePathAndProjFile.ProjFile);
+            }
         }
         
         public RelativePathAndProjFile GetRelativePathAndProjFile(string fullFilePath, int nestingLevel = 0)
@@ -67,17 +71,5 @@ namespace Leora.Services
             throw new NotImplementedException();
             
         }
-    }
-
-    public class RelativePathAndProjFile
-    {
-        public RelativePathAndProjFile(string fileName, string relativePath, string projFile)
-        {
-            this.RelativePath = $@"{relativePath}\{fileName}";
-            this.ProjFile = projFile;
-        }
-
-        public string RelativePath { get; set; }
-        public string ProjFile { get; set; }
     }
 }
