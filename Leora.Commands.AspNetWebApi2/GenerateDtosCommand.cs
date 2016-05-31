@@ -8,8 +8,12 @@ namespace Leora.Commands.AspNetWebApi2
 {
     public class GenerateDtosCommand : BaseCommand<GenerateDtosOptions>, IGenerateDtosCommand
     {
-        public GenerateDtosCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
-            : base(templateManager, templateProcessor, namingConventionConverter, projectManager) { }
+        public GenerateDtosCommand(ITemplateManager templateManager, 
+            IDotNetTemplateProcessor templateProcessor, 
+            INamingConventionConverter namingConventionConverter, 
+            INamespaceManager namespaceManager,
+            IProjectManager projectManager)
+            : base(templateManager, templateProcessor, namingConventionConverter, namespaceManager, projectManager) { }
 
         public override int Run(GenerateDtosOptions options) => Run(options.NameSpace, options.Directory, options.Name);
 

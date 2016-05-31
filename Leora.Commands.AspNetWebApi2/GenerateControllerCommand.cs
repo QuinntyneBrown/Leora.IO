@@ -8,8 +8,8 @@ namespace Leora.Commands.AspNetWebApi2
 {
     public class GenerateControllerCommand : BaseCommand<GenerateControllerOptions>, IGenerateControllerCommand
     {
-        public GenerateControllerCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
-            :base(templateManager,templateProcessor, namingConventionConverter, projectManager) { }
+        public GenerateControllerCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, INamespaceManager namespaceManager, IProjectManager projectManager)
+            :base(templateManager,templateProcessor, namingConventionConverter, namespaceManager, projectManager) { }
 
         public override int Run(GenerateControllerOptions options) => Run(options.NameSpace, options.Directory, options.Name);
         

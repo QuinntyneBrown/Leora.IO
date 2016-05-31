@@ -7,8 +7,12 @@ namespace Leora.Commands.AspNetWebApi2
 {
     public class GenerateExceptionCommand : BaseCommand<GenerateExceptionOptions>, IGenerateExceptionCommand
     {
-        public GenerateExceptionCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
-            :base(templateManager,templateProcessor, namingConventionConverter, projectManager) { }
+        public GenerateExceptionCommand(ITemplateManager templateManager, 
+            IDotNetTemplateProcessor templateProcessor, 
+            INamingConventionConverter namingConventionConverter, 
+            INamespaceManager namespaceManager,
+            IProjectManager projectManager)
+            :base(templateManager,templateProcessor, namingConventionConverter, namespaceManager, projectManager) { }
 
         public override int Run(GenerateExceptionOptions options)
         {

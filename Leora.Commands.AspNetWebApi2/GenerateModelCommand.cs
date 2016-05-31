@@ -9,8 +9,12 @@ namespace Leora.Commands.AspNetWebApi2
 {
     public class GenerateModelCommand : BaseCommand<GenerateModelOptions>, IGenerateModelCommand
     {
-        public GenerateModelCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
-            :base(templateManager,templateProcessor, namingConventionConverter, projectManager) { }
+        public GenerateModelCommand(ITemplateManager templateManager, 
+            IDotNetTemplateProcessor templateProcessor, 
+            INamingConventionConverter namingConventionConverter,
+            INamespaceManager namespaceManager, 
+            IProjectManager projectManager)
+            :base(templateManager,templateProcessor, namingConventionConverter, namespaceManager, projectManager) { }
 
         public override int Run(GenerateModelOptions options) => Run(options.NameSpace, options.Directory, options.Name);
         
