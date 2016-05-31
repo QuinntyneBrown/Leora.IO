@@ -1,7 +1,9 @@
-﻿namespace Leora.Services.Contracts
+﻿using Leora.Models;
+
+namespace Leora.Services.Contracts
 {
     public interface INamespaceManager
     {
-        string GetNamespace(string path);
+        FileNamespace GetNamespace(string path);
     }
 }

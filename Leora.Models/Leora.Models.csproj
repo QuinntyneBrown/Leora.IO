@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BluePrintType.cs" />
+    <Compile Include="FileNamespace.cs" />
     <Compile Include="FileType.cs" />
     <Compile Include="NamingConvention.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

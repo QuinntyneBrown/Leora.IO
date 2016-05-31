@@ -1,11 +1,12 @@
 ﻿using Leora.Services.Contracts;
-using static System.IO.Directory;
-using static System.IO.Path;
 using System.Linq;
 using static System.String;
 using static System.Xml.Linq.XDocument;
+using static System.IO.Directory;
+using static System.IO.Path;
 using System.Xml.Linq;
 using System.Collections.Generic;
+using Leora.Models;
 
 namespace Leora.Services
 {
@@ -13,29 +14,22 @@ namespace Leora.Services
     {
         protected readonly XNamespace msbuild = "http://schemas.microsoft.com/developer/msbuild/2003";
 
-        public string GetNamespace(string path)
+        public FileNamespace GetNamespace(string path)
         {
-            var namespaces = new List<string>();
             var projectPath = GetProjectPath(path);
-            var csproj = Load(projectPath);
-            var projectGroups = csproj.Descendants(msbuild + "PropertyGroup");
-            var rootNamespaceNode = projectGroups.Descendants(msbuild + "RootNamespace").First();
-            namespaces.Add((string)rootNamespaceNode.Value);
-            foreach(var ns in GetSubNamespaces(path, projectPath))
-                namespaces.Add(ns);
-            return Join(".", namespaces);            
+            var projectGroups = Load(projectPath).Descendants(msbuild + "PropertyGroup");
+            var rootNamespace = projectGroups.Descendants(msbuild + "RootNamespace").First().Value;            
+            return new FileNamespace() { Namespace = $"{rootNamespace}.{Join(".",GetSubNamespaces(path,projectPath))}", RootNamespace = rootNamespace };
         }
 
         public string GetProjectPath(string path, int depth = 0)
         {
             var directories = GetDirectoryName(path).Split(DirectorySeparatorChar);
-            var newDirectories = directories.Take(directories.Length - depth).ToArray();
+            var newDirectories = directories.Take(directories.Length - depth);
             var computedPath = Join(DirectorySeparatorChar.ToString(), newDirectories);
             var projectFiles = GetFiles(computedPath, "*.csproj");
-            if (projectFiles.FirstOrDefault() != null)
-                return projectFiles.First();
             depth = depth + 1;
-            return GetProjectPath(path, depth);
+            return (projectFiles.FirstOrDefault() != null) ? projectFiles.First() : GetProjectPath(path, depth);
         }
 
         public List<string> GetSubNamespaces(string path, string projectPath)

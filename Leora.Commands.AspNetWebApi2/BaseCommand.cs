@@ -24,7 +24,8 @@ namespace Leora.Commands.AspNetWebApi2
         {
             var options = new TOptions();
             Default.ParseArguments(args, options);
-            options.NameSpace = _namespaceManager.GetNamespace(options.Directory);
+            options.NameSpace = _namespaceManager.GetNamespace(options.Directory).Namespace;
+            options.RootNamespace = _namespaceManager.GetNamespace(options.Directory).RootNamespace;
             return Run(options);
         }
 

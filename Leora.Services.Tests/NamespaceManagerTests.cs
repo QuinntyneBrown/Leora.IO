@@ -18,7 +18,8 @@ namespace Leora.Services.Tests
         public void TestGetNamespaceMethod()
         {
             var ns = _namespaceManager.GetNamespace(@"C:\projects\e-commerce\Server\Attributes\ChloeHandleErrorAttribute.cs");
-            Assert.AreEqual(ns, "Chloe.Server.Attributes");
+            Assert.AreEqual(ns.Namespace, "Chloe.Server.Attributes");
+            Assert.AreEqual(ns.RootNamespace, "Chloe");
         }
     }
 }

@@ -11,14 +11,14 @@ namespace Leora.Commands.AspNetWebApi2
         public GenerateControllerCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, INamespaceManager namespaceManager, IProjectManager projectManager)
             :base(templateManager,templateProcessor, namingConventionConverter, namespaceManager, projectManager) { }
 
-        public override int Run(GenerateControllerOptions options) => Run(options.NameSpace, options.Directory, options.Name);
+        public override int Run(GenerateControllerOptions options) => Run(options.NameSpace, options.Directory, options.Name, options.RootNamespace);
         
-        public int Run(string namespacename, string directory, string name)
+        public int Run(string namespacename, string directory, string name, string rootNamespace)
         {
             int exitCode = 1;
             var pascalCaseName = $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Controller.cs";
             
-            WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, BluePrintType.AspNetWebApi2), name, namespacename));
+            WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
 
             _projectManager.Add(directory, $"{pascalCaseName}", FileType.CSharp);
 

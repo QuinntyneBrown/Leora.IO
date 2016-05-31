@@ -2,6 +2,6 @@
 {
     public interface IDotNetTemplateProcessor
     {
-        string[] ProcessTemplate(string[] template, string name, string namespacename);
+        string[] ProcessTemplate(string[] template, string name, string namespacename, string rootNamespace);
     }
 }
