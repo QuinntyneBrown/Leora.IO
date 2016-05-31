@@ -59,6 +59,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Services.Tests", "Leo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.Angular1.Tests", "Leora.Commands.Angular1.Tests\Leora.Commands.Angular1.Tests.csproj", "{49A1CF98-DB95-4406-B631-B3FDD0530BA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.AspNetWebApi2.Tests", "Leora.Commands.AspNetWebApi2.Tests\Leora.Commands.AspNetWebApi2.Tests.csproj", "{EE7C8A57-6CA8-4BF1-8118-1716D667B3B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Services.Mocks", "Leora.Services.Mocks\Leora.Services.Mocks.csproj", "{36EFD2E6-C4E5-4073-94B1-D6046FACC3E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -173,6 +177,14 @@ Global
 		{49A1CF98-DB95-4406-B631-B3FDD0530BA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49A1CF98-DB95-4406-B631-B3FDD0530BA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49A1CF98-DB95-4406-B631-B3FDD0530BA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE7C8A57-6CA8-4BF1-8118-1716D667B3B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE7C8A57-6CA8-4BF1-8118-1716D667B3B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE7C8A57-6CA8-4BF1-8118-1716D667B3B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE7C8A57-6CA8-4BF1-8118-1716D667B3B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36EFD2E6-C4E5-4073-94B1-D6046FACC3E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36EFD2E6-C4E5-4073-94B1-D6046FACC3E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36EFD2E6-C4E5-4073-94B1-D6046FACC3E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36EFD2E6-C4E5-4073-94B1-D6046FACC3E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

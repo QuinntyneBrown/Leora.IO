@@ -9,12 +9,13 @@ namespace Leora.Commands.AspNetWebApi2
 {
     public class GenerateModelCommand : BaseCommand<GenerateModelOptions>, IGenerateModelCommand
     {
-        public GenerateModelCommand(ITemplateManager templateManager, 
+        public GenerateModelCommand(IFileWriter fileWriter, 
+            ITemplateManager templateManager, 
             IDotNetTemplateProcessor templateProcessor, 
             INamingConventionConverter namingConventionConverter,
             INamespaceManager namespaceManager, 
             IProjectManager projectManager)
-            :base(templateManager,templateProcessor, namingConventionConverter, namespaceManager, projectManager) { }
+            :base(fileWriter, templateManager,templateProcessor, namingConventionConverter, namespaceManager, projectManager) { }
 
         public override int Run(GenerateModelOptions options) => Run(options.NameSpace, options.Directory, options.Name, options.RootNamespace);
         
@@ -22,11 +23,8 @@ namespace Leora.Commands.AspNetWebApi2
         {
             int exitCode = 1;
             var pascalCaseName = $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}.cs";
-
-            WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
-
+            _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
             _projectManager.Add(directory, $"{pascalCaseName}", FileType.CSharp);
-
             return exitCode;
         }
     }

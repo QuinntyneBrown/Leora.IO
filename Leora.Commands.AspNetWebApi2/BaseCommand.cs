@@ -10,9 +10,11 @@ namespace Leora.Commands.AspNetWebApi2
         protected readonly INamingConventionConverter _namingConventionConverter;
         protected readonly IProjectManager _projectManager;
         protected readonly INamespaceManager _namespaceManager;
+        protected readonly IFileWriter _fileWriter;
 
-        public BaseCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, INamespaceManager namespaceManager, IProjectManager projectManager)
+        public BaseCommand(IFileWriter fileWriter, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, INamespaceManager namespaceManager, IProjectManager projectManager)
         {
+            _fileWriter = fileWriter;
             _templateProcessor = templateProcessor;
             _templateManager = templateManager;
             _namingConventionConverter = namingConventionConverter;
