@@ -24,7 +24,7 @@ namespace Leora.Commands.React
             
             WriteAllLines($"{baseFilePath}.component.tsx", _templateProcessor.ProcessTemplate(GetTemplate(FileType.TypeScript,"ReactComponent"), name));
 
-            _projectManager.Add(directory, typeScriptFileName, FileType.TypeScript);
+            _projectManager.Process(directory, typeScriptFileName, FileType.TypeScript);
 
             return exitCode;
         }

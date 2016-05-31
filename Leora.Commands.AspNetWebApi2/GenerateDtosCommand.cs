@@ -30,9 +30,9 @@ namespace Leora.Commands.AspNetWebApi2
             _fileWriter.WriteAllLines($"{directory}//{addOrUpdateRequestName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
             _fileWriter.WriteAllLines($"{directory}//{addOrUpdateResponseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
 
-            _projectManager.Add(directory, $"{dtoName}", FileType.CSharp);
-            _projectManager.Add(directory, $"{addOrUpdateRequestName}", FileType.CSharp);
-            _projectManager.Add(directory, $"{addOrUpdateResponseName}", FileType.CSharp);
+            _projectManager.Process(directory, $"{dtoName}", FileType.CSharp);
+            _projectManager.Process(directory, $"{addOrUpdateRequestName}", FileType.CSharp);
+            _projectManager.Process(directory, $"{addOrUpdateResponseName}", FileType.CSharp);
 
             return exitCode;
         }

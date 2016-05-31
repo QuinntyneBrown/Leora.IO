@@ -2,9 +2,11 @@
 using Leora.Services.Contracts;
 using System.Xml.Linq;
 using System.Linq;
-using System.IO;
 using Leora.Models;
 using System.Collections.Generic;
+using static System.String;
+using static System.IO.Directory;
+using static System.IO.Path;
 
 namespace Leora.Services
 {
@@ -12,38 +14,50 @@ namespace Leora.Services
     {
         protected readonly XNamespace msbuild = "http://schemas.microsoft.com/developer/msbuild/2003";
 
-        public void Add(string currentDirectory, string fileName, FileType fileType = FileType.TypeScript)
+        public void Process(string currentDirectory, string fileName, FileType fileType = FileType.TypeScript)
         {
             var relativePathAndProjFile = GetRelativePathAndProjFile($"{currentDirectory}//{fileName}");
-
             if (relativePathAndProjFile != null)
             {
-                var csproj = XDocument.Load(relativePathAndProjFile.ProjFile);
-                var itemGroups = csproj.Descendants(msbuild + "ItemGroup");
-                var itemGroup = GetItemGroup(fileType, itemGroups);
-                var item = GetItem(fileType);
-                item.SetAttributeValue("Include", relativePathAndProjFile.RelativePath);
-                itemGroup.Add(item);
+                var csproj = Add(XDocument.Load(relativePathAndProjFile.ProjFile), relativePathAndProjFile.RelativePath, fileType);
                 csproj.Save(relativePathAndProjFile.ProjFile);
             }
         }
-        
-        public RelativePathAndProjFile GetRelativePathAndProjFile(string fullFilePath, int nestingLevel = 0)
+
+        public XDocument Add(XDocument csproj, string relativePath, FileType fileType = FileType.TypeScript)
+        {            
+            var itemGroups = csproj.Descendants(msbuild + "ItemGroup");
+            var itemGroup = GetItemGroup(fileType, itemGroups);
+
+            if (itemGroup == null)
+                AddItemGroup(fileType, csproj);
+
+            var item = GetItem(fileType);
+            item.SetAttributeValue("Include", relativePath);
+            itemGroup.Add(item);
+            return csproj;
+        }
+
+        public RelativePathAndProjFile GetRelativePathAndProjFile(string fullFilePath, int depth = 0)
         {
-            var directories = Path.GetDirectoryName(fullFilePath).Split(Path.DirectorySeparatorChar);
-            var newDirectories = directories.Take(directories.Length - nestingLevel).ToArray();
-            var final = String.Join(Path.DirectorySeparatorChar.ToString(), newDirectories);
-            var projectFiles = System.IO.Directory.GetFiles(final, "*.csproj");
+            var directories = GetDirectoryName(fullFilePath).Split(DirectorySeparatorChar);
+
+            if (directories.Length < depth)
+                return null;
+
+            var newDirectories = directories.Take(directories.Length - depth).ToArray();
+            var computedPath = Join(DirectorySeparatorChar.ToString(), newDirectories);
+            var projectFiles = GetFiles(computedPath, "*.csproj");
 
             if (projectFiles.FirstOrDefault() != null)
             {
-                var x = directories.Skip(directories.Length - nestingLevel).Take(final.Split(Path.DirectorySeparatorChar).Length);
-                return new RelativePathAndProjFile(Path.GetFileName(fullFilePath),string.Join(Path.DirectorySeparatorChar.ToString(), x), projectFiles.First());                
+                var x = directories.Skip(directories.Length - depth).Take(computedPath.Split(DirectorySeparatorChar).Length);
+                return new RelativePathAndProjFile(GetFileName(fullFilePath),Join(DirectorySeparatorChar.ToString(), x), projectFiles.First());                
             }
             else
             {
-                nestingLevel = nestingLevel + 1;
-                return GetRelativePathAndProjFile(fullFilePath, nestingLevel);
+                depth = depth + 1;
+                return GetRelativePathAndProjFile(fullFilePath, depth);
             }
         }
 
@@ -68,8 +82,25 @@ namespace Leora.Services
             if (fileType == FileType.CSharp)
                 return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "Compile").Any());
 
-            throw new NotImplementedException();
-            
+            throw new NotImplementedException();            
+        }
+
+        public XDocument AddItemGroup(FileType fileType, XDocument csproj)
+        {
+            XElement project = csproj.Root.Element(msbuild + "Project");
+            XElement itemGroup = new XElement(msbuild + "ItemGroup");
+
+            if(fileType == FileType.TypeScript)
+                itemGroup.Add(new XElement(msbuild + "TypeScriptCompile"));
+
+            if (fileType == FileType.Css || fileType == FileType.Html)
+                itemGroup.Add(new XElement(msbuild + "Content"));
+
+            if (fileType == FileType.CSharp)
+                itemGroup.Add(new XElement(msbuild + "Compile"));
+
+            project.Add(itemGroup);
+            return csproj;
         }
     }
 }

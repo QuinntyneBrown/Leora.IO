@@ -25,6 +25,10 @@ namespace Leora.Services
         public string GetProjectPath(string path, int depth = 0)
         {
             var directories = GetDirectoryName(path).Split(DirectorySeparatorChar);
+
+            if (directories.Length < depth)
+                return null;
+
             var newDirectories = directories.Take(directories.Length - depth);
             var computedPath = Join(DirectorySeparatorChar.ToString(), newDirectories);
             var projectFiles = GetFiles(computedPath, "*.csproj");

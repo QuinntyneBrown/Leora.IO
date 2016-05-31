@@ -1,13 +1,20 @@
 ﻿using Leora.Services.Contracts;
 using Leora.Models;
+using System;
+using System.Xml.Linq;
 
 namespace Leora.Services.Mocks
 {
     public class MockProjectManager : IProjectManager
     {
-        public void Add(string currentDirectory, string fileName, FileType fileType = FileType.TypeScript)
+        public XDocument Add(XDocument csproj, string relativePath, FileType fileType = FileType.TypeScript)
         {
+            throw new NotImplementedException();
+        }
 
+        public void Process(string currentDirectory, string fileName, FileType fileType = FileType.TypeScript)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -86,10 +86,6 @@
       <Project>{62af635d-6669-41d4-be7e-1a7f08771996}</Project>
       <Name>Leora.Commands</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Leora.IO.Models\Leora.IO.Models.csproj">
-      <Project>{ceaaf937-63e3-452c-b9df-71f045ed69bb}</Project>
-      <Name>Leora.IO.Models</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Leora.Services.AspNetWebApi2\Leora.Services.AspNetWebApi2.csproj">
       <Project>{bce03bdf-ebcc-4328-82e9-ec67ca529076}</Project>
       <Name>Leora.Services.AspNetWebApi2</Name>

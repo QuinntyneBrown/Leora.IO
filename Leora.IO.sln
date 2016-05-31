@@ -1,35 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO", "Leora.IO\Leora.IO.csproj", "{1C90AB9D-DC0D-4A40-BB69-FD68BE2DBBD1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.FileSystemWatcher", "Leora.IO.FileSystemWatcher\Leora.IO.FileSystemWatcher.csproj", "{DC92B90B-0E4F-4979-8B49-E2C2F2BC10FD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.Templates", "Leora.IO.Templates\Leora.IO.Templates.csproj", "{375F5758-CF58-41B8-9338-575E9D124CE9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.Configuration", "Leora.IO.Configuration\Leora.IO.Configuration.csproj", "{E9F7AF68-EDC1-4809-98FA-1500ACAA1AA2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.Data", "Leora.IO.Data\Leora.IO.Data.csproj", "{608143A4-0ECD-49B6-A26B-A34C87EED541}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.Models", "Leora.IO.Models\Leora.IO.Models.csproj", "{CEAAF937-63E3-452C-B9DF-71F045ED69BB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.ExtensionMethods", "Leora.IO.ExtensionMethods\Leora.IO.ExtensionMethods.csproj", "{708371B5-4BBD-4E5D-806F-584ED6C37865}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.Tests", "Leora.IO.Tests\Leora.IO.Tests.csproj", "{8E22F2EA-D41F-4085-8F19-4ACFFD32CA31}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.AngularSeed", "Leora.IO.AngularSeed\Leora.IO.AngularSeed.csproj", "{6E985A09-34E0-4B8D-9A75-AF944D9DD10E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{B8D08536-8E4F-4B86-B377-3E1A4376608A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.AcceptanceTests", "Leora.IO.AcceptanceTests\Leora.IO.AcceptanceTests.csproj", "{DF323C9D-F603-42CE-AB23-E95CA69FFB80}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Cli", "Leora.Cli\Leora.Cli.csproj", "{027435A2-1ECB-4708-81AB-B66443A076BC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands", "Leora.Commands\Leora.Commands.csproj", "{62AF635D-6669-41D4-BE7E-1A7F08771996}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Legacy", "Legacy", "{19E3808B-0F63-43CF-9607-BEB6BB7D750F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.Contracts", "Leora.Commands.Contracts\Leora.Commands.Contracts.csproj", "{239C7774-BAB3-4842-B86B-FE813708CE02}"
 EndProject
@@ -63,56 +39,26 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.AspNetWebApi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Services.Mocks", "Leora.Services.Mocks\Leora.Services.Mocks.csproj", "{36EFD2E6-C4E5-4073-94B1-D6046FACC3E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Cli.Tests", "Leora.Cli.Tests\Leora.Cli.Tests.csproj", "{F2453CA2-672C-4E81-B399-E8E0A61F6BCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.Tests", "Leora.Commands.Tests\Leora.Commands.Tests.csproj", "{CAFB4EB5-49E5-4F8B-84C7-EB3D4779E644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.Angular2.Tests", "Leora.Commands.Angular2.Tests\Leora.Commands.Angular2.Tests.csproj", "{A4927CDC-BDD5-4839-AF54-9988826A424E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.React.Tests", "Leora.Commands.React.Tests\Leora.Commands.React.Tests.csproj", "{F09AB62C-DAAA-4659-B73D-225C9021120B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Services.Angular1.Tests", "Leora.Services.Angular1.Tests\Leora.Services.Angular1.Tests.csproj", "{0679B039-6ABD-44E2-A918-86174611E6DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Services.AspNetWebApi2.Tests", "Leora.Services.AspNetWebApi2.Tests\Leora.Services.AspNetWebApi2.Tests.csproj", "{01C3831F-947B-4BA3-B374-6654B41FF6B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.Handlebars.Tests", "Leora.Commands.Handlebars.Tests\Leora.Commands.Handlebars.Tests.csproj", "{97F9C86B-CA57-454C-97BA-F9F8A46BBBCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1C90AB9D-DC0D-4A40-BB69-FD68BE2DBBD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C90AB9D-DC0D-4A40-BB69-FD68BE2DBBD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C90AB9D-DC0D-4A40-BB69-FD68BE2DBBD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C90AB9D-DC0D-4A40-BB69-FD68BE2DBBD1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC92B90B-0E4F-4979-8B49-E2C2F2BC10FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC92B90B-0E4F-4979-8B49-E2C2F2BC10FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC92B90B-0E4F-4979-8B49-E2C2F2BC10FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC92B90B-0E4F-4979-8B49-E2C2F2BC10FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{375F5758-CF58-41B8-9338-575E9D124CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{375F5758-CF58-41B8-9338-575E9D124CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{375F5758-CF58-41B8-9338-575E9D124CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{375F5758-CF58-41B8-9338-575E9D124CE9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E9F7AF68-EDC1-4809-98FA-1500ACAA1AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E9F7AF68-EDC1-4809-98FA-1500ACAA1AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E9F7AF68-EDC1-4809-98FA-1500ACAA1AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E9F7AF68-EDC1-4809-98FA-1500ACAA1AA2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{608143A4-0ECD-49B6-A26B-A34C87EED541}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{608143A4-0ECD-49B6-A26B-A34C87EED541}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{608143A4-0ECD-49B6-A26B-A34C87EED541}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{608143A4-0ECD-49B6-A26B-A34C87EED541}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CEAAF937-63E3-452C-B9DF-71F045ED69BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CEAAF937-63E3-452C-B9DF-71F045ED69BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CEAAF937-63E3-452C-B9DF-71F045ED69BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CEAAF937-63E3-452C-B9DF-71F045ED69BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{708371B5-4BBD-4E5D-806F-584ED6C37865}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{708371B5-4BBD-4E5D-806F-584ED6C37865}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{708371B5-4BBD-4E5D-806F-584ED6C37865}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{708371B5-4BBD-4E5D-806F-584ED6C37865}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E22F2EA-D41F-4085-8F19-4ACFFD32CA31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E22F2EA-D41F-4085-8F19-4ACFFD32CA31}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E22F2EA-D41F-4085-8F19-4ACFFD32CA31}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E22F2EA-D41F-4085-8F19-4ACFFD32CA31}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E985A09-34E0-4B8D-9A75-AF944D9DD10E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E985A09-34E0-4B8D-9A75-AF944D9DD10E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E985A09-34E0-4B8D-9A75-AF944D9DD10E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E985A09-34E0-4B8D-9A75-AF944D9DD10E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B8D08536-8E4F-4B86-B377-3E1A4376608A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B8D08536-8E4F-4B86-B377-3E1A4376608A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B8D08536-8E4F-4B86-B377-3E1A4376608A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B8D08536-8E4F-4B86-B377-3E1A4376608A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF323C9D-F603-42CE-AB23-E95CA69FFB80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF323C9D-F603-42CE-AB23-E95CA69FFB80}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF323C9D-F603-42CE-AB23-E95CA69FFB80}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF323C9D-F603-42CE-AB23-E95CA69FFB80}.Release|Any CPU.Build.0 = Release|Any CPU
 		{027435A2-1ECB-4708-81AB-B66443A076BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{027435A2-1ECB-4708-81AB-B66443A076BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{027435A2-1ECB-4708-81AB-B66443A076BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -185,21 +131,36 @@ Global
 		{36EFD2E6-C4E5-4073-94B1-D6046FACC3E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36EFD2E6-C4E5-4073-94B1-D6046FACC3E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36EFD2E6-C4E5-4073-94B1-D6046FACC3E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2453CA2-672C-4E81-B399-E8E0A61F6BCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2453CA2-672C-4E81-B399-E8E0A61F6BCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2453CA2-672C-4E81-B399-E8E0A61F6BCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2453CA2-672C-4E81-B399-E8E0A61F6BCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAFB4EB5-49E5-4F8B-84C7-EB3D4779E644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAFB4EB5-49E5-4F8B-84C7-EB3D4779E644}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAFB4EB5-49E5-4F8B-84C7-EB3D4779E644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAFB4EB5-49E5-4F8B-84C7-EB3D4779E644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4927CDC-BDD5-4839-AF54-9988826A424E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4927CDC-BDD5-4839-AF54-9988826A424E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4927CDC-BDD5-4839-AF54-9988826A424E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4927CDC-BDD5-4839-AF54-9988826A424E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F09AB62C-DAAA-4659-B73D-225C9021120B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F09AB62C-DAAA-4659-B73D-225C9021120B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F09AB62C-DAAA-4659-B73D-225C9021120B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F09AB62C-DAAA-4659-B73D-225C9021120B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0679B039-6ABD-44E2-A918-86174611E6DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0679B039-6ABD-44E2-A918-86174611E6DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0679B039-6ABD-44E2-A918-86174611E6DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0679B039-6ABD-44E2-A918-86174611E6DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01C3831F-947B-4BA3-B374-6654B41FF6B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01C3831F-947B-4BA3-B374-6654B41FF6B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01C3831F-947B-4BA3-B374-6654B41FF6B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01C3831F-947B-4BA3-B374-6654B41FF6B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97F9C86B-CA57-454C-97BA-F9F8A46BBBCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97F9C86B-CA57-454C-97BA-F9F8A46BBBCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97F9C86B-CA57-454C-97BA-F9F8A46BBBCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97F9C86B-CA57-454C-97BA-F9F8A46BBBCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{1C90AB9D-DC0D-4A40-BB69-FD68BE2DBBD1} = {19E3808B-0F63-43CF-9607-BEB6BB7D750F}
-		{DC92B90B-0E4F-4979-8B49-E2C2F2BC10FD} = {19E3808B-0F63-43CF-9607-BEB6BB7D750F}
-		{375F5758-CF58-41B8-9338-575E9D124CE9} = {19E3808B-0F63-43CF-9607-BEB6BB7D750F}
-		{E9F7AF68-EDC1-4809-98FA-1500ACAA1AA2} = {19E3808B-0F63-43CF-9607-BEB6BB7D750F}
-		{608143A4-0ECD-49B6-A26B-A34C87EED541} = {19E3808B-0F63-43CF-9607-BEB6BB7D750F}
-		{CEAAF937-63E3-452C-B9DF-71F045ED69BB} = {19E3808B-0F63-43CF-9607-BEB6BB7D750F}
-		{708371B5-4BBD-4E5D-806F-584ED6C37865} = {19E3808B-0F63-43CF-9607-BEB6BB7D750F}
-		{8E22F2EA-D41F-4085-8F19-4ACFFD32CA31} = {19E3808B-0F63-43CF-9607-BEB6BB7D750F}
-		{6E985A09-34E0-4B8D-9A75-AF944D9DD10E} = {19E3808B-0F63-43CF-9607-BEB6BB7D750F}
-		{B8D08536-8E4F-4B86-B377-3E1A4376608A} = {19E3808B-0F63-43CF-9607-BEB6BB7D750F}
-		{DF323C9D-F603-42CE-AB23-E95CA69FFB80} = {19E3808B-0F63-43CF-9607-BEB6BB7D750F}
 	EndGlobalSection
 EndGlobal

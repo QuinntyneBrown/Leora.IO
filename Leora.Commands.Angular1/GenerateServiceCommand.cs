@@ -31,7 +31,7 @@ namespace Leora.Commands.Angular1
             if (!crud && !data)
                 WriteAllLines(filePath, _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1Service","Angular1"), name));
 
-            _projectManager.Add(directory, typeScriptFileName, FileType.TypeScript);
+            _projectManager.Process(directory, typeScriptFileName, FileType.TypeScript);
 
             return exitCode;
         }

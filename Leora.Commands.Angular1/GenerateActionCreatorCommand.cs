@@ -20,8 +20,8 @@ namespace Leora.Commands.Angular1
             WriteAllLines($"{directory}//{snakeCaseName}.actions.ts", _templateProcessor.ProcessTemplate(GetTemplate(FileType.TypeScript, GetReducersTemplateName(crud)), name));
             WriteAllLines($"{directory}//{snakeCaseName}.reducers.ts", _templateProcessor.ProcessTemplate(GetTemplate(FileType.TypeScript, GetReducersTemplateName(crud)), name));
 
-            _projectManager.Add(directory, $"{snakeCaseName}.actions.ts", FileType.TypeScript);
-            _projectManager.Add(directory, $"{snakeCaseName}.reducers.ts", FileType.TypeScript);
+            _projectManager.Process(directory, $"{snakeCaseName}.actions.ts", FileType.TypeScript);
+            _projectManager.Process(directory, $"{snakeCaseName}.reducers.ts", FileType.TypeScript);
 
             return exitCode;
         }

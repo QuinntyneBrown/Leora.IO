@@ -48,7 +48,6 @@
     <Compile Include="NamespaceManager.cs" />
     <Compile Include="NamingConventionConverter.cs" />
     <Compile Include="ProjectManager.cs" />
-    <Compile Include="RelativePathAndProjFile.cs" />
     <Compile Include="TemplateManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemplateProcessor.cs" />

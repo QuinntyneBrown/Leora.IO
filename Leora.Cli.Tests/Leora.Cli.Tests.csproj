@@ -3,12 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3ED1EB6B-5950-4CF3-8365-69BB7001182E}</ProjectGuid>
+    <ProjectGuid>{F2453CA2-672C-4E81-B399-E8E0A61F6BCA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Leora.Services.Tests</RootNamespace>
-    <AssemblyName>Leora.Services.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <RootNamespace>Leora.Cli.Tests</RootNamespace>
+    <AssemblyName>Leora.Cli.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -52,8 +52,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.XML" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -68,22 +66,73 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="NamespaceManagerTests.cs" />
-    <Compile Include="ProjectManagerTests.cs" />
+    <Compile Include="ProgramTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnityConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\Leora.Cli\Leora.Cli.csproj">
+      <Project>{027435a2-1ecb-4708-81ab-b66443a076bc}</Project>
+      <Name>Leora.Cli</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands.Angular1.Tests\Leora.Commands.Angular1.Tests.csproj">
+      <Project>{49a1cf98-db95-4406-b631-b3fdd0530ba0}</Project>
+      <Name>Leora.Commands.Angular1.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands.Angular1\Leora.Commands.Angular1.csproj">
+      <Project>{7701064b-9e44-497b-98bc-2cd18d1486ed}</Project>
+      <Name>Leora.Commands.Angular1</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands.Angular2\Leora.Commands.Angular2.csproj">
+      <Project>{29c5a412-7336-45b2-9d3b-2c76de500f83}</Project>
+      <Name>Leora.Commands.Angular2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands.AspNetWebApi2.Tests\Leora.Commands.AspNetWebApi2.Tests.csproj">
+      <Project>{ee7c8a57-6ca8-4bf1-8118-1716d667b3b5}</Project>
+      <Name>Leora.Commands.AspNetWebApi2.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands.AspNetWebApi2\Leora.Commands.AspNetWebApi2.csproj">
+      <Project>{fcd1c652-d683-45cd-8fd9-ddee37b702a5}</Project>
+      <Name>Leora.Commands.AspNetWebApi2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">
+      <Project>{239c7774-bab3-4842-b86b-fe813708ce02}</Project>
+      <Name>Leora.Commands.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands.Handlebars\Leora.Commands.Handlebars.csproj">
+      <Project>{e66efbc1-5e16-4a00-a3fb-a671fb68ecc5}</Project>
+      <Name>Leora.Commands.Handlebars</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands.React\Leora.Commands.React.csproj">
+      <Project>{012098c2-1ad5-49c5-bbbc-5bf58d54c055}</Project>
+      <Name>Leora.Commands.React</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands\Leora.Commands.csproj">
+      <Project>{62af635d-6669-41d4-be7e-1a7f08771996}</Project>
+      <Name>Leora.Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Models\Leora.Models.csproj">
       <Project>{90a53448-6cdd-478b-9060-ae15783e8f8d}</Project>
       <Name>Leora.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Leora.Services.Angular1\Leora.Services.Angular1.csproj">
+      <Project>{92dba871-9779-4e38-ac8f-8955d371ae80}</Project>
+      <Name>Leora.Services.Angular1</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Services.AspNetWebApi2\Leora.Services.AspNetWebApi2.csproj">
+      <Project>{bce03bdf-ebcc-4328-82e9-ec67ca529076}</Project>
+      <Name>Leora.Services.AspNetWebApi2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Services.Contracts\Leora.Services.Contracts.csproj">
       <Project>{a9a20d8a-9e00-40c9-8c4a-ce41a428285a}</Project>
       <Name>Leora.Services.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Services.Mocks\Leora.Services.Mocks.csproj">
+      <Project>{36efd2e6-c4e5-4073-94b1-d6046facc3e0}</Project>
+      <Name>Leora.Services.Mocks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Services.Tests\Leora.Services.Tests.csproj">
+      <Project>{3ed1eb6b-5950-4cf3-8365-69bb7001182e}</Project>
+      <Name>Leora.Services.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\Leora.Services\Leora.Services.csproj">
       <Project>{dc37d489-7dfc-4465-89b6-14f4c38a4551}</Project>
@@ -95,7 +144,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="empty-project-file.txt" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

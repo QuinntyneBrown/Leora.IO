@@ -22,7 +22,7 @@ namespace Leora.Commands.Angular1
 
             WriteAllLines($"{directory}//{ typeScriptFileName }", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, GetTemplateName(crud), BluePrintType.Angular1), name));
 
-            _projectManager.Add(directory, typeScriptFileName, FileType.TypeScript);
+            _projectManager.Process(directory, typeScriptFileName, FileType.TypeScript);
 
             return exitCode;
         }

@@ -29,9 +29,9 @@ namespace Leora.Commands.Angular1
             WriteAllLines($"{directory}\\{cssFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, _componentName, BluePrintType.Angular1), name));
             WriteAllLines($"{directory}\\{htmlFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, _componentName, BluePrintType.Angular1), name));
 
-            _projectManager.Add(directory, typeScriptFileName, FileType.TypeScript);
-            _projectManager.Add(directory, cssFileName, FileType.Css);
-            _projectManager.Add(directory, htmlFileName, FileType.Html);
+            _projectManager.Process(directory, typeScriptFileName, FileType.TypeScript);
+            _projectManager.Process(directory, cssFileName, FileType.Css);
+            _projectManager.Process(directory, htmlFileName, FileType.Html);
 
             return exitCode;
         }
