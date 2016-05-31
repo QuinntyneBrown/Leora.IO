@@ -1,6 +1,0 @@
-﻿namespace Chloe.Server.Dtos
-{
-    public class {{ entityNamePascalCase }}AddOrUpdateRequestDto: {{ entityNamePascalCase }}Dto
-    {
-    }
-}
