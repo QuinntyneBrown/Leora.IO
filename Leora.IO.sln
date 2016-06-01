@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Cli", "Leora.Cli\Leora.Cli.csproj", "{027435A2-1ECB-4708-81AB-B66443A076BC}"
 EndProject
@@ -52,6 +52,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Services.AspNetWebApi2.Tests", "Leora.Services.AspNetWebApi2.Tests\Leora.Services.AspNetWebApi2.Tests.csproj", "{01C3831F-947B-4BA3-B374-6654B41FF6B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.Handlebars.Tests", "Leora.Commands.Handlebars.Tests\Leora.Commands.Handlebars.Tests.csproj", "{97F9C86B-CA57-454C-97BA-F9F8A46BBBCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.FrontendWorkflow", "Leora.Commands.FrontendWorkflow\Leora.Commands.FrontendWorkflow.csproj", "{6E9D26F3-1079-4857-B4F2-0FB8499EDFB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.FrontendWorkflow.Tests", "Leora.Commands.FrontendWorkflow.Tests\Leora.Commands.FrontendWorkflow.Tests.csproj", "{BBBCED87-C6F5-41A4-BD50-C5EE071A6168}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -159,6 +163,14 @@ Global
 		{97F9C86B-CA57-454C-97BA-F9F8A46BBBCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97F9C86B-CA57-454C-97BA-F9F8A46BBBCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97F9C86B-CA57-454C-97BA-F9F8A46BBBCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E9D26F3-1079-4857-B4F2-0FB8499EDFB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E9D26F3-1079-4857-B4F2-0FB8499EDFB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E9D26F3-1079-4857-B4F2-0FB8499EDFB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E9D26F3-1079-4857-B4F2-0FB8499EDFB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBBCED87-C6F5-41A4-BD50-C5EE071A6168}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBBCED87-C6F5-41A4-BD50-C5EE071A6168}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBBCED87-C6F5-41A4-BD50-C5EE071A6168}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBBCED87-C6F5-41A4-BD50-C5EE071A6168}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

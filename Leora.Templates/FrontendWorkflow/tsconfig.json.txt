@@ -1,0 +1,10 @@
+﻿{
+  "compilerOptions": {
+    "target": "es5",
+    "experimentalDecorators": true,
+    "sourceMap": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

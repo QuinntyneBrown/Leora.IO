@@ -31,6 +31,12 @@ namespace Leora.Services
             {
                 AddItemGroup(fileType, csproj);
                 itemGroup = csproj.Descendants(msbuild + "ItemGroup").Last();
+
+                if (fileType == FileType.TypeScript)
+                {
+                    AddTypeSciptFlags(csproj);
+                    AddTypeScriptImports(csproj);
+                }
             }
             var item = GetItem(fileType);
             item.SetAttributeValue("Include", relativePath);
@@ -95,12 +101,51 @@ namespace Leora.Services
         public XDocument AddTypeSciptFlags(XDocument csproj)
         {
             //Get PropertyGroup w/ Platfrom Descendent
-            //Add
-            //<TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
-            //<TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
-            //<TypeScriptEmitDecoratorMetadata>True</TypeScriptEmitDecoratorMetadata>
-            //<TypeScriptExperimentalDecorators>True</TypeScriptExperimentalDecorators>
-            //<TypeScritModuleResolution>Classic</TypeScritModuleResolution>
+            var itemGroup = csproj.Descendants(msbuild + "PropertyGroup").Single(x => x.Descendants(msbuild + "ProductVersion").Any());
+
+            if (itemGroup.Descendants(msbuild + "TypeScriptToolsVersion").SingleOrDefault() == null)
+            {
+                var xElement = new XElement(msbuild + "TypeScriptToolsVersion");
+                xElement.Value = "1.8";
+                itemGroup.Add(xElement);
+            }
+
+            if (itemGroup.Descendants(msbuild + "TypeScriptEmitDecoratorMetadata").SingleOrDefault() == null)
+            {
+                var xElement = new XElement(msbuild + "TypeScriptEmitDecoratorMetadata");
+                xElement.Value = "True";
+                itemGroup.Add(xElement);
+            }
+
+            if (itemGroup.Descendants(msbuild + "TypeScriptModuleKind").SingleOrDefault() == null)
+            {
+                var xElement = new XElement(msbuild + "TypeScriptModuleKind");
+                xElement.Value = "commonjs";
+                itemGroup.Add(xElement);
+            }
+
+            if (itemGroup.Descendants(msbuild + "TypeScriptExperimentalDecorators").SingleOrDefault() == null)
+            {
+                var xElement = new XElement(msbuild + "TypeScriptExperimentalDecorators");
+                xElement.Value = "True";
+                itemGroup.Add(xElement);
+            }
+     
+            if (itemGroup.Descendants(msbuild + "TypeScritModuleResolution").SingleOrDefault() == null)
+            {
+                var xElement = new XElement(msbuild + "TypeScritModuleResolution");
+                xElement.Value = "Classic";
+                itemGroup.Add(xElement);
+            }          
+            return csproj;
+        }
+
+        public XDocument AddTypeScriptImports(XDocument csproj)
+        {
+            XAttribute projectAttribute = new XAttribute("Project", @"$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets");
+            XAttribute conditionAttribute = new XAttribute("Condition", @"Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')");
+            var xElement = new XElement(msbuild + "Import", projectAttribute, conditionAttribute);
+            csproj.Root.Add(xElement);
             return csproj;
         }
     }

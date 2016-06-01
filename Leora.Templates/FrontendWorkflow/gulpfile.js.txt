@@ -1,0 +1,60 @@
+﻿var gulp = require("gulp");
+var gulpUtil = require("gulp-util");
+var webpack = require("gulp-webpack");
+var rename = require("gulp-rename");
+var clean = require('gulp-clean');
+var child_process = require("child_process");
+
+var libs = [
+
+]
+
+var paths = {
+    npm: './node_modules/',
+    lib: './lib/'
+};
+
+gulp.task("typedoc", function () {
+    child_process.exec("typedoc --out ./docs/ ./wwwroot/ --module commonjs --jsx react --experimentalDecorators --ignoreCompilerErrors --exclude node_module");
+});
+
+gulp.task('libs', function () {
+    return gulp.src(libs).pipe(gulp.dest(paths.lib));
+});
+
+gulp.task('remove-compiled-js',['typedoc'], function () {
+    return gulp.src(["./wwwroot/**/*.js", "./wwwroot/**/*.js.map"], { read: false })
+    .pipe(clean());
+});
+
+gulp.task("webpack", ['remove-compiled-js'], function () {
+    return gulp.src('wwwroot/main.ts')
+    .pipe(webpack({
+        resolve: {
+            extensions: ["", ".js", ".ts"]
+        },
+        module: {
+            loaders: [
+                {
+                    test: /\.ts$/, loader: "ts", exclude: [/node_modules/]
+                },
+                {
+                    test: /\.css$/, exclude: [/node_modules/], loader: "style-loader!css-loader"
+                },
+                {
+                    test: /\.html$/,loader: "raw"
+                }
+            ]
+        }
+    }))
+    .pipe(rename("app.js"))
+    .pipe(gulp.dest('dist/'));
+});
+
+gulp.task('watch', function () {
+    gulp.watch([
+        './wwwroot/**/*.ts', './wwwroot/**/*.html', './wwwroot/**/*.css', '*.md'
+    ], ['webpack']);
+});
+
+gulp.task('default', ['typedoc', 'remove-compiled-js', 'webpack', 'watch']);
