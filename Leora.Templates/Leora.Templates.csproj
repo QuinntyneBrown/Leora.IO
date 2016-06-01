@@ -113,6 +113,7 @@
     <EmbeddedResource Include="Cli\CliCommand.cs.txt" />
     <EmbeddedResource Include="Cli\CliCommandInterface.cs.txt" />
     <EmbeddedResource Include="Cli\CliCommandOptions.cs.txt" />
+    <EmbeddedResource Include="Angular1\Angular1DeclarationFile.typescript.txt" />
     <Content Include="FrontendWorkflow\gulpfile.js.txt" />
     <Content Include="FrontendWorkflow\tsconfig.json.txt" />
     <Content Include="FrontendWorkflow\webpack.config.js.txt" />
