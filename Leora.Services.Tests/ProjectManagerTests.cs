@@ -17,6 +17,7 @@ namespace Leora.Services.Tests
     public class ProjectManagerTests
     {
         ProjectManager _projectManager;
+        protected readonly XNamespace msbuild = "http://schemas.microsoft.com/developer/msbuild/2003";
 
         [TestInitialize]
         public void Setup()
@@ -29,8 +30,21 @@ namespace Leora.Services.Tests
         {
             _projectManager = new ProjectManager();
             var csproj = XDocument.Parse(Get("empty-project-file.txt"));
-            var result = _projectManager.Add(csproj, "/", FileType.TypeScript);
-            
+            var result = _projectManager.Add(csproj, "/my-file.ts", FileType.TypeScript);
+            var typeScriptCompileNodes = result.Descendants(msbuild + "ItemGroup").FirstOrDefault(x => x.Descendants(msbuild + "TypeScriptCompile").Any());
+            var name = ((System.Xml.Linq.XElement)typeScriptCompileNodes.FirstNode).Name;
+            Assert.AreEqual(name.ToString(), msbuild + "TypeScriptCompile");
+        }
+
+
+        [TestMethod]
+        public void TestAddItemGroupMethod()
+        {
+            _projectManager = new ProjectManager();
+            var csproj = XDocument.Parse(Get("empty-project-file.txt"));
+            var originalCount = csproj.Descendants(msbuild + "ItemGroup").Count();
+            var result = _projectManager.AddItemGroup(FileType.TypeScript, csproj);
+            Assert.AreEqual(originalCount + 1, csproj.Descendants(msbuild + "ItemGroup").Count());
         }
 
         [TestMethod]

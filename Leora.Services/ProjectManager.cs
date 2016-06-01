@@ -26,11 +26,15 @@ namespace Leora.Services
 
         public XDocument Add(XDocument csproj, string relativePath, FileType fileType = FileType.TypeScript)
         {            
-            var itemGroups = csproj.Descendants(msbuild + "ItemGroup");
-            var itemGroup = GetItemGroup(fileType, itemGroups);
+            var itemGroup = GetItemGroup(fileType, csproj.Descendants(msbuild + "ItemGroup"));
+
+            Console.WriteLine("Got Here");
 
             if (itemGroup == null)
+            {
                 AddItemGroup(fileType, csproj);
+                itemGroup = csproj.Descendants(msbuild + "ItemGroup").Last();
+            }
 
             var item = GetItem(fileType);
             item.SetAttributeValue("Include", relativePath);
@@ -87,19 +91,7 @@ namespace Leora.Services
 
         public XDocument AddItemGroup(FileType fileType, XDocument csproj)
         {
-            XElement project = csproj.Root.Element(msbuild + "Project");
-            XElement itemGroup = new XElement(msbuild + "ItemGroup");
-
-            if(fileType == FileType.TypeScript)
-                itemGroup.Add(new XElement(msbuild + "TypeScriptCompile"));
-
-            if (fileType == FileType.Css || fileType == FileType.Html)
-                itemGroup.Add(new XElement(msbuild + "Content"));
-
-            if (fileType == FileType.CSharp)
-                itemGroup.Add(new XElement(msbuild + "Compile"));
-
-            project.Add(itemGroup);
+            csproj.Root.Add(new XElement(msbuild + "ItemGroup"));
             return csproj;
         }
     }
