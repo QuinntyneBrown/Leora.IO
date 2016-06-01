@@ -48,6 +48,14 @@ namespace Leora.Services.Tests
         }
 
         [TestMethod]
+        public void TestAddTypeSciptFlagsMethod()
+        {
+            _projectManager = new ProjectManager();
+            var csproj = XDocument.Parse(Get("empty-project-file.txt"));
+            var result = _projectManager.AddTypeSciptFlags(csproj);
+        }
+
+        [TestMethod]
         public void TestProcessMethod()
         {
 

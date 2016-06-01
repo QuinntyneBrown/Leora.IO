@@ -27,15 +27,11 @@ namespace Leora.Services
         public XDocument Add(XDocument csproj, string relativePath, FileType fileType = FileType.TypeScript)
         {            
             var itemGroup = GetItemGroup(fileType, csproj.Descendants(msbuild + "ItemGroup"));
-
-            Console.WriteLine("Got Here");
-
             if (itemGroup == null)
             {
                 AddItemGroup(fileType, csproj);
                 itemGroup = csproj.Descendants(msbuild + "ItemGroup").Last();
             }
-
             var item = GetItem(fileType);
             item.SetAttributeValue("Include", relativePath);
             itemGroup.Add(item);
@@ -75,6 +71,7 @@ namespace Leora.Services
 
             return new XElement(msbuild + "Compile");
         }
+
         public XElement GetItemGroup (FileType fileType, IEnumerable<XElement> itemGroups)
         {
             if (fileType == FileType.TypeScript)
@@ -92,6 +89,18 @@ namespace Leora.Services
         public XDocument AddItemGroup(FileType fileType, XDocument csproj)
         {
             csproj.Root.Add(new XElement(msbuild + "ItemGroup"));
+            return csproj;
+        }
+
+        public XDocument AddTypeSciptFlags(XDocument csproj)
+        {
+            //Get PropertyGroup w/ Platfrom Descendent
+            //Add
+            //<TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+            //<TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
+            //<TypeScriptEmitDecoratorMetadata>True</TypeScriptEmitDecoratorMetadata>
+            //<TypeScriptExperimentalDecorators>True</TypeScriptExperimentalDecorators>
+            //<TypeScritModuleResolution>Classic</TypeScritModuleResolution>
             return csproj;
         }
     }
