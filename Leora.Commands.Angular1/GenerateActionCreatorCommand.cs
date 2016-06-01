@@ -17,7 +17,7 @@ namespace Leora.Commands.Angular1
         {
             int exitCode = 1;
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
-            _fileWriter.WriteAllLines($"{directory}//{snakeCaseName}.actions.ts", _templateProcessor.ProcessTemplate(GetTemplate(FileType.TypeScript, GetReducersTemplateName(crud)), name));
+            _fileWriter.WriteAllLines($"{directory}//{snakeCaseName}.actions.ts", _templateProcessor.ProcessTemplate(GetTemplate(FileType.TypeScript, GetTemplateName(crud)), name));
             _fileWriter.WriteAllLines($"{directory}//{snakeCaseName}.reducers.ts", _templateProcessor.ProcessTemplate(GetTemplate(FileType.TypeScript, GetReducersTemplateName(crud)), name));
             _projectManager.Process(directory, $"{snakeCaseName}.actions.ts", FileType.TypeScript);
             _projectManager.Process(directory, $"{snakeCaseName}.reducers.ts", FileType.TypeScript);

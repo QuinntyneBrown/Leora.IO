@@ -49,6 +49,7 @@
     <Compile Include="GenerateCommandCommand.cs" />
     <Compile Include="HelpCommand.cs" />
     <Compile Include="Infrastructure\Constants.cs" />
+    <Compile Include="InstallNugetPackageCommand.cs" />
     <Compile Include="Options\BaseOptions.cs" />
     <Compile Include="Options\GenerateCommandCommandOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
