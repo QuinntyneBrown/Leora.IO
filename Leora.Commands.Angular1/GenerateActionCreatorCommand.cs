@@ -8,8 +8,8 @@ namespace Leora.Commands.Angular1
 {
     public class GenerateActionCreatorCommand : BaseCommand<GenerateActionCreatorOptions>, IGenerateActionCreatorCommand
     {
-        public GenerateActionCreatorCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
-            :base(templateManager,templateProcessor, namingConventionConverter,projectManager) { }
+        public GenerateActionCreatorCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter)
+            :base(templateManager,templateProcessor, namingConventionConverter,projectManager, fileWriter) { }
 
         public override int Run(GenerateActionCreatorOptions options) => Run(options.Name, options.Directory, options.Crud);
 
@@ -17,25 +17,13 @@ namespace Leora.Commands.Angular1
         {
             int exitCode = 1;
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
-            WriteAllLines($"{directory}//{snakeCaseName}.actions.ts", _templateProcessor.ProcessTemplate(GetTemplate(FileType.TypeScript, GetReducersTemplateName(crud)), name));
-            WriteAllLines($"{directory}//{snakeCaseName}.reducers.ts", _templateProcessor.ProcessTemplate(GetTemplate(FileType.TypeScript, GetReducersTemplateName(crud)), name));
-
+            _fileWriter.WriteAllLines($"{directory}//{snakeCaseName}.actions.ts", _templateProcessor.ProcessTemplate(GetTemplate(FileType.TypeScript, GetReducersTemplateName(crud)), name));
+            _fileWriter.WriteAllLines($"{directory}//{snakeCaseName}.reducers.ts", _templateProcessor.ProcessTemplate(GetTemplate(FileType.TypeScript, GetReducersTemplateName(crud)), name));
             _projectManager.Process(directory, $"{snakeCaseName}.actions.ts", FileType.TypeScript);
             _projectManager.Process(directory, $"{snakeCaseName}.reducers.ts", FileType.TypeScript);
-
             return exitCode;
         }
-
-        public string GetReducersTemplateName(bool crud)
-        {
-            return crud ? "Angular1ReducersCrud"
-                : "Angular1Reducers";
-        }
-
-        public string GetTemplateName(bool crud)
-        {
-            return crud ? "Angular1ActionCreatorCrud" 
-                : "Angular1ActionCreator";
-        }
+        public string GetReducersTemplateName(bool crud) => crud ? "Angular1ReducersCrud" : "Angular1Reducers";        
+        public string GetTemplateName(bool crud) => crud ? "Angular1ActionCreatorCrud" : "Angular1ActionCreator";
     }
 }

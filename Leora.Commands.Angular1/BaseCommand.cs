@@ -10,26 +10,22 @@ namespace Leora.Commands.Angular1
         protected readonly ITemplateProcessor _templateProcessor;
         protected readonly INamingConventionConverter _namingConventionConverter;
         protected readonly IProjectManager _projectManager;
+        protected readonly IFileWriter _fileWriter;
 
-        public BaseCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
+        public BaseCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter)
         {
             _templateProcessor = templateProcessor;
             _templateManager = templateManager;
             _namingConventionConverter = namingConventionConverter;
             _projectManager = projectManager;
+            _fileWriter = fileWriter;
         }
 
         public BaseCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter)
-            : this(templateManager, templateProcessor, namingConventionConverter, null)
-        {
-
-        }
+            : this(templateManager, templateProcessor, namingConventionConverter, null, null) { }
 
         public BaseCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor)
-            :this(templateManager,templateProcessor,null,null)
-        {
- 
-        }
+            :this(templateManager,templateProcessor,null,null,null) { }
 
         public int Run(string[] args)
         {
@@ -38,10 +34,7 @@ namespace Leora.Commands.Angular1
             return Run(options);
         }
 
-        public string[] GetTemplate (FileType fileType, string templateName)
-        {
-            return _templateManager.Get(fileType, templateName, BluePrintType.Angular1);
-        }
+        public string[] GetTemplate(FileType fileType, string templateName) => _templateManager.Get(fileType, templateName, BluePrintType.Angular1);
 
         public abstract int Run(TOptions options);
     }

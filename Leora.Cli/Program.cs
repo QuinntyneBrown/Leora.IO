@@ -29,7 +29,7 @@ namespace Leora.Cli
                 ["ng-component"] = _container.Resolve<IGenerateComponentCommand>().Run,
                 ["ng-container"] = _container.Resolve<IGenerateContainerCommand>().Run,
                 ["ng-editor"] = _container.Resolve<IGenerateEditorCommand>().Run,
-                //["ng-feature"] = _container.Resolve<IGenerateFeatureCommand>().Run,
+                ["ng-feature"] = _container.Resolve<IGenerateFeatureCommand>().Run,
                 ["ng-list"] = _container.Resolve<IGenerateListCommand>().Run,
                 ["ng-model"] = _container.Resolve<IGenerateModelCommand>().Run,
                 ["ng-module"] = _container.Resolve<IGenerateModuleCommand>().Run,

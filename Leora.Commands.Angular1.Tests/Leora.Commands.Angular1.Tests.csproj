@@ -66,8 +66,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="GenerateActionCreatorCommandTests.cs" />
     <Compile Include="GenerateComponentCommandTests.cs" />
+    <Compile Include="GenerateContainerCommandTests.cs" />
+    <Compile Include="GenerateCrudFeatureCommandTests.cs" />
+    <Compile Include="GenerateEditorCommandTests.cs" />
     <Compile Include="GenerateFeatureCommandTests.cs" />
+    <Compile Include="GenerateListCommandTests.cs" />
+    <Compile Include="GenerateModelCommandTests.cs" />
+    <Compile Include="GenerateModuleCommandTests.cs" />
+    <Compile Include="GeneratePagedListCommandTests.cs" />
+    <Compile Include="GenerateServiceCommandTests.cs" />
+    <Compile Include="GenerateUICompoonentCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnityConfiguration.cs" />
   </ItemGroup>
@@ -76,13 +86,25 @@
       <Project>{7701064b-9e44-497b-98bc-2cd18d1486ed}</Project>
       <Name>Leora.Commands.Angular1</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">
+      <Project>{239c7774-bab3-4842-b86b-fe813708ce02}</Project>
+      <Name>Leora.Commands.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Models\Leora.Models.csproj">
       <Project>{90a53448-6cdd-478b-9060-ae15783e8f8d}</Project>
       <Name>Leora.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Leora.Services.Angular1\Leora.Services.Angular1.csproj">
+      <Project>{92dba871-9779-4e38-ac8f-8955d371ae80}</Project>
+      <Name>Leora.Services.Angular1</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Services.Contracts\Leora.Services.Contracts.csproj">
       <Project>{a9a20d8a-9e00-40c9-8c4a-ce41a428285a}</Project>
       <Name>Leora.Services.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Services.Mocks\Leora.Services.Mocks.csproj">
+      <Project>{36efd2e6-c4e5-4073-94b1-d6046facc3e0}</Project>
+      <Name>Leora.Services.Mocks</Name>
     </ProjectReference>
     <ProjectReference Include="..\Leora.Services\Leora.Services.csproj">
       <Project>{dc37d489-7dfc-4465-89b6-14f4c38a4551}</Project>

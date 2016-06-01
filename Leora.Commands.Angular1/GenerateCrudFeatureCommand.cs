@@ -1,16 +1,13 @@
 ﻿using Leora.Commands.Angular1.Contracts;
 using Leora.Commands.Angular1.Options;
-using Leora.Models;
 using Leora.Services.Contracts;
-using System;
-using static System.IO.File;
 
 namespace Leora.Commands.Angular1
 {
-    public class GenerateCrudFeatureCommand : BaseCommand<GenerateCrudFeatureOptions>, IGenerateComponentCommand
+    public class GenerateCrudFeatureCommand : BaseCommand<GenerateCrudFeatureOptions>, IGenerateCrudFeatureCommand
     {
-        public GenerateCrudFeatureCommand(ITemplateProcessor templateProcessor, ITemplateManager templateManager)
-            :base(templateManager,templateProcessor) { }
+        public GenerateCrudFeatureCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter)
+            :base(templateManager,templateProcessor, namingConventionConverter,projectManager, fileWriter) { }
 
         public override int Run(GenerateCrudFeatureOptions options)
         {
@@ -19,7 +16,7 @@ namespace Leora.Commands.Angular1
 
         public int Run(string name, string directory)
         {
-            throw new NotImplementedException();
+            return 1;
         }
     }
 }

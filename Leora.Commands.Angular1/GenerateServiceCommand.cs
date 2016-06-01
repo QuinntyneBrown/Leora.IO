@@ -9,8 +9,8 @@ namespace Leora.Commands.Angular1
 {
     public class GenerateServiceCommand : BaseCommand<GenerateServiceOptions>, IGenerateServiceCommand
     {
-        public GenerateServiceCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
-            : base(templateManager, templateProcessor, namingConventionConverter,projectManager) { }
+        public GenerateServiceCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter)
+            :base(templateManager,templateProcessor, namingConventionConverter,projectManager, fileWriter) { }
 
         public override int Run(GenerateServiceOptions options) => Run(options.Name, options.Directory, options.Crud, options.Data);
 
@@ -23,13 +23,13 @@ namespace Leora.Commands.Angular1
             var filePath = $"{directory}//{typeScriptFileName}";
 
             if (crud)
-                WriteAllLines(filePath, _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1DataServiceCrud", BluePrintType.Angular1), name));
+                _fileWriter.WriteAllLines(filePath, _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1DataServiceCrud", BluePrintType.Angular1), name));
 
             if (data)
-                WriteAllLines(filePath, _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1DataService", BluePrintType.Angular1), name));
+                _fileWriter.WriteAllLines(filePath, _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1DataService", BluePrintType.Angular1), name));
 
             if (!crud && !data)
-                WriteAllLines(filePath, _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1Service","Angular1"), name));
+                _fileWriter.WriteAllLines(filePath, _templateProcessor.ProcessTemplate(_templateManager.Get(Leora.Models.FileType.TypeScript, "Angular1Service","Angular1"), name));
 
             _projectManager.Process(directory, typeScriptFileName, FileType.TypeScript);
 

@@ -26,6 +26,7 @@ namespace Leora.Commands.Angular1
             INamingConventionConverter namingConventionConverter, 
             IMainManager mainManager,
             IProjectManager projectManager,
+            IFileWriter fileWriter,
             IGenerateModelCommand generateModelCommand,
             IGenerateModuleCommand generateModuleCommand,
             IGenerateComponentCommand generateComponentCommand,
@@ -35,7 +36,7 @@ namespace Leora.Commands.Angular1
             IGenerateListCommand generateListCommand,
             IGenerateEditorCommand generateEditorCommand
             )
-            : base(templateManager, templateProcessor, namingConventionConverter, projectManager)
+            : base(templateManager, templateProcessor, namingConventionConverter, projectManager, fileWriter)
         {
             _mainManager = mainManager;
 

@@ -9,11 +9,8 @@ namespace Leora.Commands.Angular1
     public class GenerateListCommand : BaseCommand<GenerateListOptions>, IGenerateListCommand
     {
 
-        public GenerateListCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
-            : base(templateManager, templateProcessor, namingConventionConverter, projectManager)
-        {
-
-        }
+        public GenerateListCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter)
+            :base(templateManager,templateProcessor, namingConventionConverter,projectManager, fileWriter) { }
 
         public override int Run(GenerateListOptions options) => Run(options.Name, options.Directory);
 
@@ -25,9 +22,9 @@ namespace Leora.Commands.Angular1
             var cssFileName = $"{name}-list.component.css";
             var htmlFileName = $"{name}-list.component.html";
 
-            WriteAllLines($"{directory}\\{typeScriptFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, _componentName, BluePrintType.Angular1), name));
-            WriteAllLines($"{directory}\\{cssFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, _componentName, BluePrintType.Angular1), name));
-            WriteAllLines($"{directory}\\{htmlFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, _componentName, BluePrintType.Angular1), name));
+            _fileWriter.WriteAllLines($"{directory}\\{typeScriptFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, _componentName, BluePrintType.Angular1), name));
+            _fileWriter.WriteAllLines($"{directory}\\{cssFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, _componentName, BluePrintType.Angular1), name));
+            _fileWriter.WriteAllLines($"{directory}\\{htmlFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, _componentName, BluePrintType.Angular1), name));
 
             _projectManager.Process(directory, typeScriptFileName, FileType.TypeScript);
             _projectManager.Process(directory, cssFileName, FileType.Css);

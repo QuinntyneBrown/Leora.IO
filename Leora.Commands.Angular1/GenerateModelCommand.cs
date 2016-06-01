@@ -8,8 +8,8 @@ namespace Leora.Commands.Angular1
 {
     public class GenerateModelCommand : BaseCommand<GenerateModelOptions>, IGenerateModelCommand
     {
-        public GenerateModelCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
-            : base(templateManager, templateProcessor, namingConventionConverter, projectManager) { }
+        public GenerateModelCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter)
+            :base(templateManager,templateProcessor, namingConventionConverter,projectManager, fileWriter) { }
 
         public override int Run(GenerateModelOptions options) => Run(options.Name, options.Directory);
 
@@ -21,7 +21,7 @@ namespace Leora.Commands.Angular1
             var typeScriptFileName = $"{snakeCaseName}.model.ts";
             var baseFilePath = $"{directory}//{snakeCaseName}";
 
-            WriteAllLines($"{baseFilePath}.model.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular1Model", BluePrintType.Angular1), name));
+            _fileWriter.WriteAllLines($"{baseFilePath}.model.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular1Model", BluePrintType.Angular1), name));
 
             _projectManager.Process(directory, typeScriptFileName, FileType.TypeScript);
 

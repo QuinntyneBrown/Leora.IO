@@ -26,6 +26,7 @@ namespace Leora.Commands.AspNetWebApi2.Tests
         [TestMethod]
         public void TestRunMethod()
         {
+            Assert.AreEqual(1, 1);
         }
     }
 }

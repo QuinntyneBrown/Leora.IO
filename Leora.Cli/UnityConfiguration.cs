@@ -1,6 +1,8 @@
 ﻿using Leora.Commands.Angular1;
 using Leora.Commands.Angular1.Contracts;
 using Leora.Services;
+using Leora.Services.Angular1;
+using Leora.Services.Angular1.Contracts;
 using Leora.Services.Contracts;
 using Microsoft.Practices.Unity;
 
@@ -16,6 +18,7 @@ namespace Leora.Cli
             container.RegisterType<ITemplateProcessor, TemplateProcessor>();
             container.RegisterType<IDotNetTemplateProcessor, DotNetTemplateProcessor>();
             container.RegisterType<IProjectManager, ProjectManager>();
+            container.RegisterType<IFileWriter, FileWriter>();
 
             container.RegisterType<IGenerateActionCreatorCommand, GenerateActionCreatorCommand>();
             container.RegisterType<IGeneratePagedListCommand, GeneratePagedListCommand>();
@@ -26,9 +29,10 @@ namespace Leora.Cli
             container.RegisterType<IGenerateServiceCommand, GenerateServiceCommand>();
             container.RegisterType<IGenerateEditorCommand, GenerateEditorCommand>();
             container.RegisterType<IGenerateListCommand, GenerateListCommand>();
-            //container.RegisterType<IGenerateFeatureCommand, GenerateFeatureCommand>();
+            container.RegisterType<IGenerateFeatureCommand, GenerateFeatureCommand>();
 
             container.RegisterType<INamespaceManager, NamespaceManager>();
+            container.RegisterType<IMainManager, MainManager>();
 
             container.RegisterType<Leora.Commands.React.Contracts.IGenerateComponentCommand, Leora.Commands.React.GenerateComponentCommand>();
 

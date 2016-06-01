@@ -9,12 +9,12 @@ namespace Leora.Services.Mocks
     {
         public XDocument Add(XDocument csproj, string relativePath, FileType fileType = FileType.TypeScript)
         {
-            throw new NotImplementedException();
+            return csproj;
         }
 
         public void Process(string currentDirectory, string fileName, FileType fileType = FileType.TypeScript)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
