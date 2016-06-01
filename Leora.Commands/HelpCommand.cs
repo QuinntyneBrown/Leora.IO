@@ -1,4 +1,8 @@
-﻿using static System.Console;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using static System.Console;
+using static System.String;
 
 namespace Leora.Commands
 {
@@ -14,22 +18,30 @@ namespace Leora.Commands
         public static void PrintHelp()
         {
             PrintVersionHeader();
-            WriteLine(UsageText);
+            WriteLine(GetEmbeddedResource("UsageText.txt"));
         }
-
-        private const string UsageText = @"Usage: dotnet [common-options] [command] [arguments]
-Arguments:
-  [command]     The command to execute
-  [arguments]   Arguments to pass to the command
-Common Options (passed before the command):
-  -v|--verbose  Enable verbose output
-  --version     Display Chloe CLI Version Number
-  --info        Display Chloe CLI Info
-Common Commands:";
-
+        
         public static void PrintVersionHeader()
         {
             WriteLine(Infrastructure.Constants.Version);
+        }
+
+        public static string GetEmbeddedResource(string resourceName)
+        {
+            List<string> lines = new List<string>();
+            var assembly = Assembly.GetExecutingAssembly();
+            using (System.IO.Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.{resourceName}"))
+            {
+                using (var streamReader = new StreamReader(stream))
+                {
+                    string line;
+                    while ((line = streamReader.ReadLine()) != null)
+                    {
+                        lines.Add(line);
+                    }
+                }
+                return Join("\n", lines);
+            }
         }
     }
 }

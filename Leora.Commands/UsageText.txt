@@ -1,0 +1,9 @@
+﻿Usage: dotnet [common-options] [command] [arguments]
+Arguments:
+  [command]     The command to execute
+  [arguments]   Arguments to pass to the command
+Common Options (passed before the command):
+  -v|--verbose  Enable verbose output
+  --version     Display Chloe CLI Version Number
+  --info        Display Chloe CLI Info
+Common Commands:
