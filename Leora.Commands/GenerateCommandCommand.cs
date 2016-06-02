@@ -7,8 +7,8 @@ namespace Leora.Commands
 {
     public class GenerateCommandCommand : BaseCommand<GenerateCommandCommandOptions>, IGenerateCommandCommand
     {
-        public GenerateCommandCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter)
-            :base(templateManager,templateProcessor, namingConventionConverter,projectManager,fileWriter) { }
+        public GenerateCommandCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
+            :base(templateManager,templateProcessor, namingConventionConverter,projectManager,fileWriter, namespaceManager) { }
 
         public override int Run(GenerateCommandCommandOptions options) => Run(options.Name, options.Directory);
 

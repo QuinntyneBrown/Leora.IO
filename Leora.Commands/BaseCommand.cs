@@ -4,31 +4,33 @@ using Leora.Models;
 
 namespace Leora.Commands
 {
-    public abstract class BaseCommand<TOptions> where TOptions : new()
+    public abstract class BaseCommand<TOptions> where TOptions : Leora.Commands.Options.BaseOptions, new()
     {
         protected readonly ITemplateManager _templateManager;
+        protected readonly INamespaceManager _namespaceManager;
         protected readonly ITemplateProcessor _templateProcessor;
         protected readonly INamingConventionConverter _namingConventionConverter;
         protected readonly IProjectManager _projectManager;
         protected readonly IFileWriter _fileWriter;
 
-        public BaseCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter)
+        public BaseCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
         {
             _templateProcessor = templateProcessor;
             _templateManager = templateManager;
             _namingConventionConverter = namingConventionConverter;
             _projectManager = projectManager;
             _fileWriter = fileWriter;
+            _namespaceManager = namespaceManager;
         }
 
         public BaseCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter)
-            : this(templateManager, templateProcessor, namingConventionConverter, null, null)
+            : this(templateManager, templateProcessor, namingConventionConverter, null, null, null)
         {
 
         }
 
         public BaseCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor)
-            : this(templateManager, templateProcessor, null, null, null)
+            : this(templateManager, templateProcessor, null, null, null, null)
         {
 
         }
@@ -37,6 +39,7 @@ namespace Leora.Commands
         {
             var options = new TOptions();
             Default.ParseArguments(args, options);
+            options.Namespace = _namespaceManager.GetNamespace(options.Directory).Namespace;
             return Run(options);
         }
 
