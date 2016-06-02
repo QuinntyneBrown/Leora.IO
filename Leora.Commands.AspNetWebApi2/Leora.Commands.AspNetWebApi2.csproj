@@ -57,6 +57,7 @@
     <Compile Include="GenerateDtosCommand.cs" />
     <Compile Include="GenerateExceptionCommand.cs" />
     <Compile Include="GenerateModelCommand.cs" />
+    <Compile Include="GenerateNewCommand.cs" />
     <Compile Include="GenerateServiceCommand.cs" />
     <Compile Include="GenerateUowCommand.cs" />
     <Compile Include="Options\BaseOptions.cs" />
@@ -68,6 +69,8 @@
     <Compile Include="Options\GenerateServiceOptions.cs" />
     <Compile Include="Options\GenerateUowOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Contracts\IGenerateNewCommand.cs" />
+    <Compile Include="Options\GenerateNewOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">

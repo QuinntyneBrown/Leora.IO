@@ -40,11 +40,7 @@ namespace Leora.Commands
         {
             var options = new TOptions();
             Default.ParseArguments(args, options);
-            Console.WriteLine(options.Directory);
-            options.Namespace = _namespaceManager.GetNamespace(options.Directory).Namespace;
-
-            Console.WriteLine(options.Namespace);
-            Console.WriteLine(options.Name);
+            options.Namespace = _namespaceManager.GetNamespace(options.Directory).Namespace;            
             return Run(options);
         }
 

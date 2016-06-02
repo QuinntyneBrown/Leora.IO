@@ -2,7 +2,7 @@
 
 namespace {{ namespacename }}.Options
 {
-    public class Generate{{ entityNamePascalCase }} Options: BaseOptions
+    public class Generate{{ entityNamePascalCase }}Options: BaseOptions
     {
 
     }

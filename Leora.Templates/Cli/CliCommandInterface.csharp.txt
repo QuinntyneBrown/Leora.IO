@@ -2,7 +2,7 @@
 
 namespace {{ namespacename }}.Contracts
 {
-    public interface IGenerate{{ entityNameCamelCase }}Command : ICommand
+    public interface IGenerate{{ entityNamePascalCase }}Command : ICommand
     {
         int Run(string name, string directory, bool crud);
     }

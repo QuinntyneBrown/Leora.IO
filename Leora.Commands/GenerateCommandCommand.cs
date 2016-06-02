@@ -19,12 +19,12 @@ namespace Leora.Commands
             var exitCode = 1;
             var pascalCaseName = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
             var commandFileName = $"Generate{pascalCaseName}Command.cs";
-            var commandInterfaceFileName = $"Generate{pascalCaseName}Command.cs";
-            var commandOptionsFileName = $"Generate{pascalCaseName}CommandOptions.cs";
+            var commandInterfaceFileName = $"IGenerate{pascalCaseName}Command.cs";
+            var commandOptionsFileName = $"Generate{pascalCaseName}Options.cs";
 
             CreateDirectory($"{directory}//Contracts");
             CreateDirectory($"{directory}//Options");
-
+            
             _fileWriter.WriteAllLines($"{directory}//{commandFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "CliCommand", BluePrintType.Cli), name, namespacename));
             _fileWriter.WriteAllLines($"{directory}//Contracts//{commandInterfaceFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "CliCommandInterface", BluePrintType.Cli), name, namespacename));
             _fileWriter.WriteAllLines($"{directory}//Options//{commandOptionsFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "CliCommandOptions", BluePrintType.Cli), name, namespacename));
