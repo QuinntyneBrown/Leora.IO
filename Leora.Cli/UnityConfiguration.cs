@@ -1,5 +1,7 @@
-﻿using Leora.Commands.Angular1;
+﻿using Leora.Commands;
+using Leora.Commands.Angular1;
 using Leora.Commands.Angular1.Contracts;
+using Leora.Commands.Contracts;
 using Leora.Services;
 using Leora.Services.Angular1;
 using Leora.Services.Angular1.Contracts;
@@ -30,6 +32,8 @@ namespace Leora.Cli
             container.RegisterType<IGenerateEditorCommand, GenerateEditorCommand>();
             container.RegisterType<IGenerateListCommand, GenerateListCommand>();
             container.RegisterType<IGenerateFeatureCommand, GenerateFeatureCommand>();
+
+            container.RegisterType<IGenerateCommandCommand, GenerateCommandCommand>();
 
             container.RegisterType<INamespaceManager, NamespaceManager>();
             container.RegisterType<IMainManager, MainManager>();

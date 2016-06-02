@@ -1,10 +1,10 @@
-﻿using {{ namespace }}.Contracts;
-using {{ namespace }}.Options;
+﻿using {{ namespacename }}.Contracts;
+using {{ namespacename }}.Options;
 using Leora.Models;
 using Leora.Services.Contracts;
 using static System.IO.File;
 
-namespace {{ namespace }}
+namespace {{ namespacename }}
 {
     public class Generate{{ entityNamePascalCase }}Command : BaseCommand<Generate{{ entityNamePascalCase }}Options>, IGenerate{{ entityNamePascalCase }}Command
     {

@@ -13,6 +13,10 @@ namespace Leora.Services
         {
             _namingConventionConverter = namingConventionConverter;
         }
+
+        public string[] ProcessTemplate(string[] template, string name, string namespacename)
+            => ProcessTemplate(template, name, namespacename, null);
+
         public string[] ProcessTemplate(string[] template, string name, string namespacename, string rootNamespace)
         {
             var lines = new List<string>();
@@ -24,7 +28,10 @@ namespace Leora.Services
                 newline = newline.Replace("{{ entityNameSnakeCase }}", _namingConventionConverter.Convert(NamingConvention.SnakeCase, name));
                 newline = newline.Replace("{{ entityNameTitleCase }}", _namingConventionConverter.Convert(NamingConvention.TitleCase, name));
                 newline = newline.Replace("{{ namespacename }}", _namingConventionConverter.Convert(NamingConvention.PascalCase, namespacename));
-                newline = newline.Replace("{{ rootNamespacename }}", _namingConventionConverter.Convert(NamingConvention.PascalCase, rootNamespace));
+
+                if(!string.IsNullOrEmpty(rootNamespace))
+                    newline = newline.Replace("{{ rootNamespacename }}", _namingConventionConverter.Convert(NamingConvention.PascalCase, rootNamespace));
+
                 lines.Add(newline);
                 index++;
             }

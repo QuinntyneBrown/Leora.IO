@@ -16,7 +16,7 @@ namespace Leora.Commands.Options
         [Option("name", Required = false, HelpText = "Name")]
         public string Name { get; set; }
 
-        [Option("name", Required = false, HelpText = "Namespace")]
+        [Option("namespace", Required = false, HelpText = "Namespace")]
         public string Namespace { get; set; }
     }
 }

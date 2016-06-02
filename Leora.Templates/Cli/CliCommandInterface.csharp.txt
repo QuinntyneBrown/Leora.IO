@@ -1,6 +1,6 @@
 ﻿using Leora.Commands.Contracts;
 
-namespace {{ namespace }}
+namespace {{ namespacename }}.Contracts
 {
     public interface IGenerate{{ entityNameCamelCase }}Command : ICommand
     {

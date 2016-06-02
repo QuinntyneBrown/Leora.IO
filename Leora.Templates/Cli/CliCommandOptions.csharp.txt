@@ -1,6 +1,6 @@
 ﻿using CommandLine;
 
-namespace {{ namespace }}
+namespace {{ namespacename }}.Options
 {
     public class Generate{{ entityNamePascalCase }} Options: BaseOptions
     {

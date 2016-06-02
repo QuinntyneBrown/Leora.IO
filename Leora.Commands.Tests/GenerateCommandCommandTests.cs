@@ -18,8 +18,8 @@ namespace Leora.Commands.Tests
         [TestMethod]
         public void TestRunMethod()
         {
-            Assert.AreEqual(_generateCommandCommand.Run("customer", @"C:\test\"), 1);
-            Assert.AreEqual(_generateCommandCommand.Run("customer", @"C:\test\"), 1);
+            Assert.AreEqual(_generateCommandCommand.Run("customer", @"C:\test\","Leora.Commands.Tests"), 1);
+            Assert.AreEqual(_generateCommandCommand.Run("customer", @"C:\test\", "Leora.Commands.Tests"), 1);
         }
     }
 }

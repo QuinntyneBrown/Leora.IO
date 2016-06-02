@@ -6,5 +6,6 @@
         public static string Angular2 = "Angular2";
         public static string AspNetWebApi2 = "AspNetWebApi2";
         public static string React = "React";
+        public static string Cli = "Cli";
     }
 }

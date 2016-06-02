@@ -16,10 +16,11 @@ namespace Leora.Commands.Tests
 
             container.RegisterType<ITemplateManager, MockTemplateManager>();
             container.RegisterType<ITemplateProcessor, MockTemplateProcessor>();
+            container.RegisterType<IDotNetTemplateProcessor, MockTemplateProcessor>();
             container.RegisterType<INamingConventionConverter, NamingConventionConverter>();
             container.RegisterType<IProjectManager, MockProjectManager>();            
             container.RegisterType<IFileWriter, MockFileWriter>();
-
+            container.RegisterType<INamespaceManager, MockNamespaceManager>();
             return container;
         }
     }

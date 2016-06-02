@@ -110,9 +110,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Cli\CliBaseCommand.cs.txt" />
-    <EmbeddedResource Include="Cli\CliCommand.cs.txt" />
-    <EmbeddedResource Include="Cli\CliCommandInterface.cs.txt" />
-    <EmbeddedResource Include="Cli\CliCommandOptions.cs.txt" />
+    <EmbeddedResource Include="Cli\CliCommand.csharp.txt" />
+    <EmbeddedResource Include="Cli\CliCommandInterface.csharp.txt" />
+    <EmbeddedResource Include="Cli\CliCommandOptions.csharp.txt" />
     <EmbeddedResource Include="Angular1\Angular1DeclarationFile.typescript.txt" />
     <Content Include="FrontendWorkflow\gulpfile.js.txt" />
     <Content Include="FrontendWorkflow\tsconfig.json.txt" />
