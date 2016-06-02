@@ -37,6 +37,8 @@ namespace Leora.Cli
                 ["ng-service"] = _container.Resolve<IGenerateServiceCommand>().Run,
 
                 ["react-component"] = _container.Resolve<Leora.Commands.React.Contracts.IGenerateComponentCommand>().Run,
+
+                ["command"] = _container.Resolve<Leora.Commands.Contracts.IGenerateCommandCommand>().Run
             };
         }
 

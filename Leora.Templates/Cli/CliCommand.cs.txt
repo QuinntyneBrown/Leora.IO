@@ -1,1 +1,32 @@
-﻿
+﻿using {{ namespace }}.Contracts;
+using {{ namespace }}.Options;
+using Leora.Models;
+using Leora.Services.Contracts;
+using static System.IO.File;
+
+namespace {{ namespace }}
+{
+    public class Generate{{ entityNamePascalCase }}Command : BaseCommand<Generate{{ entityNamePascalCase }}Options>, IGenerate{{ entityNamePascalCase }}Command
+    {
+        public Generate{{ entityNamePascalCase }}Command(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter)
+            :base(templateManager,templateProcessor, namingConventionConverter,projectManager, fileWriter) { }
+
+        public override int Run(Generate{{ entityNamePascalCase }}Options options) => Run(options.Name, options.Directory);        
+
+        public int Run(string name, string directory)
+        {
+            int exitCode = 1;
+            
+			var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
+
+			var typeScriptFileName = $"{snakeCaseName}.component.ts";
+
+            _fileWriter.WriteAllLines($"{baseFilePath}.component.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular1Component", BluePrintType.Angular1), name));
+
+			_projectManager.Process(directory, typeScriptFileName, FileType.TypeScript);
+            
+            return exitCode;
+        }
+
+    }
+}

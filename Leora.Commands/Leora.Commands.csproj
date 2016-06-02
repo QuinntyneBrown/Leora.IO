@@ -58,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">
+      <Project>{239C7774-BAB3-4842-B86B-FE813708CE02}</Project>
+      <Name>Leora.Commands.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Models\Leora.Models.csproj">
       <Project>{90a53448-6cdd-478b-9060-ae15783e8f8d}</Project>
       <Name>Leora.Models</Name>

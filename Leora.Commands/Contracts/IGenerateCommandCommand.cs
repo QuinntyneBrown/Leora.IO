@@ -1,6 +1,8 @@
-﻿namespace Leora.Commands.Contracts
+﻿using Leora.Commands.Contracts;
+
+namespace Leora.Commands.Contracts
 {
-    public interface IGenerateCommandCommand
+    public interface IGenerateCommandCommand: ICommand
     {
         int Run(string name, string directory);
     }

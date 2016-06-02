@@ -1,1 +1,9 @@
-﻿
+﻿using CommandLine;
+
+namespace {{ namespace }}
+{
+    public class Generate{{ entityNamePascalCase }} Options: BaseOptions
+    {
+
+    }
+}

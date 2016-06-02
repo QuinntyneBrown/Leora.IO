@@ -7,14 +7,16 @@ namespace Leora.Commands
 {
     public class GenerateCommandCommand : BaseCommand<GenerateCommandCommandOptions>, IGenerateCommandCommand
     {
-        public GenerateCommandCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager)
-            :base(templateManager,templateProcessor, namingConventionConverter,projectManager) { }
+        public GenerateCommandCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter)
+            :base(templateManager,templateProcessor, namingConventionConverter,projectManager,fileWriter) { }
 
         public override int Run(GenerateCommandCommandOptions options) => Run(options.Name, options.Directory);
 
         public int Run(string name, string directory)
         {
-            throw new NotImplementedException();
+            var exitCode = 1;
+
+            return 1;
         }
     }
 }

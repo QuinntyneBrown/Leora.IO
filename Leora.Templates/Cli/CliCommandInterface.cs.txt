@@ -1,1 +1,9 @@
-﻿
+﻿using Leora.Commands.Contracts;
+
+namespace {{ namespace }}
+{
+    public interface IGenerate{{ entityNameCamelCase }}Command : ICommand
+    {
+        int Run(string name, string directory, bool crud);
+    }
+}
