@@ -57,6 +57,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.FrontendWork
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.FrontendWorkflow.Tests", "Leora.Commands.FrontendWorkflow.Tests\Leora.Commands.FrontendWorkflow.Tests.csproj", "{BBBCED87-C6F5-41A4-BD50-C5EE071A6168}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Services.VisualStudio.Tests", "Leora.Services.VisualStudio.Tests\Leora.Services.VisualStudio.Tests.csproj", "{3E614C8D-6F34-4088-AD79-92813F8A647F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Services.VisualStudio", "Leora.Services.VisualStudio\Leora.Services.VisualStudio.csproj", "{9AAEEDF8-2798-4D3E-B1B9-36B7ADD4F365}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.VisualStudio", "Leora.Commands.VisualStudio\Leora.Commands.VisualStudio.csproj", "{4E33F438-9D8C-4669-B76F-E36DEA2295CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.VisualStudio.Tests", "Leora.Commands.VisualStudio.Tests\Leora.Commands.VisualStudio.Tests.csproj", "{13DF0789-BE26-4EB4-BC15-05456758DC03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -171,6 +179,22 @@ Global
 		{BBBCED87-C6F5-41A4-BD50-C5EE071A6168}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBBCED87-C6F5-41A4-BD50-C5EE071A6168}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBBCED87-C6F5-41A4-BD50-C5EE071A6168}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E614C8D-6F34-4088-AD79-92813F8A647F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E614C8D-6F34-4088-AD79-92813F8A647F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E614C8D-6F34-4088-AD79-92813F8A647F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E614C8D-6F34-4088-AD79-92813F8A647F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AAEEDF8-2798-4D3E-B1B9-36B7ADD4F365}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AAEEDF8-2798-4D3E-B1B9-36B7ADD4F365}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AAEEDF8-2798-4D3E-B1B9-36B7ADD4F365}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AAEEDF8-2798-4D3E-B1B9-36B7ADD4F365}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E33F438-9D8C-4669-B76F-E36DEA2295CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E33F438-9D8C-4669-B76F-E36DEA2295CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E33F438-9D8C-4669-B76F-E36DEA2295CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E33F438-9D8C-4669-B76F-E36DEA2295CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13DF0789-BE26-4EB4-BC15-05456758DC03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13DF0789-BE26-4EB4-BC15-05456758DC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13DF0789-BE26-4EB4-BC15-05456758DC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13DF0789-BE26-4EB4-BC15-05456758DC03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
