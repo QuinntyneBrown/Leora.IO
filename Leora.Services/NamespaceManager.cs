@@ -7,26 +7,43 @@ using static System.IO.Path;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using Leora.Models;
+using System.IO;
 
 namespace Leora.Services
 {
     public class NamespaceManager: INamespaceManager
     {
         protected readonly XNamespace msbuild = "http://schemas.microsoft.com/developer/msbuild/2003";
+        protected readonly INamingConventionConverter _namingConventionConverter;
+
+        public NamespaceManager(INamingConventionConverter namingConventionConverter)
+        {
+            _namingConventionConverter = namingConventionConverter;
+        }
+
+        public NamespaceManager()
+        {
+            _namingConventionConverter = new NamingConventionConverter();
+        }
 
         public FileNamespace GetNamespace(string path)
         {
             var projectPath = GetProjectPath(path);
             var projectGroups = Load(projectPath).Descendants(msbuild + "PropertyGroup");
-            var rootNamespace = projectGroups.Descendants(msbuild + "RootNamespace").First().Value;            
-            return new FileNamespace() { Namespace = $"{rootNamespace}.{Join(".",GetSubNamespaces(path,projectPath))}", RootNamespace = rootNamespace };
+            var rootNamespace = projectGroups.Descendants(msbuild + "RootNamespace").First().Value;
+            var subNamespaces = GetSubNamespaces(path, projectPath);
+
+            if(subNamespaces.Count() < 1)
+                return new FileNamespace() { Namespace = rootNamespace, RootNamespace = rootNamespace };
+
+            return new FileNamespace() { Namespace = $"{rootNamespace}.{Join(".",subNamespaces)}", RootNamespace = rootNamespace };            
         }
 
         public string GetProjectPath(string path, int depth = 0)
         {
-            var directories = GetDirectoryName(path).Split(DirectorySeparatorChar);
-
-            if (directories.Length < depth)
+            var directories = path.Split(DirectorySeparatorChar);
+            
+            if (directories.Length <= depth)
                 return null;
 
             var newDirectories = directories.Take(directories.Length - depth);
@@ -38,9 +55,17 @@ namespace Leora.Services
 
         public List<string> GetSubNamespaces(string path, string projectPath)
         {
-            var pathDirectories = GetDirectoryName(path).Split(DirectorySeparatorChar);
+            var pathDirectories = path.Split(DirectorySeparatorChar);
             var skip = GetDirectoryName(projectPath).Split(DirectorySeparatorChar).Count();
-            return pathDirectories.Skip(skip).Take(pathDirectories.Length - skip).ToList();
+            var subNamespaces = pathDirectories.Skip(skip).Take(pathDirectories.Length - skip).ToList();
+            List<string> subNamespacesPascalCase = new List<string>();
+            foreach(var subNamespace in subNamespaces)
+            {
+                subNamespacesPascalCase.Add(_namingConventionConverter.Convert(NamingConvention.PascalCase, subNamespace));
+            }
+            return subNamespacesPascalCase;
         }
+
+        public bool IsDirectory(string path) => File.GetAttributes(path).HasFlag(FileAttributes.Directory);
     }
 }
