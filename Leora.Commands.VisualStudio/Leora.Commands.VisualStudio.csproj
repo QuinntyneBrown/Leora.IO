@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseCommand.cs" />
+    <Compile Include="GenerateNugetCommand.cs" />
     <Compile Include="GenerateProjectCommand.cs" />
     <Compile Include="GenerateSolutionCommand.cs" />
     <Compile Include="Options\BaseOptions.cs" />
@@ -53,6 +54,8 @@
     <Compile Include="Options\GenerateSolutionOptions.cs" />
     <Compile Include="Contracts\IGenerateProjectCommand.cs" />
     <Compile Include="Options\GenerateProjectOptions.cs" />
+    <Compile Include="Contracts\IGenerateNugetCommand.cs" />
+    <Compile Include="Options\GenerateNugetOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">

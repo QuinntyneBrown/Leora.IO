@@ -80,6 +80,10 @@
       <Project>{012098c2-1ad5-49c5-bbbc-5bf58d54c055}</Project>
       <Name>Leora.Commands.React</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands.VisualStudio\Leora.Commands.VisualStudio.csproj">
+      <Project>{4e33f438-9d8c-4669-b76f-e36dea2295ce}</Project>
+      <Name>Leora.Commands.VisualStudio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Commands\Leora.Commands.csproj">
       <Project>{62AF635D-6669-41D4-BE7E-1A7F08771996}</Project>
       <Name>Leora.Commands</Name>
@@ -95,6 +99,10 @@
     <ProjectReference Include="..\Leora.Services.Contracts\Leora.Services.Contracts.csproj">
       <Project>{a9a20d8a-9e00-40c9-8c4a-ce41a428285a}</Project>
       <Name>Leora.Services.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leora.Services.VisualStudio\Leora.Services.VisualStudio.csproj">
+      <Project>{9aaeedf8-2798-4d3e-b1b9-36b7add4f365}</Project>
+      <Name>Leora.Services.VisualStudio</Name>
     </ProjectReference>
     <ProjectReference Include="..\Leora.Services\Leora.Services.csproj">
       <Project>{dc37d489-7dfc-4465-89b6-14f4c38a4551}</Project>

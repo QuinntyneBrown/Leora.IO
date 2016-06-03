@@ -38,7 +38,9 @@ namespace Leora.Cli
 
                 ["react-component"] = _container.Resolve<Leora.Commands.React.Contracts.IGenerateComponentCommand>().Run,
 
-                ["command"] = _container.Resolve<Leora.Commands.Contracts.IGenerateCommandCommand>().Run
+                ["command"] = _container.Resolve<Leora.Commands.Contracts.IGenerateCommandCommand>().Run,
+
+                ["nuget"] = _container.Resolve<Leora.Commands.VisualStudio.Contracts.IGenerateNugetCommand>().Run
             };
         }
 

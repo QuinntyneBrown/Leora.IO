@@ -2,6 +2,8 @@
 using Leora.Commands.Angular1;
 using Leora.Commands.Angular1.Contracts;
 using Leora.Commands.Contracts;
+using Leora.Commands.VisualStudio;
+using Leora.Commands.VisualStudio.Contracts;
 using Leora.Services;
 using Leora.Services.Angular1;
 using Leora.Services.Angular1.Contracts;
@@ -34,6 +36,8 @@ namespace Leora.Cli
             container.RegisterType<IGenerateFeatureCommand, GenerateFeatureCommand>();
 
             container.RegisterType<IGenerateCommandCommand, GenerateCommandCommand>();
+
+            container.RegisterType<IGenerateNugetCommand, GenerateNugetCommand>();
 
             container.RegisterType<INamespaceManager, NamespaceManager>();
             container.RegisterType<IMainManager, MainManager>();
