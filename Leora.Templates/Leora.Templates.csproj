@@ -109,6 +109,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="VisualStudio\VisualStudioProjectOptions.txt" />
     <EmbeddedResource Include="VisualStudio\VisualStudioProject.txt" />
     <EmbeddedResource Include="VisualStudio\VisualStudioSolution.txt" />
     <EmbeddedResource Include="Cli\CliBaseCommand.cs.txt" />

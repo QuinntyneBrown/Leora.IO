@@ -4,6 +4,6 @@ namespace {{ namespacename }}.Contracts
 {
     public interface IGenerate{{ entityNamePascalCase }}Command : ICommand
     {
-        int Run(string name, string directory, bool crud);
+        int Run(string name, string directory);
     }
 }

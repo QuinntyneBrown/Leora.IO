@@ -45,11 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseCommand.cs" />
+    <Compile Include="GenerateProjectCommand.cs" />
     <Compile Include="GenerateSolutionCommand.cs" />
     <Compile Include="Options\BaseOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Contracts\IGenerateSolutionCommand.cs" />
     <Compile Include="Options\GenerateSolutionOptions.cs" />
+    <Compile Include="Contracts\IGenerateProjectCommand.cs" />
+    <Compile Include="Options\GenerateProjectOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">
