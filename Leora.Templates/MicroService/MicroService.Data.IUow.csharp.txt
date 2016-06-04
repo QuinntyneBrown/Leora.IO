@@ -1,0 +1,10 @@
+using {{ name }}.Models;
+
+namespace {{ name }}.Data
+{
+    public interface IUow
+    {
+        IRepository<{{ entity }}> {{ entity }}s { get; }
+        void SaveChanges();
+    }
+}

@@ -1,0 +1,7 @@
+namespace {{ name }}.Clients
+{
+    public class SearchClient: ISearchClient
+    {
+
+    }
+}

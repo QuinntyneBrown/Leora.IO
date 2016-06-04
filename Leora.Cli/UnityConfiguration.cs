@@ -39,8 +39,11 @@ namespace Leora.Cli
 
             container.RegisterType<IGenerateNugetCommand, GenerateNugetCommand>();
 
+            container.RegisterType<IGenerateMicroserviceCommand, GenerateMicroserviceCommand>();
+
             container.RegisterType<INamespaceManager, NamespaceManager>();
             container.RegisterType<IMainManager, MainManager>();
+            container.RegisterType<IMicroserviceTemplateProcessor, MicroserviceTemplateProcessor>();
 
             container.RegisterType<Leora.Commands.React.Contracts.IGenerateComponentCommand, Leora.Commands.React.GenerateComponentCommand>();
 

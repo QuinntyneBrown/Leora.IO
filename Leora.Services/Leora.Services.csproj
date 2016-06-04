@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="DotNetTemplateProcessor.cs" />
     <Compile Include="FileWriter.cs" />
+    <Compile Include="MicroserviceTemplateProcessor.cs" />
     <Compile Include="NamespaceManager.cs" />
     <Compile Include="NamingConventionConverter.cs" />
     <Compile Include="ProjectManager.cs" />

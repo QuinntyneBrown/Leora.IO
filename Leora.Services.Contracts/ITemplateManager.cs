@@ -3,5 +3,7 @@
     public interface ITemplateManager
     {
         string[] Get(Leora.Models.FileType fileType, string name, string framework = null);
+
+        string[] Get(string name, string framework = null);
     }
 }

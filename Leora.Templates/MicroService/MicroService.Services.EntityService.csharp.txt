@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using {{ name }}.Dtos;
+using {{ name }}.Data;
+using {{ name }}.Models;
+
+namespace {{ name }}.Services
+{
+    public class {{ entity }}Service : I{{ entity }}Service
+    {
+        public {{ entity }}Service(IUow uow, ICacheProvider cacheProvider)
+        {
+            _uow = uow;
+            _repository = uow.{{ entity }}s;
+            _cache = cacheProvider.GetCache();
+        }
+
+        public {{ entity }}AddOrUpdateResponseDto AddOrUpdate({{ entity }}AddOrUpdateRequestDto request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICollection<{{ entity }}Dto> Get()
+        {
+            throw new NotImplementedException();
+        }
+
+        public {{ entity }}Dto GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public dynamic Remove(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected readonly IUow _uow;
+        protected readonly IRepository<{{ entity }}> _repository;
+        protected readonly ICache _cache;
+    }
+}

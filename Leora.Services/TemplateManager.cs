@@ -8,6 +8,28 @@ namespace Leora.Services
 {
     public class TemplateManager : ITemplateManager
     {
+        public string[] Get(string name, string framework = null)
+        {
+            List<string> lines = new List<string>();
+            string templateName = $"Leora.Templates.{framework}.{name}.txt";
+            Console.WriteLine(templateName);
+            Console.ReadLine();
+            using (System.IO.Stream stream = typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateName))
+            {
+                Console.WriteLine(stream == null);
+
+                using (var streamReader = new StreamReader(stream))
+                {
+                    string line;
+                    while ((line = streamReader.ReadLine()) != null)
+                    {
+                        lines.Add(line);
+                    }
+                }
+                return lines.ToArray();
+            }
+        }
+
         public string[] Get(FileType fileType, string name, string framework = null)
         {
             List<string> lines = new List<string>();

@@ -1,0 +1,6 @@
+namespace {{ name }}.Clients
+{
+    public class IdentityClient: IIdentityClient
+    {
+    }
+}

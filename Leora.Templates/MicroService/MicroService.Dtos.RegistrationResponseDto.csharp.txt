@@ -1,0 +1,10 @@
+namespace {{ name }}.Dtos
+{
+    public class RegistrationResponseDto
+    {
+        public RegistrationResponseDto()
+        {
+
+        }
+    }
+}

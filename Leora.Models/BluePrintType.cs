@@ -8,5 +8,6 @@
         public static string React = "React";
         public static string Cli = "Cli";
         public static string VisualStudio = "VisualStudio";
+        public static string MicroService = "MicroService";
     }
 }

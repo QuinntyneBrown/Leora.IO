@@ -40,7 +40,9 @@ namespace Leora.Cli
 
                 ["command"] = _container.Resolve<Leora.Commands.Contracts.IGenerateCommandCommand>().Run,
 
-                ["nuget"] = _container.Resolve<Leora.Commands.VisualStudio.Contracts.IGenerateNugetCommand>().Run
+                ["nuget"] = _container.Resolve<Leora.Commands.VisualStudio.Contracts.IGenerateNugetCommand>().Run,
+
+                ["microservice"] = _container.Resolve<Leora.Commands.Contracts.IGenerateMicroserviceCommand>().Run,
             };
         }
 

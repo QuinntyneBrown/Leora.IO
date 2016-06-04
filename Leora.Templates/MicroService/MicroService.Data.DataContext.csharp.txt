@@ -1,0 +1,23 @@
+using {{ name }}.Models;
+using System.Data.Entity;
+
+namespace {{ name }}.Data
+{
+    public class DataContext: DbContext, IDbContext
+    {
+        public DataContext()
+            : base(nameOrConnectionString: "{{ name }}DataContext")
+        {
+            Configuration.ProxyCreationEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
+            Configuration.AutoDetectChangesEnabled = true;
+        }
+
+        public DbSet<{{ entity }}> {{ entity }}s { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+        } 
+    }
+}

@@ -1,0 +1,16 @@
+ install-package CommandLineParser
+ install-package CommonServiceLocator
+ install-package EntityFramework
+ install-package Microsoft.AspNet.WebApi.Client
+ install-package Microsoft.AspNet.WebApi.Core
+ install-package Microsoft.AspNet.WebApi.Owin
+ install-package Microsoft.AspNet.WebApi.OwinSelfHost
+ install-package Microsoft.AspNet.WebApi.SelfHost
+ install-package Microsoft.Owin
+ install-package Microsoft.Owin.Host.HttpListener
+ install-package Microsoft.Owin.Host.SystemWeb
+ install-package Microsoft.Owin.Hosting
+ install-package Newtonsoft.Json
+ install-package Owin
+ install-package Unity
+ install-package Unity.WebAPI

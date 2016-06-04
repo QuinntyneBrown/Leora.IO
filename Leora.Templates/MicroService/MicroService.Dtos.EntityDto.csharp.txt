@@ -1,0 +1,21 @@
+using {{ name }}.Models;
+
+namespace {{ name }}.Dtos
+{
+    public class {{ entity }}Dto
+    {
+        public {{ entity }}Dto()
+        {
+
+        }
+
+        public {{ entity }}Dto({{ entity }} entity)
+        {
+            Id = entity.Id;
+            Name = entity.Name;
+        }
+
+        public int? Id { get; set; }
+        public string Name { get; set; }
+    }
+}

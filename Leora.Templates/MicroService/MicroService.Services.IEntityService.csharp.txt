@@ -1,0 +1,13 @@
+using {{ name }}.Dtos;
+using System.Collections.Generic;
+
+namespace {{ name }}.Services
+{
+    public interface I{{ entity }}Service
+    {
+        {{ entity }}AddOrUpdateResponseDto AddOrUpdate({{ entity }}AddOrUpdateRequestDto request);
+        ICollection<{{ entity }}Dto> Get();
+        {{ entity }}Dto GetById(int id);
+        dynamic Remove(int id);
+    }
+}
