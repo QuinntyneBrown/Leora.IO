@@ -1,1 +1,11 @@
-﻿
+﻿namespace {{ namespacename }}
+{
+    public class {{ entityNamePascalCase }}AddOrUpdateResponseDto: {{ entityNamePascalCase }}Dto
+    {
+        public {{ entityNamePascalCase }}AddOrUpdateResponseDto({{ rootNamespacename }}.Models.{{ entityNamePascalCase }} entity)
+            :base(entity)
+        {
+
+        }
+    }
+}

@@ -37,8 +37,9 @@ namespace Leora.Cli
                 ["ng-service"] = _container.Resolve<IGenerateServiceCommand>().Run,
 
                 ["dotnet-controller"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand>().Run,
-
-
+                ["dotnet-service"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateServiceCommand>().Run,
+                ["dotnet-dtos"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateDtosCommand>().Run,
+                
                 ["react-component"] = _container.Resolve<Leora.Commands.React.Contracts.IGenerateComponentCommand>().Run,
 
                 ["command"] = _container.Resolve<Leora.Commands.Contracts.IGenerateCommandCommand>().Run,

@@ -22,13 +22,13 @@ namespace Leora.Commands.AspNetWebApi2
         {
             int exitCode = 1;
             var pascalCaseName = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
-            var dtoName = $"{pascalCaseName}Dto";
+            var dtoName = $"{pascalCaseName}Dto.cs";
             var addOrUpdateRequestName = $"{pascalCaseName}AddOrUpdateRequestDto.cs";
             var addOrUpdateResponseName = $"{pascalCaseName}AddOrUpdateResponseDto.cs";
 
-            _fileWriter.WriteAllLines($"{directory}//{dtoName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
-            _fileWriter.WriteAllLines($"{directory}//{addOrUpdateRequestName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
-            _fileWriter.WriteAllLines($"{directory}//{addOrUpdateResponseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
+            _fileWriter.WriteAllLines($"{directory}//{dtoName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiDto", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
+            _fileWriter.WriteAllLines($"{directory}//{addOrUpdateRequestName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiRequestDto", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
+            _fileWriter.WriteAllLines($"{directory}//{addOrUpdateResponseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiResponseDto", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
 
             _projectManager.Process(directory, $"{dtoName}", FileType.CSharp);
             _projectManager.Process(directory, $"{addOrUpdateRequestName}", FileType.CSharp);

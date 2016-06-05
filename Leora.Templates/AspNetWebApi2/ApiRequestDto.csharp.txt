@@ -1,1 +1,6 @@
-﻿
+﻿namespace {{ namespacename }}
+{
+    public class {{ entityNamePascalCase }}AddOrUpdateRequestDto: {{ entityNamePascalCase }}Dto
+    {
+    }
+}
