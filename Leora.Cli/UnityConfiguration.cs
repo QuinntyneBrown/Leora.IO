@@ -35,6 +35,8 @@ namespace Leora.Cli
             container.RegisterType<IGenerateListCommand, GenerateListCommand>();
             container.RegisterType<IGenerateFeatureCommand, GenerateFeatureCommand>();
 
+            container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand, Commands.AspNetWebApi2.GenerateControllerCommand>();
+
             container.RegisterType<IGenerateCommandCommand, GenerateCommandCommand>();
 
             container.RegisterType<IGenerateNugetCommand, GenerateNugetCommand>();

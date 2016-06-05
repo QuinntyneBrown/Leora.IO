@@ -36,6 +36,9 @@ namespace Leora.Cli
                 ["ng-paged-list"] = _container.Resolve<IGeneratePagedListCommand>().Run,
                 ["ng-service"] = _container.Resolve<IGenerateServiceCommand>().Run,
 
+                ["dotnet-controller"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand>().Run,
+
+
                 ["react-component"] = _container.Resolve<Leora.Commands.React.Contracts.IGenerateComponentCommand>().Run,
 
                 ["command"] = _container.Resolve<Leora.Commands.Contracts.IGenerateCommandCommand>().Run,

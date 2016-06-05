@@ -39,7 +39,7 @@ namespace Leora.Services
         {
             List<string> lines = new List<string>();
             string templateName = $"Leora.Templates.{framework}.{name}.{GetFileTypeExtension(fileType)}.txt";
-            
+            Console.WriteLine(templateName);
             using (System.IO.Stream stream = typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateName))
             {
                 using (var streamReader = new StreamReader(stream))

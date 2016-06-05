@@ -16,7 +16,7 @@ namespace Leora.Commands.AspNetWebApi2
         {
             int exitCode = 1;
             var pascalCaseName = $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Controller.cs";
-            _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
+            _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiController", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
             _projectManager.Process(directory, $"{pascalCaseName}", FileType.CSharp);
             return exitCode;
         }

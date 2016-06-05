@@ -72,6 +72,10 @@
       <Project>{7701064b-9e44-497b-98bc-2cd18d1486ed}</Project>
       <Name>Leora.Commands.Angular1</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands.AspNetWebApi2\Leora.Commands.AspNetWebApi2.csproj">
+      <Project>{FCD1C652-D683-45CD-8FD9-DDEE37B702A5}</Project>
+      <Name>Leora.Commands.AspNetWebApi2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">
       <Project>{239c7774-bab3-4842-b86b-fe813708ce02}</Project>
       <Name>Leora.Commands.Contracts</Name>

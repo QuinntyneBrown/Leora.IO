@@ -73,7 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Angular2\" />
-    <Folder Include="AspNetWebApi2\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Angular1\Angular1Component.css.txt" />
@@ -185,6 +184,13 @@
     <EmbeddedResource Include="MicroService\MicroService.MicroService.csproj.user.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Services.EntityService.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Services.IEntityService.csharp.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\ApiController.csharp.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\ApiDto.csharp.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\ApiIService.csharp.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\ApiModel.csharp.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\ApiRequestDto.csharp.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\ApiResponseDto.csharp.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\ApiService.csharp.txt" />
     <Content Include="VisualStudio\VisualStudioProjectOptions.txt" />
     <EmbeddedResource Include="VisualStudio\VisualStudioProject.txt" />
     <EmbeddedResource Include="VisualStudio\VisualStudioSolution.txt" />
