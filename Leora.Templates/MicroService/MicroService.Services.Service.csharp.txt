@@ -6,9 +6,9 @@ using {{ name }}.Models;
 
 namespace {{ name }}.Services
 {
-    public class {{ entity }}Service : I{{ entity }}Service
+    public class Service : IService
     {
-        public {{ entity }}Service(IUow uow, ICacheProvider cacheProvider)
+        public Service(IUow uow, ICacheProvider cacheProvider)
         {
             _uow = uow;
             _repository = uow.{{ entity }}s;

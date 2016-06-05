@@ -10,38 +10,38 @@ namespace {{ name }}.Apis
     [RoutePrefix("api/blog")]
     public class {{ entity }}Controller : ApiController
     {
-        public {{ entity }}Controller(I{{ entity }}Service service)
+        public {{ entity }}Controller(IService service)
         {
-            _blogService = service;
+            _service = service;
         }
 
         [Route("add")]
         [HttpPost]
         [ResponseType(typeof({{ entity }}AddOrUpdateResponseDto))]
-        public IHttpActionResult Add({{ entity }}AddOrUpdateRequestDto dto) { return Ok(_blogService.AddOrUpdate(dto)); }
+        public IHttpActionResult Add({{ entity }}AddOrUpdateRequestDto dto) { return Ok(_service.AddOrUpdate(dto)); }
 
         [Route("update")]
         [HttpPut]
         [ResponseType(typeof({{ entity }}AddOrUpdateResponseDto))]
-        public IHttpActionResult Update({{ entity }}AddOrUpdateRequestDto dto) { return Ok(_blogService.AddOrUpdate(dto)); }
+        public IHttpActionResult Update({{ entity }}AddOrUpdateRequestDto dto) { return Ok(_service.AddOrUpdate(dto)); }
 
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
         [ResponseType(typeof(ICollection<{{ entity }}Dto>))]
-        public IHttpActionResult Get() { return Ok(_blogService.Get()); }
+        public IHttpActionResult Get() { return Ok(_service.Get()); }
 
         [Route("getById")]
         [HttpGet]
         [ResponseType(typeof({{ entity }}Dto))]
-        public IHttpActionResult GetById(int id) { return Ok(_blogService.GetById(id)); }
+        public IHttpActionResult GetById(int id) { return Ok(_service.GetById(id)); }
 
         [Route("remove")]
         [HttpDelete]
         [ResponseType(typeof(int))]
-        public IHttpActionResult Remove(int id) { return Ok(_blogService.Remove(id)); }
+        public IHttpActionResult Remove(int id) { return Ok(_service.Remove(id)); }
 
-        protected readonly I{{ entity }}Service _blogService;
+        protected readonly IService _service;
 
 
     }

@@ -126,7 +126,7 @@
     <EmbeddedResource Include="MicroService\MicroService.Data.IRepositoryProvider.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Data.IUow.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Data.RepositoryProvider.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Data.RespositoryFactories.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Data.RepositoryFactories.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Data.Uow.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Dtos.EntityAddOrUpdateRequestDto.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Dtos.EntityAddOrUpdateResponseDto.csharp.txt" />
@@ -145,12 +145,10 @@
     <EmbeddedResource Include="MicroService\MicroService.Services.Cache.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Services.CacheProvider.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Services.EncryptionService.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Services.EntityService.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Services.ICache.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Services.ICacheProvider.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Services.IdentityService.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Services.IEncryptionService.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Services.IEntityService.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Services.IIdentityService.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Services.MemoryCache.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.sln.txt" />
@@ -168,10 +166,6 @@
     <EmbeddedResource Include="MicroService\MicroServiceCli.Properties.AssemblyInfo.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroServiceCli.SelfHostOptions.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroServiceCli.StartUp.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroServiceClients.IdentityClient.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroServiceClients.IIdentityClient.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroServiceClients.ISearchClient.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroServiceClients.SearchClient.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroServiceTests.MicroServiceTests.csproj.txt" />
     <EmbeddedResource Include="MicroService\MicroServiceTests.Properties.AssemblyInfo.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroServiceWeb.index.html.txt" />
@@ -184,6 +178,12 @@
     <EmbeddedResource Include="MicroService\MicroServiceWeb.Web.config.txt" />
     <EmbeddedResource Include="MicroService\MicroServiceWeb.Web.Debug.config.txt" />
     <EmbeddedResource Include="MicroService\MicroServiceWeb.Web.Release.config.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Clients.IdentityClient.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Clients.IIdentityClient.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Clients.ISearchClient.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Clients.SearchClient.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Services.IService.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Services.Service.csharp.txt" />
     <Content Include="VisualStudio\VisualStudioProjectOptions.txt" />
     <EmbeddedResource Include="VisualStudio\VisualStudioProject.txt" />
     <EmbeddedResource Include="VisualStudio\VisualStudioSolution.txt" />

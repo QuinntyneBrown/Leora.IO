@@ -20,7 +20,7 @@ namespace {{ name }}
             container.RegisterType<ICacheProvider, CacheProvider>();
             container.RegisterType<IEncryptionService, EncryptionService>();
             container.RegisterType<ILogger, Logger>();
-            container.RegisterType<I{{ entity }}Service, {{ entity }}Service>();
+            container.RegisterType<IService, Service>();
             container.RegisterInstance(AuthConfiguration.LazyConfig);            
             return container;
         }

@@ -191,8 +191,8 @@
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Data\IRepositoryProvider.cs" />
     <Compile Include="Data\IUow.cs" />
-    <Compile Include="Data\RepositoryProvider.cs" />
-    <Compile Include="Data\RespositoryFactories.cs" />
+    <Compile Include="Data\RepositoryFactories.cs" />
+    <Compile Include="Data\RepositoryProivder.cs" />
     <Compile Include="Data\Uow.cs" />
     <Compile Include="Dtos\{{ entity }}AddOrUpdateRequestDto.cs" />
     <Compile Include="Dtos\{{ entity }}AddOrUpdateResponseDto.cs" />
@@ -205,11 +205,11 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\{{ entity }}.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\{{ entity }}Service.cs" />
+    <Compile Include="Services\Service.cs" />
     <Compile Include="Services\Cache.cs" />
     <Compile Include="Services\CacheProvider.cs" />
     <Compile Include="Services\EncryptionService.cs" />
-    <Compile Include="Services\I{{ entity }}Service.cs" />
+    <Compile Include="Services\IService.cs" />
     <Compile Include="Services\ICache.cs" />
     <Compile Include="Services\ICacheProvider.cs" />
     <Compile Include="Services\IdentityService.cs" />
