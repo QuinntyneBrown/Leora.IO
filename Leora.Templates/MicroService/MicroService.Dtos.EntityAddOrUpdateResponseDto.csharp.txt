@@ -1,3 +1,4 @@
+using {{ name }}.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,5 +9,10 @@ namespace {{ name }}.Dtos
 {
     public class {{ entity }}AddOrUpdateResponseDto: {{ entity }}Dto
     {
+        public {{ entity }}AddOrUpdateResponseDto({{ entity }} entity)
+        :base(entity)
+        {
+
+        }
     }
 }
