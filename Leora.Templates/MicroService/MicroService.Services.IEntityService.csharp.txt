@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace {{ name }}.Services
 {
-    public interface IService
+    public interface I{{ entity }}Service
     {
         {{ entity }}AddOrUpdateResponseDto AddOrUpdate({{ entity }}AddOrUpdateRequestDto request);
         ICollection<{{ entity }}Dto> Get();

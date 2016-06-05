@@ -2,14 +2,13 @@ using System;
 using System.Collections.Generic;
 using {{ name }}.Dtos;
 using {{ name }}.Data;
-using {{ name }}.Models;
 using System.Linq;
 
 namespace {{ name }}.Services
 {
-    public class Service : IService
+    public class {{ entity }}Service : I{{ entity }}Service
     {
-        public Service(IUow uow, ICacheProvider cacheProvider)
+        public {{ entity }}Service(IUow uow, ICacheProvider cacheProvider)
         {
             _uow = uow;
             _repository = uow.{{ entity }}s;
@@ -20,7 +19,7 @@ namespace {{ name }}.Services
         {
             var entity = _repository.GetAll()
                 .FirstOrDefault(x => x.Id == request.Id && x.IsDeleted == false);
-            if (entity == null) _repository.Add(entity = new {{ entity }}());
+            if (entity == null) _repository.Add(entity = new Models.{{ entity }}());
             entity.Name = request.Name;
             _uow.SaveChanges();
             return new {{ entity }}AddOrUpdateResponseDto(entity);
@@ -48,7 +47,7 @@ namespace {{ name }}.Services
         }
 
         protected readonly IUow _uow;
-        protected readonly IRepository<{{ entity }}> _repository;
+        protected readonly IRepository<Models.{{ entity }}> _repository;
         protected readonly ICache _cache;
     }
 }

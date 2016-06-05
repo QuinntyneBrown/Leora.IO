@@ -1,4 +1,3 @@
-using {{ name }}.Models;
 using System;
 
 namespace {{ name }}.Data
@@ -26,7 +25,7 @@ namespace {{ name }}.Data
             RepositoryProvider = repositoryProvider;
         }
 
-        public IRepository<{{ entity }}> {{ entity }}s { get { return GetStandardRepo<{{ entity }}>(); } }
+        public IRepository<Models.{{ entity }}> {{ entity }}s { get { return GetStandardRepo<Models.{{ entity }}>(); } }
         
 
         protected void ConfigureDbContext(IDbContext dbContext)

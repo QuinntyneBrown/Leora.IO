@@ -7,41 +7,41 @@ using System.Web.Http.Description;
 namespace {{ name }}.Apis
 {
     [Authorize]
-    [RoutePrefix("api/blog")]
+    [RoutePrefix("api/{{ entityNameCamelCase }}")]
     public class {{ entity }}Controller : ApiController
     {
-        public {{ entity }}Controller(IService service)
+        public {{ entity }}Controller(I{{ entity }}Service {{ entityNameCamelCase }}Service)
         {
-            _service = service;
+            _{{ entityNameCamelCase }}Service = {{ entityNameCamelCase }}Service;
         }
 
         [Route("add")]
         [HttpPost]
         [ResponseType(typeof({{ entity }}AddOrUpdateResponseDto))]
-        public IHttpActionResult Add({{ entity }}AddOrUpdateRequestDto dto) { return Ok(_service.AddOrUpdate(dto)); }
+        public IHttpActionResult Add({{ entity }}AddOrUpdateRequestDto dto) { return Ok(_{{ entityNameCamelCase }}Service.AddOrUpdate(dto)); }
 
         [Route("update")]
         [HttpPut]
         [ResponseType(typeof({{ entity }}AddOrUpdateResponseDto))]
-        public IHttpActionResult Update({{ entity }}AddOrUpdateRequestDto dto) { return Ok(_service.AddOrUpdate(dto)); }
+        public IHttpActionResult Update({{ entity }}AddOrUpdateRequestDto dto) { return Ok(_{{ entityNameCamelCase }}Service.AddOrUpdate(dto)); }
 
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
         [ResponseType(typeof(ICollection<{{ entity }}Dto>))]
-        public IHttpActionResult Get() { return Ok(_service.Get()); }
+        public IHttpActionResult Get() { return Ok(_{{ entityNameCamelCase }}Service.Get()); }
 
         [Route("getById")]
         [HttpGet]
         [ResponseType(typeof({{ entity }}Dto))]
-        public IHttpActionResult GetById(int id) { return Ok(_service.GetById(id)); }
+        public IHttpActionResult GetById(int id) { return Ok(_{{ entityNameCamelCase }}Service.GetById(id)); }
 
         [Route("remove")]
         [HttpDelete]
         [ResponseType(typeof(int))]
-        public IHttpActionResult Remove(int id) { return Ok(_service.Remove(id)); }
+        public IHttpActionResult Remove(int id) { return Ok(_{{ entityNameCamelCase }}Service.Remove(id)); }
 
-        protected readonly IService _service;
+        protected readonly I{{ entity }}Service _{{ entityNameCamelCase }}Service;
 
 
     }

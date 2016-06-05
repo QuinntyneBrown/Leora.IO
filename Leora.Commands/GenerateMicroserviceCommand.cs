@@ -120,7 +120,7 @@ namespace Leora.Commands
                     WriteFile(folderPath, "IRepository.cs", "MicroService", folder, "IRepository.csharp", namePascalCase, entityPascalCase);
                     WriteFile(folderPath, "IRepositoryProvider.cs", "MicroService", folder, "IRepositoryProvider.csharp", namePascalCase, entityPascalCase);
                     WriteFile(folderPath, "IUow.cs", "MicroService", folder, "IUow.csharp", namePascalCase, entityPascalCase);
-                    WriteFile(folderPath, "RepositoryProivder.cs", "MicroService", folder, "RepositoryProvider.csharp", namePascalCase, entityPascalCase);
+                    WriteFile(folderPath, "RepositoryProvider.cs", "MicroService", folder, "RepositoryProvider.csharp", namePascalCase, entityPascalCase);
                     WriteFile(folderPath, "RepositoryFactories.cs", "MicroService", folder, "RepositoryFactories.csharp", namePascalCase, entityPascalCase);
                     WriteFile(folderPath, "Uow.cs", "MicroService", folder, "Uow.csharp", namePascalCase, entityPascalCase);
                 }
@@ -162,8 +162,8 @@ namespace Leora.Commands
 
                 if (folder == "Services")
                 {
-                    WriteFile(folderPath, "Service.cs", "MicroService", folder, "Service.csharp", namePascalCase, entityPascalCase);
-                    WriteFile(folderPath, "IService.cs", "MicroService", folder, "IService.csharp", namePascalCase, entityPascalCase);
+                    WriteFile(folderPath, $"{entityPascalCase}Service.cs", "MicroService", folder, "EntityService.csharp", namePascalCase, entityPascalCase);
+                    WriteFile(folderPath, $"I{entityPascalCase}Service.cs", "MicroService", folder, "IEntityService.csharp", namePascalCase, entityPascalCase);
                     WriteFile(folderPath, "Cache.cs", "MicroService", folder, "Cache.csharp", namePascalCase, entityPascalCase);
                     WriteFile(folderPath, "ICache.cs", "MicroService", folder, "ICache.csharp", namePascalCase, entityPascalCase);
                     WriteFile(folderPath, "CacheProvider.cs", "MicroService", folder, "CacheProvider.csharp", namePascalCase, entityPascalCase);

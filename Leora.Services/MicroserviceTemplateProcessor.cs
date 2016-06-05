@@ -22,6 +22,7 @@ namespace Leora.Services
             {
                 var newline = line.Replace("{{ name }}", _namingConventionConverter.Convert(NamingConvention.PascalCase, name));
                 newline = newline.Replace("{{ entity }}", _namingConventionConverter.Convert(NamingConvention.PascalCase, entity));
+                newline = newline.Replace("{{ entityNameCamelCase }}", _namingConventionConverter.Convert(NamingConvention.CamelCase, entity));
                 lines.Add(newline);
                 index++;
             }

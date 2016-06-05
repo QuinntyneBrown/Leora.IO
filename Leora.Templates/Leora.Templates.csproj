@@ -103,12 +103,6 @@
     <EmbeddedResource Include="Angular1\Angular1Module.typescript.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="React\ReactComponent.typescript.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="MicroService\MicroService.ApiConfiguration.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Apis.EntityController.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.App.config.txt" />
@@ -117,6 +111,10 @@
     <EmbeddedResource Include="MicroService\MicroService.Auth.JwtWriterFormat.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Auth.OAuthOptions.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Auth.OAuthProvider.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Clients.IdentityClient.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Clients.IIdentityClient.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Clients.ISearchClient.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Clients.SearchClient.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Config.AuthConfiguration.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Config.IAuthConfiguration.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Data.DataContext.csharp.txt" />
@@ -125,8 +123,8 @@
     <EmbeddedResource Include="MicroService\MicroService.Data.IRepository.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Data.IRepositoryProvider.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Data.IUow.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Data.RepositoryProvider.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Data.RepositoryFactories.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Data.RepositoryProvider.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Data.Uow.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Dtos.EntityAddOrUpdateRequestDto.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Dtos.EntityAddOrUpdateResponseDto.csharp.txt" />
@@ -178,12 +176,15 @@
     <EmbeddedResource Include="MicroService\MicroServiceWeb.Web.config.txt" />
     <EmbeddedResource Include="MicroService\MicroServiceWeb.Web.Debug.config.txt" />
     <EmbeddedResource Include="MicroService\MicroServiceWeb.Web.Release.config.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Clients.IdentityClient.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Clients.IIdentityClient.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Clients.ISearchClient.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Clients.SearchClient.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Services.IService.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Services.Service.csharp.txt" />
+    <EmbeddedResource Include="React\ReactComponent.typescript.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MicroService\MicroService.MicroService.csproj.user.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Services.EntityService.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Services.IEntityService.csharp.txt" />
     <Content Include="VisualStudio\VisualStudioProjectOptions.txt" />
     <EmbeddedResource Include="VisualStudio\VisualStudioProject.txt" />
     <EmbeddedResource Include="VisualStudio\VisualStudioSolution.txt" />
