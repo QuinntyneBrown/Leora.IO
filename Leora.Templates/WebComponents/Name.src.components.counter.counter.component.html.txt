@@ -1,0 +1,7 @@
+<div>
+    <h1>{{ vm.count }}</h1>
+
+    <a data-ng-click="vm.increment()">Increment</a>
+
+    <a data-ng-click="vm.decrement()">Decrement</a>
+</div>

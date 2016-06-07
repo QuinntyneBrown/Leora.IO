@@ -1,0 +1,5 @@
+@import "../../sass/breakpoints";
+
+.counter {
+    color: #FFF;
+}
