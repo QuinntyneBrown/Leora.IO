@@ -73,7 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Angular2\" />
-    <Folder Include="WebComponents\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Angular1\Angular1Component.css.txt" />
@@ -182,6 +181,51 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
+    <Content Include="WebComponents\Name.gulpfile.js.txt" />
+    <Content Include="WebComponents\Name.index.html.txt" />
+    <Content Include="WebComponents\Name.karma.conf.js.txt" />
+    <Content Include="WebComponents\Name.Name.csproj.txt" />
+    <Content Include="WebComponents\Name.Name.csproj.user.txt" />
+    <Content Include="WebComponents\Name.package.json.txt" />
+    <Content Include="WebComponents\Name.packages.config.txt" />
+    <Content Include="WebComponents\Name.Properties.AssemblyInfo.csharp.txt" />
+    <Content Include="WebComponents\Name.sln.txt" />
+    <Content Include="WebComponents\Name.src.components.core.%24q.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.action-creator.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.add-or-update.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.change-detection-strategy.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.component-decorators.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.component-extension.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.core.d.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.core.module.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.fetch.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.index.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.invoke-async.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.local-storage-manager-provider.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.pluck-out.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.pluck.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.provide.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.safe-digest.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.service-decorator.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.store.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.core.view-encapsulation.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.counter.counter.actions.spec.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.counter.counter.actions.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.counter.counter.component.html.txt" />
+    <Content Include="WebComponents\Name.src.components.counter.counter.component.scss.txt" />
+    <Content Include="WebComponents\Name.src.components.counter.counter.component.spec.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.counter.counter.component.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.counter.counter.module.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.counter.counter.reducers.typescript.txt" />
+    <Content Include="WebComponents\Name.src.components.counter.demo.index.html.txt" />
+    <Content Include="WebComponents\Name.src.main.typescript.txt" />
+    <Content Include="WebComponents\Name.src.sass.breakpoints.scss.txt" />
+    <Content Include="WebComponents\Name.tsconfig.json.txt" />
+    <Content Include="WebComponents\Name.typings.json.txt" />
+    <Content Include="WebComponents\Name.Web.config.txt" />
+    <Content Include="WebComponents\Name.Web.Debug.config.txt" />
+    <Content Include="WebComponents\Name.Web.Release.config.txt" />
     <EmbeddedResource Include="MicroService\MicroService.MicroService.csproj.user.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Services.EntityService.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Services.IEntityService.csharp.txt" />
