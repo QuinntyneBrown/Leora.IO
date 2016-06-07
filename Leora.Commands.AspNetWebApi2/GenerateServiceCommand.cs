@@ -19,6 +19,7 @@ namespace Leora.Commands.AspNetWebApi2
             _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiService", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
             _fileWriter.WriteAllLines($"{directory}//I{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiIService", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
             _projectManager.Process(directory, $"{pascalCaseName}", FileType.CSharp);
+            _projectManager.Process(directory, $"I{pascalCaseName}", FileType.CSharp);
             return exitCode;
         }
     }

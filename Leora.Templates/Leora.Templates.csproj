@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Angular2\" />
+    <Folder Include="WebComponents\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Angular1\Angular1Component.css.txt" />

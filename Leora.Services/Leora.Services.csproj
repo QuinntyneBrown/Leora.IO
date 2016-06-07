@@ -52,6 +52,7 @@
     <Compile Include="TemplateManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemplateProcessor.cs" />
+    <Compile Include="WebComponentsTemplateProcessor.cs" />
     <Compile Include="ZipFileManager.cs" />
   </ItemGroup>
   <ItemGroup>

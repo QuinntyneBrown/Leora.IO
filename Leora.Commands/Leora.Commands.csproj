@@ -48,6 +48,7 @@
     <Compile Include="Contracts\IGenerateCommandCommand.cs" />
     <Compile Include="GenerateCommandCommand.cs" />
     <Compile Include="GenerateMicroserviceCommand.cs" />
+    <Compile Include="GenerateWebComponentsCommand.cs" />
     <Compile Include="HelpCommand.cs" />
     <Compile Include="Infrastructure\Constants.cs" />
     <Compile Include="InstallNugetPackageCommand.cs" />
@@ -56,6 +57,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Contracts\IGenerateMicroserviceCommand.cs" />
     <Compile Include="Options\GenerateMicroserviceOptions.cs" />
+    <Compile Include="Contracts\IGenerateWebComponentsCommand.cs" />
+    <Compile Include="Options\GenerateWebComponentsOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

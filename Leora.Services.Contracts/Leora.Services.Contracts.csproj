@@ -48,6 +48,7 @@
     <Compile Include="IProjectManager.cs" />
     <Compile Include="ITemplateManager.cs" />
     <Compile Include="ITemplateProcessor.cs" />
+    <Compile Include="IWebComponentsTemplateProcessor.cs" />
     <Compile Include="IZipFileManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

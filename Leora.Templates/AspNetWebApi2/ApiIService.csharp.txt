@@ -1,7 +1,7 @@
-﻿using {{ rootnamespacename }}.Dtos;
+﻿using {{ rootNamespacename }}.Dtos;
 using System.Collections.Generic;
 
-namespace Chloe.Server.Services.Contracts
+namespace {{ namespacename }}
 {
     public interface I{{ entityNamePascalCase }}Service
     {
