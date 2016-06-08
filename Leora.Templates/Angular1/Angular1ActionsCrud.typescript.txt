@@ -1,0 +1,13 @@
+﻿export class AddOrUpdate{{ entityNamePascalCase }}Action { constructor(public id, public entity) { } }
+
+export class All{{ entityNamePascalCase }}sAction { constructor(public id, public entities) { } }
+
+export class Remove{{ entityNamePascalCase }}Action { constructor(public id, public entity) { } }
+
+export class {{ entityNamePascalCase }}sFilterAction { constructor(public id, public term) { } }
+
+export class SetCurrent{{ entityNamePascalCase }}Action { constructor(public entity) { } }
+
+export class AddOrUpdate{{ entityNamePascalCase }}SuccessAction { constructor(public entity) { } }
+
+export class Current{{ entityNamePascalCase }}RemovedAction { constructor() { } }

@@ -1,5 +1,6 @@
 ﻿import { IDispatcher, BaseActionCreator, Service } from "../core";
 import { ModalActionCreator } from "../modal/modal.actions";
+import { All{{ entityNamePascalCase }}sAction, Remove{{ entityNamePascalCase }}Action, {{ entityNamePascalCase }}sFilterAction, SetCurrent{{ entityNamePascalCase }}Action, AddOrUpdate{{ entityNamePascalCase }}SuccessAction, Current{{ entityNamePascalCase }}RemovedAction } from "../{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}.actions";
 
 @Service({
     serviceName: "{{ entityNameCamelCase }}ActionCreator",
@@ -22,16 +23,4 @@ export class {{ entityNamePascalCase }}ActionCreator extends BaseActionCreator {
 }
 
 
-export class AddOrUpdate{{ entityNamePascalCase }}Action { constructor(public id, public entity) { } }
 
-export class All{{ entityNamePascalCase }}sAction { constructor(public id, public entities) { } }
-
-export class Remove{{ entityNamePascalCase }}Action { constructor(public id, public entity) { } }
-
-export class {{ entityNamePascalCase }}sFilterAction { constructor(public id, public term) { } }
-
-export class SetCurrent{{ entityNamePascalCase }}Action { constructor(public entity) { } }
-
-export class AddOrUpdate{{ entityNamePascalCase }}SuccessAction { constructor(public entity) { } }
-
-export class Current{{ entityNamePascalCase }}RemovedAction { constructor() { } }

@@ -17,13 +17,16 @@ namespace Leora.Commands.Angular1
         {
             int exitCode = 1;
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
-            _fileWriter.WriteAllLines($"{directory}//{snakeCaseName}.actions.ts", _templateProcessor.ProcessTemplate(GetTemplate(FileType.TypeScript, GetTemplateName(crud)), name));
+            _fileWriter.WriteAllLines($"{directory}//{snakeCaseName}.actions.ts", _templateProcessor.ProcessTemplate(GetTemplate(FileType.TypeScript, GetActionsTemplateName(crud)), name));
+            _fileWriter.WriteAllLines($"{directory}//{snakeCaseName}.action-creator.ts", _templateProcessor.ProcessTemplate(GetTemplate(FileType.TypeScript, GetTemplateName(crud)), name));
             _fileWriter.WriteAllLines($"{directory}//{snakeCaseName}.reducers.ts", _templateProcessor.ProcessTemplate(GetTemplate(FileType.TypeScript, GetReducersTemplateName(crud)), name));
             _projectManager.Process(directory, $"{snakeCaseName}.actions.ts", FileType.TypeScript);
+            _projectManager.Process(directory, $"{snakeCaseName}.action-creator.ts", FileType.TypeScript);
             _projectManager.Process(directory, $"{snakeCaseName}.reducers.ts", FileType.TypeScript);
             return exitCode;
         }
         public string GetReducersTemplateName(bool crud) => crud ? "Angular1ReducersCrud" : "Angular1Reducers";        
         public string GetTemplateName(bool crud) => crud ? "Angular1ActionCreatorCrud" : "Angular1ActionCreator";
+        public string GetActionsTemplateName(bool crud) => crud ? "Angular1ActionsCrud" : "Angular1Actions";
     }
 }

@@ -1,20 +1,21 @@
 ﻿require("../core/core.module");
 
-import { provide } from "../core";
+import { provide, provideAction } from "../core";
 import { {{ entityNamePascalCase }}Component } from "./{{ entityNameSnakeCase }}.component";
-import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.actions";
-import { {{ entityNamePascalCase }}Service } from "./{{ entityNameSnakeCase }}.service";
+import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.action-creator";
 import *  as reducers from "./{{ entityNameSnakeCase }}.reducers";
+import *  as actions from "./{{ entityNameSnakeCase }}.actions";
 
 var app = (<any>angular.module("app.{{ entityNameCamelCase }}", [
     "app.core"    
 ]));
 
 provide(app,{{ entityNamePascalCase }}ActionCreator);
-provide(app,{{ entityNamePascalCase }}Service);
 
 app.component({{ entityNamePascalCase }}Component);
 
 app.config(["reducersProvider", reducersProvider => {	
     for (var reducer in reducers) { reducersProvider.configure(reducers[reducer]); }
 }]);
+
+for (var action in actions) { provideAction(app, actions[action]); }

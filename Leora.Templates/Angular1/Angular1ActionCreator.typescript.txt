@@ -1,5 +1,5 @@
 ﻿import { IDispatcher, BaseActionCreator, Service } from "../core";
-import { ModalActionCreator } from "../modal/modal.actions";
+import { ModalActionCreator } from "../modal/modal.action-creator";
 
 @Service({
     serviceName: "{{ entityNameCamelCase }}ActionCreator",

@@ -2,7 +2,7 @@
 
 @Component({
     template: require("./{{ entityNameSnakeCase }}.component.html"),
-    styles: [require("./{{ entityNameSnakeCase }}.component.css")],
+    styles: [require("./{{ entityNameSnakeCase }}.component.scss")],
     selector: "{{ entityNameSnakeCase }}",
     changeDetection: ChangeDetectionStrategy.OnPush
 })

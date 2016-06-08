@@ -62,7 +62,8 @@ namespace Leora.Commands.Angular1
 
             _generateModelCommand.Run(name, path);
             _generateModuleCommand.Run(name, path, crud);
-            _generateContainerCommand.Run(name, path);
+
+            //_generateContainerCommand.Run(name, path);
             _generateActionCreatorCommand.Run(name, path, crud);
             _generateComponentCommand.Run(name, path);
 
