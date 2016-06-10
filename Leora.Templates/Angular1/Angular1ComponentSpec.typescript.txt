@@ -18,7 +18,7 @@
 
     it("should compile", () => {
         var element = $compile("<{{ entityNameSnakeCase }}></{{ entityNameSnakeCase }}>")($rootScope);
-        expect({{ entityNameCamelCase }}Component).toBeDefined();
+        expect(element).toBeDefined();
     });
 
     it("should be defined", () => {
