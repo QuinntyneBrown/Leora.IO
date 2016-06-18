@@ -5,7 +5,7 @@ import { {{ entityNamePascalCase }}EditorComponent } from "./{{ entityNameSnakeC
 import { {{ entityNamePascalCase }}ListComponent } from "./{{ entityNameSnakeCase }}-list.component";
 import { {{ entityNamePascalCase }}Component } from "./{{ entityNameSnakeCase }}.component";
 import { {{ entityNamePascalCase }}sContainerComponent } from "./{{ entityNameSnakeCase }}s-container.component";
-import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.actions";
+import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.action-creator";
 import { {{ entityNamePascalCase }}Service } from "./{{ entityNameSnakeCase }}.service";
 import *  as reducers from "./{{ entityNameSnakeCase }}.reducers";
 import *  as actions from "./{{ entityNameSnakeCase }}.actions";
