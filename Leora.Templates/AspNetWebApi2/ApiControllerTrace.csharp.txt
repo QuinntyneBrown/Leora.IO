@@ -1,0 +1,49 @@
+﻿using {{ rootNamespacename }}.Dtos;
+using {{ rootNamespacename }}.Services;
+using {{ rootNamespacename }}.Trace;
+using System.Collections.Generic;
+using System.Web.Http;
+using System.Web.Http.Description;
+
+namespace {{ namespacename }}
+{
+    [Authorize]
+    [RoutePrefix("api/{{ entityNameCamelCase }}")]
+    public class {{ entityNamePascalCase }}Controller : ApiController
+    {
+        public {{ entityNamePascalCase }}Controller(I{{ entityNamePascalCase }}Service {{ entityNameCamelCase }}Service)
+        {
+            _{{ entityNameCamelCase }}Service = {{ entityNameCamelCase }}Service;
+        }
+
+        [Route("add")]
+        [HttpPost]
+        [ResponseType(typeof({{ entityNamePascalCase }}AddOrUpdateResponseDto))]
+        public IHttpActionResult Add({{ entityNamePascalCase }}AddOrUpdateRequestDto dto) { return Ok(_{{ entityNameCamelCase }}Service.AddOrUpdate(dto)); }
+
+        [Route("update")]
+        [HttpPut]
+        [ResponseType(typeof({{ entityNamePascalCase }}AddOrUpdateResponseDto))]
+        public IHttpActionResult Update({{ entityNamePascalCase }}AddOrUpdateRequestDto dto) { return Ok(_{{ entityNameCamelCase }}Service.AddOrUpdate(dto)); }
+
+        [Route("get")]
+        [AllowAnonymous]
+        [HttpGet]
+        [ResponseType(typeof(ICollection<{{ entityNamePascalCase }}Dto>))]
+        public IHttpActionResult Get() { return Ok(_{{ entityNameCamelCase }}Service.Get()); }
+
+        [Route("getById")]
+        [HttpGet]
+        [ResponseType(typeof({{ entityNamePascalCase }}Dto))]
+        public IHttpActionResult GetById(int id) { return Ok(_{{ entityNameCamelCase }}Service.GetById(id)); }
+
+        [Route("remove")]
+        [HttpDelete]
+        [ResponseType(typeof(int))]
+        public IHttpActionResult Remove(int id) { return Ok(_{{ entityNameCamelCase }}Service.Remove(id)); }
+
+        protected readonly I{{ entityNamePascalCase }}Service _{{ entityNameCamelCase }}Service;
+
+
+    }
+}
