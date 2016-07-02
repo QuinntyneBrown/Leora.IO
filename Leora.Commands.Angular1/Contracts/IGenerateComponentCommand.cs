@@ -4,6 +4,6 @@ namespace Leora.Commands.Angular1.Contracts
 {
     public interface IGenerateComponentCommand : ICommand
     {
-        int Run(string name, string directory);
+        int Run(string name, string directory, bool framework = false);
     }
 }
