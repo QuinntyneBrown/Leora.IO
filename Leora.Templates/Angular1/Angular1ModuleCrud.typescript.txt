@@ -1,6 +1,4 @@
-﻿require("../core/core.module");
-
-import { provide, provideAction } from "../core";
+﻿import { provide, provideAction,bootstrap } from "angular-rx-ui/src/components/core";
 import { {{ entityNamePascalCase }}EditorComponent } from "./{{ entityNameSnakeCase }}-editor.component";
 import { {{ entityNamePascalCase }}ListComponent } from "./{{ entityNameSnakeCase }}-list.component";
 import { {{ entityNamePascalCase }}Component } from "./{{ entityNameSnakeCase }}.component";
@@ -10,19 +8,13 @@ import { {{ entityNamePascalCase }}Service } from "./{{ entityNameSnakeCase }}.s
 import *  as reducers from "./{{ entityNameSnakeCase }}.reducers";
 import *  as actions from "./{{ entityNameSnakeCase }}.actions";
 
-var app = (<any>angular.module("app.{{ entityNameCamelCase }}", [
-    "app.core"    
-]));
+const app{{ entityNamePascalCase }}sModule = angular.module("app.{{ entityNameSnakeCase }}s", []);
 
-provide(app,{{ entityNamePascalCase }}ActionCreator);
-provide(app,{{ entityNamePascalCase }}Service);
-app.component({{ entityNamePascalCase }}EditorComponent);
-app.component({{ entityNamePascalCase }}ListComponent);
-app.component({{ entityNamePascalCase }}Component);
-app.component({{ entityNamePascalCase }}sContainerComponent);
+bootstrap(app{{ entityNamePascalCase }}sModule, {
+    components: [{{ entityNamePascalCase }}Component, {{ entityNamePascalCase }}EditorComponent, {{ entityNamePascalCase }}sContainerComponent, {{ entityNamePascalCase }}ListComponent],
+    providers: [{{ entityNamePascalCase }}ActionCreator, {{ entityNamePascalCase }}Service],
+    reducers: reducers,
+    actions: actions
+});
 
-app.config(["reducersProvider", reducersProvider => {	
-    for (var reducer in reducers) { reducersProvider.configure(reducers[reducer]); }
-}]);
-
-for (var action in actions) { provideAction(app, actions[action]); }
+export * from "./{{ entityNameCamelCase }}s.routes";

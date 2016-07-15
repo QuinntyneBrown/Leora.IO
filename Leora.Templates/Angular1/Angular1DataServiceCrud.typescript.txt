@@ -1,4 +1,4 @@
-﻿import { BaseService, Injectable, Service } from "../core";
+﻿import { BaseService, Injectable, Service } from "angular-rx-ui/src/components/core";
 
 @Injectable()
 @Service({

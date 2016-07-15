@@ -1,5 +1,5 @@
-﻿import { IDispatcher, BaseActionCreator, Service } from "../core";
-import { ModalActionCreator } from "../modal/modal.action-creator";
+﻿import { IDispatcher, BaseActionCreator, Service } from "angular-rx-ui/src/components/core";
+import { ModalActionCreator } from "angular-rx-ui/src/components/modal/modal.action-creator";
 
 @Service({
     serviceName: "{{ entityNameCamelCase }}ActionCreator",

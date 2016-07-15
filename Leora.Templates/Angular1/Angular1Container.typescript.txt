@@ -1,6 +1,6 @@
-﻿import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
+﻿import { CanActivate, ChangeDetectionStrategy, Component, pluck } from "angular-rx-ui/src/components/core";
 import * as actions from "./{{ entityNameSnakeCase }}.actions";
-import { pluck } from "../core/pluck";
+import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.action-creator";
 import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 
 @Component({
@@ -11,14 +11,14 @@ import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
     viewProviders: ["$location","$routeParams","{{ entityNameCamelCase }}ActionCreator","invokeAsync"],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-@CanActivate(["$q", "$route", "invokeAsync", "{{ entityNameCamelCase }}ActionCreator", ($q: angular.IQService, $route: angular.route.IRouteService, invokeAsync, {{ entityNameCamelCase }}ActionCreator: actions.{{ entityNamePascalCase }}ActionCreator) => {
+@CanActivate(["$q", "$route", "invokeAsync", "{{ entityNameCamelCase }}ActionCreator", ($q: angular.IQService, $route: angular.route.IRouteService, invokeAsync, {{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator) => {
     var {{ entityNameCamelCase }}Id = $route.current.params.{{ entityNameCamelCase }}Id;
     var promises = [invokeAsync({{ entityNameCamelCase }}ActionCreator.all)];
     if ({{ entityNameCamelCase }}Id) { promises.push(invokeAsync({ action: {{ entityNameCamelCase }}ActionCreator.getById, params: { id: {{ entityNameCamelCase }}Id } })) };
     return $q.all(promises);
 }])
 export class {{ entityNamePascalCase }}sContainerComponent { 
-    constructor(private $location: angular.ILocationService, private $routeParams: angular.route.IRouteParamsService, private {{ entityNameCamelCase }}ActionCreator: actions.{{ entityNamePascalCase }}ActionCreator, private _invokeAsync) { }
+    constructor(private $location: angular.ILocationService, private $routeParams: angular.route.IRouteParamsService, private {{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator, private _invokeAsync) { }
     storeOnChange = state => {        
         this.entities = state.{{ entityNameCamelCase }}s;
 

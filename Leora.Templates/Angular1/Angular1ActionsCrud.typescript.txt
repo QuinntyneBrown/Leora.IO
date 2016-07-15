@@ -1,4 +1,6 @@
-﻿export class AddOrUpdate{{ entityNamePascalCase }}Action { constructor(public id, public entity) { } }
+﻿import { Action } from "angular-rx-ui/src/components/core"
+
+export class AddOrUpdate{{ entityNamePascalCase }}Action { constructor(public id, public entity) { } }
 
 export class All{{ entityNamePascalCase }}sAction { constructor(public id, public entities) { } }
 

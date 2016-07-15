@@ -1,4 +1,4 @@
-﻿import { CanActivate, ChangeDetectionStrategy, Component } from "../core";
+﻿import { CanActivate, ChangeDetectionStrategy, Component } from "angular-rx-ui/src/components/core";
 
 @Component({
     template: require("./{{ entityNameSnakeCase }}-list.component.html"),
