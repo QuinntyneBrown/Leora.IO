@@ -1,6 +1,6 @@
 ﻿import { IDispatcher, BaseActionCreator, Service } from "angular-rx-ui/src/components/core";
 import { ModalActionCreator } from "angular-rx-ui/src/components/modal/modal.action-creator";
-import { All{{ entityNamePascalCase }}sAction, Remove{{ entityNamePascalCase }}Action, {{ entityNamePascalCase }}sFilterAction, SetCurrent{{ entityNamePascalCase }}Action,AddOrUpdate{{ entityNamePascalCase }}Action, AddOrUpdate{{ entityNamePascalCase }}SuccessAction, Current{{ entityNamePascalCase }}RemovedAction } from "../{{ entityNameSnakeCase }}/{{ entityNameSnakeCase }}.actions";
+import { All{{ entityNamePascalCase }}sAction, Remove{{ entityNamePascalCase }}Action, {{ entityNamePascalCase }}sFilterAction, SetCurrent{{ entityNamePascalCase }}Action,AddOrUpdate{{ entityNamePascalCase }}Action, AddOrUpdate{{ entityNamePascalCase }}SuccessAction, Current{{ entityNamePascalCase }}RemovedAction } from "./{{ entityNameSnakeCase }}.actions";
 
 @Service({
     serviceName: "{{ entityNameCamelCase }}ActionCreator",
