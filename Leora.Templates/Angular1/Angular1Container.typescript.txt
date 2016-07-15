@@ -6,14 +6,14 @@ import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 @Component({
     routes: ["/admin/{{ entityNameLowerCase }}s","/admin/{{ entityNameLowerCase }}/edit/:{{ entityNameCamelCase }}Id"],
     template: require("./{{ entityNameSnakeCase }}s-container.component.html"),
-    styles: [require("./{{ entityNameSnakeCase }}s-container.component.css")],
+    styles: [require("./{{ entityNameSnakeCase }}s-container.component.scss")],
     selector: "{{ entityNameSnakeCase }}s-container",
     viewProviders: ["$location","$routeParams","{{ entityNameCamelCase }}ActionCreator","invokeAsync"],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 @CanActivate(["$q", "$route", "invokeAsync", "{{ entityNameCamelCase }}ActionCreator", ($q: angular.IQService, $route: angular.route.IRouteService, invokeAsync, {{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator) => {
-    var {{ entityNameCamelCase }}Id = $route.current.params.{{ entityNameCamelCase }}Id;
-    var promises = [invokeAsync({{ entityNameCamelCase }}ActionCreator.all)];
+    let {{ entityNameCamelCase }}Id = $route.current.params.{{ entityNameCamelCase }}Id;
+    let promises = [invokeAsync({{ entityNameCamelCase }}ActionCreator.all)];
     if ({{ entityNameCamelCase }}Id) { promises.push(invokeAsync({ action: {{ entityNameCamelCase }}ActionCreator.getById, params: { id: {{ entityNameCamelCase }}Id } })) };
     return $q.all(promises);
 }])
