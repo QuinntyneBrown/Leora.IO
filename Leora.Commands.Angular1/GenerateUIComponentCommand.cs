@@ -16,7 +16,7 @@ namespace Leora.Commands.Angular1
         {
             int exitCode = 1;
             _fileWriter.WriteAllLines($"{directory}/{name}.component.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular1UIComponent"), name));
-            _fileWriter.WriteAllLines($"{directory}/{name}.component.css", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, "Angular1UIComponent"), name));
+            _fileWriter.WriteAllLines($"{directory}/{name}.component.scss", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Css, "Angular1UIComponent"), name));
             _fileWriter.WriteAllLines($"{directory}/{name}.component.html", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, "Angular1UIComponent"), name));
             return exitCode;
         }

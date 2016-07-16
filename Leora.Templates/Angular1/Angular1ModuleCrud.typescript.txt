@@ -1,14 +1,14 @@
-﻿import { provide, provideAction,bootstrap } from "angular-rx-ui/src/components/core";
+﻿import { provide, provideAction, bootstrap } from "angular-rx-ui/src/components/core";
 import { {{ entityNamePascalCase }}EditorComponent } from "./{{ entityNameSnakeCase }}-editor.component";
 import { {{ entityNamePascalCase }}ListComponent } from "./{{ entityNameSnakeCase }}-list.component";
 import { {{ entityNamePascalCase }}Component } from "./{{ entityNameSnakeCase }}.component";
 import { {{ entityNamePascalCase }}sContainerComponent } from "./{{ entityNameSnakeCase }}s-container.component";
 import { {{ entityNamePascalCase }}ActionCreator } from "./{{ entityNameSnakeCase }}.action-creator";
 import { {{ entityNamePascalCase }}Service } from "./{{ entityNameSnakeCase }}.service";
-import *  as reducers from "./{{ entityNameSnakeCase }}.reducers";
-import *  as actions from "./{{ entityNameSnakeCase }}.actions";
+import * as reducers from "./{{ entityNameSnakeCase }}.reducers";
+import * as actions from "./{{ entityNameSnakeCase }}.actions";
 
-const app{{ entityNamePascalCase }}sModule = angular.module("app.{{ entityNameSnakeCase }}s", []);
+const app{{ entityNamePascalCase }}sModule = angular.module("app.{{ entityNameCamelCase }}s", []);
 
 bootstrap(app{{ entityNamePascalCase }}sModule, {
     components: [{{ entityNamePascalCase }}Component, {{ entityNamePascalCase }}EditorComponent, {{ entityNamePascalCase }}sContainerComponent, {{ entityNamePascalCase }}ListComponent],
@@ -17,4 +17,4 @@ bootstrap(app{{ entityNamePascalCase }}sModule, {
     actions: actions
 });
 
-export * from "./{{ entityNameCamelCase }}s.routes";
+export * from "./{{ entityNameSnakeCase }}s.routes";

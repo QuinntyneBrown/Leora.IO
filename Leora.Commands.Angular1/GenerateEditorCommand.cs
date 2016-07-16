@@ -19,7 +19,7 @@ namespace Leora.Commands.Angular1
             int exitCode = 1;
             name = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
             var typeScriptFileName = $"{name}-editor.component.ts";
-            var cssFileName = $"{name}-editor.component.css";
+            var cssFileName = $"{name}-editor.component.scss";
             var htmlFileName = $"{name}-editor.component.html";
 
             _fileWriter.WriteAllLines($"{directory}\\{typeScriptFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, _componentName, BluePrintType.Angular1), name));

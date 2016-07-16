@@ -17,8 +17,8 @@
     </tabs>
 
     <div>
-        <calypso-button on-click="vm.addOrUpdate({ data: vm.entity })" caption="'Save'"></calypso-button>
+        <calypso-button on-click="vm.addOrUpdate({ data: vm.entity })" caption="Save"></calypso-button>
 
-        <calypso-button on-click="vm.create()" caption="'Create'"></calypso-button>
+        <calypso-button on-click="vm.create()" caption="Create"></calypso-button>
     </div>
 </div>
