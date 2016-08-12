@@ -1,7 +1,7 @@
 ﻿namespace Leora.Commands.Angular2.Options
 {
-    public class GenerateComponentOptions
+    public class GenerateComponentOptions: BaseOptions
     {        
-        public string Name { get; set; }
+
     }
 }

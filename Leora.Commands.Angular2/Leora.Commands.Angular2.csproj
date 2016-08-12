@@ -44,11 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IGenerateBootstrapCommand.cs" />
     <Compile Include="Contracts\IGenerateComponentCommand.cs" />
+    <Compile Include="Contracts\IGenerateExampleCommand.cs" />
+    <Compile Include="GenerateBootstrapCommand.cs" />
     <Compile Include="GenerateComponentCommand.cs" />
+    <Compile Include="GenerateExampleCommand.cs" />
     <Compile Include="GenerateFeatureCommand.cs" />
     <Compile Include="Options\BaseOptions.cs" />
+    <Compile Include="Options\GenerateBootstrapOptions.cs" />
     <Compile Include="Options\GenerateComponentOptions.cs" />
+    <Compile Include="Options\GenerateExampleOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Contracts\IGenerateFeatureCommand.cs" />
     <Compile Include="Options\GenerateFeatureOptions.cs" />
