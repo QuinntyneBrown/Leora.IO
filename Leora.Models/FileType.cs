@@ -10,6 +10,7 @@ namespace Leora.Models
     {
         TypeScript,
         Css,
+        Scss,
         Html,
         CSharp,
         Solution,

@@ -26,14 +26,19 @@ namespace Leora.Cli
 
             container.RegisterType<IGenerateActionCreatorCommand, GenerateActionCreatorCommand>();
             container.RegisterType<IGeneratePagedListCommand, GeneratePagedListCommand>();
-            container.RegisterType<IGenerateComponentCommand, GenerateComponentCommand>();
+
             container.RegisterType<IGenerateContainerCommand, GenerateContainerCommand>();
             container.RegisterType<IGenerateModuleCommand, GenerateModuleCommand>();
             container.RegisterType<IGenerateModelCommand, GenerateModelCommand>();
             container.RegisterType<IGenerateServiceCommand, GenerateServiceCommand>();
             container.RegisterType<IGenerateEditorCommand, GenerateEditorCommand>();
             container.RegisterType<IGenerateListCommand, GenerateListCommand>();
+            container.RegisterType<IGenerateComponentCommand, GenerateComponentCommand>();
             container.RegisterType<IGenerateFeatureCommand, GenerateFeatureCommand>();
+
+            container.RegisterType<Commands.Angular2.Contracts.IGenerateComponentCommand, Commands.Angular2.GenerateComponentCommand>();
+            container.RegisterType<Commands.Angular2.Contracts.IGenerateFeatureCommand, Commands.Angular2.GenerateFeatureCommand>();
+            container.RegisterType<Commands.Angular2.Contracts.IGenerateBootstrapCommand, Commands.Angular2.GenerateBootstrapCommand>();
 
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand, Commands.AspNetWebApi2.GenerateControllerCommand>();
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateDtosCommand, Commands.AspNetWebApi2.GenerateDtosCommand>();

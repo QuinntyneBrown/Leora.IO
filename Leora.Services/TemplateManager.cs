@@ -65,6 +65,8 @@ namespace Leora.Services
                     return "html";
                 case FileType.CSharp:
                     return "csharp";
+                case FileType.Scss:
+                    return "scss";
             }
             throw new NotImplementedException();
         }

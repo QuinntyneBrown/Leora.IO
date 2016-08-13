@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseCommand.cs" />
     <Compile Include="Contracts\IGenerateBootstrapCommand.cs" />
     <Compile Include="Contracts\IGenerateComponentCommand.cs" />
     <Compile Include="Contracts\IGenerateExampleCommand.cs" />

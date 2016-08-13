@@ -4,8 +4,6 @@
     var $compile;
     var $rootScope;
 
-    class MockActionCreator { }
-
     beforeEach(() => {
         angular.mock.module("app.{{ entityNameCamelCase }}");
     });
@@ -13,7 +11,7 @@
     beforeEach(inject(($controller, _$compile_, _$rootScope_) => {
         $rootScope = _$rootScope_;
         $compile = _$compile_;
-        {{ entityNameCamelCase }}Component = $controller("{{ entityNameCamelCase }}Component", { {{ entityNameCamelCase }}ActionCreator: new MockActionCreator() });
+        {{ entityNameCamelCase }}Component = $controller("{{ entityNameCamelCase }}Component");
     }));
 
     it("should compile", () => {

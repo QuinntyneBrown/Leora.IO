@@ -1,0 +1,14 @@
+﻿import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { {{ entityNamePascalCase }}Component } from '../{{ entityNameSnakeCase }}.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+@NgModule({
+    declarations: [{{ entityNamePascalCase }}Component],
+    imports: [BrowserModule],
+    bootstrap: [{{ entityNamePascalCase }}Component],
+})
+export class AppModule { }
+
+
+platformBrowserDynamic().bootstrapModule(AppModule);
