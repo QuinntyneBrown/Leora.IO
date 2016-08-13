@@ -1,24 +1,34 @@
-﻿using Leora.Commands.Angular2.Contracts;
+﻿using System;
+using Leora.Commands.Angular2.Contracts;
 using Leora.Commands.Angular2.Options;
 using Leora.Services.Contracts;
-using static CommandLine.Parser;
+using Leora.Models;
 
 namespace Leora.Commands.Angular2
 {
-    public class GenerateComponentCommand : IGenerateComponentCommand
+    public class GenerateComponentCommand : BaseCommand<GenerateComponentOptions>, IGenerateComponentCommand
     {
-        private readonly ITemplateManager _templateManager;
+        public GenerateComponentCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter)
+            : base(templateManager, templateProcessor, namingConventionConverter, projectManager, fileWriter) { }
 
-        public GenerateComponentCommand(ITemplateManager templateManager)
-        {
-            _templateManager = templateManager;
-        }
+        public override int Run(GenerateComponentOptions options) => Run(options.Name, options.Directory);
 
-        public int Run(string[] args)
-        {
-            var options = new GenerateComponentOptions();
-            Default.ParseArguments(args, options);
-            return 1;
+        public int Run(string name, string directory)
+        {            
+            var exitCode = 1;
+            var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
+            var typeScriptFileName = $"{snakeCaseName}.component.ts";
+            var typeScriptSpecFileName = $"{snakeCaseName}.component.spec.ts";
+            var cssFileName = $"{snakeCaseName}.component.scss";
+            var htmlFileName = $"{snakeCaseName}.component.html";
+            var baseFilePath = $"{directory}//{snakeCaseName}";
+            
+            _fileWriter.WriteAllLines($"{baseFilePath}.component.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular2Component", BluePrintType.Angular2), name));
+            _fileWriter.WriteAllLines($"{baseFilePath}.component.spec.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular2ComponentSpec", BluePrintType.Angular2), name));
+            _fileWriter.WriteAllLines($"{baseFilePath}.component.scss", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Scss, "Angular2Component", BluePrintType.Angular2), name));
+            _fileWriter.WriteAllLines($"{baseFilePath}.component.html", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, "Angular2Component", BluePrintType.Angular2), name));
+
+            return exitCode;
         }
     }
 }

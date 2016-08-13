@@ -1,1 +1,15 @@
-﻿
+﻿import { {{ entityNamePascalCase }}Component } from './{{ entityNameSnakeCase }}.component';
+
+import { async, inject } from '@angular/core/testing';
+import { TestComponentBuilder } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { provide, ViewChildMetadata } from '@angular/core';
+
+describe('{{ entityNamePascalCase }}Component', () => {
+    it('should instantiate component',
+        async(inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+            tcb.createAsync({{ entityNamePascalCase }}Component).then(fixture => {
+                expect(fixture.componentInstance instanceof {{ entityNamePascalCase }}Component).toBe(true, 'should create {{ entityNamePascalCase }}Component');
+            });
+        })));    
+});
