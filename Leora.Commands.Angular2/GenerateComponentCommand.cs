@@ -28,6 +28,19 @@ namespace Leora.Commands.Angular2
             _fileWriter.WriteAllLines($"{baseFilePath}.component.scss", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Scss, "Angular2Component", BluePrintType.Angular2), name));
             _fileWriter.WriteAllLines($"{baseFilePath}.component.html", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, "Angular2Component", BluePrintType.Angular2), name));
 
+
+            try
+            {
+                _projectManager.Process(directory, typeScriptFileName, FileType.TypeScript);
+                _projectManager.Process(directory, typeScriptSpecFileName, FileType.TypeScript);
+                _projectManager.Process(directory, cssFileName, FileType.Css);
+                _projectManager.Process(directory, htmlFileName, FileType.Html);
+            }
+            catch (Exception e)
+            {
+
+            }
+
             return exitCode;
         }
     }

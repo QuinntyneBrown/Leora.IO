@@ -38,7 +38,7 @@ namespace Leora.Cli
                 ["ng-service"] = _container.Resolve<IGenerateServiceCommand>().Run,
 
                 ["ng2-bootstrap"] = _container.Resolve<IGenerateBootstrapCommand>().Run,
-                ["ng2-component"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateComponentCommand>().Run,
+                ["ng2"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateComponentCommand>().Run,
                 ["ng2-feature"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateFeatureCommand>().Run,
 
                 ["dotnet-controller"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand>().Run,

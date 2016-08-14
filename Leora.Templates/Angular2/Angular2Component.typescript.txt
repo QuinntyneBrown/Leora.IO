@@ -4,7 +4,7 @@
     template: require("./{{ entityNameSnakeCase }}.component.html"),
     styles: [require("./{{ entityNameSnakeCase }}.component.scss")],
     selector: "c-{{ entityNameSnakeCase }}",
-	changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class {{ entityNamePascalCase }}Component implements OnInit { 
     ngOnInit() {
