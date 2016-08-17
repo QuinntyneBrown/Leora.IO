@@ -1,0 +1,7 @@
+﻿import { NgModule } from '@angular/core';
+import { {{ entityNamePascalCase }}Component } from './{{ entityNameSnakeCase }}.component';
+
+@NgModule({
+    declarations: [{{ entityNamePascalCase }}Component]
+})
+export class {{ entityNamePascalCase }}Module { }

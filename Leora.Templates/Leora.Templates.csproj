@@ -189,6 +189,7 @@
     <EmbeddedResource Include="Angular2\Angular2Component.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2ComponentSpec.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2Bootstrap.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2Module.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

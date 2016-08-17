@@ -33,13 +33,14 @@ namespace Leora.Cli
                 ["ng-feature"] = _container.Resolve<Leora.Commands.Angular1.Contracts.IGenerateFeatureCommand>().Run,
                 ["ng-list"] = _container.Resolve<IGenerateListCommand>().Run,
                 ["ng-model"] = _container.Resolve<IGenerateModelCommand>().Run,
-                ["ng-module"] = _container.Resolve<IGenerateModuleCommand>().Run,
+                ["ng-module"] = _container.Resolve<Leora.Commands.Angular1.Contracts.IGenerateModuleCommand>().Run,
                 ["ng-paged-list"] = _container.Resolve<IGeneratePagedListCommand>().Run,
                 ["ng-service"] = _container.Resolve<IGenerateServiceCommand>().Run,
 
                 ["ng2-bootstrap"] = _container.Resolve<IGenerateBootstrapCommand>().Run,
                 ["ng2"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateComponentCommand>().Run,
                 ["ng2-feature"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateFeatureCommand>().Run,
+                ["ng2-module"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateModuleCommand>().Run,
 
                 ["dotnet-controller"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand>().Run,
                 ["dotnet-service"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateServiceCommand>().Run,
