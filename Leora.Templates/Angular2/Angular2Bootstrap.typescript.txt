@@ -1,14 +1,18 @@
-﻿import { NgModule } from '@angular/core';
+﻿import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { {{ entityNamePascalCase }}Component } from '../{{ entityNameSnakeCase }}.component';
+import { {{ entityNamePascalCase }}Module } from '../{{ entityNameSnakeCase }}.module';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
+@Component({
+    selector: "app",
+    template: "<section><c-{{ entityNameSnakeCase }}></c-{{ entityNameSnakeCase }}></section>"
+})
+class AppComponent { }
+
 @NgModule({
-    declarations: [{{ entityNamePascalCase }}Component],
-    imports: [BrowserModule],
-    bootstrap: [{{ entityNamePascalCase }}Component],
+    imports: [BrowserModule, {{ entityNamePascalCase }}Module],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
-
 
 platformBrowserDynamic().bootstrapModule(AppModule);
