@@ -2,7 +2,7 @@
 
 namespace Leora.Commands.Angular2.Contracts
 {
-    public interface IGenerateComponentCommand : ICommand
+    public interface IGenerateIndexCommand: ICommand
     {
         int Run(string name, string directory);
     }

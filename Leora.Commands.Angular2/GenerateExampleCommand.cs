@@ -25,7 +25,7 @@ namespace Leora.Commands.Angular2
             throw new NotImplementedException();
         }
 
-        public int Run(string name)
+        public int Run(string name, string directory)
         {
             var exitCode = 1;
             _fileWriter.WriteAllLines("example.html", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Html, "Angular2Example", BluePrintType.Angular2), name));
