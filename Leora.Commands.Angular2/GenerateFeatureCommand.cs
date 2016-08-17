@@ -14,7 +14,9 @@ namespace Leora.Commands.Angular2
         protected readonly IGenerateBootstrapCommand _generateBootstrapCommand;
         protected readonly IGenerateModuleCommand _generateModuleCommand;
         protected readonly IGenerateComponentCommand _generateComponentCommand;
-        
+        protected readonly IGenerateReadMeCommand _generateReadMeCommand;
+        protected readonly IGeneratePackageJsonCommand _generatePackageJsonCommand;
+
         public GenerateFeatureCommand(
             ITemplateManager templateManager, 
             ITemplateProcessor templateProcessor, 
@@ -24,13 +26,17 @@ namespace Leora.Commands.Angular2
             IGenerateIndexCommand generateIndexCommand,
             IGenerateBootstrapCommand generateBootstrapCommand,
             IGenerateModuleCommand generateModuleCommand,
-            IGenerateComponentCommand generateComponentCommand)
+            IGenerateComponentCommand generateComponentCommand,
+            IGenerateReadMeCommand generateReadMeCommand,
+            IGeneratePackageJsonCommand generatePackageJsonCommand)
             : base(templateManager, templateProcessor, namingConventionConverter, projectManager, fileWriter) {
 
             _generateBootstrapCommand = generateBootstrapCommand;
             _generateComponentCommand = generateComponentCommand;
             _generateIndexCommand = generateIndexCommand;
             _generateModuleCommand = generateModuleCommand;
+            _generateReadMeCommand = generateReadMeCommand;
+            _generatePackageJsonCommand = generatePackageJsonCommand;
         }
 
         public override int Run(GenerateFeatureOptions options) => Run(options.Name, options.Directory);
@@ -47,6 +53,8 @@ namespace Leora.Commands.Angular2
 
             _generateComponentCommand.Run(name, path);
             _generateModuleCommand.Run(name, path);
+            _generateReadMeCommand.Run(name, path);
+            _generatePackageJsonCommand.Run(name, path);
             _generateBootstrapCommand.Run(name, examplesPath);
             _generateIndexCommand.Run(name, examplesPath);
             return exitCode;

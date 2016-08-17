@@ -67,6 +67,10 @@ namespace Leora.Services
                     return "csharp";
                 case FileType.Scss:
                     return "scss";
+                case FileType.MarkDown:
+                    return "md";
+                case FileType.Json:
+                    return "json";
             }
             throw new NotImplementedException();
         }

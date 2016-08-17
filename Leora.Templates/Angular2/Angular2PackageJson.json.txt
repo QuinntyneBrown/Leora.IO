@@ -1,0 +1,9 @@
+﻿{
+  "name": "{{ entityNameSnakeCase }}",
+  "version": "0.0.1",
+  "description": "0.0.1",
+  "main": "{{ entityNameSnakeCase }}.module.ts",
+  "directories": {
+    "example": "example"
+  }
+}

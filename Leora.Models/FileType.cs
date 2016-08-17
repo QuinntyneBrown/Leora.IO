@@ -14,6 +14,8 @@ namespace Leora.Models
         Html,
         CSharp,
         Solution,
-        Project
+        Project,
+        MarkDown,
+        Json
     }
 }
