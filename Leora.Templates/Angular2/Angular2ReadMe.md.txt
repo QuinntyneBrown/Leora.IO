@@ -12,7 +12,7 @@ There are five types of {{ entityNameSnakeCase }}s (list your types here.....:
 Example:
 
  ```html
-<{{ entityNameSnakeCase }}></{{ entityNameSnakeCase }}>
+<c-{{ entityNameSnakeCase }}></c-{{ entityNameSnakeCase }}>
  ```
 
 Output:
@@ -25,7 +25,7 @@ Describe how it can be themed...
 Example:
 
  ```html
-<{{ entityNameSnakeCase }} color="primary"></{{ entityNameSnakeCase }}>
+<c-{{ entityNameSnakeCase }} color="primary"></c-{{ entityNameSnakeCase }}>
  ```
 
 Output:
@@ -39,7 +39,7 @@ component class by adding `[disabled]="isDisabled"` given that the `isDisabled`
 property exists.
 
 ```html
-<{{ entityNameSnakeCase }} disabled>OFF</{{ entityNameSnakeCase }}>
+<c-{{ entityNameSnakeCase }} disabled></c-{{ entityNameSnakeCase }}>
 ```
 
 Output:
@@ -62,3 +62,6 @@ Properties:
 | --- | --- | --- |
 | `color` | `"primary"|"accent"|"warn"` | The color palette of the button
 | `disabled` | boolean | Whether or not the button is disabled
+
+### Revision History
+* v0.0.1: add description

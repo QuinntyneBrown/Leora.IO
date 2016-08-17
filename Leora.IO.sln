@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Cli", "Leora.Cli\Leora.Cli.csproj", "{027435A2-1ECB-4708-81AB-B66443A076BC}"
 EndProject
@@ -64,6 +64,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.VisualStudio", "Leora.Commands.VisualStudio\Leora.Commands.VisualStudio.csproj", "{4E33F438-9D8C-4669-B76F-E36DEA2295CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.VisualStudio.Tests", "Leora.Commands.VisualStudio.Tests\Leora.Commands.VisualStudio.Tests.csproj", "{13DF0789-BE26-4EB4-BC15-05456758DC03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.QuickJobs", "Leora.IO.QuickJobs\Leora.IO.QuickJobs.csproj", "{69DEE6E8-69C7-42AC-AB07-A692015184E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -195,6 +197,10 @@ Global
 		{13DF0789-BE26-4EB4-BC15-05456758DC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13DF0789-BE26-4EB4-BC15-05456758DC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13DF0789-BE26-4EB4-BC15-05456758DC03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69DEE6E8-69C7-42AC-AB07-A692015184E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69DEE6E8-69C7-42AC-AB07-A692015184E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69DEE6E8-69C7-42AC-AB07-A692015184E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69DEE6E8-69C7-42AC-AB07-A692015184E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
