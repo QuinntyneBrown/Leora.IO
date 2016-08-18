@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Corus UI: {{ entityNamePascalCase }}</title>
+    <title>{{ entityNamePascalCase }}</title>
     <meta charset="utf-8" />
 </head>
 <body>
