@@ -50,6 +50,7 @@
     <Compile Include="Contracts\IGenerateExampleCommand.cs" />
     <Compile Include="Contracts\IGenerateIndexCommand.cs" />
     <Compile Include="Contracts\IGenerateModuleCommand.cs" />
+    <Compile Include="Contracts\IGenerateAppPackageJsonCommand.cs" />
     <Compile Include="Contracts\IGeneratePackageJsonCommand.cs" />
     <Compile Include="Contracts\IGenerateReadMeCommand.cs" />
     <Compile Include="Contracts\IGenerateWebpackCommand.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="GenerateFeatureCommand.cs" />
     <Compile Include="GenerateIndexCommand.cs" />
     <Compile Include="GenerateModuleCommand.cs" />
+    <Compile Include="GenerateAppPackageJsonCommand.cs" />
     <Compile Include="GeneratePackageJsonCommand.cs" />
     <Compile Include="GenerateReadMeCommand.cs" />
     <Compile Include="GenerateWebpackCommand.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="Options\GenerateExampleOptions.cs" />
     <Compile Include="Options\GenerateIndexOptions.cs" />
     <Compile Include="Options\GenerateModuleOptions.cs" />
+    <Compile Include="Options\GenerateAppPackageJsonOptions.cs" />
     <Compile Include="Options\GeneratePackageJsonOptions.cs" />
     <Compile Include="Options\GenerateReadMeOptions.cs" />
     <Compile Include="Options\GenerateWebpackOptions.cs" />

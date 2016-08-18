@@ -43,6 +43,7 @@ namespace Leora.Cli
                 ["ng2-module"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateModuleCommand>().Run,
                 ["ng2-index"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateIndexCommand>().Run,
                 ["ng2-package-json"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGeneratePackageJsonCommand>().Run,
+                ["ng2-app-package-json"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateAppPackageJsonCommand>().Run,
                 ["ng2-readme"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateReadMeCommand>().Run,
                 ["ng2-webpack"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateWebpackCommand>().Run,
 

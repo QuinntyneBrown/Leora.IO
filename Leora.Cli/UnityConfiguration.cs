@@ -45,7 +45,8 @@ namespace Leora.Cli
             container.RegisterType<Commands.Angular2.Contracts.IGenerateReadMeCommand, Commands.Angular2.GenerateReadMeCommand>();
             container.RegisterType<Commands.Angular2.Contracts.IGenerateIndexCommand, Commands.Angular2.GenerateIndexCommand>();
             container.RegisterType<Commands.Angular2.Contracts.IGenerateWebpackCommand, Commands.Angular2.GenerateWebpackCommand>();
-            
+            container.RegisterType<Commands.Angular2.Contracts.IGenerateAppPackageJsonCommand, Commands.Angular2.GenerateAppPackageJsonCommand>();
+
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand, Commands.AspNetWebApi2.GenerateControllerCommand>();
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateDtosCommand, Commands.AspNetWebApi2.GenerateDtosCommand>();
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateServiceCommand, Commands.AspNetWebApi2.GenerateServiceCommand>();

@@ -194,6 +194,7 @@
     <EmbeddedResource Include="Angular2\Angular2ReadMe.md.txt" />
     <EmbeddedResource Include="Angular2\Angular2PackageJson.json.txt" />
     <EmbeddedResource Include="Angular2\Angular2Webpack.js.txt" />
+    <Content Include="Angular2\Angular2AppPackageJson.json.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />
