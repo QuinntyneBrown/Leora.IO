@@ -16,6 +16,7 @@ namespace Leora.Models
         Solution,
         Project,
         MarkDown,
-        Json
+        Json,
+        JavaScript
     }
 }

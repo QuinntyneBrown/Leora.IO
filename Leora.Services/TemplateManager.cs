@@ -71,6 +71,8 @@ namespace Leora.Services
                     return "md";
                 case FileType.Json:
                     return "json";
+                case FileType.JavaScript:
+                    return "js";
             }
             throw new NotImplementedException();
         }

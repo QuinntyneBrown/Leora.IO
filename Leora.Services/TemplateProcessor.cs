@@ -18,13 +18,18 @@ namespace Leora.Services
         {            
             var lines = new List<string>();
             var index = 0;
+            
             foreach (var line in template)
             {
-                var newline = line.Replace("{{ entityNamePascalCase }}", _namingConventionConverter.Convert(NamingConvention.PascalCase, name));
-                newline = newline.Replace("{{ entityNameCamelCase }}", _namingConventionConverter.Convert(NamingConvention.CamelCase, name));
-                newline = newline.Replace("{{ entityNameSnakeCase }}", _namingConventionConverter.Convert(NamingConvention.SnakeCase, name));
-                newline = newline.Replace("{{ entityNameTitleCase }}", _namingConventionConverter.Convert(NamingConvention.TitleCase, name));
-                newline = newline.Replace("{{ entityNameLowerCase }}", _namingConventionConverter.Convert(NamingConvention.CamelCase, name).ToLower());
+                string newline = line;
+                if (!string.IsNullOrEmpty(name))
+                {
+                    newline = line.Replace("{{ entityNamePascalCase }}", _namingConventionConverter.Convert(NamingConvention.PascalCase, name));
+                    newline = newline.Replace("{{ entityNameCamelCase }}", _namingConventionConverter.Convert(NamingConvention.CamelCase, name));
+                    newline = newline.Replace("{{ entityNameSnakeCase }}", _namingConventionConverter.Convert(NamingConvention.SnakeCase, name));
+                    newline = newline.Replace("{{ entityNameTitleCase }}", _namingConventionConverter.Convert(NamingConvention.TitleCase, name));
+                    newline = newline.Replace("{{ entityNameLowerCase }}", _namingConventionConverter.Convert(NamingConvention.CamelCase, name).ToLower());
+                }
                 lines.Add(newline);
                 index++;
             }
