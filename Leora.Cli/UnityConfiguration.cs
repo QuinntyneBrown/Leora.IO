@@ -36,17 +36,7 @@ namespace Leora.Cli
             container.RegisterType<IGenerateComponentCommand, GenerateComponentCommand>();
             container.RegisterType<IGenerateFeatureCommand, GenerateFeatureCommand>();
 
-            container.RegisterType<Commands.Angular2.Contracts.IGenerateComponentCommand, Commands.Angular2.GenerateComponentCommand>();
-            container.RegisterType<Commands.Angular2.Contracts.IGenerateFeatureCommand, Commands.Angular2.GenerateFeatureCommand>();
-            container.RegisterType<Commands.Angular2.Contracts.IGenerateBootstrapCommand, Commands.Angular2.GenerateBootstrapCommand>();
-            container.RegisterType<Commands.Angular2.Contracts.IGenerateModuleCommand, Commands.Angular2.GenerateModuleCommand>();
-            container.RegisterType<Commands.Angular2.Contracts.IGenerateIndexCommand, Commands.Angular2.GenerateIndexCommand>();
-            container.RegisterType<Commands.Angular2.Contracts.IGeneratePackageJsonCommand, Commands.Angular2.GeneratePackageJsonCommand>();
-            container.RegisterType<Commands.Angular2.Contracts.IGenerateReadMeCommand, Commands.Angular2.GenerateReadMeCommand>();
-            container.RegisterType<Commands.Angular2.Contracts.IGenerateIndexCommand, Commands.Angular2.GenerateIndexCommand>();
-            container.RegisterType<Commands.Angular2.Contracts.IGenerateWebpackCommand, Commands.Angular2.GenerateWebpackCommand>();
-            container.RegisterType<Commands.Angular2.Contracts.IGenerateAppPackageJsonCommand, Commands.Angular2.GenerateAppPackageJsonCommand>();
-
+            
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand, Commands.AspNetWebApi2.GenerateControllerCommand>();
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateDtosCommand, Commands.AspNetWebApi2.GenerateDtosCommand>();
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateServiceCommand, Commands.AspNetWebApi2.GenerateServiceCommand>();
@@ -62,6 +52,8 @@ namespace Leora.Cli
             container.RegisterType<IMicroserviceTemplateProcessor, MicroserviceTemplateProcessor>();
 
             container.RegisterType<Leora.Commands.React.Contracts.IGenerateComponentCommand, Leora.Commands.React.GenerateComponentCommand>();
+
+            Angular2UnityConfiguration.RegisterTypes(container);
 
             return container;
         }
