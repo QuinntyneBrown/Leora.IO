@@ -4,10 +4,6 @@ using Leora.Services;
 using Leora.Services.Contracts;
 using Microsoft.Practices.Unity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Leora.IO.QuickJobs
 {
@@ -21,8 +17,8 @@ namespace Leora.IO.QuickJobs
 
             foreach (var directory in System.IO.Directory.GetDirectories(@""))
             {
-                //generateReadMeCommand.Run(System.IO.Path.GetFileName(directory), directory);
-                generatePackageJsonCommand.Run(System.IO.Path.GetFileName(directory), directory);            
+                generateReadMeCommand.Run(System.IO.Path.GetFileName(directory), directory);
+                //generatePackageJsonCommand.Run(System.IO.Path.GetFileName(directory), directory);            
             }
             Console.Write("Done!");
             Console.ReadLine();

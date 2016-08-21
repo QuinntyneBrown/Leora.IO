@@ -1,9 +1,9 @@
-﻿# {{ entityNameSnakeCase }}
+﻿# {{ entityNameTitleCase }}
 
 `{{ entityNameSnakeCase }}` is an HTML ... put your description here....
 
 
-### {{ entityNamePascalCase }} types
+### {{ entityNameTitleCase }} types
 
 There are five types of {{ entityNameSnakeCase }}s (list your types here.....:
  1. First Type - `{{ entityNameSnakeCase }}`
@@ -62,6 +62,15 @@ Properties:
 | --- | --- | --- |
 | `color` | `"primary"|"accent"|"warn"` | The color palette of the button
 | `disabled` | boolean | Whether or not the button is disabled
+
+### Resources
+
+There are several resources used inside this project, of which you can read further about to dive deeper or understand in more detail what they are:
+
+* [Angular 2 Style Guide](https://github.com/johnpapa/angular-styleguide/blob/master/a2/README.md)
+* [Angular Docs](https://angular.io/)
+* [Webpack](https://webpack.github.io/)
+* [Angular 2 Forms](https://www.youtube.com/watch?v=E92KS_YCSf8)
 
 ### Revision History
 * v0.0.1: add description

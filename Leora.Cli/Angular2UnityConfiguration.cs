@@ -1,8 +1,4 @@
-﻿using Leora.Commands;
-using Leora.Commands.Angular1;
-using Leora.Commands.Angular1.Contracts;
-using Leora.Commands.Contracts;
-using Microsoft.Practices.Unity;
+﻿using Microsoft.Practices.Unity;
 
 namespace Leora.Cli
 {
@@ -24,6 +20,7 @@ namespace Leora.Cli
             container.RegisterType<Commands.Angular2.Contracts.IGeneratePolyfillsCommand, Commands.Angular2.GeneratePolyfillsCommand>();
             container.RegisterType<Commands.Angular2.Contracts.IGenerateVendorsCommand, Commands.Angular2.GenerateVendorsCommand>();
             container.RegisterType<Commands.Angular2.Contracts.IGenerateRoutingCommand, Commands.Angular2.GenerateRoutingCommand>();
+            container.RegisterType<Commands.Angular2.Contracts.IGenerateAppModuleCommand, Commands.Angular2.GenerateAppModuleCommand>();
         }
     }
 }
