@@ -198,6 +198,7 @@
     <EmbeddedResource Include="Angular2\Angular2TypedocJson.json.txt" />
     <EmbeddedResource Include="Angular2\Angular2TypingsJson.json.txt" />
     <EmbeddedResource Include="Angular2\Angular2AppIndex.html.txt" />
+    <EmbeddedResource Include="Angular2\Angular2AppModule.typescript.txt" />
     <Content Include="Angular2\Angular2GitIgnore.none.txt" />
     <Content Include="Angular2\Angular2Normalize.scss.txt" />
     <EmbeddedResource Include="Angular2\Angular2Polyfills.typescript.txt" />
