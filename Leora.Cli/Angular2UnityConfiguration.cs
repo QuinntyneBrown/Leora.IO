@@ -21,6 +21,9 @@ namespace Leora.Cli
             container.RegisterType<Commands.Angular2.Contracts.IGenerateWebpackCommand, Commands.Angular2.GenerateWebpackCommand>();
             container.RegisterType<Commands.Angular2.Contracts.IGenerateAppPackageJsonCommand, Commands.Angular2.GenerateAppPackageJsonCommand>();
             container.RegisterType<Commands.Angular2.Contracts.IGenerateNormalizeCommand, Commands.Angular2.GenerateNormalizeCommand>();
+            container.RegisterType<Commands.Angular2.Contracts.IGeneratePolyfillsCommand, Commands.Angular2.GeneratePolyfillsCommand>();
+            container.RegisterType<Commands.Angular2.Contracts.IGenerateVendorsCommand, Commands.Angular2.GenerateVendorsCommand>();
+            container.RegisterType<Commands.Angular2.Contracts.IGenerateRoutingCommand, Commands.Angular2.GenerateRoutingCommand>();
         }
     }
 }

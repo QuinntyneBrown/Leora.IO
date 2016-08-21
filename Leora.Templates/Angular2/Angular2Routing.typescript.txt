@@ -1,0 +1,11 @@
+﻿import { Routes, RouterModule } from '@angular/router';
+
+import { {{ entityNamePascalCase }}Component }     from './{{ entityNameSnakeCase }}.component';
+
+const routes: Routes = [
+    { path: '{{ entityNameLowerCase }}', component: {{ entityNamePascalCase }}Component }
+];
+
+export const routing = RouterModule.forChild(routes);
+
+export const routedComponents = routes.filter(r => r.component != undefined).map(r => r.component)

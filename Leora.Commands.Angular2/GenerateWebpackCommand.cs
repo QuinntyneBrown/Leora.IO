@@ -17,6 +17,10 @@ namespace Leora.Commands.Angular2
         {
             var exitCode = 1;
             _fileWriter.WriteAllLines($"{directory}//webpack.config.js", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.JavaScript, "Angular2Webpack", BluePrintType.Angular2), name));
+
+            try { _projectManager.Process(directory, $"webpack.config.js", FileType.JavaScript); }
+            catch { }
+
             return exitCode;
         }
     }

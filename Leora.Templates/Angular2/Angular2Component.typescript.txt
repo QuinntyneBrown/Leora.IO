@@ -3,7 +3,7 @@
 @Component({
     template: require("./{{ entityNameSnakeCase }}.component.html"),
     styles: [require("./{{ entityNameSnakeCase }}.component.scss")],
-    selector: "c-{{ entityNameSnakeCase }}",
+    selector: "h-{{ entityNameSnakeCase }}",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class {{ entityNamePascalCase }}Component implements OnInit { 

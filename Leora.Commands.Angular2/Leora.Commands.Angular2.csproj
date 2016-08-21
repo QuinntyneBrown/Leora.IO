@@ -55,6 +55,7 @@
     <Compile Include="Contracts\IGeneratePackageJsonCommand.cs" />
     <Compile Include="Contracts\IGeneratePolyfillsCommand.cs" />
     <Compile Include="Contracts\IGenerateReadMeCommand.cs" />
+    <Compile Include="Contracts\IGenerateRoutingCommand.cs" />
     <Compile Include="Contracts\IGenerateVendorsCommand.cs" />
     <Compile Include="Contracts\IGenerateWebpackCommand.cs" />
     <Compile Include="GenerateBootstrapCommand.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="GeneratePackageJsonCommand.cs" />
     <Compile Include="GeneratePolyfillsCommand.cs" />
     <Compile Include="GenerateReadMeCommand.cs" />
+    <Compile Include="GenerateRoutingCommand.cs" />
     <Compile Include="GenerateVendorsCommand.cs" />
     <Compile Include="GenerateWebpackCommand.cs" />
     <Compile Include="Options\BaseOptions.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Options\GeneratePackageJsonOptions.cs" />
     <Compile Include="Options\GeneratePolyfillsOptions.cs" />
     <Compile Include="Options\GenerateReadMeOptions.cs" />
+    <Compile Include="Options\GenerateRoutingOptions.cs" />
     <Compile Include="Options\GenerateVendorsOptions.cs" />
     <Compile Include="Options\GenerateWebpackOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

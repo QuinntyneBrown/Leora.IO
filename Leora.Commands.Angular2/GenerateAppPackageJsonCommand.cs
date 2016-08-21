@@ -17,6 +17,10 @@ namespace Leora.Commands.Angular2
         {
             var exitCode = 1;
             _fileWriter.WriteAllLines($"{directory}//package.json", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Json, "Angular2AppPackageJson", BluePrintType.Angular2), name));
+
+            try { _projectManager.Process(directory, $"package.json", FileType.Json); }
+            catch { }
+
             return exitCode;
         }
     }

@@ -15,6 +15,10 @@ namespace Leora.Commands.Angular2
         {
             var exitCode = 1;
             _fileWriter.WriteAllLines($"{directory}//_normalize.scss", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Scss, "Angular2Normalize", BluePrintType.Angular2), name));
+
+            try { _projectManager.Process(directory, $"_normalize.scss", FileType.Scss); }
+            catch { }
+
             return exitCode;
         }
     }

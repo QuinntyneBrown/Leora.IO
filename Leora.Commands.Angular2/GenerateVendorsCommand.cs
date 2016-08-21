@@ -2,6 +2,7 @@
 using Leora.Commands.Angular2.Options;
 using Leora.Services.Contracts;
 using Leora.Models;
+using System;
 
 namespace Leora.Commands.Angular2
 {
@@ -16,6 +17,10 @@ namespace Leora.Commands.Angular2
         {
             var exitCode = 1;
             _fileWriter.WriteAllLines($"{directory}//vendors.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular2Vendors", BluePrintType.Angular2), name));
+
+            try { _projectManager.Process(directory, $"vendors.ts", FileType.TypeScript); }
+            catch { }
+
             return exitCode;
         }
     }
