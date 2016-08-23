@@ -1,7 +1,19 @@
-﻿import { NgModule } from '@angular/core';
+﻿import { NgModule, ModuleWithProviders } from '@angular/core';
 import { {{ entityNamePascalCase }}Component } from './{{ entityNameSnakeCase }}.component';
 
+const declarables = [{{ entityNamePascalCase }}Component];
+const providers = [];
+
 @NgModule({
-    declarations: [{{ entityNamePascalCase }}Component]
+    imports: [CommonModule],
+    exports: [declarables],
+    declarations: [declarables]
 })
-export class {{ entityNamePascalCase }}Module { }
+export class {{ entityNamePascalCase }}Module { 
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: {{ entityNamePascalCase }}ModuleModule,
+      providers: [providers]
+    };
+  }
+}

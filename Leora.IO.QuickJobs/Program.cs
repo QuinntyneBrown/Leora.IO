@@ -18,7 +18,7 @@ namespace Leora.IO.QuickJobs
             foreach (var directory in System.IO.Directory.GetDirectories(@""))
             {
                 generateReadMeCommand.Run(System.IO.Path.GetFileName(directory), directory);
-                //generatePackageJsonCommand.Run(System.IO.Path.GetFileName(directory), directory);            
+                generatePackageJsonCommand.Run(System.IO.Path.GetFileName(directory), directory);            
             }
             Console.Write("Done!");
             Console.ReadLine();
