@@ -7,6 +7,7 @@ const declarables = [{{ entityNamePascalCase }}Component, routedComponents]
 
 @NgModule({
     imports: [routing, SharedModule],
-    declarations: [declarables]
+    declarations: [declarables],
+	exports: [declarables]
 })
 export class {{ entityNamePascalCase }}Module { }
