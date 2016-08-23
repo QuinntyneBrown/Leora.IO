@@ -1,4 +1,6 @@
 ﻿import { NgModule, ModuleWithProviders } from '@angular/core';
+import { CommonModule } from "@angular/common";
+
 import { {{ entityNamePascalCase }}Component } from './{{ entityNameSnakeCase }}.component';
 
 const declarables = [{{ entityNamePascalCase }}Component];
@@ -12,7 +14,7 @@ const providers = [];
 export class {{ entityNamePascalCase }}Module { 
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: {{ entityNamePascalCase }}ModuleModule,
+      ngModule: {{ entityNamePascalCase }}Module,
       providers: [providers]
     };
   }
