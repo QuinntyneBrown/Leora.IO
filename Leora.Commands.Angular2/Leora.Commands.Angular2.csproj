@@ -56,9 +56,11 @@
     <Compile Include="Contracts\IGeneratePackageJsonCommand.cs" />
     <Compile Include="Contracts\IGeneratePolyfillsCommand.cs" />
     <Compile Include="Contracts\IGenerateReadMeCommand.cs" />
+    <Compile Include="Contracts\IGenerateReducerCommand.cs" />
     <Compile Include="Contracts\IGenerateRoutingCommand.cs" />
     <Compile Include="Contracts\IGenerateVendorsCommand.cs" />
     <Compile Include="Contracts\IGenerateWebpackCommand.cs" />
+    <Compile Include="GenerateReducerCommand.cs" />
     <Compile Include="GenerateBootstrapCommand.cs" />
     <Compile Include="GenerateComponentCommand.cs" />
     <Compile Include="GenerateExampleCommand.cs" />
@@ -75,6 +77,7 @@
     <Compile Include="GenerateVendorsCommand.cs" />
     <Compile Include="GenerateWebpackCommand.cs" />
     <Compile Include="Options\BaseOptions.cs" />
+    <Compile Include="Options\GenerateReducerOptions.cs" />
     <Compile Include="Options\GenerateBootstrapOptions.cs" />
     <Compile Include="Options\GenerateComponentOptions.cs" />
     <Compile Include="Options\GenerateExampleOptions.cs" />
