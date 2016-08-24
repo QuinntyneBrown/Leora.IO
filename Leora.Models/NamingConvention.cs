@@ -6,6 +6,7 @@
         CamelCase,
         SnakeCase,
         TitleCase,
+        AllCaps,
         None
     }
 }

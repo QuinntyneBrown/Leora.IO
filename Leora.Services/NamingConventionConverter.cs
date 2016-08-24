@@ -45,6 +45,13 @@ namespace Leora.Services
                     value = value.Replace("-", "");
                     return value.First().ToString().ToUpper() + value.Substring(1);
                     break;
+
+                case NamingConvention.AllCaps:
+                    value = Convert(NamingConvention.SnakeCase, value);
+                    value = value.Replace("-", "_");
+                    value = value.ToUpper();
+                    return value;
+                    break;
             }
 
             return value;

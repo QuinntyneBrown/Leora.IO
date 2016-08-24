@@ -1,5 +1,12 @@
-﻿export const {{ entityNameCamelCase }} = (state, { type, payload }) => {
-    switch (type) {
+﻿import { Action } from "@ngrx/store";
+import { {{ entityNameAllCaps }} } from "../actions";
+import { initialState } from "../initial-state";
+
+export const userLoggedOut = (state = initialState, action: Action) => {
+    switch (action.type) {
+
+        case {{ entityNameAllCaps }}:
+            break;
 
         default:
             return state;
