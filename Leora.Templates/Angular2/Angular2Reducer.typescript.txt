@@ -2,7 +2,7 @@
 import { {{ entityNameAllCaps }} } from "../actions";
 import { initialState } from "../initial-state";
 
-export const userLoggedOut = (state = initialState, action: Action) => {
+export const {{ entityNameCamelCase }} = (state = initialState, action: Action) => {
     switch (action.type) {
 
         case {{ entityNameAllCaps }}:
