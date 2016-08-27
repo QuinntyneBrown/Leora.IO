@@ -72,5 +72,13 @@ There are several resources used inside this project, of which you can read furt
 * [Webpack](https://webpack.github.io/)
 * [Angular 2 Forms](https://www.youtube.com/watch?v=E92KS_YCSf8)
 
+### Sample Repos
+
+The following are some repos that can used as a reference while maintaining this project.
+
+* [Angular 2 Samples](https://github.com/thelgevold/angular-2-samples)
+* [ngrx example app](https://github.com/ngrx/example-app)
+* [ngrx staffer app](https://github.com/sapientglobalmarkets/staffer)
+
 ### Revision History
 * v0.0.1: add description
