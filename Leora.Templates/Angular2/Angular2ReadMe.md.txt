@@ -67,6 +67,7 @@ Properties:
 
 There are several resources used inside this project, of which you can read further about to dive deeper or understand in more detail what they are:
 
+* [Three Ways to Test Angular 2 Components](https://vsavkin.com/three-ways-to-test-angular-2-components-dcea8e90bd8d)
 * [Angular 2 Style Guide](https://github.com/johnpapa/angular-styleguide/blob/master/a2/README.md)
 * [Angular Docs](https://angular.io/)
 * [Webpack](https://webpack.github.io/)
