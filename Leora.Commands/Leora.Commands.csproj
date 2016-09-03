@@ -45,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseCommand.cs" />
+    <Compile Include="Contracts\IGenerateAngular2NgrxAppCommand.cs" />
     <Compile Include="Contracts\IGenerateCommandCommand.cs" />
+    <Compile Include="GenerateAngular2NgrxAppCommand.cs" />
     <Compile Include="GenerateCommandCommand.cs" />
     <Compile Include="GenerateMicroserviceCommand.cs" />
     <Compile Include="GenerateWebComponentsCommand.cs" />
@@ -53,6 +55,7 @@
     <Compile Include="Infrastructure\Constants.cs" />
     <Compile Include="InstallNugetPackageCommand.cs" />
     <Compile Include="Options\BaseOptions.cs" />
+    <Compile Include="Options\GenerateAngular2NgrxAppOptions.cs" />
     <Compile Include="Options\GenerateCommandCommandOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Contracts\IGenerateMicroserviceCommand.cs" />

@@ -71,7 +71,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Angular1\Angular1ActionCreatorCrud.typescript.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Angular2NgrxApp\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Angular1\Angular1Component.css.txt" />
   </ItemGroup>
