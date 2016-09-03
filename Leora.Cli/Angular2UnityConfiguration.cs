@@ -23,6 +23,7 @@ namespace Leora.Cli
             container.RegisterType<Commands.Angular2.Contracts.IGenerateAppModuleCommand, Commands.Angular2.GenerateAppModuleCommand>();
             container.RegisterType<Commands.Angular2.Contracts.IGenerateReducerCommand, Commands.Angular2.GenerateReducerCommand>();
             container.RegisterType<Commands.Angular2.Contracts.IGenerateActionConstantsCommand, Commands.Angular2.GenerateActionConstantsCommand>();
+            container.RegisterType<Commands.Angular2.Contracts.IGenerateActionsCommand, Commands.Angular2.GenerateActionsCommand>();            
         }
     }
 }
