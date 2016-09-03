@@ -12,33 +12,33 @@ namespace {{ namespacename }}
     {
         public {{ entityNamePascalCase }}Service(IUow uow, ICacheProvider cacheProvider)
         {
-            this.uow = uow;
-            this.repository = uow.{{ entityNamePascalCase }}s;
-            this.cache = cacheProvider.GetCache();
+            _uow = uow;
+            _repository = uow.{{ entityNamePascalCase }}s;
+            _cache = cacheProvider.GetCache();
         }
 
         public {{ entityNamePascalCase }}AddOrUpdateResponseDto AddOrUpdate({{ entityNamePascalCase }}AddOrUpdateRequestDto request)
         {
-            var entity = repository.GetAll()
+            var entity = _repository.GetAll()
                 .FirstOrDefault(x => x.Id == request.Id && x.IsDeleted == false);
-            if (entity == null) repository.Add(entity = new {{ entityNamePascalCase }}());
+            if (entity == null) _repository.Add(entity = new {{ entityNamePascalCase }}());
             entity.Name = request.Name;
-            uow.SaveChanges();
+            _uow.SaveChanges();
             return new {{ entityNamePascalCase }}AddOrUpdateResponseDto(entity);
         }
 
         public dynamic Remove(int id)
         {
-            var entity = repository.GetById(id);
+            var entity = _repository.GetById(id);
             entity.IsDeleted = true;
-            uow.SaveChanges();
+            _uow.SaveChanges();
             return id;
         }
 
         public ICollection<{{ entityNamePascalCase }}Dto> Get()
         {
             ICollection<{{ entityNamePascalCase }}Dto> response = new HashSet<{{ entityNamePascalCase }}Dto>();
-            var entities = repository.GetAll().Where(x => x.IsDeleted == false).ToList();
+            var entities = _repository.GetAll().Where(x => x.IsDeleted == false).ToList();
             foreach(var entity in entities) { response.Add(new {{ entityNamePascalCase }}Dto(entity)); }    
             return response;
         }
@@ -46,11 +46,11 @@ namespace {{ namespacename }}
 
         public {{ entityNamePascalCase }}Dto GetById(int id)
         {
-            return new {{ entityNamePascalCase }}Dto(repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
+            return new {{ entityNamePascalCase }}Dto(_repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
         }
 
-        protected readonly IUow uow;
-        protected readonly IRepository<{{ entityNamePascalCase }}> repository;
-        protected readonly ICache cache;
+        protected readonly IUow _uow;
+        protected readonly IRepository<{{ entityNamePascalCase }}> _repository;
+        protected readonly ICache _cache;
     }
 }
