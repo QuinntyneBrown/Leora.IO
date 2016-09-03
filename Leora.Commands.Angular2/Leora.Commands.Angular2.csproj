@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseCommand.cs" />
+    <Compile Include="Contracts\IGenerateActionConstantsCommand.cs" />
     <Compile Include="Contracts\IGenerateBootstrapCommand.cs" />
     <Compile Include="Contracts\IGenerateComponentCommand.cs" />
     <Compile Include="Contracts\IGenerateExampleCommand.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Contracts\IGenerateRoutingCommand.cs" />
     <Compile Include="Contracts\IGenerateVendorsCommand.cs" />
     <Compile Include="Contracts\IGenerateWebpackCommand.cs" />
+    <Compile Include="GenerateActionConstantsCommand.cs" />
     <Compile Include="GenerateReducerCommand.cs" />
     <Compile Include="GenerateBootstrapCommand.cs" />
     <Compile Include="GenerateComponentCommand.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="GenerateVendorsCommand.cs" />
     <Compile Include="GenerateWebpackCommand.cs" />
     <Compile Include="Options\BaseOptions.cs" />
+    <Compile Include="Options\GenerateActionConstantsOptions.cs" />
     <Compile Include="Options\GenerateReducerOptions.cs" />
     <Compile Include="Options\GenerateBootstrapOptions.cs" />
     <Compile Include="Options\GenerateComponentOptions.cs" />
