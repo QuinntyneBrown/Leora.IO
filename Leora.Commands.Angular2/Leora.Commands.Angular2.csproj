@@ -60,6 +60,7 @@
     <Compile Include="Contracts\IGenerateReadMeCommand.cs" />
     <Compile Include="Contracts\IGenerateReducerCommand.cs" />
     <Compile Include="Contracts\IGenerateRoutingCommand.cs" />
+    <Compile Include="Contracts\IGenerateServiceCommand.cs" />
     <Compile Include="Contracts\IGenerateVendorsCommand.cs" />
     <Compile Include="Contracts\IGenerateWebpackCommand.cs" />
     <Compile Include="GenerateActionConstantsCommand.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="GeneratePolyfillsCommand.cs" />
     <Compile Include="GenerateReadMeCommand.cs" />
     <Compile Include="GenerateRoutingCommand.cs" />
+    <Compile Include="GenerateServiceCommand.cs" />
     <Compile Include="GenerateVendorsCommand.cs" />
     <Compile Include="GenerateWebpackCommand.cs" />
     <Compile Include="Options\BaseOptions.cs" />
@@ -96,6 +98,7 @@
     <Compile Include="Options\GeneratePolyfillsOptions.cs" />
     <Compile Include="Options\GenerateReadMeOptions.cs" />
     <Compile Include="Options\GenerateRoutingOptions.cs" />
+    <Compile Include="Options\GenerateServiceOptions.cs" />
     <Compile Include="Options\GenerateVendorsOptions.cs" />
     <Compile Include="Options\GenerateWebpackOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

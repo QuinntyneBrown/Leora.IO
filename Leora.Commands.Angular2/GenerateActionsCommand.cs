@@ -24,7 +24,9 @@ namespace Leora.Commands.Angular2
             {
                 _projectManager.Process(directory, $"{entityNameSnakeCase}.actions.ts", FileType.TypeScript);
             }
-            catch { }
+            catch {
+
+            }
 
             return exitCode;
         }

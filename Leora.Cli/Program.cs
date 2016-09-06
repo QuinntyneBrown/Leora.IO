@@ -35,7 +35,7 @@ namespace Leora.Cli
                 ["ng-model"] = _container.Resolve<IGenerateModelCommand>().Run,
                 ["ng-module"] = _container.Resolve<Leora.Commands.Angular1.Contracts.IGenerateModuleCommand>().Run,
                 ["ng-paged-list"] = _container.Resolve<IGeneratePagedListCommand>().Run,
-                ["ng-service"] = _container.Resolve<IGenerateServiceCommand>().Run,
+                ["ng-service"] = _container.Resolve<Leora.Commands.Angular1.Contracts.IGenerateServiceCommand>().Run,
 
                 ["ng2-bootstrap"] = _container.Resolve<IGenerateBootstrapCommand>().Run,
                 ["ng2"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateComponentCommand>().Run,
@@ -53,6 +53,7 @@ namespace Leora.Cli
                 ["ng2-reducer"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateReducerCommand>().Run,
                 ["ng2-constants"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateActionConstantsCommand>().Run,
                 ["ng2-actions"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateActionsCommand>().Run,
+                ["ng2-service"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateServiceCommand>().Run,
 
                 ["dotnet-controller"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand>().Run,
                 ["dotnet-service"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateServiceCommand>().Run,

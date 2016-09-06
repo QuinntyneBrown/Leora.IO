@@ -1,1 +1,46 @@
-﻿
+﻿import { Injectable } from "@angular/core";
+import { Http } from "@angular/http";
+import { {{ entityNamePascalCase }} } from "../models";
+import { Observable } from "rxjs";
+import { extractData } from "../utilities";
+
+@Injectable()
+export class {{ entityNamePascalCase }}Service {
+    constructor(private _http: Http) { }
+
+    public add({{ entityNameCamelCase }}: {{ entityNamePascalCase }}) {
+        return this._http
+            .post("/api/{{ entityNameCamelCase }}/add", {{ entityNameCamelCase }})
+            .map(data => data.json())
+            .catch(err => {                
+                return Observable.of(false);
+            });        
+    }
+
+    public get() {
+        return this._http
+            .get("api/{{ entityNameCamelCase }}/get")
+            .map(data => data.json())
+            .catch(err => {
+                return Observable.of(false);
+            }); 
+    }
+
+    public getById(options: { id: number }) {
+        return this._http
+            .get(`api/{{ entityNameCamelCase }}/getById?id=${options.id}`)
+            .map(data => data.json())
+            .catch(err => {
+                return Observable.of(false);
+            });
+    }
+
+    public remove(options: { id: number }) {
+        return this._http
+            .delete(`/api/{{ entityNameCamelCase }}/remove?id=${options.id}`)
+            .map(data => data.json())
+            .catch(err => {
+                return Observable.of(false);
+            });
+    }
+}
