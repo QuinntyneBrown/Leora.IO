@@ -7,6 +7,7 @@ using static CommandLine.Parser;
 using static System.IO.Directory;
 using System.Collections.Generic;
 using System;
+using Leora.Commands.Angular2.Contracts;
 
 namespace Leora.Commands
 {
@@ -19,7 +20,17 @@ namespace Leora.Commands
         protected readonly IProjectManager _projectManager;
         protected readonly IFileWriter _fileWriter;
 
-        public GenerateMicroserviceCommand(ITemplateManager templateManager, IMicroserviceTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
+        protected readonly IGenerateAppCommand _generateAppCommand;
+
+        public GenerateMicroserviceCommand(
+            ITemplateManager templateManager, 
+            IMicroserviceTemplateProcessor templateProcessor, 
+            INamingConventionConverter namingConventionConverter, 
+            IProjectManager projectManager, 
+            IFileWriter fileWriter, 
+            INamespaceManager namespaceManager,
+            
+            IGenerateAppCommand generateAppCommand)
         {
             _templateManager = templateManager;
             _templateProcessor = templateProcessor;
@@ -27,6 +38,8 @@ namespace Leora.Commands
             _namingConventionConverter = namingConventionConverter;
             _projectManager = projectManager;
             _fileWriter = fileWriter;
+
+            _generateAppCommand = generateAppCommand;
         }
 
         public int Run(string[] args)
@@ -46,12 +59,12 @@ namespace Leora.Commands
             string entityPascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, entity);
 
             string microserviceDirectoryName = $"{directory}//{namePascalCase}";
+            
             CreateDirectory(microserviceDirectoryName);
             _fileWriter.WriteAllLines($"{microserviceDirectoryName}//{namePascalCase}.sln", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroService.sln", BluePrintType.MicroService), name, entity));
 
             CreateApi(microserviceDirectoryName, namePascalCase, entityPascalCase);
-            CreateWeb(microserviceDirectoryName, namePascalCase, entityPascalCase);
-
+            CreateWeb(microserviceDirectoryName, namePascalCase, entityPascalCase);            
             return exitCode;
         }
 
@@ -205,14 +218,14 @@ namespace Leora.Commands
 
         public void CreateWeb(string microserviceDirectoryName, string namePascalCase, string entityPascalCase)
         {
-            string apiDirectoryName = $"{microserviceDirectoryName}//{namePascalCase}.Web";
-            CreateDirectory(apiDirectoryName);
+            string webDirectoryName = $"{microserviceDirectoryName}//{namePascalCase}.Web";
+            CreateDirectory(webDirectoryName);
 
             var folders = new List<string>() { "Properties" };
 
             foreach (var folder in folders)
             {
-                var folderPath = $"{apiDirectoryName}//{folder}";
+                var folderPath = $"{webDirectoryName}//{folder}";
 
                 CreateDirectory(folderPath);
 
@@ -222,12 +235,14 @@ namespace Leora.Commands
                 }
             }
 
-            _fileWriter.WriteAllLines($"{apiDirectoryName}//{namePascalCase}.Web.csproj", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroServiceWeb.MicroServiceWeb.csproj", BluePrintType.MicroService), namePascalCase, entityPascalCase));
-            _fileWriter.WriteAllLines($"{apiDirectoryName}//index.html", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroServiceWeb.index.html", BluePrintType.MicroService), namePascalCase, entityPascalCase));
-            _fileWriter.WriteAllLines($"{apiDirectoryName}//packages.config", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroServiceWeb.packages.config", BluePrintType.MicroService), namePascalCase, entityPascalCase));
-            _fileWriter.WriteAllLines($"{apiDirectoryName}//Web.config", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroServiceWeb.Web.config", BluePrintType.MicroService), namePascalCase, entityPascalCase));
-            _fileWriter.WriteAllLines($"{apiDirectoryName}//install-packages.txt", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroServiceWeb.install-packages.txt", BluePrintType.MicroService), namePascalCase, entityPascalCase));
-            _fileWriter.WriteAllLines($"{apiDirectoryName}//Startup.cs", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroServiceWeb.Startup.csharp", BluePrintType.MicroService), namePascalCase, entityPascalCase));
+            _fileWriter.WriteAllLines($"{webDirectoryName}//{namePascalCase}.Web.csproj", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroServiceWeb.MicroServiceWeb.csproj", BluePrintType.MicroService), namePascalCase, entityPascalCase));
+            _fileWriter.WriteAllLines($"{webDirectoryName}//index.html", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroServiceWeb.index.html", BluePrintType.MicroService), namePascalCase, entityPascalCase));
+            _fileWriter.WriteAllLines($"{webDirectoryName}//packages.config", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroServiceWeb.packages.config", BluePrintType.MicroService), namePascalCase, entityPascalCase));
+            _fileWriter.WriteAllLines($"{webDirectoryName}//Web.config", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroServiceWeb.Web.config", BluePrintType.MicroService), namePascalCase, entityPascalCase));
+            _fileWriter.WriteAllLines($"{webDirectoryName}//install-packages.txt", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroServiceWeb.install-packages.txt", BluePrintType.MicroService), namePascalCase, entityPascalCase));
+            _fileWriter.WriteAllLines($"{webDirectoryName}//Startup.cs", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroServiceWeb.Startup.csharp", BluePrintType.MicroService), namePascalCase, entityPascalCase));
+
+            _generateAppCommand.Run(namePascalCase, entityPascalCase, webDirectoryName);
 
         }
 

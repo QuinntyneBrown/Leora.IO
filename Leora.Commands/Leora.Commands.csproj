@@ -67,6 +67,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Leora.Commands.Angular2\Leora.Commands.Angular2.csproj">
+      <Project>{29c5a412-7336-45b2-9d3b-2c76de500f83}</Project>
+      <Name>Leora.Commands.Angular2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">
       <Project>{239C7774-BAB3-4842-B86B-FE813708CE02}</Project>
       <Name>Leora.Commands.Contracts</Name>
