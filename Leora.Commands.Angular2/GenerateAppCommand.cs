@@ -34,6 +34,42 @@ namespace Leora.Commands.Angular2
 
             _generateAppPackageJsonCommand.Run(projectName, directory);
 
+
+            /*
+             * 1. package.json - DONE
+             * 2. tsconfig.json
+             * 3. typedoc.json
+             * 4. typings.json
+             * 5. webpack.config.js
+             * 
+             * -- lib
+             *      1. jquery.min.js
+             *      2. slick.min.js
+             *      3. tinymce.min.js
+             * -- src
+             *      -- app
+             *              -- actions
+             *              -- components
+             *              -- configuration
+             *              -- constants
+             *              -- helpers
+             *              -- models
+             *              -- pages
+             *              -- pipes
+             *              -- routing
+             *              -- services
+             *              -- store
+             *              -- utilities    
+             *      -- styles
+             *      1. app.component
+             *      2. app.module.ts
+             *      3. environment
+             *      4. index.ts
+             *      5. rxjs-extnesions
+             * 
+            return exitCode;
+            */
+
             return exitCode;
         }
     }
