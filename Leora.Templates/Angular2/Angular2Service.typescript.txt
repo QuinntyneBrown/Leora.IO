@@ -4,31 +4,34 @@ import { {{ entityNamePascalCase }} } from "../models";
 import { Observable } from "rxjs";
 import { extractData } from "../utilities";
 
+import { apiCofiguration } from "../configuration";
+
+
 @Injectable()
 export class {{ entityNamePascalCase }}Service {
     constructor(private _http: Http) { }
 
-    public add({{ entityNameCamelCase }}: {{ entityNamePascalCase }}) {
+    public add(entity: {{ entityNamePascalCase }}) {
         return this._http
-            .post("/api/{{ entityNameCamelCase }}/add", {{ entityNameCamelCase }})
+            .post(`${apiCofiguration.baseUrl}/api/{{ entityNameLowerCase }}/add`, entity)
             .map(data => data.json())
-            .catch(err => {                
+            .catch(err => {
                 return Observable.of(false);
-            });        
+            });
     }
 
     public get() {
         return this._http
-            .get("api/{{ entityNameCamelCase }}/get")
+            .get(`${apiCofiguration.baseUrl}/api/{{ entityNameLowerCase }}/get`)
             .map(data => data.json())
             .catch(err => {
                 return Observable.of(false);
-            }); 
+            });
     }
 
     public getById(options: { id: number }) {
         return this._http
-            .get(`api/{{ entityNameCamelCase }}/getById?id=${options.id}`)
+            .get(`${apiCofiguration.baseUrl}/api/{{ entityNameLowerCase }}/getById?id=${options.id}`)
             .map(data => data.json())
             .catch(err => {
                 return Observable.of(false);
@@ -37,10 +40,13 @@ export class {{ entityNamePascalCase }}Service {
 
     public remove(options: { id: number }) {
         return this._http
-            .delete(`/api/{{ entityNameCamelCase }}/remove?id=${options.id}`)
+            .delete(`${apiCofiguration.baseUrl}/api/{{ entityNameLowerCase }}/remove?id=${options.id}`)
             .map(data => data.json())
             .catch(err => {
                 return Observable.of(false);
             });
     }
+
+    public get baseUrl() { return apiCofiguration.baseUrl; }
+
 }

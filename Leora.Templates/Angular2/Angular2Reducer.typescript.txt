@@ -1,5 +1,5 @@
 ﻿import { Action } from "@ngrx/store";
-import { ADD_{{ entityNameAllCaps }}_SUCCESS, GET_{{ entityNameAllCaps }}_SUCCESS, REMOVE_{{ entityNameAllCaps }}_SUCCESS } from "../../constants";
+import { ADD_{{ entityNameAllCaps }}_SUCCESS, GET_{{ entityNameAllCaps }}_SUCCESS, REMOVE_{{ entityNameAllCaps }}_SUCCESS } from "../../../constants";
 import { initialState } from "../../initial-state";
 import { AppState } from "../../app-state";
 import { {{ entityNamePascalCase }} } from "../../../models";
