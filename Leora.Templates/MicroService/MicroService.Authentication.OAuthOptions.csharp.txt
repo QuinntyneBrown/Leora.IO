@@ -1,10 +1,10 @@
-using {{ name }}.Config;
+using {{ name }}.Configuration;
 using {{ name }}.Services;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using System;
 
-namespace {{ name }}.Auth
+namespace {{ name }}.Authentication
 {
     public class OAuthOptions : OAuthAuthorizationServerOptions
     {

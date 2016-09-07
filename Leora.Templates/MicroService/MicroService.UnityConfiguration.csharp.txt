@@ -1,7 +1,7 @@
-using {{ name }}.Config;
+using {{ name }}.Configuration;
 using {{ name }}.Data;
 using {{ name }}.Services;
-using {{ name }}.Utils;
+using {{ name }}.Utilities;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.InterceptionExtension;
 

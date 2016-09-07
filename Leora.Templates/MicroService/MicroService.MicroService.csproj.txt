@@ -173,18 +173,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiConfiguration.cs" />
-    <Compile Include="Apis\{{ entity }}Controller.cs" />
+    <Compile Include="Controllers\{{ entity }}Controller.cs" />
     <Compile Include="App_Start\WebApiUnityActionFilterProvider.cs" />
-    <Compile Include="Auth\JwtOptions.cs" />
-    <Compile Include="Auth\JwtWriterFormat.cs" />
-    <Compile Include="Auth\OAuthOptions.cs" />
-    <Compile Include="Auth\OAuthProvider.cs" />
+    <Compile Include="Authentication\JwtOptions.cs" />
+    <Compile Include="Authentication\JwtWriterFormat.cs" />
+    <Compile Include="Authentication\OAuthOptions.cs" />
+    <Compile Include="Authentication\OAuthProvider.cs" />
     <Compile Include="Clients\IdentityClient.cs" />
     <Compile Include="Clients\IIdentityClient.cs" />
     <Compile Include="Clients\ISearchClient.cs" />
     <Compile Include="Clients\SearchClient.cs" />
-    <Compile Include="Config\AuthConfiguration.cs" />
-    <Compile Include="Config\IAuthConfiguration.cs" />
+    <Compile Include="Configuration\AuthConfiguration.cs" />
+    <Compile Include="Configuration\IAuthConfiguration.cs" />
     <Compile Include="Data\DataContext.cs" />
     <Compile Include="Data\EFRepository.cs" />
     <Compile Include="Data\IDbContext.cs" />
@@ -217,11 +217,11 @@
     <Compile Include="Services\IIdentityService.cs" />
     <Compile Include="Services\MemoryCache.cs" />
     <Compile Include="UnityConfiguration.cs" />
-    <Compile Include="Utils\ILogger.cs" />
-    <Compile Include="Utils\ILoggerFactory.cs" />
-    <Compile Include="Utils\ILoggerProvider.cs" />
-    <Compile Include="Utils\Logger.cs" />
-    <Compile Include="Utils\LoggerFactory.cs" />
+    <Compile Include="Utilities\ILogger.cs" />
+    <Compile Include="Utilities\ILoggerFactory.cs" />
+    <Compile Include="Utilities\ILoggerProvider.cs" />
+    <Compile Include="Utilities\Logger.cs" />
+    <Compile Include="Utilities\LoggerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,4 +1,4 @@
-namespace {{ name }}.Config
+namespace {{ name }}.Configuration
 {
     public interface IAuthConfiguration
     {

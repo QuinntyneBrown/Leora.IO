@@ -1,9 +1,8 @@
-using {{ name }}.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace {{ name }}.Utils
+namespace {{ name }}.Utilities
 {
     public class LoggerFactory: ILoggerFactory
     {

@@ -2,9 +2,9 @@ using System.IdentityModel.Tokens;
 using Microsoft.Owin.Security;
 using System;
 using Microsoft.Owin.Security.OAuth;
-using {{ name }}.Config;
+using {{ name }}.Configuration;
 
-namespace {{ name }}.Auth
+namespace {{ name }}.Authentication
 {
     public class JwtWriterFormat : ISecureDataFormat<AuthenticationTicket>
     {

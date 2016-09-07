@@ -5,10 +5,6 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "{{ name }}", "{{ name }}\{{ name }}.csproj", "{BA3A0650-A18B-4731-8EAA-F73868320EF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "{{ name }}.Tests", "{{ name }}.Tests\{{ name }}.Tests.csproj", "{0C591BDA-B6EF-49C0-89EC-074B947A04E2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "{{ name }}.Cli", "{{ name }}.Cli\{{ name }}.Cli.csproj", "{7EB3E525-D763-451C-9DBF-15718E5F0F57}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "{{ name }}.Web", "{{ name }}.Web\{{ name }}.Web.csproj", "{658DA84D-AD6C-414A-9333-B89232911187}"
 EndProject
 Global

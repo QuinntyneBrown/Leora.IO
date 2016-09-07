@@ -1,4 +1,4 @@
-namespace {{ name }}.Utils
+namespace {{ name }}.Utilities
 {
     public interface ILoggerProvider
     {

@@ -49,10 +49,7 @@ namespace Leora.Commands
             CreateDirectory(microserviceDirectoryName);
             _fileWriter.WriteAllLines($"{microserviceDirectoryName}//{namePascalCase}.sln", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroService.sln", BluePrintType.MicroService), name, entity));
 
-
             CreateApi(microserviceDirectoryName, namePascalCase, entityPascalCase);
-            CreateCli(microserviceDirectoryName, namePascalCase, entityPascalCase);
-            CreateTests(microserviceDirectoryName, namePascalCase, entityPascalCase);
             CreateWeb(microserviceDirectoryName, namePascalCase, entityPascalCase);
 
             return exitCode;
@@ -70,7 +67,21 @@ namespace Leora.Commands
             _fileWriter.WriteAllLines($"{apiDirectoryName}//App.config", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroService.App.config", BluePrintType.MicroService), namePascalCase, entityPascalCase));
             _fileWriter.WriteAllLines($"{apiDirectoryName}//install-packages.txt", _templateProcessor.ProcessTemplate(_templateManager.Get("MicroService.install-packages.txt", BluePrintType.MicroService), namePascalCase, entityPascalCase));
 
-            var folders = new List<string>() { "Apis","App_Start","Auth","Clients","Config","Data","Dtos","Filters", "Infrastructure","Migrations","Models","Properties","Services","Utils" };
+            var folders = new List<string>() {
+                "Controllers",
+                "App_Start",
+                "Authentication",
+                "Clients",
+                "Configuration",
+                "Data",
+                "Dtos",
+                "Filters",
+                "Infrastructure",
+                "Migrations",
+                "Models",
+                "Properties",
+                "Services",
+                "Utilities" };
             
             foreach(var folder in folders)
             {
@@ -78,7 +89,7 @@ namespace Leora.Commands
 
                 CreateDirectory(folderPath);
 
-                if(folder == "Apis")
+                if(folder == "Controllers")
                 {
                     _fileWriter.WriteAllLines($"{folderPath}//{entityPascalCase}Controller.cs", _templateProcessor.ProcessTemplate(_templateManager.Get($"MicroService.{folder}.EntityController.csharp", BluePrintType.MicroService), namePascalCase, entityPascalCase));
                     
@@ -89,7 +100,7 @@ namespace Leora.Commands
                     WriteFile(folderPath, "WebApiUnityActionFilterProvider.cs", "MicroService", folder, "WebApiUnityActionFilterProvider.csharp", namePascalCase, entityPascalCase);
                 }
 
-                if (folder == "Auth")
+                if (folder == "Authentication")
                 {
                     WriteFile(folderPath, "JwtOptions.cs", "MicroService", folder, "JwtOptions.csharp", namePascalCase, entityPascalCase);
                     WriteFile(folderPath, "JwtWriterFormat.cs", "MicroService", folder, "JwtWriterFormat.csharp", namePascalCase, entityPascalCase);
@@ -105,7 +116,7 @@ namespace Leora.Commands
                     WriteFile(folderPath, "SearchClient.cs", "MicroService", folder, "SearchClient.csharp", namePascalCase, entityPascalCase);
                 }
 
-                if (folder == "Config")
+                if (folder == "Configuration")
                 {
                     WriteFile(folderPath, "AuthConfiguration.cs", "MicroService", folder, "AuthConfiguration.csharp", namePascalCase, entityPascalCase);
                     WriteFile(folderPath, "IAuthConfiguration.cs", "MicroService", folder, "IAuthConfiguration.csharp", namePascalCase, entityPascalCase);
@@ -175,7 +186,7 @@ namespace Leora.Commands
                     WriteFile(folderPath, "MemoryCache.cs", "MicroService", folder, "MemoryCache.csharp", namePascalCase, entityPascalCase);
                 }
 
-                if (folder == "Utils")
+                if (folder == "Utilities")
                 {
                     WriteFile(folderPath, "ILogger.cs", "MicroService", folder, "ILogger.csharp", namePascalCase, entityPascalCase);
                     WriteFile(folderPath, "ILoggerFactory.cs", "MicroService", folder, "ILoggerFactory.csharp", namePascalCase, entityPascalCase);
@@ -197,7 +208,7 @@ namespace Leora.Commands
             string apiDirectoryName = $"{microserviceDirectoryName}//{namePascalCase}.Web";
             CreateDirectory(apiDirectoryName);
 
-            var folders = new List<string>() { "Commands","Properties" };
+            var folders = new List<string>() { "Properties" };
 
             foreach (var folder in folders)
             {

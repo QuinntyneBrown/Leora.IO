@@ -1,4 +1,4 @@
-using {{ name }}.Config;
+using {{ name }}.Configuration;
 using {{ name }}.Services;
 using System;
 using System.IO;

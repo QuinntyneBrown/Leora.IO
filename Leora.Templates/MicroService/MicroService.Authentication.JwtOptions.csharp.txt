@@ -1,8 +1,8 @@
 using Microsoft.Owin.Security.Jwt;
 using System;
-using {{ name }}.Config;
+using {{ name }}.Configuration;
 
-namespace {{ name }}.Auth
+namespace {{ name }}.Authentication
 {
     public class JwtOptions : JwtBearerAuthenticationOptions
     {

@@ -103,19 +103,19 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MicroService\MicroService.ApiConfiguration.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Apis.EntityController.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Controllers.EntityController.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.App.config.txt" />
     <EmbeddedResource Include="MicroService\MicroService.App_Start.WebApiUnityActionFilterProvider.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Auth.JwtOptions.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Auth.JwtWriterFormat.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Auth.OAuthOptions.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Auth.OAuthProvider.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Authentication.JwtOptions.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Authentication.JwtWriterFormat.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Authentication.OAuthOptions.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Authentication.OAuthProvider.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Clients.IdentityClient.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Clients.IIdentityClient.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Clients.ISearchClient.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Clients.SearchClient.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Config.AuthConfiguration.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Config.IAuthConfiguration.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Configuration.AuthConfiguration.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Configuration.IAuthConfiguration.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Data.DataContext.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Data.EFRepository.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.Data.IDbContext.csharp.txt" />
@@ -150,11 +150,11 @@
     <EmbeddedResource Include="MicroService\MicroService.Services.MemoryCache.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroService.sln.txt" />
     <EmbeddedResource Include="MicroService\MicroService.UnityConfiguration.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Utils.ILogger.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Utils.ILoggerFactory.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Utils.ILoggerProvider.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Utils.Logger.csharp.txt" />
-    <EmbeddedResource Include="MicroService\MicroService.Utils.LoggerFactory.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Utilities.ILogger.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Utilities.ILoggerFactory.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Utilities.ILoggerProvider.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Utilities.Logger.csharp.txt" />
+    <EmbeddedResource Include="MicroService\MicroService.Utilities.LoggerFactory.csharp.txt" />
     <EmbeddedResource Include="MicroService\MicroServiceCli.App.config.txt" />
     <EmbeddedResource Include="MicroService\MicroServiceCli.install-packages.txt.txt" />
     <EmbeddedResource Include="MicroService\MicroServiceCli.MicroServiceCli.csproj.txt" />

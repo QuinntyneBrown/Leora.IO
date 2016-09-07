@@ -1,7 +1,7 @@
 
 using System;
 
-namespace {{ name }}.Utils
+namespace {{ name }}.Utilities
 {
     public class Logger: ILogger
     {
