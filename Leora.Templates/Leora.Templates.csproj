@@ -209,6 +209,8 @@
     <EmbeddedResource Include="Angular2\Angular2Vendors.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2Routing.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2Reducer.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2TsConfig,typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2TypeDocJson.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

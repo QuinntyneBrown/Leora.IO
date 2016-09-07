@@ -10,6 +10,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 class AppComponent { }
 
 @NgModule({
+    declarations: [AppComponent],
     imports: [BrowserModule, {{ entityNamePascalCase }}Module],
     bootstrap: [AppComponent]
 })
