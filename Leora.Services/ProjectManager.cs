@@ -87,7 +87,7 @@ namespace Leora.Services
             if (fileType == FileType.TypeScript)
                 return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "TypeScriptCompile").Any());
 
-            if (fileType == FileType.Css || fileType == FileType.Html)
+            if (fileType == FileType.Css || fileType == FileType.Html || fileType == FileType.JavaScript)
                 return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "Content").Any());
 
             if (fileType == FileType.CSharp)

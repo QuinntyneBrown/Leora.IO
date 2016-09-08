@@ -54,6 +54,7 @@ namespace Leora.Cli
                 ["ng2-constants"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateActionConstantsCommand>().Run,
                 ["ng2-actions"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateActionsCommand>().Run,
                 ["ng2-service"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateServiceCommand>().Run,
+                ["ng2-libs"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateLibsCommand>().Run,
 
                 ["dotnet-controller"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand>().Run,
                 ["dotnet-service"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateServiceCommand>().Run,
