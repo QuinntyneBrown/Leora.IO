@@ -56,6 +56,11 @@ namespace Leora.Cli
                 ["ng2-service"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateServiceCommand>().Run,
                 ["ng2-libs"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateLibsCommand>().Run,
 
+                ["ng2-ts-config"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateTsConfigJsonCommand>().Run,
+                ["ng2-typings"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateTypingsCommand>().Run,
+                ["ng2-typedoc"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateTypeDocJsonCommand>().Run,
+                ["ng2-index-from-folder"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateIndexFromFolderCommand>().Run,
+
                 ["dotnet-controller"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand>().Run,
                 ["dotnet-service"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateServiceCommand>().Run,
                 ["dotnet-dtos"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateDtosCommand>().Run,

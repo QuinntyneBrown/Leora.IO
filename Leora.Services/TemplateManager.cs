@@ -38,7 +38,8 @@ namespace Leora.Services
         public string[] Get(FileType fileType, string name, string framework = null)
         {
             List<string> lines = new List<string>();
-            string templateName = $"Leora.Templates.{framework}.{name}.{GetFileTypeExtension(fileType)}.txt";            
+            string templateName = $"Leora.Templates.{framework}.{name}.{GetFileTypeExtension(fileType)}.txt";
+                 
             using (System.IO.Stream stream = typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateName))
             {
                 using (var streamReader = new StreamReader(stream))

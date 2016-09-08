@@ -197,7 +197,7 @@
     <EmbeddedResource Include="Angular2\Angular2PackageJson.json.txt" />
     <EmbeddedResource Include="Angular2\Angular2Webpack.js.txt" />
     <EmbeddedResource Include="Angular2\Angular2AppPackageJson.json.txt" />
-    <EmbeddedResource Include="Angular2\Angular2TypedocJson.json.txt" />
+    <EmbeddedResource Include="Angular2\Angular2TypeDocJson.json.txt" />
     <EmbeddedResource Include="Angular2\Angular2TypingsJson.json.txt" />
     <EmbeddedResource Include="Angular2\Angular2AppIndex.html.txt" />
     <EmbeddedResource Include="Angular2\Angular2AppModule.typescript.txt" />
@@ -210,7 +210,7 @@
     <EmbeddedResource Include="Angular2\Angular2Vendors.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2Routing.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2Reducer.typescript.txt" />
-    <EmbeddedResource Include="Angular2\Angular2TsConfig,typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2TsConfig.json.txt" />
     <EmbeddedResource Include="Angular2\Angular2TypeDocJson.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2Slick.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />

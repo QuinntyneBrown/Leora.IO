@@ -27,7 +27,7 @@ namespace Leora.Commands.Angular2
             var exitCode = 1;
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
 
-            _fileWriter.WriteAllLines($"typedoc.json", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Json, "Angular2TypeDocJson", BluePrintType.Angular2), name));
+            _fileWriter.WriteAllLines($"{directory}\\typedoc.json", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Json, "Angular2TypeDocJson", BluePrintType.Angular2), name));
 
             try
             {

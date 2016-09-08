@@ -1,10 +1,12 @@
-﻿namespace Leora.Models
+﻿using System;
+
+namespace Leora.Models
 {
     public class RelativePathAndProjFile
     {
         public RelativePathAndProjFile(string fileName, string relativePath, string projFile)
         {
-            RelativePath = $@"{relativePath}\{fileName}";
+            RelativePath = string.IsNullOrEmpty(relativePath) ? fileName :  $@"{relativePath}\{fileName}";
             ProjFile = projFile;
         }
 

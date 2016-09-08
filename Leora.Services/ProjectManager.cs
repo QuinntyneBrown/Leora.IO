@@ -29,6 +29,7 @@ namespace Leora.Services
             var itemGroup = GetItemGroup(fileType, csproj.Descendants(msbuild + "ItemGroup"));
             if (itemGroup == null)
             {
+                Console.WriteLine("Item Group is null");
                 AddItemGroup(fileType, csproj);
                 itemGroup = csproj.Descendants(msbuild + "ItemGroup").Last();
 
@@ -39,7 +40,7 @@ namespace Leora.Services
                 }
             }
             var item = CreateElementByFileType(fileType);
-            item.SetAttributeValue("Include", relativePath);
+            item.SetAttributeValue("Include", relativePath);            
             itemGroup.Add(item);
             return csproj;
         }
@@ -76,7 +77,10 @@ namespace Leora.Services
             if(fileType == FileType.TypeScript)
                 return new XElement(msbuild + "TypeScriptCompile");
 
-            if (fileType == FileType.Css || fileType == FileType.Html)
+            if (fileType == FileType.Css 
+                || fileType == FileType.Html
+                || fileType == FileType.Json
+                || fileType == FileType.JavaScript)
                 return new XElement(msbuild + "Content");
 
             return new XElement(msbuild + "Compile");
@@ -87,7 +91,7 @@ namespace Leora.Services
             if (fileType == FileType.TypeScript)
                 return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "TypeScriptCompile").Any());
 
-            if (fileType == FileType.Css || fileType == FileType.Html || fileType == FileType.JavaScript)
+            if (fileType == FileType.Css || fileType == FileType.Html || fileType == FileType.JavaScript || fileType == FileType.Json)
                 return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "Content").Any());
 
             if (fileType == FileType.CSharp)

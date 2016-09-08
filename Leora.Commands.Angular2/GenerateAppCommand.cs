@@ -50,6 +50,7 @@ namespace Leora.Commands.Angular2
         {
             var exitCode = 1;
 
+            
             _generateAppPackageJsonCommand.Run(projectName, directory);
             _generateLibsCommand.Run(projectName, directory);
             _generateWebpackCommand.Run(projectName, directory);

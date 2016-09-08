@@ -16,7 +16,19 @@ namespace Leora.Commands.Angular2
         public int Run(string name, string directory)
         {
             var exitCode = 1;
+            var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
 
+            _fileWriter.WriteAllLines($"tsconfig.json", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Json, "Angular2TsConfig", BluePrintType.Angular2), name));
+
+            try
+            {
+                _projectManager.Process(directory, "tsconfig.json", FileType.Json);
+
+            }
+            catch (Exception e)
+            {
+
+            }
 
             return exitCode;
         }
