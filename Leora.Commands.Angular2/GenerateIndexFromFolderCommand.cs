@@ -24,11 +24,16 @@ namespace Leora.Commands.Angular2
         {
             var exitCode = 1;
             var lines = new List<string>();
+            var exports = new List<string>();
 
             if (Exists($"{directory}//index.ts")) 
                 Delete($"{directory}//index.ts");
-            
-            foreach(var file in Directory.GetFiles(directory,"*.ts"))
+
+            foreach (var directoryName in Directory.GetDirectories(directory))
+                if(!IsDirectoryEmpty(directoryName))
+                    lines.Add($"export * from \"./{GetFileName(directoryName)}\";");
+
+            foreach (var file in Directory.GetFiles(directory,"*.ts"))
                 if (!file.Contains(".spec.ts"))
                     lines.Add($"export * from \"./{GetFileNameWithoutExtension(file)}\";");
             
@@ -40,6 +45,11 @@ namespace Leora.Commands.Angular2
             catch { }
 
             return exitCode;
+        }
+
+        public bool IsDirectoryEmpty(string path)
+        {
+            return !Directory.EnumerateFileSystemEntries(path).Any();
         }
     }
 }
