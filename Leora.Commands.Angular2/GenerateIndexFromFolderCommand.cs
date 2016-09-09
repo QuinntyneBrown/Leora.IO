@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.IO.File;
+using System.IO;
+using static System.IO.Path;
 
 namespace Leora.Commands.Angular2
 {
@@ -22,22 +25,18 @@ namespace Leora.Commands.Angular2
             var exitCode = 1;
             var lines = new List<string>();
 
-            if (System.IO.File.Exists($"{directory}//index.ts")) {
-                System.IO.File.Delete($"{directory}//index.ts");
-            }
-            foreach(var file in System.IO.Directory.GetFiles(directory,"*.ts"))
-            {
+            if (Exists($"{directory}//index.ts")) 
+                Delete($"{directory}//index.ts");
+            
+            foreach(var file in Directory.GetFiles(directory,"*.ts"))
                 if (!file.Contains(".spec.ts"))
-                {
-                    var fileName = System.IO.Path.GetFileName(file);
-                    lines.Add($"export * from \"./{fileName}\"");
-                }
-            }
-
-            _fileWriter.WriteAllLines($"{directory}//index.ts", lines.ToArray());
+                    lines.Add($"export * from \"./{GetFileNameWithoutExtension(file)}\";");
+            
+            _fileWriter.WriteAllLines($"{directory}//index.ts", lines);
 
             try {
-                _projectManager.Process(directory, "index.ts", FileType.TypeScript); }
+                _projectManager.Process(directory, "index.ts", FileType.TypeScript);
+            }
             catch { }
 
             return exitCode;

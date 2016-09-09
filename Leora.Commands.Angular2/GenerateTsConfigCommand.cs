@@ -18,17 +18,13 @@ namespace Leora.Commands.Angular2
             var exitCode = 1;
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
 
-            _fileWriter.WriteAllLines($"tsconfig.json", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Json, "Angular2TsConfig", BluePrintType.Angular2), name));
+            _fileWriter.WriteAllLines($"{directory}\\tsconfig.json", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.Json, "Angular2TsConfig", BluePrintType.Angular2), name));
 
             try
             {
                 _projectManager.Process(directory, "tsconfig.json", FileType.Json);
-
             }
-            catch (Exception e)
-            {
-
-            }
+            catch { }
 
             return exitCode;
         }
