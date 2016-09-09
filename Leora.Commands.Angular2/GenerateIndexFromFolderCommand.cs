@@ -29,9 +29,9 @@ namespace Leora.Commands.Angular2
             if (Exists($"{directory}//index.ts")) 
                 Delete($"{directory}//index.ts");
 
-            foreach (var directoryName in Directory.GetDirectories(directory))
-                if(!IsDirectoryEmpty(directoryName))
-                    lines.Add($"export * from \"./{GetFileName(directoryName)}\";");
+            foreach (var directoryName in Directory.GetDirectories(directory)) 
+                if (!IsDirectoryEmpty(directoryName) && GetFileName(directoryName) != "example")
+                    lines.Add($"export * from \"./{GetFileName(directoryName)}\";");            
 
             foreach (var file in Directory.GetFiles(directory,"*.ts"))
                 if (!file.Contains(".spec.ts"))
