@@ -1,0 +1,4 @@
+﻿export class {{ entityNamePascalCase }} { 
+	public id:number;
+	public name:string;
+}

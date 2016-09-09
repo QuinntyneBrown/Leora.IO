@@ -32,7 +32,7 @@ namespace Leora.Cli
                 ["ng-editor"] = _container.Resolve<IGenerateEditorCommand>().Run,
                 ["ng-feature"] = _container.Resolve<Leora.Commands.Angular1.Contracts.IGenerateFeatureCommand>().Run,
                 ["ng-list"] = _container.Resolve<IGenerateListCommand>().Run,
-                ["ng-model"] = _container.Resolve<IGenerateModelCommand>().Run,
+                ["ng-model"] = _container.Resolve<Commands.Angular1.Contracts.IGenerateModelCommand>().Run,
                 ["ng-module"] = _container.Resolve<Leora.Commands.Angular1.Contracts.IGenerateModuleCommand>().Run,
                 ["ng-paged-list"] = _container.Resolve<IGeneratePagedListCommand>().Run,
                 ["ng-service"] = _container.Resolve<Leora.Commands.Angular1.Contracts.IGenerateServiceCommand>().Run,
@@ -55,6 +55,7 @@ namespace Leora.Cli
                 ["ng2-actions"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateActionsCommand>().Run,
                 ["ng2-service"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateServiceCommand>().Run,
                 ["ng2-libs"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateLibsCommand>().Run,
+                ["ng2-model"] = _container.Resolve<Commands.Angular2.Contracts.IGenerateModelCommand>().Run,
 
                 ["ng2-ts-config"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateTsConfigJsonCommand>().Run,
                 ["ng2-typings"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateTypingsCommand>().Run,
