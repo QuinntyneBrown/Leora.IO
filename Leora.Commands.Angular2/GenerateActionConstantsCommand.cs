@@ -8,8 +8,12 @@ namespace Leora.Commands.Angular2
 {
     public class GenerateActionConstantsCommand: BaseCommand<GenerateActionConstantsOptions>, IGenerateActionConstantsCommand
     {
-        public GenerateActionConstantsCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter) 
-            :base(templateManager,templateProcessor,namingConventionConverter,projectManager,fileWriter) { }
+        protected readonly IGenerateIndexFromFolderCommand _generateIndexFromFolderCommand;
+
+        public GenerateActionConstantsCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, GenerateIndexFromFolderCommand generateIndexFromFolderCommand) 
+            :base(templateManager,templateProcessor,namingConventionConverter,projectManager,fileWriter) {
+            _generateIndexFromFolderCommand = generateIndexFromFolderCommand;
+        }
 
         public override int Run(GenerateActionConstantsOptions options) => Run(options.Name, options.Directory);
 
@@ -31,17 +35,16 @@ namespace Leora.Commands.Angular2
             _fileWriter.WriteAllLines($"{directory}//add-{entityNameSnakeCase}-success.action.ts", _templateProcessor.ProcessTemplate(addTemplate, name));
             _fileWriter.WriteAllLines($"{directory}//get-{entityNameSnakeCase}-success.action.ts", _templateProcessor.ProcessTemplate(getTemplate, name));
             _fileWriter.WriteAllLines($"{directory}//remove-{entityNameSnakeCase}-success.action.ts", _templateProcessor.ProcessTemplate(removeTemplate, name));
-            _fileWriter.WriteAllLines($"{directory}//index.ts", _templateProcessor.ProcessTemplate(indexTemplate, name));
-
 
             try
             {
                 _projectManager.Process(directory, $"add-{entityNameSnakeCase}-success.action.ts", FileType.TypeScript);
                 _projectManager.Process(directory, $"get-{entityNameSnakeCase}-success.action.ts", FileType.TypeScript);
-                _projectManager.Process(directory, $"remove-{entityNameSnakeCase}-success.action.ts", FileType.TypeScript);
-                _projectManager.Process(directory, $"index.ts", FileType.TypeScript);
+                _projectManager.Process(directory, $"remove-{entityNameSnakeCase}-success.action.ts", FileType.TypeScript);                
             }
             catch { }
+
+            _generateIndexFromFolderCommand.Run(name, directory);
 
             return exitCode;
         }
