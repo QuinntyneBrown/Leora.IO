@@ -1,11 +1,15 @@
-﻿using {{ rootNamespacename }}.Data;
+﻿using System.Data.Entity.Migrations;
+using {{ rootNamespacename }}.Data;
+using {{ rootNamespacename }}.Models;
+using {{ rootNamespacename }}.Services;
 
-namespace {{ namespacename }}.Migrations
+namespace {{ namespacename }}
 {
     public class {{ entityNamePascalCase }}Configuration
     {
         public static void Seed(DataContext context) {
 
+            context.SaveChanges();
         }
     }
 }

@@ -40,6 +40,7 @@ namespace Leora.Cli
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand, Commands.AspNetWebApi2.GenerateControllerCommand>();
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateDtosCommand, Commands.AspNetWebApi2.GenerateDtosCommand>();
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateServiceCommand, Commands.AspNetWebApi2.GenerateServiceCommand>();
+            container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateModelCommand, Commands.AspNetWebApi2.GenerateModelCommand>();
 
             container.RegisterType<IGenerateCommandCommand, GenerateCommandCommand>();
 
