@@ -50,12 +50,14 @@
     <Compile Include="Contracts\IGenerateDbContextCommand.cs" />
     <Compile Include="Contracts\IGenerateDtosCommand.cs" />
     <Compile Include="Contracts\IGenerateExceptionCommand.cs" />
+    <Compile Include="Contracts\IGenerateMigrationsConfigurationCommand.cs" />
     <Compile Include="Contracts\IGenerateModelCommand.cs" />
     <Compile Include="Contracts\IGenerateServiceCommand.cs" />
     <Compile Include="GenerateControllerCommand.cs" />
     <Compile Include="GenerateDbContextCommand.cs" />
     <Compile Include="GenerateDtosCommand.cs" />
     <Compile Include="GenerateExceptionCommand.cs" />
+    <Compile Include="GenerateMigrationsConfigurationCommand.cs" />
     <Compile Include="GenerateModelCommand.cs" />
     <Compile Include="GenerateNewCommand.cs" />
     <Compile Include="GenerateServiceCommand.cs" />
@@ -65,6 +67,7 @@
     <Compile Include="Options\GenerateDbContextOptions.cs" />
     <Compile Include="Options\GenerateDtosOptions.cs" />
     <Compile Include="Options\GenerateExceptionOptions.cs" />
+    <Compile Include="Options\GenerateMigrationsConfigurationOptions.cs" />
     <Compile Include="Options\GenerateModelOptions.cs" />
     <Compile Include="Options\GenerateServiceOptions.cs" />
     <Compile Include="Options\GenerateUowOptions.cs" />

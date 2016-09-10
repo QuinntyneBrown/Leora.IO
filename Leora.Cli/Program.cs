@@ -68,6 +68,7 @@ namespace Leora.Cli
                 ["dotnet-service"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateServiceCommand>().Run,
                 ["dotnet-dtos"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateDtosCommand>().Run,
                 ["dotnet-model"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateModelCommand>().Run,
+                ["dotnet-migration"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateMigrationsConfigurationCommand>().Run,
 
                 ["react-component"] = _container.Resolve<Leora.Commands.React.Contracts.IGenerateComponentCommand>().Run,
 
