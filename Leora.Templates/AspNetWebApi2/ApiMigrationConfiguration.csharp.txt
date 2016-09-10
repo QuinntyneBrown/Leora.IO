@@ -1,0 +1,11 @@
+﻿using {{ rootNamespacename }}.Data;
+
+namespace {{ namespacename }}.Migrations
+{
+    public class {{ entityNamePascalCase }}Configuration
+    {
+        public static void Seed(DataContext context) {
+
+        }
+    }
+}

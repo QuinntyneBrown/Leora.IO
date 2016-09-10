@@ -215,6 +215,7 @@
     <EmbeddedResource Include="Angular2\Angular2TsConfig.json.txt" />
     <EmbeddedResource Include="Angular2\Angular2TypeDocJson.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2Slick.js.txt" />
+    <Content Include="AspNetWebApi2\ApiMigrationConfiguration.csharp.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />
