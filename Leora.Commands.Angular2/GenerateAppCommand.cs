@@ -26,6 +26,8 @@ namespace Leora.Commands.Angular2
         protected readonly IGenerateServiceCommand _generateServiceCommand;
         protected readonly IGenerateActionConstantsCommand _generateActionConstantsCommand;
         protected readonly IGenerateReducerCommand _generateReducerCommand;
+        protected readonly IGenerateModelCommand _generateModelCommand;
+        protected readonly IGenerateAppStoreCommand _generateAppStoreCommand;
 
         public GenerateAppCommand(
             ITemplateManager templateManager, 
@@ -45,7 +47,9 @@ namespace Leora.Commands.Angular2
             IGenerateModuleCommand generateModuleCommand,
             IGenerateServiceCommand generateServiceCommand,
             IGenerateActionConstantsCommand generateActionConstantsCommand,
-            IGenerateReducerCommand generateReducerCommand
+            IGenerateReducerCommand generateReducerCommand,
+            IGenerateModelCommand generateModelCommand,
+            IGenerateAppStoreCommand generateAppStoreCommand
             ) 
             :base(templateManager,templateProcessor,namingConventionConverter,projectManager,fileWriter) {
 
@@ -62,6 +66,9 @@ namespace Leora.Commands.Angular2
             _generateServiceCommand = generateServiceCommand;
             _generateActionConstantsCommand = generateActionConstantsCommand;
             _generateReducerCommand = generateReducerCommand;
+            _generateModelCommand = generateModelCommand;
+            _generateAppStoreCommand = generateAppStoreCommand;
+
         }
 
         public override int Run(GenerateAppOptions options) => Run(options.ProjectName, options.Name, options.Directory);
@@ -104,6 +111,7 @@ namespace Leora.Commands.Angular2
             _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\helpers");
 
             CreateDirectory($"{directory}\\src\\app\\models");
+            _generateModelCommand.Run(name, $"{directory}\\src\\app\\models");
             _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\models");
 
             CreateDirectory($"{directory}\\src\\app\\pages");
@@ -125,6 +133,7 @@ namespace Leora.Commands.Angular2
             CreateDirectory($"{directory}\\src\\app\\store");
             _generateModuleCommand.Run("store", $"{directory}\\src\\app\\store");
             _generateReducerCommand.Run(name, $"{directory}\\src\\app\\store");
+            _generateAppStoreCommand.Run(name, $"{directory}\\src\\app\\store");
             _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\store");
 
             CreateDirectory($"{directory}\\src\\app\\utilities");

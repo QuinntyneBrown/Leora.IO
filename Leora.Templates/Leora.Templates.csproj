@@ -204,6 +204,7 @@
     <EmbeddedResource Include="Angular2\Angular2Service.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2Actions.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2Model.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2AppStore.typescript.txt" />
     <Content Include="Angular2\Angular2GitIgnore.none.txt" />
     <EmbeddedResource Include="Angular2\Angular2JQuery.js.txt" />
     <Content Include="Angular2\Angular2Normalize.scss.txt" />

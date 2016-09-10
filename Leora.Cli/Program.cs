@@ -61,6 +61,7 @@ namespace Leora.Cli
                 ["ng2-typings"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateTypingsCommand>().Run,
                 ["ng2-typedoc"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateTypeDocJsonCommand>().Run,
                 ["ng2-index-from-folder"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateIndexFromFolderCommand>().Run,
+                ["ng2-app-store"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateAppStoreCommand>().Run,
                 ["."] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateIndexFromFolderCommand>().Run,
 
                 ["dotnet-controller"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand>().Run,
