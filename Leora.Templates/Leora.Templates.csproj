@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Angular2NgrxApp\" />
+    <Folder Include="Angular2\Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Angular1\Angular1Component.css.txt" />
@@ -205,6 +206,8 @@
     <EmbeddedResource Include="Angular2\Angular2Actions.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2Model.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2AppStore.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2RxExtensions.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2Environment.typescript.txt" />
     <Content Include="Angular2\Angular2GitIgnore.none.txt" />
     <EmbeddedResource Include="Angular2\Angular2JQuery.js.txt" />
     <Content Include="Angular2\Angular2Normalize.scss.txt" />
@@ -225,6 +228,41 @@
     <EmbeddedResource Include="AspNetWebApi2\ApiStreamHelper.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiFileMultipartFormDataStreamProvider.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiInMemoryMultipartFormDataStreamProvider.csharp.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2App.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Modules\Angular2Actions.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Modules\Angular2Components.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Modules\Angular2Helpers.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Modules\Angular2Pipes.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Modules\Angular2Routing.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Modules\Angular2Services.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Modules\Angular2Store.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Modules\Angular2App.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2User.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Role.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2PhotoGallery.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2DigitalAsset.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Product.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Service.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Customer.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Order.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2TvShow.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Movie.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2ContestEntry.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Contest.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Episode.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Season.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2ScheduleItem.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Survey.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Question.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Playlist.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2PlaylistItem.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2ToDoItem.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Story.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Epic.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Article.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Models\Angular2Author.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2Login.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />
