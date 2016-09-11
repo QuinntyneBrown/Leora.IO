@@ -39,19 +39,7 @@ namespace Leora.Services
         {
             List<string> lines = new List<string>();
             string templateName = $"Leora.Templates.{framework}.{name}.{GetFileTypeExtension(fileType)}.txt";
-                 
-            using (System.IO.Stream stream = typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateName))
-            {
-                using (var streamReader = new StreamReader(stream))
-                {
-                    string line;
-                    while ((line = streamReader.ReadLine()) != null)
-                    {
-                        lines.Add(line);
-                    }
-                }
-                return lines.ToArray();
-            }
+            return ConvertFileStreamToStringArray(typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateName));
         }
 
         public string[] Get(FileType fileType, string name, string section, string entityName, string framework = null)
@@ -63,8 +51,14 @@ namespace Leora.Services
             stream = typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateFullName);
             
             if (stream == null)
-                stream = typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateName);            
+                stream = typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateName);
 
+            return ConvertFileStreamToStringArray(stream);
+        }
+
+        public string[] ConvertFileStreamToStringArray(Stream stream)
+        {
+            List<string> lines = new List<string>();
             using (stream)
             {
                 using (var streamReader = new StreamReader(stream))

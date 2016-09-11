@@ -224,7 +224,7 @@
     <EmbeddedResource Include="AspNetWebApi2\Models\ApiDigitalAssetModel.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\Services\ApiIUserService.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\Services\ApiUserService.csharp.txt" />
-    <EmbeddedResource Include="AspNetWebApi2\Controllers\ApiDigitalAssetController.csharp.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\Controllers\AspNetWebApi2DigitalAssetController.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiStreamHelper.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiFileMultipartFormDataStreamProvider.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiInMemoryMultipartFormDataStreamProvider.csharp.txt" />
@@ -263,6 +263,10 @@
     <EmbeddedResource Include="Angular2\Models\Angular2Article.typescript.txt" />
     <EmbeddedResource Include="Angular2\Models\Angular2Author.typescript.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2Login.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Services\Angular2Authentication.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Helpers\Angular2OAuthHelper.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2Login.html.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2Login.scss.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

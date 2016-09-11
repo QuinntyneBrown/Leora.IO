@@ -28,6 +28,7 @@ namespace Leora.Commands.Angular2
         protected readonly IGenerateReducerCommand _generateReducerCommand;
         protected readonly IGenerateModelCommand _generateModelCommand;
         protected readonly IGenerateAppStoreCommand _generateAppStoreCommand;
+        protected readonly IGenerateRxJSExtensionsCommand _generateRxJSExtensionsCommand;
 
         public GenerateAppCommand(
             ITemplateManager templateManager, 
@@ -49,7 +50,8 @@ namespace Leora.Commands.Angular2
             IGenerateActionConstantsCommand generateActionConstantsCommand,
             IGenerateReducerCommand generateReducerCommand,
             IGenerateModelCommand generateModelCommand,
-            IGenerateAppStoreCommand generateAppStoreCommand
+            IGenerateAppStoreCommand generateAppStoreCommand,
+            IGenerateRxJSExtensionsCommand generateRxJSExtensionsCommand
             ) 
             :base(templateManager,templateProcessor,namingConventionConverter,projectManager,fileWriter) {
 
@@ -68,7 +70,7 @@ namespace Leora.Commands.Angular2
             _generateReducerCommand = generateReducerCommand;
             _generateModelCommand = generateModelCommand;
             _generateAppStoreCommand = generateAppStoreCommand;
-
+            _generateRxJSExtensionsCommand = generateRxJSExtensionsCommand;
         }
 
         public override int Run(GenerateAppOptions options) => Run(options.ProjectName, options.Name, options.Directory);
@@ -89,6 +91,7 @@ namespace Leora.Commands.Angular2
             _generateComponentCommand.Run("app", $"{directory}\\src\\app");
             _generateModuleCommand.Run("app", $"{directory}\\src\\app");
             _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app");
+            _generateRxJSExtensionsCommand.Run(name, $"{directory}\\src\\app");
 
             CreateDirectory($"{directory}\\src\\app\\actions");
             _generateActionsCommand.Run(name, $"{directory}\\src\\app\\actions");
