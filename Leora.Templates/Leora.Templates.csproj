@@ -208,6 +208,8 @@
     <EmbeddedResource Include="Angular2\Angular2AppStore.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2RxExtensions.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2Environment.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2InitialState.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2AppState.typescript.txt" />
     <Content Include="Angular2\Angular2GitIgnore.none.txt" />
     <EmbeddedResource Include="Angular2\Angular2JQuery.js.txt" />
     <Content Include="Angular2\Angular2Normalize.scss.txt" />

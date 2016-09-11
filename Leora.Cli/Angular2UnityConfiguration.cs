@@ -35,6 +35,7 @@ namespace Leora.Cli
             container.RegisterType<Commands.Angular2.Contracts.IGenerateTypingsCommand, Commands.Angular2.GenerateTypingsCommand>();
             container.RegisterType<Commands.Angular2.Contracts.IGenerateTsConfigJsonCommand, Commands.Angular2.GenerateTsConfigCommand>();
             container.RegisterType<Commands.Angular2.Contracts.IGenerateIndexFromFolderCommand, Commands.Angular2.GenerateIndexFromFolderCommand>();
+            container.RegisterType<Commands.Angular2.Contracts.IGenerateStateCommand, Commands.Angular2.GenerateStateCommand>();
         }
     }
 }

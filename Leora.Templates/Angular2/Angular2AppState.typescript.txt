@@ -1,0 +1,8 @@
+﻿import { {{ entityNamePascalCase }} } from "../models";
+
+export interface AppState {
+    {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}>;
+	currentUser: any;
+    isLoggedIn: boolean;
+    token: string;
+}

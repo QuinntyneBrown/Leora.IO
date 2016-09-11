@@ -67,6 +67,7 @@
     <Compile Include="Contracts\IGenerateRoutingCommand.cs" />
     <Compile Include="Contracts\IGenerateRxJSExtensionsCommand.cs" />
     <Compile Include="Contracts\IGenerateServiceCommand.cs" />
+    <Compile Include="Contracts\IGenerateStateCommand.cs" />
     <Compile Include="Contracts\IGenerateTsConfigJsonCommand.cs" />
     <Compile Include="Contracts\IGenerateTypeDocJsonCommand.cs" />
     <Compile Include="Contracts\IGenerateTypingsCommand.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="GenerateRoutingCommand.cs" />
     <Compile Include="GenerateRxJSExtensionsCommand.cs" />
     <Compile Include="GenerateServiceCommand.cs" />
+    <Compile Include="GenerateStateCommand.cs" />
     <Compile Include="GenerateTsConfigCommand.cs" />
     <Compile Include="GenerateTypeDocJsonCommand.cs" />
     <Compile Include="GenerateTypingsCommand.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="Options\GenerateRoutingOptions.cs" />
     <Compile Include="Options\GenerateRxJSExtensionsOptions.cs" />
     <Compile Include="Options\GenerateServiceOptions.cs" />
+    <Compile Include="Options\GenerateStateOptions.cs" />
     <Compile Include="Options\GenerateTsConfigJsonOptions.cs" />
     <Compile Include="Options\GenerateTypeDocJsonOptions.cs" />
     <Compile Include="Options\GenerateTypingsOptions.cs" />
