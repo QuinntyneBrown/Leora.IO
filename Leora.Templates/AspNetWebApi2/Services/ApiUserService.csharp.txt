@@ -1,0 +1,56 @@
+﻿using System;
+using System.Collections.Generic;
+using {{ rootNamespacename }}.Data;
+using {{ rootNamespacename }}.Dtos;
+using System.Data.Entity;
+using System.Linq;
+using {{ rootNamespacename }}.Models;
+
+namespace {{ namespacename }}
+{
+    public class {{ entityNamePascalCase }}Service : I{{ entityNamePascalCase }}Service
+    {
+        public {{ entityNamePascalCase }}Service(IUow uow, ICacheProvider cacheProvider)
+        {
+            _uow = uow;
+            _repository = uow.{{ entityNamePascalCase }}s;
+            _cache = cacheProvider.GetCache();
+        }
+
+        public {{ entityNamePascalCase }}AddOrUpdateResponseDto AddOrUpdate({{ entityNamePascalCase }}AddOrUpdateRequestDto request)
+        {
+            var entity = _repository.GetAll()
+                .FirstOrDefault(x => x.Id == request.Id && x.IsDeleted == false);
+            if (entity == null) _repository.Add(entity = new {{ entityNamePascalCase }}());
+            entity.Name = request.Name;
+            _uow.SaveChanges();
+            return new {{ entityNamePascalCase }}AddOrUpdateResponseDto(entity);
+        }
+
+        public dynamic Remove(int id)
+        {
+            var entity = _repository.GetById(id);
+            entity.IsDeleted = true;
+            _uow.SaveChanges();
+            return id;
+        }
+
+        public ICollection<{{ entityNamePascalCase }}Dto> Get()
+        {
+            ICollection<{{ entityNamePascalCase }}Dto> response = new HashSet<{{ entityNamePascalCase }}Dto>();
+            var entities = _repository.GetAll().Where(x => x.IsDeleted == false).ToList();
+            foreach(var entity in entities) { response.Add(new {{ entityNamePascalCase }}Dto(entity)); }    
+            return response;
+        }
+
+
+        public {{ entityNamePascalCase }}Dto GetById(int id)
+        {
+            return new {{ entityNamePascalCase }}Dto(_repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
+        }
+
+        protected readonly IUow _uow;
+        protected readonly IRepository<{{ entityNamePascalCase }}> _repository;
+        protected readonly ICache _cache;
+    }
+}

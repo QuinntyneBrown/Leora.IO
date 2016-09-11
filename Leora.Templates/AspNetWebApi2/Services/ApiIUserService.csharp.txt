@@ -1,0 +1,13 @@
+﻿using {{ rootNamespacename }}.Dtos;
+using System.Collections.Generic;
+
+namespace {{ namespacename }}
+{
+    public interface I{{ entityNamePascalCase }}Service
+    {
+        {{ entityNamePascalCase }}AddOrUpdateResponseDto AddOrUpdate({{ entityNamePascalCase }}AddOrUpdateRequestDto request);
+        ICollection<{{ entityNamePascalCase }}Dto> Get();
+        {{ entityNamePascalCase }}Dto GetById(int id);
+        dynamic Remove(int id);
+    }
+}

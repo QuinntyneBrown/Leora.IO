@@ -23,7 +23,25 @@ namespace Leora.Commands.AspNetWebApi2
         {
             int exitCode = 1;
             var pascalCaseName = $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}.cs";
-            _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiModel", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
+
+            switch (name) {
+                case "User":
+                    _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "Models.ApiUserModel", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
+                    break;
+
+                case "Role":
+                    _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "Models.ApiRoleModel", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
+                    break;
+
+                case "DigitalAsset":
+                    _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "Models.ApiDigitalAssetModel", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
+                    break;
+
+                default:
+                    _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiModel", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
+                    break;
+            }
+
             _projectManager.Process(directory, $"{pascalCaseName}", FileType.CSharp);
             return exitCode;
         }
