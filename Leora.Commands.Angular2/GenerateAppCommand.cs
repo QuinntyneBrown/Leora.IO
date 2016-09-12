@@ -31,6 +31,8 @@ namespace Leora.Commands.Angular2
         protected readonly IGenerateRxJSExtensionsCommand _generateRxJSExtensionsCommand;
         protected readonly IGenerateStateCommand _generateStateCommand;
         protected readonly IGenerateUtilitiesCommand _generateUtilitiesCommand;
+        protected readonly IGenerateApiConfigurationCommand _generateApiConfigurationCommand;
+        protected readonly IGenerateEnvironmentCommand _generateEnvironmentCommand;
 
         public GenerateAppCommand(
             ITemplateManager templateManager, 
@@ -55,7 +57,9 @@ namespace Leora.Commands.Angular2
             IGenerateAppStoreCommand generateAppStoreCommand,
             IGenerateRxJSExtensionsCommand generateRxJSExtensionsCommand,
             IGenerateStateCommand generateStateCommand,
-            IGenerateUtilitiesCommand generateUtilitiesCommand
+            IGenerateUtilitiesCommand generateUtilitiesCommand,
+            IGenerateApiConfigurationCommand generateApiConfigurationCommand,
+            IGenerateEnvironmentCommand generateEnvironmentCommand
             ) 
             :base(templateManager,templateProcessor,namingConventionConverter,projectManager,fileWriter) {
 
@@ -77,6 +81,8 @@ namespace Leora.Commands.Angular2
             _generateRxJSExtensionsCommand = generateRxJSExtensionsCommand;
             _generateStateCommand = generateStateCommand;
             _generateUtilitiesCommand = generateUtilitiesCommand;
+            _generateApiConfigurationCommand = generateApiConfigurationCommand;
+            _generateEnvironmentCommand = generateEnvironmentCommand;
         }
 
         public override int Run(GenerateAppOptions options) => Run(options.ProjectName, options.Name, options.Directory);
@@ -96,8 +102,9 @@ namespace Leora.Commands.Angular2
             CreateDirectory($"{directory}\\src\\app");
             _generateComponentCommand.Run("app", $"{directory}\\src\\app");
             _generateModuleCommand.Run("app", $"{directory}\\src\\app");
-            _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app");
+            _generateEnvironmentCommand.Run("app", $"{directory}\\src\\app");            
             _generateRxJSExtensionsCommand.Run(name, $"{directory}\\src\\app");
+            _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app");
 
             CreateDirectory($"{directory}\\src\\app\\actions");
             _generateActionsCommand.Run(name, $"{directory}\\src\\app\\actions");
@@ -109,6 +116,7 @@ namespace Leora.Commands.Angular2
             _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\components");
 
             CreateDirectory($"{directory}\\src\\app\\configuration");
+            _generateApiConfigurationCommand.Run(name, $"{directory}\\src\\app\\configuration");
             _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\configuration");
 
             CreateDirectory($"{directory}\\src\\app\\constants");
@@ -128,6 +136,7 @@ namespace Leora.Commands.Angular2
             _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\pages");
 
             CreateDirectory($"{directory}\\src\\app\\pipes");
+            _generateModuleCommand.Run("pipes", $"{directory}\\src\\app\\pipes");
             _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\pipes");
 
             CreateDirectory($"{directory}\\src\\app\\routing");

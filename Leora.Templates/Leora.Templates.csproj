@@ -221,6 +221,7 @@
     <EmbeddedResource Include="Angular2\Angular2Pluck.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2RemoveElement.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2SetOpacityAsync.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2ApiConfiguration.typescript.txt" />
     <Content Include="Angular2\Angular2GitIgnore.none.txt" />
     <EmbeddedResource Include="Angular2\Angular2JQuery.js.txt" />
     <Content Include="Angular2\Angular2Normalize.scss.txt" />

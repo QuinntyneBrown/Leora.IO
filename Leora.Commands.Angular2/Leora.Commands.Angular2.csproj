@@ -47,10 +47,12 @@
     <Compile Include="BaseCommand.cs" />
     <Compile Include="Contracts\IGenerateActionConstantsCommand.cs" />
     <Compile Include="Contracts\IGenerateActionsCommand.cs" />
+    <Compile Include="Contracts\IGenerateApiConfigurationCommand.cs" />
     <Compile Include="Contracts\IGenerateAppCommand.cs" />
     <Compile Include="Contracts\IGenerateAppStoreCommand.cs" />
     <Compile Include="Contracts\IGenerateBootstrapCommand.cs" />
     <Compile Include="Contracts\IGenerateComponentCommand.cs" />
+    <Compile Include="Contracts\IGenerateEnvironmentCommand.cs" />
     <Compile Include="Contracts\IGenerateExampleCommand.cs" />
     <Compile Include="Contracts\IGenerateIndexCommand.cs" />
     <Compile Include="Contracts\IGenerateAppModuleCommand.cs" />
@@ -76,8 +78,10 @@
     <Compile Include="Contracts\IGenerateWebpackCommand.cs" />
     <Compile Include="GenerateActionConstantsCommand.cs" />
     <Compile Include="GenerateActionsCommand.cs" />
+    <Compile Include="GenerateApiConfigurationCommand.cs" />
     <Compile Include="GenerateAppCommand.cs" />
     <Compile Include="GenerateAppStoreCommand.cs" />
+    <Compile Include="GenerateEnvironmentCommand.cs" />
     <Compile Include="GenerateIndexFromFolderCommand.cs" />
     <Compile Include="GenerateLibsCommand.cs" />
     <Compile Include="GenerateModelCommand.cs" />
@@ -107,8 +111,10 @@
     <Compile Include="Options\BaseOptions.cs" />
     <Compile Include="Options\GenerateActionConstantsOptions.cs" />
     <Compile Include="Options\GenerateActionsOptions.cs" />
+    <Compile Include="Options\GenerateApiConfigurationOptions.cs" />
     <Compile Include="Options\GenerateAppOptions.cs" />
     <Compile Include="Options\GenerateAppStoreOptions.cs" />
+    <Compile Include="Options\GenerateEnvironmentOptions.cs" />
     <Compile Include="Options\GenerateIndexFromFolderOptions.cs" />
     <Compile Include="Options\GenerateLibsOptions.cs" />
     <Compile Include="Options\GenerateModelOptions.cs" />

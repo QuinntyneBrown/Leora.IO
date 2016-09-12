@@ -57,6 +57,8 @@ namespace Leora.Cli
                 ["ng2-libs"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateLibsCommand>().Run,
                 ["ng2-model"] = _container.Resolve<Commands.Angular2.Contracts.IGenerateModelCommand>().Run,
                 ["ng2-utilities"] = _container.Resolve<Commands.Angular2.Contracts.IGenerateUtilitiesCommand>().Run,
+                ["ng2-api-configuration"] = _container.Resolve<Commands.Angular2.Contracts.IGenerateApiConfigurationCommand>().Run,
+                ["ng2-environment"] = _container.Resolve<Commands.Angular2.Contracts.IGenerateEnvironmentCommand>().Run,
 
                 ["ng2-ts-config"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateTsConfigJsonCommand>().Run,
                 ["ng2-typings"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateTypingsCommand>().Run,
