@@ -34,6 +34,10 @@ namespace Leora.Commands.Angular2
         protected readonly IGenerateApiConfigurationCommand _generateApiConfigurationCommand;
         protected readonly IGenerateEnvironmentCommand _generateEnvironmentCommand;
 
+        protected readonly IGeneratePolyfillsCommand _generatePolyfillsCommand;
+        protected readonly IGenerateVendorsCommand _generateVendorsCommand;
+        protected readonly IGenerateMainCommand _generateMainCommand;
+
         public GenerateAppCommand(
             ITemplateManager templateManager, 
             ITemplateProcessor templateProcessor, 
@@ -59,8 +63,11 @@ namespace Leora.Commands.Angular2
             IGenerateStateCommand generateStateCommand,
             IGenerateUtilitiesCommand generateUtilitiesCommand,
             IGenerateApiConfigurationCommand generateApiConfigurationCommand,
-            IGenerateEnvironmentCommand generateEnvironmentCommand
-            ) 
+            IGenerateEnvironmentCommand generateEnvironmentCommand,
+            IGeneratePolyfillsCommand generatePolyfillsCommand,
+            IGenerateVendorsCommand generateVendorsCommand,
+            IGenerateMainCommand generateMainCommand
+            )
             :base(templateManager,templateProcessor,namingConventionConverter,projectManager,fileWriter) {
 
             _generateAppPackageJsonCommand = generateAppPackageJsonCommand;
@@ -83,7 +90,11 @@ namespace Leora.Commands.Angular2
             _generateUtilitiesCommand = generateUtilitiesCommand;
             _generateApiConfigurationCommand = generateApiConfigurationCommand;
             _generateEnvironmentCommand = generateEnvironmentCommand;
-        }
+
+            _generatePolyfillsCommand = generatePolyfillsCommand;
+            _generateVendorsCommand = generateVendorsCommand;
+            _generateMainCommand = generateMainCommand;
+    }
 
         public override int Run(GenerateAppOptions options) => Run(options.ProjectName, options.Name, options.Directory);
 
@@ -99,6 +110,11 @@ namespace Leora.Commands.Angular2
             _generateTypingsCommand.Run(projectName, directory);
 
             CreateDirectory($"{directory}\\src");
+
+            _generateVendorsCommand.Run(name, $"{directory}\\src");
+            _generatePolyfillsCommand.Run(name, $"{directory}\\src");
+            _generateMainCommand.Run(name, $"{directory}\\src");
+
             CreateDirectory($"{directory}\\src\\app");
             _generateComponentCommand.Run("app", $"{directory}\\src\\app");
             _generateModuleCommand.Run("app", $"{directory}\\src\\app");
