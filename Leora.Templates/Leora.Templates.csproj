@@ -222,6 +222,7 @@
     <EmbeddedResource Include="Angular2\Angular2RemoveElement.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2SetOpacityAsync.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2ApiConfiguration.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2Main.typescript.txt" />
     <Content Include="Angular2\Angular2GitIgnore.none.txt" />
     <EmbeddedResource Include="Angular2\Angular2JQuery.js.txt" />
     <Content Include="Angular2\Angular2Normalize.scss.txt" />
@@ -244,7 +245,7 @@
     <EmbeddedResource Include="AspNetWebApi2\ApiInMemoryMultipartFormDataStreamProvider.csharp.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2App.typescript.txt" />
     <EmbeddedResource Include="Angular2\Modules\Angular2Actions.typescript.txt" />
-    <EmbeddedResource Include="Angular2\Components\Angular2.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2HomePage.html.txt" />
     <EmbeddedResource Include="Angular2\Modules\Angular2Components.typescript.txt" />
     <EmbeddedResource Include="Angular2\Modules\Angular2Helpers.typescript.txt" />
     <EmbeddedResource Include="Angular2\Modules\Angular2Pipes.typescript.txt" />
@@ -283,6 +284,7 @@
     <EmbeddedResource Include="Angular2\Components\Angular2Login.scss.txt" />
     <EmbeddedResource Include="Angular2\Services\Angular2.typescript.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2App.html.txt" />
+    <EmbeddedResource Include="Angular2\Modules\Angular2.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

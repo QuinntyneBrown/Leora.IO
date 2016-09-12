@@ -1,4 +1,4 @@
-﻿import { NgModule, enableProdMode } from '@angular/core';
+﻿import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { RouterModule  } from '@angular/router';
@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import "./rxjs-extensions";
-import { environment } from "./environment";
 
 import { AppComponent } from './app.component';
 
@@ -30,10 +29,6 @@ const declarables = [
 const providers = [
 
 ];
-
-if (environment.production) {
-    enableProdMode();
-}
 
 @NgModule({
     imports: [

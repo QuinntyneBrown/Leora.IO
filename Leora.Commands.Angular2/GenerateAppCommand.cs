@@ -96,84 +96,87 @@ namespace Leora.Commands.Angular2
             _generateMainCommand = generateMainCommand;
     }
 
-        public override int Run(GenerateAppOptions options) => Run(options.ProjectName, options.Name, options.Directory);
+        public override int Run(GenerateAppOptions options) => Run(options.Name, options.Entity, options.Directory);
 
-        public int Run(string projectName, string name, string directory)
+        
+        public int Run(string name, string entity, string directory)
         {
             var exitCode = 1;
             
-            _generateAppPackageJsonCommand.Run(projectName, directory);
-            _generateLibsCommand.Run(projectName, directory);
-            _generateWebpackCommand.Run(projectName, directory);
-            _generateTsConfigJsonCommand.Run(projectName, directory);
-            _generateTypeDocJsonCommand.Run(projectName, directory);
-            _generateTypingsCommand.Run(projectName, directory);
+            _generateAppPackageJsonCommand.Run(name, directory);
+            _generateLibsCommand.Run(name, directory);
+            _generateWebpackCommand.Run(name, directory);
+            _generateTsConfigJsonCommand.Run(name, directory);
+            _generateTypeDocJsonCommand.Run(name, directory);
+            _generateTypingsCommand.Run(name, directory);
+
+            _fileWriter.WriteAllLines($"{directory}//index.html", _templateProcessor.ProcessTemplate(_templateManager.Get("Angular2AppIndex.html", BluePrintType.Angular2), name));
 
             CreateDirectory($"{directory}\\src");
 
-            _generateVendorsCommand.Run(name, $"{directory}\\src");
-            _generatePolyfillsCommand.Run(name, $"{directory}\\src");
-            _generateMainCommand.Run(name, $"{directory}\\src");
+            _generateVendorsCommand.Run(entity, $"{directory}\\src");
+            _generatePolyfillsCommand.Run(entity, $"{directory}\\src");
+            _generateMainCommand.Run(entity, $"{directory}\\src");
 
             CreateDirectory($"{directory}\\src\\app");
             _generateComponentCommand.Run("app", $"{directory}\\src\\app");
             _generateModuleCommand.Run("app", $"{directory}\\src\\app");
             _generateEnvironmentCommand.Run("app", $"{directory}\\src\\app");            
-            _generateRxJSExtensionsCommand.Run(name, $"{directory}\\src\\app");
-            _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app");
+            _generateRxJSExtensionsCommand.Run(entity, $"{directory}\\src\\app");
+            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app");
 
             CreateDirectory($"{directory}\\src\\app\\actions");
-            _generateActionsCommand.Run(name, $"{directory}\\src\\app\\actions");
+            _generateActionsCommand.Run(entity, $"{directory}\\src\\app\\actions");
             _generateModuleCommand.Run("actions", $"{directory}\\src\\app\\actions");
-            _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\actions");
+            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\actions");
 
             CreateDirectory($"{directory}\\src\\app\\components");
             _generateModuleCommand.Run("components", $"{directory}\\src\\app\\components");
-            _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\components");
+            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\components");
 
             CreateDirectory($"{directory}\\src\\app\\configuration");
-            _generateApiConfigurationCommand.Run(name, $"{directory}\\src\\app\\configuration");
-            _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\configuration");
+            _generateApiConfigurationCommand.Run(entity, $"{directory}\\src\\app\\configuration");
+            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\configuration");
 
             CreateDirectory($"{directory}\\src\\app\\constants");
-            _generateActionConstantsCommand.Run(name, $"{directory}\\src\\app\\constants");
-            _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\constants");
+            _generateActionConstantsCommand.Run(entity, $"{directory}\\src\\app\\constants");
+            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\constants");
 
             CreateDirectory($"{directory}\\src\\app\\helpers");
             _generateModuleCommand.Run("helpers", $"{directory}\\src\\app\\helpers");
-            _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\helpers");
+            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\helpers");
 
             CreateDirectory($"{directory}\\src\\app\\models");
-            _generateModelCommand.Run(name, $"{directory}\\src\\app\\models");
-            _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\models");
+            _generateModelCommand.Run(entity, $"{directory}\\src\\app\\models");
+            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\models");
 
             CreateDirectory($"{directory}\\src\\app\\pages");
             _generateComponentCommand.Run("home-page", $"{directory}\\src\\app\\pages");
-            _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\pages");
+            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\pages");
 
             CreateDirectory($"{directory}\\src\\app\\pipes");
             _generateModuleCommand.Run("pipes", $"{directory}\\src\\app\\pipes");
-            _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\pipes");
+            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\pipes");
 
             CreateDirectory($"{directory}\\src\\app\\routing");
             _generateModuleCommand.Run("routing", $"{directory}\\src\\app\\routing");
-            _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\routing");
+            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\routing");
 
             CreateDirectory($"{directory}\\src\\app\\services");
             _generateModuleCommand.Run("services", $"{directory}\\src\\app\\services");
-            _generateServiceCommand.Run(name, $"{directory}\\src\\app\\services");
-            _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\services");
+            _generateServiceCommand.Run(entity, $"{directory}\\src\\app\\services");
+            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\services");
 
             CreateDirectory($"{directory}\\src\\app\\store");
             _generateModuleCommand.Run("store", $"{directory}\\src\\app\\store");
-            _generateReducerCommand.Run(name, $"{directory}\\src\\app\\store");
-            _generateAppStoreCommand.Run(name, $"{directory}\\src\\app\\store");
-            _generateStateCommand.Run(name, $"{directory}\\src\\app\\store");
-            _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\store");
+            _generateReducerCommand.Run(entity, $"{directory}\\src\\app\\store");
+            _generateAppStoreCommand.Run(entity, $"{directory}\\src\\app\\store");
+            _generateStateCommand.Run(entity, $"{directory}\\src\\app\\store");
+            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\store");
 
             CreateDirectory($"{directory}\\src\\app\\utilities");
-            _generateUtilitiesCommand.Run(name, $"{directory}\\src\\app\\utilities");
-            _generateIndexFromFolderCommand.Run(name, $"{directory}\\src\\app\\utilities");
+            _generateUtilitiesCommand.Run(entity, $"{directory}\\src\\app\\utilities");
+            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\utilities");
 
             CreateDirectory($"{directory}\\src\\styles");
 
