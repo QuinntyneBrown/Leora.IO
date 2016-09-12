@@ -15,7 +15,7 @@ namespace Leora.Commands.Angular2
         public int Run(string name, string directory)
         {
             var exitCode = 1;
-            _fileWriter.WriteAllLines($"{directory}//main.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular2Polyfills", BluePrintType.Angular2), name));
+            _fileWriter.WriteAllLines($"{directory}//main.ts", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular2Main", BluePrintType.Angular2), name));
 
             try { _projectManager.Process(directory, $"main.ts", FileType.TypeScript); }
             catch { }

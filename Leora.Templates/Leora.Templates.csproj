@@ -282,6 +282,7 @@
     <EmbeddedResource Include="Angular2\Components\Angular2Login.html.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2Login.scss.txt" />
     <EmbeddedResource Include="Angular2\Services\Angular2.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2App.html.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />
