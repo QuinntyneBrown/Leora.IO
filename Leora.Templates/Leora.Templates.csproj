@@ -210,6 +210,17 @@
     <EmbeddedResource Include="Angular2\Angular2Environment.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2InitialState.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2AppState.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2AddOrUpdate.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2AppendToBodyAsync.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2CreateElement.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2ExtendCssAsync.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2ExtractDataFromHttpResponse.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2FormEncode.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2Guid.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2PluckOut.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2Pluck.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2RemoveElement.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Angular2SetOpacityAsync.typescript.txt" />
     <Content Include="Angular2\Angular2GitIgnore.none.txt" />
     <EmbeddedResource Include="Angular2\Angular2JQuery.js.txt" />
     <Content Include="Angular2\Angular2Normalize.scss.txt" />
@@ -269,6 +280,7 @@
     <EmbeddedResource Include="Angular2\Helpers\Angular2OAuthHelper.typescript.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2Login.html.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2Login.scss.txt" />
+    <EmbeddedResource Include="Angular2\Services\Angular2.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

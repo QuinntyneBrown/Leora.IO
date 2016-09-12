@@ -71,6 +71,7 @@
     <Compile Include="Contracts\IGenerateTsConfigJsonCommand.cs" />
     <Compile Include="Contracts\IGenerateTypeDocJsonCommand.cs" />
     <Compile Include="Contracts\IGenerateTypingsCommand.cs" />
+    <Compile Include="Contracts\IGenerateUtilitiesCommand.cs" />
     <Compile Include="Contracts\IGenerateVendorsCommand.cs" />
     <Compile Include="Contracts\IGenerateWebpackCommand.cs" />
     <Compile Include="GenerateActionConstantsCommand.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="GenerateTsConfigCommand.cs" />
     <Compile Include="GenerateTypeDocJsonCommand.cs" />
     <Compile Include="GenerateTypingsCommand.cs" />
+    <Compile Include="GenerateUtilitiesCommand.cs" />
     <Compile Include="GenerateVendorsCommand.cs" />
     <Compile Include="GenerateWebpackCommand.cs" />
     <Compile Include="Options\BaseOptions.cs" />
@@ -129,6 +131,7 @@
     <Compile Include="Options\GenerateTsConfigJsonOptions.cs" />
     <Compile Include="Options\GenerateTypeDocJsonOptions.cs" />
     <Compile Include="Options\GenerateTypingsOptions.cs" />
+    <Compile Include="Options\GenerateUtilitiesOptions.cs" />
     <Compile Include="Options\GenerateVendorsOptions.cs" />
     <Compile Include="Options\GenerateWebpackOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
