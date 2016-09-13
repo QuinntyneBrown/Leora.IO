@@ -1,0 +1,12 @@
+﻿import { Component, Input } from "@angular/core";
+
+@Component({
+    template: require("./hero.component.html"),
+    styles: [require("./hero.component.scss")],
+    selector: "hero"
+})
+export class HeroComponent { 
+    @Input() public height: number = 400;
+    @Input() public width: number = 1280;
+    @Input() public backgroundImageUrl: string;
+}

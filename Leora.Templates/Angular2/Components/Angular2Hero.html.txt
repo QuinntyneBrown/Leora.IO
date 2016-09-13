@@ -1,0 +1,2 @@
+﻿<div [ngStyle]="{'background-image': 'url(' + backgroundImageUrl + ')', 'height': height + 'px' }">    
+</div>

@@ -5,7 +5,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 @Component({
     selector: "app",
-    template: "<section><c-{{ entityNameSnakeCase }}></c-{{ entityNameSnakeCase }}></section>"
+    template: "<section><{{ entityNameSnakeCase }}></{{ entityNameSnakeCase }}></section>"
 })
 class AppComponent { }
 

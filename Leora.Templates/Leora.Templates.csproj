@@ -288,6 +288,8 @@
     <EmbeddedResource Include="Angular2\Components\Angular2DropDown.typescript.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2DropDown.html.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2DropDown.scss.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2Hero.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2Hero.html.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />
