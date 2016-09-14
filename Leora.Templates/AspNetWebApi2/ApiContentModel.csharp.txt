@@ -1,4 +1,6 @@
 ﻿using {{ rootNamespacename }}.Data;
+using {{ rootNamespacename }}.Services
+using static {{ rootNamespacename }}.Infrastructure.Constants;;
 using System;
 using System.Web.Http;
 
