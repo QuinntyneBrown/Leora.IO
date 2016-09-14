@@ -22,6 +22,8 @@ namespace {{ namespacename }}
             
             return contentModel;
         }
+		
+		public ContentModelType ContentModelType { get; set; } = ContentModelType.{{ entityNamePascalCase }};
 
         protected readonly IUow _uow;
         protected readonly ICache _cache;
