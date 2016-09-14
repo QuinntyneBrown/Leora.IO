@@ -15,11 +15,14 @@ namespace Leora.Commands.AspNetWebApi2
         public int Run(string namespacename, string directory, string name, string rootNamespace)
         {
             int exitCode = 1;
-            var pascalCaseName = $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}ContentModel.cs";
-            
-            _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiContentModel", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
+            var className = $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}ContentModel.cs";
+            var interfaceName = $"I{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}ContentModel.cs";
 
-            _projectManager.Process(directory, $"{pascalCaseName}", FileType.CSharp);
+            _fileWriter.WriteAllLines($"{directory}//{className}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiContentModel", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
+            _fileWriter.WriteAllLines($"{directory}//{interfaceName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiIContentModel", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
+
+            _projectManager.Process(directory, $"{className}", FileType.CSharp);
+            _projectManager.Process(directory, $"{interfaceName}", FileType.CSharp);
             return exitCode;
         }
     }

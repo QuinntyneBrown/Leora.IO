@@ -1,34 +1,27 @@
 ﻿using {{ rootNamespacename }}.Data;
-using {{ rootNamespacename }}.Services
-using static {{ rootNamespacename }}.Infrastructure.Constants;;
-using System;
-using System.Web.Http;
+using {{ rootNamespacename }}.Services;
+using Microsoft.Practices.Unity;
 
 namespace {{ namespacename }}
-{
-    public class {{ entityNamePascalCase }}ContentModel
+{    
+    public class {{ entityNamePascalCase }}ContentModel: I{{ entityNamePascalCase }}ContentModel
     {
-        public {{ entityNamePascalCase }}ContentModel(IUow uow, ICacheProvider cacheProvider) {
-            _cache = cacheProvider.GetCache();
+        [InjectionConstructor]
+        public {{ entityNamePascalCase }}ContentModel(IUow uow, ICacheProvider cacheProvider)
+        :this(uow,cacheProvider.GetCache()){}
+
+        public {{ entityNamePascalCase }}ContentModel(IUow uow, ICache cache)
+        {
+            _cache = cache;
             _uow = uow;
         }
 
-        public {{ entityNamePascalCase }}ContentModel()
-            : this(
-                  GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IUow)) as IUow,
-                  GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(ICacheProvider)) as ICacheProvider
-                  ) { }
-
-        public void InitializeComponent() {
-
-        }
-
-        public static readonly Lazy<{{ entityNamePascalCase }}ContentModel> LazyInstance = new Lazy<{{ entityNamePascalCase }}ContentModel>(() =>
+        public I{{ entityNamePascalCase }}ContentModel Get()
         {
-            var {{ entityNameCamelCase }}ContentViewModel = new {{ entityNamePascalCase }}ContentModel();
-			{{ entityNameCamelCase }}ContentViewModel.InitializeComponent();
-            return {{ entityNameCamelCase }}ContentViewModel;
-        }, true);
+            var contentModel = new {{ entityNamePascalCase }}ContentModel(_uow, _cache);
+            
+            return contentModel;
+        }
 
         protected readonly IUow _uow;
         protected readonly ICache _cache;

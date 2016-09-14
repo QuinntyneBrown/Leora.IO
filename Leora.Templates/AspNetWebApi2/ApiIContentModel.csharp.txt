@@ -1,0 +1,7 @@
+﻿namespace {{ namespacename }}
+{
+    public interface I{{ entityNamePascalCase }}ContentModel
+    {
+        I{{ entityNamePascalCase }}ContentModel Get();
+    }
+}

@@ -300,6 +300,7 @@
     <EmbeddedResource Include="AspNetWebApi2\Services\Api.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\Models\Api.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\Controllers\Api.csharp.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\ApiIContentModel.csharp.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />
