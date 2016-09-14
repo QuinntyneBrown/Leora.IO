@@ -1,0 +1,34 @@
+﻿using {{ rootNamespacename }}.Data;
+using System;
+using System.Web.Http;
+
+namespace {{ namespacename }}
+{
+    public class {{ entityNamePascalCase }}ContentModel
+    {
+        public {{ entityNamePascalCase }}ContentModel(IUow uow, ICacheProvider cacheProvider) {
+            _cache = cacheProvider.GetCache();
+            _uow = uow;
+        }
+
+        public {{ entityNamePascalCase }}ContentModel()
+            : this(
+                  GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IUow)) as IUow,
+                  GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(ICacheProvider)) as ICacheProvider
+                  ) { }
+
+        public void InitializeComponent() {
+
+        }
+
+        public static readonly Lazy<{{ entityNamePascalCase }}ContentModel> LazyInstance = new Lazy<{{ entityNamePascalCase }}ContentModel>(() =>
+        {
+            var {{ entityNameCamelCase }}ContentViewModel = new {{ entityNamePascalCase }}ContentModel();
+			{{ entityNameCamelCase }}ContentViewModel.InitializeComponent();
+            return {{ entityNameCamelCase }}ContentViewModel;
+        }, true);
+
+        protected readonly IUow _uow;
+        protected readonly ICache _cache;
+    }
+}

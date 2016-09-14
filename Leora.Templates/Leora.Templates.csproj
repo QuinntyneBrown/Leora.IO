@@ -290,6 +290,16 @@
     <EmbeddedResource Include="Angular2\Components\Angular2DropDown.scss.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2Hero.typescript.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2Hero.html.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2Menu.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2Menu.html.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2Menu.scss.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2PageHeader.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2PageHeader.html.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2PageHeader.scss.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\ApiContentModel.csharp.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\Services\Api.csharp.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\Models\Api.csharp.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\Controllers\Api.csharp.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />
