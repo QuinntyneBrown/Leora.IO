@@ -1,1 +1,12 @@
-﻿
+﻿import { Component, Input, OnInit } from "@angular/core";
+
+@Component({
+    template: require("./{{ entityNameSnakeCase }}.component.html"),
+    styles: [require("./{{ entityNameSnakeCase }}.component.scss")],
+    selector: "{{ entityNameSnakeCase }}"
+})
+export class {{ entityNamePascalCase }}Component implements OnInit { 
+    ngOnInit() {
+
+    }
+}

@@ -30,7 +30,7 @@ namespace Leora.Commands.Angular2
             _fileWriter.WriteAllLines($"{directory}//add-or-update.ts",
                 _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular2AddOrUpdate", BluePrintType.Angular2), name));
 
-            _fileWriter.WriteAllLines($"{directory}//apend-to-body-async.ts",
+            _fileWriter.WriteAllLines($"{directory}//append-to-body-async.ts",
                 _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular2AppendToBodyAsync", BluePrintType.Angular2), name));
 
             _fileWriter.WriteAllLines($"{directory}//create-element.ts",
