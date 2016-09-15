@@ -1,5 +1,5 @@
 ﻿import { Action } from "@ngrx/store";
-import { ADD_{{ entityNameAllCaps }}_SUCCESS, GET_{{ entityNameAllCaps }}_SUCCESS, REMOVE_{{ entityNameAllCaps }}_SUCCESS } from "../constants";
+import { {{ entityNameAllCaps }}_ADD_SUCCESS, {{ entityNameAllCaps }}_GET_SUCCESS, {{ entityNameAllCaps }}_REMOVE_SUCCESS } from "../constants";
 import { initialState } from "./initial-state";
 import { AppState } from "./app-state";
 import { {{ entityNamePascalCase }} } from "../models";
@@ -7,13 +7,13 @@ import { addOrUpdate, pluckOut } from "../utilities";
 
 export const {{ entityNameCamelCase }}sReducer = (state: AppState = initialState, action: Action) => {
     switch (action.type) {
-        case ADD_{{ entityNameAllCaps }}_SUCCESS:
+        case {{ entityNameAllCaps }}_ADD_SUCCESS:
             var entities: Array<{{ entityNamePascalCase }}> = state.{{ entityNameCamelCase }}s;
             var entity: {{ entityNamePascalCase }} = action.payload;
             addOrUpdate({ items: entities, item: entity});            
             return Object.assign({}, state, { {{ entityNameCamelCase }}s: entities });
 
-        case GET_{{ entityNameAllCaps }}_SUCCESS:
+        case {{ entityNameAllCaps }}_GET_SUCCESS:
             var entities: Array<{{ entityNamePascalCase }}> = state.{{ entityNameCamelCase }}s;
             var newOrExisting{{ entityNamePascalCase }}s: Array<{{ entityNamePascalCase }}> = action.payload;
             for (let i = 0; i < newOrExisting{{ entityNamePascalCase }}s.length; i++) {
@@ -21,7 +21,7 @@ export const {{ entityNameCamelCase }}sReducer = (state: AppState = initialState
             }                                    
             return Object.assign({}, state, { {{ entityNameCamelCase }}s: entities });
 
-        case REMOVE_{{ entityNameAllCaps }}_SUCCESS:
+        case {{ entityNameAllCaps }}_REMOVE_SUCCESS:
             var entities: Array<{{ entityNamePascalCase }}> = state.{{ entityNameCamelCase }}s;
             var id = action.payload;
             pluckOut({ value: id, items: entities });
