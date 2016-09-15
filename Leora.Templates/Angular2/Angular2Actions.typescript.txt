@@ -2,7 +2,7 @@
 import { Store } from "@ngrx/store";
 import { {{ entityNamePascalCase }}Service } from "../services";
 import { AppState, AppStore } from "../store";
-import { ADD_{{ entityNameAllCaps }}_SUCCESS, GET_{{ entityNameAllCaps }}_SUCCESS, REMOVE_{{ entityNameAllCaps }}_SUCCESS } from "../constants";
+import { {{ entityNameAllCaps }}_ADD_SUCCESS, {{ entityNameAllCaps }}_GET_SUCCESS, {{ entityNameAllCaps }}_REMOVE_SUCCESS } from "../constants";
 import { {{ entityNamePascalCase }} } from "../models";
 import { Observable } from "rxjs";
 import { guid } from "../utilities";
@@ -16,7 +16,7 @@ export class {{ entityNamePascalCase }}Actions {
         this._{{ entityNameCamelCase }}Service.add({{ entityNameCamelCase }})
             .subscribe(book => {
                 this._store.dispatch({
-                    type: ADD_{{ entityNameAllCaps }}_SUCCESS,
+                    type: {{ entityNameAllCaps }}_ADD_SUCCESS,
                     payload: {{ entityNameCamelCase }}
                 },newGuid);                
             });
@@ -27,7 +27,7 @@ export class {{ entityNamePascalCase }}Actions {
         return this._{{ entityNameCamelCase }}Service.get()
             .subscribe({{ entityNameCamelCase }}s => {
                 this._store.dispatch({
-                    type: GET_{{ entityNameAllCaps }}_SUCCESS,
+                    type: {{ entityNameAllCaps }}_GET_SUCCESS,
                     payload: {{ entityNameCamelCase }}s
                 });
                 return true;
@@ -38,7 +38,7 @@ export class {{ entityNamePascalCase }}Actions {
         return this._{{ entityNameCamelCase }}Service.remove({ id: options.id })
             .subscribe({{ entityNameCamelCase }} => {
                 this._store.dispatch({
-                    type: REMOVE_{{ entityNameAllCaps }}_SUCCESS,
+                    type: {{ entityNameAllCaps }}_REMOVE_SUCCESS,
                     payload: options.id
                 });
                 return true;
@@ -49,7 +49,7 @@ export class {{ entityNamePascalCase }}Actions {
         return this._{{ entityNameCamelCase }}Service.getById({ id: options.id })
             .subscribe({{ entityNameCamelCase }} => {
                 this._store.dispatch({
-                    type: GET_{{ entityNameAllCaps }}_SUCCESS,
+                    type: {{ entityNameAllCaps }}_GET_SUCCESS,
                     payload: [{{ entityNameCamelCase }}]
                 });
                 return true;

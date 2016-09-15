@@ -22,25 +22,25 @@ namespace Leora.Commands.Angular2
             var exitCode = 1;
             var entityNameSnakeCase = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
 
-            var addTemplate = new List<string>() { "export const ADD_{{ entityNameAllCaps }}_SUCCESS = \"[{{ entityNamePascalCase }}] Add {{ entityNamePascalCase }} Success\";" }.ToArray();
-            var getTemplate = new List<string>() { "export const GET_{{ entityNameAllCaps }}_SUCCESS = \"[{{ entityNamePascalCase }}] Get {{ entityNamePascalCase }} Success\";" }.ToArray();
-            var removeTemplate = new List<string>() { "export const REMOVE_{{ entityNameAllCaps }}_SUCCESS = \"[{{ entityNamePascalCase }}] Remove {{ entityNamePascalCase }} Success\";" }.ToArray();
+            var addTemplate = new List<string>() { "export const {{ entityNameAllCaps }}_ADD_SUCCESS = \"[{{ entityNamePascalCase }}] Add {{ entityNamePascalCase }} Success\";" }.ToArray();
+            var getTemplate = new List<string>() { "export const {{ entityNameAllCaps }}_GET_SUCCESS = \"[{{ entityNamePascalCase }}] Get {{ entityNamePascalCase }} Success\";" }.ToArray();
+            var removeTemplate = new List<string>() { "export const {{ entityNameAllCaps }}_REMOVE_SUCCESS = \"[{{ entityNamePascalCase }}] Remove {{ entityNamePascalCase }} Success\";" }.ToArray();
             var indexTemplate = new List<string>()
             {
-                $"export * from \"./add-{entityNameSnakeCase}-success.action\";",
-                $"export * from \"./get-{entityNameSnakeCase}-success.action\";",
-                $"export * from \"./remove-{entityNameSnakeCase}-success.action\";"
+                $"export * from \"./{entityNameSnakeCase}-add-success.action\";",
+                $"export * from \"./{entityNameSnakeCase}-get-success.action\";",
+                $"export * from \"./{entityNameSnakeCase}-remove-success.action\";"
             }.ToArray();
             
-            _fileWriter.WriteAllLines($"{directory}//add-{entityNameSnakeCase}-success.action.ts", _templateProcessor.ProcessTemplate(addTemplate, name));
-            _fileWriter.WriteAllLines($"{directory}//get-{entityNameSnakeCase}-success.action.ts", _templateProcessor.ProcessTemplate(getTemplate, name));
-            _fileWriter.WriteAllLines($"{directory}//remove-{entityNameSnakeCase}-success.action.ts", _templateProcessor.ProcessTemplate(removeTemplate, name));
+            _fileWriter.WriteAllLines($"{directory}//{entityNameSnakeCase}-add-success.action.ts", _templateProcessor.ProcessTemplate(addTemplate, name));
+            _fileWriter.WriteAllLines($"{directory}//{entityNameSnakeCase}-get-success.action.ts", _templateProcessor.ProcessTemplate(getTemplate, name));
+            _fileWriter.WriteAllLines($"{directory}//{entityNameSnakeCase}-remove-success.action.ts", _templateProcessor.ProcessTemplate(removeTemplate, name));
 
             try
             {
-                _projectManager.Process(directory, $"add-{entityNameSnakeCase}-success.action.ts", FileType.TypeScript);
-                _projectManager.Process(directory, $"get-{entityNameSnakeCase}-success.action.ts", FileType.TypeScript);
-                _projectManager.Process(directory, $"remove-{entityNameSnakeCase}-success.action.ts", FileType.TypeScript);                
+                _projectManager.Process(directory, $"{entityNameSnakeCase}-add-success.action.ts", FileType.TypeScript);
+                _projectManager.Process(directory, $"{entityNameSnakeCase}-get-success.action.ts", FileType.TypeScript);
+                _projectManager.Process(directory, $"{entityNameSnakeCase}-remove-success.action.ts", FileType.TypeScript);                
             }
             catch { }
 
