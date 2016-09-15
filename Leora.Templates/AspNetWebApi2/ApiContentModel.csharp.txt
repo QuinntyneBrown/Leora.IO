@@ -1,6 +1,7 @@
-﻿using {{ rootNamespacename }}.Data;
-using {{ rootNamespacename }}.Services;
+﻿using {{ rootNamespacename }}.Services;
 using Microsoft.Practices.Unity;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace {{ namespacename }}
 {    
@@ -8,24 +9,23 @@ namespace {{ namespacename }}
     {
         [InjectionConstructor]
         public {{ entityNamePascalCase }}ContentModel(IUow uow, ICacheProvider cacheProvider)
-        :this(uow,cacheProvider.GetCache()){}
+        :this(cacheProvider.GetCache()){}
 
-        public {{ entityNamePascalCase }}ContentModel(IUow uow, ICache cache)
+        public {{ entityNamePascalCase }}ContentModel(ICache cache)
         {
             _cache = cache;
-            _uow = uow;
         }
 
         public I{{ entityNamePascalCase }}ContentModel Get()
         {
-            var contentModel = new {{ entityNamePascalCase }}ContentModel(_uow, _cache);
+            var contentModel = new {{ entityNamePascalCase }}ContentModel(_cache);
             
             return contentModel;
         }
 		
+		[JsonConverter(typeof(StringEnumConverter))]
 		public ContentModelType ContentModelType { get; set; } = ContentModelType.{{ entityNamePascalCase }};
 
-        protected readonly IUow _uow;
         protected readonly ICache _cache;
     }
 }
