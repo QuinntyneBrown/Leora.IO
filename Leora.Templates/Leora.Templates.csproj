@@ -223,6 +223,8 @@
     <EmbeddedResource Include="Angular2\Angular2SetOpacityAsync.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2ApiConfiguration.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2Main.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Actions\Angular2Authentication.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Actions\Angular2Content.typescript.txt" />
     <Content Include="Angular2\Angular2GitIgnore.none.txt" />
     <EmbeddedResource Include="Angular2\Angular2JQuery.js.txt" />
     <Content Include="Angular2\Angular2Normalize.scss.txt" />
@@ -282,7 +284,7 @@
     <EmbeddedResource Include="Angular2\Helpers\Angular2OAuthHelper.typescript.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2Login.html.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2Login.scss.txt" />
-    <EmbeddedResource Include="Angular2\Services\Angular2.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Services\Angular2LoginRedirect.typescript.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2App.html.txt" />
     <EmbeddedResource Include="Angular2\Modules\Angular2.typescript.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2DropDown.typescript.txt" />
@@ -301,6 +303,9 @@
     <EmbeddedResource Include="AspNetWebApi2\Models\Api.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\Controllers\AspNetWebApi2Content.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiIContentModel.csharp.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2LoginPage.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Services\Angular2AuthenticationGuard.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

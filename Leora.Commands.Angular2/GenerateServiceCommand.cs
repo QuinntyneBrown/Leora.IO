@@ -21,8 +21,12 @@ namespace Leora.Commands.Angular2
         {
             var exitCode = 1;
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
-            var typeScriptFileName = $"{snakeCaseName}.service.ts";
-            _fileWriter.WriteAllLines($"{directory}//{typeScriptFileName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.TypeScript, "Angular2Service", BluePrintType.Angular2), name));
+            var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
+            var typeScriptFileName = entityNamePascalCase.Contains("Guard") ? $"{snakeCaseName}.ts" : $"{snakeCaseName}.service.ts";
+
+            var templateTypescript = _templateManager.Get(FileType.TypeScript, "Angular2Service", "Services", entityNamePascalCase, BluePrintType.Angular2);
+
+            _fileWriter.WriteAllLines($"{directory}//{typeScriptFileName}", _templateProcessor.ProcessTemplate(templateTypescript, name));
 
             try
             {
