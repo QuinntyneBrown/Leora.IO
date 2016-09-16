@@ -49,9 +49,7 @@ namespace Leora.Services
             string templateFullName = $"Leora.Templates.{framework}.{section}.{framework}{entityName}.{GetFileTypeExtension(fileType)}.txt";
             Stream stream = null;
             stream = typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateFullName);
-
-            Console.WriteLine(templateFullName);
-
+            
             if (stream == null)
                 stream = typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateName);
 
