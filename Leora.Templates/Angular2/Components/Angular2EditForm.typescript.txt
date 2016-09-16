@@ -1,0 +1,35 @@
+﻿import { Component, ChangeDetectionStrategy, Input, Output, AfterViewInit, EventEmitter, Renderer, ElementRef } from "@angular/core";
+
+import {
+    FormGroup,
+    FormControl,
+    Validators
+} from "@angular/forms";
+
+import { {{ entityNamePascalCase }} } from "../models";
+
+@Component({
+    template: require("./{{ entityNameSnakeCase }}-edit-form.component.html"),
+    styles: [require("./{{ entityNameSnakeCase }}-edit-form.component.scss")],
+    selector: "{{ entityNameSnakeCase }}-edit-form",
+})
+export class {{ entityNamePascalCase }}EditFormComponent implements AfterViewInit  { 
+
+    constructor(private _renderer: Renderer, private _elementRef: ElementRef) { } 
+
+    public get name(): HTMLElement {
+        return this._elementRef.nativeElement.querySelector("#name");
+    }
+
+    ngAfterViewInit() {
+        this._renderer.invokeElementMethod(this.name, 'focus', []);
+    }
+	    
+    @Input() public {{ entityNameCamelCase }}: {{ entityNamePascalCase }};
+    @Output() public onSubmit = new EventEmitter();
+    public form = new FormGroup({
+        name: new FormControl("", [
+            Validators.required
+        ])
+    });
+}

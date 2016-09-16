@@ -23,11 +23,11 @@ namespace Leora.Commands.Angular2
             var cssFileName = $"{snakeCaseName}.component.scss";
             var htmlFileName = $"{snakeCaseName}.component.html";
             var baseFilePath = $"{directory}//{snakeCaseName}";
-            var sufixList = new string[1] { "edit-page" };
+            var sufixList = new string[2] { "edit-page","edit-form"};
 
             var templateTypescript = _templateManager.Get(FileType.TypeScript, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2,sufixList);
-            var templateHtml = _templateManager.Get(FileType.Html, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2);
-            var templateScss = _templateManager.Get(FileType.Scss, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2);
+            var templateHtml = _templateManager.Get(FileType.Html, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
+            var templateScss = _templateManager.Get(FileType.Scss, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
 
             foreach(var sufix in sufixList)
             {
