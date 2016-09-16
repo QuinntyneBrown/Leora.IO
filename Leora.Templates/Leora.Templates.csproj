@@ -225,6 +225,7 @@
     <EmbeddedResource Include="Angular2\Angular2Main.typescript.txt" />
     <EmbeddedResource Include="Angular2\Actions\Angular2Authentication.typescript.txt" />
     <EmbeddedResource Include="Angular2\Actions\Angular2Content.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Actions\Angular2.txt" />
     <Content Include="Angular2\Angular2GitIgnore.none.txt" />
     <EmbeddedResource Include="Angular2\Angular2JQuery.js.txt" />
     <Content Include="Angular2\Angular2Normalize.scss.txt" />
@@ -312,6 +313,13 @@
     <EmbeddedResource Include="Angular2\Components\Angular2EditPage.typescript.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2EditPage.html.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2EditForm.html.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2EditForm.scss.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2List.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2List.scss.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2List.html.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2ListPage.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2ListPage.html.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2ListPage.scss.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

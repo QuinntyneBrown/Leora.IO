@@ -1,0 +1,14 @@
+﻿import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { {{ entityNamePascalCase }} } from "../models";
+
+@Component({
+    template: require("./{{ entityNameSnakeCase }}-list.component.html"),
+    styles: [require("./{{ entityNameSnakeCase }}-list.component.scss")],
+    selector: "{{ entityNameSnakeCase }}-list"
+})
+export class {{ entityNamePascalCase }}ListComponent {     
+    @Input() public entities: Array<{{ entityNamePascalCase }}> = [];
+    @Output() onDelete: EventEmitter<{ value: {{ entityNamePascalCase }} }> = new EventEmitter<{ value: {{ entityNamePascalCase }} }>();
+    @Output() onSelect: EventEmitter<{ value: {{ entityNamePascalCase }} }> = new EventEmitter<{ value: {{ entityNamePascalCase }} }>();
+    @Output() onEdit: EventEmitter<{ value: {{ entityNamePascalCase }} }> = new EventEmitter<{ value: {{ entityNamePascalCase }} }>();
+}

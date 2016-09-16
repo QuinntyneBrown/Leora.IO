@@ -1,0 +1,22 @@
+﻿h1 {
+    font-size:1.5em;
+}
+
+a {
+    line-height:1.5em;
+    display:inline-block;    
+}
+
+.{{ entityNameSnakeCase }}-list-item-count {
+    min-width:25px;
+}
+
+.{{ entityNameSnakeCase }}-list-item-name {
+    min-width:200px;
+}
+
+.{{ entityNameSnakeCase }}-list-item-action {
+    font-size:0.75em;
+    cursor:pointer;
+    font-weight:100;
+}

@@ -1,0 +1,7 @@
+﻿<div class="{{ entityNameSnakeCase }}-list-page">
+    <one-column-layout>
+        <{{ entityNameSnakeCase }}-list [entities]="_store.{{ entityNameCamelCase }}s$() | async"
+                   (onDelete)="_{{ entityNameCamelCase }}Actions.remove({ id: $event.value.id })"
+                   (onEdit)="_router.navigate(['{{ entityNameLowerCase }}', $event.value.id])"></{{ entityNameSnakeCase }}-list>
+    </one-column-layout>    
+</div>
