@@ -14,25 +14,17 @@ namespace Leora.Commands.AspNetWebApi2
         
         public int Run(string namespacename, string directory, string name, string rootNamespace, bool trace = false)
         {
-            int exitCode = 1;
-            var pascalCaseName = $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Controller.cs";
-            
+            int exitCode = 1;            
+            var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
+            var pascalCaseName = $"{entityNamePascalCase}Controller.cs";
             if (trace)
             {
                 _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiControllerTrace", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
             }
             else
             {
-                switch (name)
-                {
-                    case "DigitalAsset":
-                        _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "Controllers.ApiDigitalAssetController", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
-                        break;
-                    default:
-                        _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiController", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
-                        break;
-                }
-                
+                var template = _templateManager.Get(FileType.CSharp, "ApiController", "Controllers", entityNamePascalCase, BluePrintType.AspNetWebApi2);
+                _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(template, name, namespacename, rootNamespace));
             }
             
             _projectManager.Process(directory, $"{pascalCaseName}", FileType.CSharp);

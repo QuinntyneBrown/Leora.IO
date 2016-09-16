@@ -239,7 +239,7 @@
     <EmbeddedResource Include="AspNetWebApi2\Models\ApiDigitalAssetModel.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\Services\ApiIUserService.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\Services\ApiUserService.csharp.txt" />
-    <EmbeddedResource Include="AspNetWebApi2\Controllers\AspNetWebApi2DigitalAssetController.csharp.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\Controllers\AspNetWebApi2DigitalAsset.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiStreamHelper.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiFileMultipartFormDataStreamProvider.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiInMemoryMultipartFormDataStreamProvider.csharp.txt" />
@@ -299,7 +299,7 @@
     <EmbeddedResource Include="AspNetWebApi2\ApiContentModel.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\Services\Api.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\Models\Api.csharp.txt" />
-    <EmbeddedResource Include="AspNetWebApi2\Controllers\Api.csharp.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\Controllers\AspNetWebApi2Content.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiIContentModel.csharp.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />

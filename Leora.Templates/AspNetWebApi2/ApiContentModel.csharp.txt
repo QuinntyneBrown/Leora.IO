@@ -8,7 +8,7 @@ namespace {{ namespacename }}
     public class {{ entityNamePascalCase }}ContentModel: I{{ entityNamePascalCase }}ContentModel
     {
         [InjectionConstructor]
-        public {{ entityNamePascalCase }}ContentModel(IUow uow, ICacheProvider cacheProvider)
+        public {{ entityNamePascalCase }}ContentModel(ICacheProvider cacheProvider)
         :this(cacheProvider.GetCache()){}
 
         public {{ entityNamePascalCase }}ContentModel(ICache cache)
