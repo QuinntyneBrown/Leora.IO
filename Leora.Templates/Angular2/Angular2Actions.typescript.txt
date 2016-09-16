@@ -14,7 +14,7 @@ export class {{ entityNamePascalCase }}Actions {
     public add({{ entityNameCamelCase }}: {{ entityNamePascalCase }}) {
         const newGuid = guid();
         this._{{ entityNameCamelCase }}Service.add({{ entityNameCamelCase }})
-            .subscribe(book => {
+            .subscribe({{ entityNameCamelCase }} => {
                 this._store.dispatch({
                     type: {{ entityNameAllCaps }}_ADD_SUCCESS,
                     payload: {{ entityNameCamelCase }}
