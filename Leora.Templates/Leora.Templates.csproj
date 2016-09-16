@@ -309,6 +309,7 @@
     <EmbeddedResource Include="AspNetWebApi2\Configuration\Api.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiConfiguration.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiIConfiguration.csharp.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2EditPage.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

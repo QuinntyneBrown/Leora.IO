@@ -1,0 +1,22 @@
+﻿import { Component, Input } from "@angular/core";
+import { {{ entityNamePascalCase }}Actions } from "../actions";
+import { Router } from "@angular/router";
+
+@Component({
+    template: require("./{{ entityNameSnakeCase }}-edit-page.component.html"),
+    styles: [require("./{{ entityNameSnakeCase }}-edit-page.component.scss")],
+    selector: "{{ entityNameSnakeCase }}-edit-page"
+})
+export class {{ entityNamePascalCase }}EditPageComponent { 
+    constructor(private _{{ entityNameCamelCase }}Actions: {{ entityNamePascalCase }}Actions, private _router: Router) { }
+
+    public onSubmit($event: any) {
+        this._{{ entityNameCamelCase }}Actions.add({
+            id: $event.value.id,
+            name: $event.value.name
+        });
+
+        setTimeout(() => { this._router.navigate(["/{{ entityNameCamelCase }}s"]); }, 0);
+        
+    }
+}

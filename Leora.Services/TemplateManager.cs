@@ -8,6 +8,17 @@ namespace Leora.Services
 {
     public class TemplateManager : ITemplateManager
     {
+        protected readonly INamingConventionConverter _namingConventionConverter;
+        public TemplateManager()
+        {
+
+        }
+
+        public TemplateManager(INamingConventionConverter namingConventionConverter)
+        {
+            _namingConventionConverter = namingConventionConverter;
+        }
+
         public string[] Get(string name, string framework = null)
         {
             List<string> lines = new List<string>();
@@ -42,14 +53,28 @@ namespace Leora.Services
             return ConvertFileStreamToStringArray(typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateName));
         }
 
-        public string[] Get(FileType fileType, string name, string section, string entityName, string framework = null)
+        public string[] Get(FileType fileType, string name, string section, string entityName, string framework = null, string[] sufixList = null)
         {
+            sufixList = sufixList == null ? new string[0] : sufixList;
+             
             List<string> lines = new List<string>();
             string templateName = $"Leora.Templates.{framework}.{name}.{GetFileTypeExtension(fileType)}.txt";
             string templateFullName = $"Leora.Templates.{framework}.{section}.{framework}{entityName}.{GetFileTypeExtension(fileType)}.txt";
             Stream stream = null;
             stream = typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateFullName);
-            
+
+            if (stream == null) {
+                foreach(var sufix in sufixList)
+                {
+                    if (HasSufix(entityName,sufix)) {
+                        var sufixPascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, sufix);
+                        templateFullName = $"Leora.Templates.{framework}.{section}.{framework}{sufixPascalCase}.{GetFileTypeExtension(fileType)}.txt";
+                        stream = typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateFullName);
+                        if (stream != null)
+                            break;
+                    }
+                }
+            }
             if (stream == null)
                 stream = typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateName);
 
@@ -95,6 +120,12 @@ namespace Leora.Services
                     return "js";
             }
             throw new NotImplementedException();
+        }
+
+        public bool HasSufix(string value, string sufix) {
+            value = _namingConventionConverter.Convert(NamingConvention.PascalCase, value);
+            sufix = _namingConventionConverter.Convert(NamingConvention.PascalCase, sufix);
+            return value.EndsWith(sufix);
         }
     }
 }

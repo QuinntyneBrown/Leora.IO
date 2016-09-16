@@ -17,7 +17,7 @@ namespace Leora.Services.Mocks
             return new List<string>().ToArray();
         }
 
-        public string[] Get(FileType fileType, string name, string section, string entityName, string framework = null)
+        public string[] Get(FileType fileType, string name, string section, string entityName, string framework = null, string[] sufixList = null)
         {
             return new List<string>().ToArray();
         }
