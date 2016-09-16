@@ -79,6 +79,9 @@ namespace Leora.Cli
                 ["dotnet-model"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateModelCommand>().Run,
                 ["dotnet-migration"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateMigrationsConfigurationCommand>().Run,
                 ["dotnet-upload-handlers"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateUploadHandlersCommand>().Run,
+                ["dotnet-configuration"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateConfigurationCommand>().Run,
+
+
                 ["react-component"] = _container.Resolve<Leora.Commands.React.Contracts.IGenerateComponentCommand>().Run,
 
                 ["command"] = _container.Resolve<Leora.Commands.Contracts.IGenerateCommandCommand>().Run,

@@ -24,6 +24,10 @@ namespace Leora.Commands.AspNetWebApi2
             int exitCode = 1;
             var pascalCaseName = $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}.cs";
 
+
+            // check if the name, split in half is two models that exist
+            // if it exist, make a relationship type model
+
             switch (name) {
                 case "User":
                     _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "Models.ApiUserModel", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));

@@ -1,0 +1,7 @@
+﻿namespace {{ namespacename }}
+{    
+    public interface I{{ entityNamePascalCase }}Configuration
+    {
+		string BaseUri { get; set; }
+    }
+}

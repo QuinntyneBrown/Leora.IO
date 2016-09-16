@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BaseCommand.cs" />
     <Compile Include="Contracts\IAspNetWebApi2Command.cs" />
+    <Compile Include="Contracts\IGenerateConfigurationCommand.cs" />
     <Compile Include="Contracts\IGenerateContentModelCommand.cs" />
     <Compile Include="Contracts\IGenerateControllerCommand.cs" />
     <Compile Include="Contracts\IGenerateDbContextCommand.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Contracts\IGenerateServiceCommand.cs" />
     <Compile Include="Contracts\IGenerateStreamHelperCommand.cs" />
     <Compile Include="Contracts\IGenerateUploadHandlersCommand.cs" />
+    <Compile Include="GenerateConfigurationCommand.cs" />
     <Compile Include="GenerateContentModelCommand.cs" />
     <Compile Include="GenerateControllerCommand.cs" />
     <Compile Include="GenerateDbContextCommand.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="GenerateUowCommand.cs" />
     <Compile Include="GenerateUploadHandlersCommand.cs" />
     <Compile Include="Options\BaseOptions.cs" />
+    <Compile Include="Options\GenerateConfigurationOptions.cs" />
     <Compile Include="Options\GenerateContentModelOptions.cs" />
     <Compile Include="Options\GenerateControllerOptions.cs" />
     <Compile Include="Options\GenerateDbContextOptions.cs" />

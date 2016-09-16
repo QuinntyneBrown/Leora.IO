@@ -1,0 +1,21 @@
+﻿using System;
+using System.Configuration;
+
+namespace {{ namespacename }}
+{    
+    public class {{ entityNamePascalCase }}Configuration: ConfigurationSection, I{{ entityNamePascalCase }}Configuration
+    {
+
+        [ConfigurationProperty("baseUri")]
+        public string BaseUri
+        {
+            get { return (string)this["baseUri"]; }
+            set { this["baseUri"] = value; }
+        }
+
+		public static I{{ entityNamePascalCase }}Configuration Config
+        {
+            get { return ConfigurationManager.GetSection("{{ entityNameCamelCase }}Configuration") as I{{ entityNamePascalCase }}Configuration; }
+        }
+    }
+}
