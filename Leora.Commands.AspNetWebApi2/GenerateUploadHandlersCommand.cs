@@ -24,7 +24,7 @@ namespace Leora.Commands.AspNetWebApi2
             System.IO.Directory.CreateDirectory($"{directory}//UploadHandlers");
 
             directory = $"{directory}//UploadHandlers";
-            namespacename = $"{namespacename}.UploadHanders";
+            namespacename = $"{namespacename}.UploadHandlers";
 
             var streamHelper = "StreamHelper.cs";
             var fileMultipartFormDataStreamProvider = "FileMultipartFormDataStreamProvider.cs";
