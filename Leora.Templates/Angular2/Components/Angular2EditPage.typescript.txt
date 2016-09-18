@@ -1,6 +1,7 @@
-﻿import { Component, Input } from "@angular/core";
+﻿import { Component, Input, OnInit } from "@angular/core";
 import { {{ entityNamePascalCase }}Actions } from "../actions";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
+import { AppStore } from "../store";
 
 @Component({
     template: require("./{{ entityNameSnakeCase }}-edit-page.component.html"),
@@ -8,7 +9,19 @@ import { Router } from "@angular/router";
     selector: "{{ entityNameSnakeCase }}-edit-page"
 })
 export class {{ entityNamePascalCase }}EditPageComponent { 
-    constructor(private _{{ entityNameCamelCase }}Actions: {{ entityNamePascalCase }}Actions, private _router: Router) { }
+    constructor(private _{{ entityNameCamelCase }}Actions: {{ entityNamePascalCase }}Actions, 
+        private _router: Router,
+        private _activatedRoute: ActivatedRoute,
+        private _store: AppStore
+    ) { }
+
+    ngOnInit() {
+        this._{{ entityNameCamelCase }}Actions.getById({ id: this._activatedRoute.snapshot.params["id"] });
+    }
+
+    public get entity$() {
+        return this._store.{{ entityNameCamelCase }}ById$(this._activatedRoute.snapshot.params["id"]);
+    }
 
     public onSubmit($event: any) {
         this._{{ entityNameCamelCase }}Actions.add({
