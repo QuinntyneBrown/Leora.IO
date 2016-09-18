@@ -28,6 +28,7 @@ export class {{ entityNamePascalCase }}EditFormComponent implements AfterViewIni
     @Input() public {{ entityNameCamelCase }}: {{ entityNamePascalCase }};
     @Output() public onSubmit = new EventEmitter();
     public form = new FormGroup({
+		id: new FormControl("", []),
         name: new FormControl("", [
             Validators.required
         ])
