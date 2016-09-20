@@ -326,6 +326,8 @@
     <EmbeddedResource Include="Angular2\Components\Angular2HtmlTextarea.html.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2HtmlTextarea.typescript.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2HtmlTextarea.scss.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2Editor.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2Editor.html.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />
