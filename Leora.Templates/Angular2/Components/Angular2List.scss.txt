@@ -20,3 +20,11 @@ a {
     cursor:pointer;
     font-weight:100;
 }
+
+.{{ entityNameSnakeCase }}-list-item-name-column {
+    min-width:300px;
+}
+
+.{{ entityNameSnakeCase }}-list-header {
+    font-weight:600;
+}

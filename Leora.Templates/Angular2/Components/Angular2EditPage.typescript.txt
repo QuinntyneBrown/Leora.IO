@@ -32,4 +32,8 @@ export class {{ entityNamePascalCase }}EditPageComponent {
         setTimeout(() => { this._router.navigate(["/{{ entityNameCamelCase }}s"]); }, 0);
         
     }
+
+    public onCancel() {
+        setTimeout(() => { this._router.navigate(["/{{ entityNameCamelCase }}s"]); }, 0);
+    }
 }

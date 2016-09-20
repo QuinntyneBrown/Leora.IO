@@ -1,6 +1,8 @@
 ﻿<div class="{{ entityNameSnakeCase }}-edit-page">
     <one-column-layout>
-        <{{ entityNameSnakeCase }}-edit-form (onSubmit)="onSubmit($event)"
+        <{{ entityNameSnakeCase }}-edit-form 
+							(onSubmit)="onSubmit($event)"
+							(onCancel)="onCancel()"
                          *ngIf="(!_activatedRoute.snapshot.params['id']) || (_activatedRoute.snapshot.params['id'] && (entity$ | async)?.id)"
                          [{{ entityNameCamelCase }}]="entity$ | async">
 		</{{ entityNameSnakeCase }}-edit-form>

@@ -26,7 +26,11 @@ export class {{ entityNamePascalCase }}EditFormComponent implements AfterViewIni
     }
 	    
     @Input() public {{ entityNameCamelCase }}: {{ entityNamePascalCase }};
-    @Output() public onSubmit = new EventEmitter();
+    
+	@Output() public onSubmit = new EventEmitter();
+
+	@Output() public onCancel = new EventEmitter();
+
     public form = new FormGroup({
 		id: new FormControl("", []),
         name: new FormControl("", [

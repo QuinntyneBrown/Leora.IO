@@ -10,5 +10,11 @@
                 [disabled]="form.invalid">
             Submit
         </button>
+
+		<button
+            (click)="onCancel.emit()"
+            [disabled]="form.invalid">
+			Cancel
+		</button>
     </form>
 </section>

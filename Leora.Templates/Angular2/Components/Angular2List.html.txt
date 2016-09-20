@@ -1,10 +1,31 @@
 ﻿<div class="{{ entityNameSnakeCase }}-list">
     <h1>{{ entityNameTitleCase }}s</h1>
-    <div *ngFor="let entity of entities; let i = index">
-        <a class="{{ entityNameSnakeCase }}-list-item-count">{{ i + 1 }}</a>
-        <a (click)="onSelect.emit({ value: entity })" class="{{ entityNameSnakeCase }}-list-item-name">{{ entity.name}}</a>
-        <a (click)="onDelete.emit({ value: entity })" class="{{ entityNameSnakeCase }}-list-item-action">DELETE</a>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        <a (click)="onEdit.emit({ value: entity })" class="{{ entityNameSnakeCase }}-list-item-action">EDIT</a>
-    </div>
+
+    <table>
+        <tr class="{{ entityNameSnakeCase }}-list-header">
+            <td>
+
+            </td>
+            <td>
+                Name
+            </td>
+            <td>
+                Actions
+            </td>
+        </tr>
+        <tr *ngFor="let entity of entities; let i = index">
+            <td>
+                <a class="{{ entityNameSnakeCase }}-list-item-count">{{ i + 1 }}</a>
+            </td>
+            <td class="{{ entityNameSnakeCase }}-list-item-name-column">
+                <a (click)="onSelect.emit({ value: entity })">{{ entity.name }}</a>
+            </td>
+            <td>
+                <a (click)="onDelete.emit({ value: entity })" class="{{ entityNameSnakeCase }}-list-item-action">DELETE</a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a (click)="onEdit.emit({ value: entity })" class="{{ entityNameSnakeCase }}-list-item-action">EDIT</a>
+            </td>
+        </tr>
+    </table>
+
 </div>
