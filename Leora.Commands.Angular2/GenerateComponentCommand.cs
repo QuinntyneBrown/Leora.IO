@@ -12,9 +12,9 @@ namespace Leora.Commands.Angular2
         public GenerateComponentCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter)
             : base(templateManager, templateProcessor, namingConventionConverter, projectManager, fileWriter) { }
 
-        public override int Run(GenerateComponentOptions options) => Run(options.Name, options.Directory);
+        public override int Run(GenerateComponentOptions options) => Run(options.Name, options.Directory, options.Simple);
 
-        public int Run(string name, string directory)
+        public int Run(string name, string directory, bool simple = false)
         {            
             var exitCode = 1;
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
@@ -24,8 +24,16 @@ namespace Leora.Commands.Angular2
             var htmlFileName = $"{snakeCaseName}.component.html";
             var baseFilePath = $"{directory}//{snakeCaseName}";
             var sufixList = new string[4] { "edit-page","edit-form", "list-page", "list" };
+            string[] templateTypescript;
 
-            var templateTypescript = _templateManager.Get(FileType.TypeScript, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2,sufixList);
+            Console.WriteLine(simple);
+
+            if (simple) {
+                templateTypescript = _templateManager.Get(FileType.TypeScript, "Angular2SimpleComponent", "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
+            } else {
+                templateTypescript = _templateManager.Get(FileType.TypeScript, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
+            }
+            
             var templateHtml = _templateManager.Get(FileType.Html, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
             var templateScss = _templateManager.Get(FileType.Scss, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
 

@@ -226,6 +226,7 @@
     <EmbeddedResource Include="Angular2\Actions\Angular2Authentication.typescript.txt" />
     <EmbeddedResource Include="Angular2\Actions\Angular2Content.typescript.txt" />
     <EmbeddedResource Include="Angular2\Actions\Angular2.txt" />
+    <EmbeddedResource Include="Angular2\Angular2SimpleComponent.typescript.txt" />
     <Content Include="Angular2\Angular2GitIgnore.none.txt" />
     <EmbeddedResource Include="Angular2\Angular2JQuery.js.txt" />
     <Content Include="Angular2\Angular2Normalize.scss.txt" />

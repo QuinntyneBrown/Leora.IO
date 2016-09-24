@@ -1,0 +1,8 @@
+﻿import { Component, Input } from "@angular/core";
+
+@Component({
+    templateUrl: "./{{ entityNameSnakeCase }}.component.html",
+    styleUrls: ["./{{ entityNameSnakeCase }}.component.css"],
+    selector: "{{ entityNameSnakeCase }}"
+})
+export class {{ entityNamePascalCase }}Component { }
