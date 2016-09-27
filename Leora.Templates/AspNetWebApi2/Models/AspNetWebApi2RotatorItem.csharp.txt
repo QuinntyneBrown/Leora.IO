@@ -1,0 +1,16 @@
+﻿using System;
+
+namespace {{ namespacename }}
+{
+    public class RotatorItem
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string SubTitle { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
+        public int OrderIndex { get; set; }
+        public string ImageUrl { get; set; }
+        public string HtmlBody { get; set; }
+    }
+}

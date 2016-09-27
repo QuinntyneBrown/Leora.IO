@@ -60,6 +60,7 @@ namespace Leora.Services
             List<string> lines = new List<string>();
             string templateName = $"Leora.Templates.{framework}.{name}.{GetFileTypeExtension(fileType)}.txt";
             string templateFullName = $"Leora.Templates.{framework}.{section}.{framework}{entityName}.{GetFileTypeExtension(fileType)}.txt";
+            
             Stream stream = null;
             stream = typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateFullName);
 

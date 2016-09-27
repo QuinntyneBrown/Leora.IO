@@ -23,29 +23,9 @@ namespace Leora.Commands.AspNetWebApi2
         {
             int exitCode = 1;
             var pascalCaseName = $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}.cs";
-
-
-            // check if the name, split in half is two models that exist
-            // if it exist, make a relationship type model
-
-            switch (name) {
-                case "User":
-                    _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "Models.ApiUserModel", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
-                    break;
-
-                case "Role":
-                    _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "Models.ApiRoleModel", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
-                    break;
-
-                case "DigitalAsset":
-                    _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "Models.ApiDigitalAssetModel", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
-                    break;
-
-                default:
-                    _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiModel", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
-                    break;
-            }
-
+            var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
+            var templateCs = _templateManager.Get(FileType.CSharp, "ApiModel", "Models", entityNamePascalCase, BluePrintType.AspNetWebApi2);
+            _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(templateCs, name, namespacename, rootNamespace));            
             _projectManager.Process(directory, $"{pascalCaseName}", FileType.CSharp);
             return exitCode;
         }
