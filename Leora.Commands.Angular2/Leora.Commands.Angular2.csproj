@@ -57,6 +57,7 @@
     <Compile Include="Contracts\IGenerateIndexCommand.cs" />
     <Compile Include="Contracts\IGenerateAppModuleCommand.cs" />
     <Compile Include="Contracts\IGenerateIndexFromFolderCommand.cs" />
+    <Compile Include="Contracts\IGenerateLibCommand.cs" />
     <Compile Include="Contracts\IGenerateLibsCommand.cs" />
     <Compile Include="Contracts\IGenerateMainCommand.cs" />
     <Compile Include="Contracts\IGenerateModelCommand.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="GenerateAppStoreCommand.cs" />
     <Compile Include="GenerateEnvironmentCommand.cs" />
     <Compile Include="GenerateIndexFromFolderCommand.cs" />
+    <Compile Include="GenerateLibCommand.cs" />
     <Compile Include="GenerateLibsCommand.cs" />
     <Compile Include="GenerateMainCommand.cs" />
     <Compile Include="GenerateModelCommand.cs" />
@@ -120,6 +122,7 @@
     <Compile Include="Options\GenerateAppStoreOptions.cs" />
     <Compile Include="Options\GenerateEnvironmentOptions.cs" />
     <Compile Include="Options\GenerateIndexFromFolderOptions.cs" />
+    <Compile Include="Options\GenerateLibOptions.cs" />
     <Compile Include="Options\GenerateLibsOptions.cs" />
     <Compile Include="Options\GenerateMainOptions.cs" />
     <Compile Include="Options\GenerateModelOptions.cs" />

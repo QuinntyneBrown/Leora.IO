@@ -67,6 +67,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.VisualStudio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.IO.QuickJobs", "Leora.IO.QuickJobs\Leora.IO.QuickJobs.csproj", "{69DEE6E8-69C7-42AC-AB07-A692015184E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.AspNetCore", "Leora.Commands.AspNetCore\Leora.Commands.AspNetCore.csproj", "{9D8D7E09-8443-4D89-9E04-C81C716F5DEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leora.Commands.Node", "Leora.Commands.Node\Leora.Commands.Node.csproj", "{CC4C372E-03BA-4914-9CC2-537920B03F3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -201,6 +205,14 @@ Global
 		{69DEE6E8-69C7-42AC-AB07-A692015184E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69DEE6E8-69C7-42AC-AB07-A692015184E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69DEE6E8-69C7-42AC-AB07-A692015184E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D8D7E09-8443-4D89-9E04-C81C716F5DEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D8D7E09-8443-4D89-9E04-C81C716F5DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D8D7E09-8443-4D89-9E04-C81C716F5DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D8D7E09-8443-4D89-9E04-C81C716F5DEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC4C372E-03BA-4914-9CC2-537920B03F3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4C372E-03BA-4914-9CC2-537920B03F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC4C372E-03BA-4914-9CC2-537920B03F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC4C372E-03BA-4914-9CC2-537920B03F3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

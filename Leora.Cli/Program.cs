@@ -71,6 +71,7 @@ namespace Leora.Cli
                 ["ng2-state"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateStateCommand>().Run,
                 ["."] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateIndexFromFolderCommand>().Run,
                 ["ng2-app"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateAppCommand>().Run,
+                ["ng2-lib"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateLibCommand>().Run,
 
                 ["dotnet-controller"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand>().Run,
                 ["dotnet-content-model"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateContentModelCommand>().Run,

@@ -2,7 +2,6 @@
 import { Http } from "@angular/http";
 import { {{ entityNamePascalCase }} } from "../models";
 import { Observable } from "rxjs";
-import { extractData } from "../utilities";
 
 import { apiCofiguration } from "../configuration";
 
