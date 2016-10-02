@@ -45,10 +45,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseCommmand.cs" />
+    <Compile Include="Contracts\IGenerateJsConfigJsonCommand.cs" />
     <Compile Include="Contracts\IGeneratePackageJsonCommand.cs" />
     <Compile Include="Contracts\IGenerateTypingsCommand.cs" />
+    <Compile Include="GenerateJsConfigJsonCommand.cs" />
     <Compile Include="GeneratePackageJsonCommand.cs" />
     <Compile Include="GenerateTypingsCommand.cs" />
+    <Compile Include="Options\GenerateJsConfigJsonOptions.cs" />
     <Compile Include="Options\GeneratePackageJsonOptions.cs" />
     <Compile Include="Options\GenerateTypingsOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
