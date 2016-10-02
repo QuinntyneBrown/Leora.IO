@@ -85,6 +85,10 @@
       <Project>{239c7774-bab3-4842-b86b-fe813708ce02}</Project>
       <Name>Leora.Commands.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands.Node\Leora.Commands.Node.csproj">
+      <Project>{cc4c372e-03ba-4914-9cc2-537920b03f3e}</Project>
+      <Name>Leora.Commands.Node</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Commands.React\Leora.Commands.React.csproj">
       <Project>{012098c2-1ad5-49c5-bbbc-5bf58d54c055}</Project>
       <Name>Leora.Commands.React</Name>

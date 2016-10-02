@@ -1,0 +1,36 @@
+﻿{
+  "name": "{{ entityNameSnakeCase }}",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "~1.12.0",
+    "typings": "^1.4.0",
+    "cookie-parser": "~1.3.4",
+    "debug": "~2.1.1",
+    "express": "~4.14.0",
+    "jade": "~1.9.2",
+    "less-middleware": "~2.0.1",
+    "morgan": "~1.5.1",
+    "serve-favicon": "~2.2.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.8.2",
+    "gulp": "^3.9.0",
+    "gulp-less": "^3.0.3",
+    "gulp-mocha": "^2.1.2",
+    "gulp-nodemon": "^2.0.3",
+    "gulp-sass": "^2.3.2",
+    "gulp-tsb": "^1.4.4",
+    "gulp-typescript": "^3.0.1",
+    "marked": "^0.3.5",
+    "mocha": "^2.2.5",
+    "nodemon": "^1.4.0",
+    "typescript": "^2.0.3"
+  }
+}

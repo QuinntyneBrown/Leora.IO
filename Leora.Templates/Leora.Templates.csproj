@@ -74,6 +74,8 @@
   <ItemGroup>
     <Folder Include="Angular2NgrxApp\" />
     <Folder Include="Angular2\Utilities\" />
+    <Folder Include="Node\Models\" />
+    <Folder Include="Node\Routes\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Angular1\Angular1Component.css.txt" />
@@ -330,6 +332,9 @@
     <EmbeddedResource Include="Angular2\Components\Angular2Editor.typescript.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2Editor.html.txt" />
     <EmbeddedResource Include="AspNetWebApi2\Models\AspNetWebApi2RotatorItem.csharp.txt" />
+    <EmbeddedResource Include="Node\NodeTypingsJson.json.txt" />
+    <EmbeddedResource Include="Node\NodePackageJson.json.txt" />
+    <EmbeddedResource Include="Node\NodeTsConfigJson.json.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />
