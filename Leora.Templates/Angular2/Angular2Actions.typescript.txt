@@ -5,7 +5,7 @@ import { AppState, AppStore } from "../store";
 import { {{ entityNameAllCaps }}_ADD_SUCCESS, {{ entityNameAllCaps }}_GET_SUCCESS, {{ entityNameAllCaps }}_REMOVE_SUCCESS } from "../constants";
 import { {{ entityNamePascalCase }} } from "../models";
 import { Observable } from "rxjs";
-import { guid } from "../utilities";
+import { guid } from "ng2-utilities";
 
 @Injectable()
 export class {{ entityNamePascalCase }}Actions {

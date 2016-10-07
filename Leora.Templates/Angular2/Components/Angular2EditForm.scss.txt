@@ -12,3 +12,7 @@ textarea {
 	height: 120px;	
 	padding: 5px;
 }
+
+button {
+	display:inline-block;
+}
