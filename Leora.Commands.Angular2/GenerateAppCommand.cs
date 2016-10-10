@@ -125,10 +125,10 @@ namespace Leora.Commands.Angular2
             _generateRxJSExtensionsCommand.Run(entity, $"{directory}\\src\\app");
             _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app");
 
-            CreateDirectory($"{directory}\\src\\app\\actions");
-            _generateActionsCommand.Run(entity, $"{directory}\\src\\app\\actions");
-            _generateModuleCommand.Run("actions", $"{directory}\\src\\app\\actions");
-            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\actions");
+            //CreateDirectory($"{directory}\\src\\app\\actions");
+            //_generateActionsCommand.Run(entity, $"{directory}\\src\\app\\actions");
+            //_generateModuleCommand.Run("actions", $"{directory}\\src\\app\\actions");
+            //_generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\actions");
 
             CreateDirectory($"{directory}\\src\\app\\components");
             _generateModuleCommand.Run("components", $"{directory}\\src\\app\\components");
@@ -138,13 +138,6 @@ namespace Leora.Commands.Angular2
             _generateApiConfigurationCommand.Run(entity, $"{directory}\\src\\app\\configuration");
             _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\configuration");
 
-            CreateDirectory($"{directory}\\src\\app\\constants");
-            _generateActionConstantsCommand.Run(entity, $"{directory}\\src\\app\\constants");
-            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\constants");
-
-            CreateDirectory($"{directory}\\src\\app\\helpers");
-            _generateModuleCommand.Run("helpers", $"{directory}\\src\\app\\helpers");
-            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\helpers");
 
             CreateDirectory($"{directory}\\src\\app\\models");
             _generateModelCommand.Run(entity, $"{directory}\\src\\app\\models");
@@ -154,9 +147,6 @@ namespace Leora.Commands.Angular2
             _generateComponentCommand.Run("home-page", $"{directory}\\src\\app\\pages");
             _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\pages");
 
-            CreateDirectory($"{directory}\\src\\app\\pipes");
-            _generateModuleCommand.Run("pipes", $"{directory}\\src\\app\\pipes");
-            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\pipes");
 
             CreateDirectory($"{directory}\\src\\app\\routing");
             _generateModuleCommand.Run("routing", $"{directory}\\src\\app\\routing");
@@ -167,16 +157,13 @@ namespace Leora.Commands.Angular2
             _generateServiceCommand.Run(entity, $"{directory}\\src\\app\\services");
             _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\services");
 
-            CreateDirectory($"{directory}\\src\\app\\store");
-            _generateModuleCommand.Run("store", $"{directory}\\src\\app\\store");
-            _generateReducerCommand.Run(entity, $"{directory}\\src\\app\\store");
-            _generateAppStoreCommand.Run(entity, $"{directory}\\src\\app\\store");
-            _generateStateCommand.Run(entity, $"{directory}\\src\\app\\store");
-            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\store");
+            //CreateDirectory($"{directory}\\src\\app\\store");
+            //_generateModuleCommand.Run("store", $"{directory}\\src\\app\\store");
+            //_generateReducerCommand.Run(entity, $"{directory}\\src\\app\\store");
+            //_generateAppStoreCommand.Run(entity, $"{directory}\\src\\app\\store");
+            //_generateStateCommand.Run(entity, $"{directory}\\src\\app\\store");
+            //_generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\store");
 
-            CreateDirectory($"{directory}\\src\\app\\utilities");
-            _generateUtilitiesCommand.Run(entity, $"{directory}\\src\\app\\utilities");
-            _generateIndexFromFolderCommand.Run(entity, $"{directory}\\src\\app\\utilities");
 
             CreateDirectory($"{directory}\\src\\styles");
 
