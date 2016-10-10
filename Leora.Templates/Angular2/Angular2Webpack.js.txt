@@ -1,40 +1,32 @@
-﻿module.exports = {
+﻿var webpack = require('webpack');
+
+var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+
+module.exports = {
+    devtool: 'source-map',
     entry: {
-        'polyfills': './src/polyfills.ts',
-        'vendor': './src/vendor.ts',
-        'app': './src/main.ts'
+        'vendor': ['./src/polyfills', './src/vendor'],
+        'app': './src/main'
     },
     output: {
-        path: "./dist",
-        filename: '[name].js',
-        chunkFilename: '[id].chunk.js'
+        path: __dirname + "/dist",
+        filename: "[name].js",
+        publicPath: "dist/"
     },
     resolve: {
-        extensions: ['', '.js', '.ts']
+        extensions: ['.ts', '.js', '.jpg', '.jpeg', '.gif', '.png', '.css', '.html']
     },
     module: {
         loaders: [
-            {
-                test: /\.ts$/,
-                loader: 'ts',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.html$/,
-                loader: 'html'
-            },
-            {
-                test: /\.css$/,
-                loaders: ["css"]
-            },
-            {
-                test: /\.scss$/,
-                exclude: /node_modules/,
-                loaders: ['raw-loader', 'sass-loader']
-            }
+            { test: /\.scss$/, exclude: /node_modules/, loaders: ['raw-loader', 'sass-loader'] },
+            { test: /\.(jpg|jpeg|gif|png)$/, loader: 'file-loader?name=img/[path][name].[ext]' },
+            { test: /\.(eof|woff|woff2|svg)$/, loader: 'file-loader?name=img/[path][name].[ext]' },
+            { test: /\.css$/, loader: 'raw-loader' },
+            { test: /\.html$/, loaders: ['html-loader'] },
+            { test: /\.ts$/, loaders: ['angular2-router-loader?loader=system', 'awesome-typescript-loader'], exclude: /node_modules/ }
         ]
     },
-    resolve: {
-        extensions: ['', '.webpack.js', '.web,js', '.ts', '.js']
-    }
-}
+    plugins: [
+        new CommonsChunkPlugin({ name: 'vendor' })
+    ]
+};
