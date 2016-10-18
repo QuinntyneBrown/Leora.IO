@@ -2,11 +2,6 @@
 using Leora.Commands.Angular2.Options;
 using Leora.Models;
 using Leora.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.IO.Directory;
 
 namespace Leora.Commands.Angular2

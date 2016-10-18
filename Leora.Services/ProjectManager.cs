@@ -14,9 +14,9 @@ namespace Leora.Services
     {
         protected readonly XNamespace msbuild = "http://schemas.microsoft.com/developer/msbuild/2003";
 
-        public void Process(string currentDirectory, string fileName, FileType fileType = FileType.TypeScript)
+        public void Process(string currentDirectory, string fileName, FileType fileType = FileType.TypeScript, bool trace = false)
         {
-            var relativePathAndProjFile = GetRelativePathAndProjFile($"{currentDirectory}//{fileName}");
+            var relativePathAndProjFile = GetRelativePathAndProjFile($"{currentDirectory}//{fileName}", 0,true);
             if (relativePathAndProjFile != null)
             {
                 var csproj = Add(XDocument.Load(relativePathAndProjFile.ProjFile), relativePathAndProjFile.RelativePath, fileType);
@@ -24,7 +24,7 @@ namespace Leora.Services
             }
         }
 
-        public XDocument Add(XDocument csproj, string relativePath, FileType fileType = FileType.TypeScript)
+        public XDocument Add(XDocument csproj, string relativePath, FileType fileType = FileType.TypeScript, bool trace = false)
         {
             if (csproj.ToString().Contains(relativePath))
                 return csproj;
@@ -32,7 +32,6 @@ namespace Leora.Services
             var itemGroup = GetItemGroup(fileType, csproj.Descendants(msbuild + "ItemGroup"));
             if (itemGroup == null)
             {
-                Console.WriteLine("Item Group is null");
                 AddItemGroup(fileType, csproj);
                 itemGroup = csproj.Descendants(msbuild + "ItemGroup").Last();
 
@@ -48,8 +47,16 @@ namespace Leora.Services
             return csproj;
         }
 
-        public RelativePathAndProjFile GetRelativePathAndProjFile(string fullFilePath, int depth = 0)
+        public RelativePathAndProjFile GetRelativePathAndProjFile(string fullFilePath, int depth = 0, bool trace = false)
         {
+
+            if(trace)
+            {
+                Console.WriteLine($"{fullFilePath}:{depth}");
+                Console.WriteLine();
+
+            }
+
             var directories = GetDirectoryName(fullFilePath).Split(DirectorySeparatorChar);
 
             if (directories.Length < depth)
@@ -71,7 +78,7 @@ namespace Leora.Services
             else
             {
                 depth = depth + 1;
-                return GetRelativePathAndProjFile(fullFilePath, depth);
+                return GetRelativePathAndProjFile(fullFilePath, depth, trace);
             }
         }
 

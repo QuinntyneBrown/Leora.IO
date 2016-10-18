@@ -5,7 +5,7 @@ namespace Leora.Services.Contracts
 {
     public interface IProjectManager
     {
-        void Process(string currentDirectory, string fileName, FileType fileType = FileType.TypeScript);
-        XDocument Add(XDocument csproj, string relativePath, FileType fileType = FileType.TypeScript);
+        void Process(string currentDirectory, string fileName, FileType fileType = FileType.TypeScript, bool trace = false);
+        XDocument Add(XDocument csproj, string relativePath, FileType fileType = FileType.TypeScript, bool trace = false);
     }
 }
