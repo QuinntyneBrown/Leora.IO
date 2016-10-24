@@ -16,7 +16,7 @@ namespace Leora.Services
 
         public void Process(string currentDirectory, string fileName, FileType fileType = FileType.TypeScript, bool trace = false)
         {
-            var relativePathAndProjFile = GetRelativePathAndProjFile($"{currentDirectory}//{fileName}", 0,true);
+            var relativePathAndProjFile = GetRelativePathAndProjFile($"{currentDirectory}//{fileName}", 0,trace);
             if (relativePathAndProjFile != null)
             {
                 var csproj = Add(XDocument.Load(relativePathAndProjFile.ProjFile), relativePathAndProjFile.RelativePath, fileType);
