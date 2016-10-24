@@ -1,9 +1,7 @@
 ﻿import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
-import { {{ entityNamePascalCase }} } from "../models";
+import { {{ entityNamePascalCase }} } from "./{{ entityNameCamelCase }}.model";
 import { Observable } from "rxjs";
-
-import { apiCofiguration } from "../configuration";
 
 
 @Injectable()
@@ -12,7 +10,7 @@ export class {{ entityNamePascalCase }}Service {
 
     public add(entity: {{ entityNamePascalCase }}) {
         return this._http
-            .post(`${apiCofiguration.baseUrl}/api/{{ entityNameLowerCase }}/add`, entity)
+            .post(`${this._baseUrl}/api/{{ entityNameLowerCase }}/add`, entity)
             .map(data => data.json())
             .catch(err => {
                 return Observable.of(false);
@@ -21,7 +19,7 @@ export class {{ entityNamePascalCase }}Service {
 
     public get() {
         return this._http
-            .get(`${apiCofiguration.baseUrl}/api/{{ entityNameLowerCase }}/get`)
+            .get(`${this._baseUrl}/api/{{ entityNameLowerCase }}/get`)
             .map(data => data.json())
             .catch(err => {
                 return Observable.of(false);
@@ -30,7 +28,7 @@ export class {{ entityNamePascalCase }}Service {
 
     public getById(options: { id: number }) {
         return this._http
-            .get(`${apiCofiguration.baseUrl}/api/{{ entityNameLowerCase }}/getById?id=${options.id}`)
+            .get(`${this._baseUrl}/api/{{ entityNameLowerCase }}/getById?id=${options.id}`)
             .map(data => data.json())
             .catch(err => {
                 return Observable.of(false);
@@ -39,13 +37,13 @@ export class {{ entityNamePascalCase }}Service {
 
     public remove(options: { id: number }) {
         return this._http
-            .delete(`${apiCofiguration.baseUrl}/api/{{ entityNameLowerCase }}/remove?id=${options.id}`)
+            .delete(`${this._baseUrl}/api/{{ entityNameLowerCase }}/remove?id=${options.id}`)
             .map(data => data.json())
             .catch(err => {
                 return Observable.of(false);
             });
     }
 
-    public get baseUrl() { return apiCofiguration.baseUrl; }
+    public get _baseUrl() { return ""; }
 
 }
