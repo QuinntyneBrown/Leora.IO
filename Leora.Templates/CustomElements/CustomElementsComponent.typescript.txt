@@ -1,6 +1,11 @@
-﻿let customElements:any;
+﻿import { loadStyles } from "../utils";
+let customElements:any;
+let template = require("./{{ entityNameSnakeCase }}.component.html");
+let styles = require("./{{ entityNameSnakeCase }}.component.scss");
+
 const prefix: string = "{{ prefix }}";
 const selector: string = "{{ entityNameSnakeCase }}";
+
 let customInnerHTML = [
     "<style>", 
     require("./{{ entityNameSnakeCase }}.component.scss"), 
@@ -8,8 +13,10 @@ let customInnerHTML = [
     require("./{{ entityNameSnakeCase }}.component.html")
     ].join(" ");
 
-if(!document.head["createShadowRoot"])
-    customInnerHTML = customInnerHTML.replace(":host", `${prefix}-${selector}`);
+if(!document.head["createShadowRoot"]) {
+    styles = styles.replace(new RegExp(":host", 'g'), `${prefix}-${selector}`)
+    loadStyles(styles);
+}
 
 export class {{ entityNamePascalCase }}Component extends HTMLElement {
     constructor() {
@@ -22,11 +29,11 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
 
     connectedCallback() {
 
-        if(document.head["createShadowRoot"]) {
-            let shadowRoot = (this as any).attachShadow({mode: 'open'});
-            shadowRoot.innerHTML = customInnerHTML;            
+		if(document.head["createShadowRoot"]) {
+            this._root = (this as any).attachShadow({mode: 'open'});
+            this._root.innerHTML = customInnerHTML;            
         } else {
-            this.innerHTML = customInnerHTML;
+            this.innerHTML = template;
         }  
     }
 
@@ -37,6 +44,8 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
     attributeChangedCallback (name, oldValue, newValue) {
 
     }
+
+	private _root;
 }
 
 document.addEventListener("DOMContentLoaded",function() {
