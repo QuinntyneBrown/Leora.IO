@@ -2,16 +2,9 @@
 let customElements:any;
 let template = require("./{{ entityNameSnakeCase }}.component.html");
 let styles = require("./{{ entityNameSnakeCase }}.component.scss");
-
 const prefix: string = "{{ prefix }}";
 const selector: string = "{{ entityNameSnakeCase }}";
-
-let customInnerHTML = [
-    "<style>", 
-    require("./{{ entityNameSnakeCase }}.component.scss"), 
-    "</style>", 
-    require("./{{ entityNameSnakeCase }}.component.html")
-    ].join(" ");
+let customInnerHTML = ["<style>",styles, "</style>", template].join(" ");
 
 if(!document.head["createShadowRoot"]) {
     styles = styles.replace(new RegExp(":host", 'g'), `${prefix}-${selector}`)
