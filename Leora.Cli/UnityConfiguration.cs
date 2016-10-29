@@ -2,6 +2,7 @@
 using Leora.Commands.Angular1;
 using Leora.Commands.Angular1.Contracts;
 using Leora.Commands.Contracts;
+using Leora.Commands.CustomElements;
 using Leora.Commands.VisualStudio;
 using Leora.Commands.VisualStudio.Contracts;
 using Leora.Services;
@@ -35,6 +36,9 @@ namespace Leora.Cli
             container.RegisterType<IGenerateListCommand, GenerateListCommand>();
             container.RegisterType<IGenerateComponentCommand, GenerateComponentCommand>();
             container.RegisterType<IGenerateFeatureCommand, GenerateFeatureCommand>();
+
+            container.RegisterType<IGenerateCustomElementCommand, GenerateCustomElementCommand>();
+            container.RegisterType<ICustomElementsTemplateProcessor, CustomElementsTemplateProcessor>();
 
 
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand, Commands.AspNetWebApi2.GenerateControllerCommand>();

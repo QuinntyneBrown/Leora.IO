@@ -73,6 +73,8 @@ namespace Leora.Cli
                 ["ng2-app"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateAppCommand>().Run,
                 ["ng2-lib"] = _container.Resolve<Leora.Commands.Angular2.Contracts.IGenerateLibCommand>().Run,
 
+                ["ce"] = _container.Resolve<Leora.Commands.CustomElements.IGenerateCustomElementCommand>().Run,
+
                 ["dotnet-controller"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand>().Run,
                 ["dotnet-content-model"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateContentModelCommand>().Run,
                 ["dotnet-service"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateServiceCommand>().Run,

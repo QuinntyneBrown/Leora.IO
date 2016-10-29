@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICustomElementsTemplateProcessor.cs" />
     <Compile Include="IDotNetTemplateProcessor.cs" />
     <Compile Include="IFileWriter.cs" />
     <Compile Include="IMicroserviceTemplateProcessor.cs" />

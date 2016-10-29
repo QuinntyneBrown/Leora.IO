@@ -74,6 +74,7 @@
   <ItemGroup>
     <Folder Include="Angular2NgrxApp\" />
     <Folder Include="Angular2\Utilities\" />
+    <Folder Include="CustomElements\Components\" />
     <Folder Include="Node\Models\" />
     <Folder Include="Node\Routes\" />
   </ItemGroup>
@@ -336,6 +337,9 @@
     <EmbeddedResource Include="Node\NodePackageJson.json.txt" />
     <EmbeddedResource Include="Node\NodeTsConfigJson.json.txt" />
     <EmbeddedResource Include="Node\NodeJsConfigJson.json.txt" />
+    <EmbeddedResource Include="CustomElements\CustomElementsComponent.html.txt" />
+    <EmbeddedResource Include="CustomElements\CustomElementsComponent.scss.txt" />
+    <EmbeddedResource Include="CustomElements\CustomElementsComponent.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

@@ -85,6 +85,10 @@
       <Project>{239c7774-bab3-4842-b86b-fe813708ce02}</Project>
       <Name>Leora.Commands.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands.CustomElements\Leora.Commands.CustomElements.csproj">
+      <Project>{64901fca-9eeb-4289-9c36-f57f0da2755e}</Project>
+      <Name>Leora.Commands.CustomElements</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Commands.Node\Leora.Commands.Node.csproj">
       <Project>{cc4c372e-03ba-4914-9cc2-537920b03f3e}</Project>
       <Name>Leora.Commands.Node</Name>
