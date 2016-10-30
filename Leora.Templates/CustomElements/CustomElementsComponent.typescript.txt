@@ -1,15 +1,9 @@
-﻿import { loadStyles } from "../utils";
-let customElements:any;
+﻿let customElements:any;
 let template = require("./{{ entityNameSnakeCase }}.component.html");
 let styles = require("./{{ entityNameSnakeCase }}.component.scss");
 const prefix: string = "{{ prefix }}";
 const selector: string = "{{ entityNameSnakeCase }}";
-let customInnerHTML = ["<style>",styles, "</style>", template].join(" ");
-
-if(!document.head["createShadowRoot"]) {
-    styles = styles.replace(new RegExp(":host", 'g'), `${prefix}-${selector}`)
-    loadStyles(styles);
-}
+let customInnerHTML = `<style>${styles}</style> ${template}`;
 
 export class {{ entityNamePascalCase }}Component extends HTMLElement {
     constructor() {
@@ -21,13 +15,8 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
     }
 
     connectedCallback() {
-
-		if(document.head["createShadowRoot"]) {
-            this._root = (this as any).attachShadow({mode: 'open'});
-            this._root.innerHTML = customInnerHTML;            
-        } else {
-            this.innerHTML = template;
-        }  
+        this._root = (this as any).attachShadow({mode: 'open'});
+        this._root.innerHTML = customInnerHTML; 
     }
 
     disconnectedCallback() {
