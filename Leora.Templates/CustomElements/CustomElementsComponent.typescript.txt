@@ -20,7 +20,10 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
     }
 
     attributeChangedCallback (name, oldValue, newValue) {
-
+        switch (name) {
+            default:
+                break;
+        }
     }
 }
 
