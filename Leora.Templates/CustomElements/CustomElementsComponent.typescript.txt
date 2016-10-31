@@ -1,9 +1,5 @@
-﻿let customElements:any;
-let template = require("./{{ entityNameSnakeCase }}.component.html");
+﻿let template = require("./{{ entityNameSnakeCase }}.component.html");
 let styles = require("./{{ entityNameSnakeCase }}.component.scss");
-const prefix: string = "{{ prefix }}";
-const selector: string = "{{ entityNameSnakeCase }}";
-let customInnerHTML = `<style>${styles}</style> ${template}`;
 
 export class {{ entityNamePascalCase }}Component extends HTMLElement {
     constructor() {
@@ -15,8 +11,8 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
     }
 
     connectedCallback() {
-        this._root = (this as any).attachShadow({mode: 'open'});
-        this._root.innerHTML = customInnerHTML; 
+        let root = (this as any).attachShadow({mode: 'open'});
+        root.innerHTML = `<style>${styles}</style> ${template}`; 
     }
 
     disconnectedCallback() {
@@ -26,10 +22,8 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
     attributeChangedCallback (name, oldValue, newValue) {
 
     }
-
-	private _root;
 }
 
 document.addEventListener("DOMContentLoaded",function() {
-    (window as any).customElements.define(`${prefix}-${selector}`,{{ entityNamePascalCase }}Component);
+    (window as any).customElements.define(`{{ prefix }}-{{ entityNameSnakeCase }}`,{{ entityNamePascalCase }}Component);
 });
