@@ -1,0 +1,60 @@
+﻿import { {{ entityNamePascalCase }} } from "./{{ entityNameCamelCase }}.model";
+
+export var {{ entityNameCamelCase }}Actions = {
+    ADD_SUCCESS: "[{{ entityNamePascalCase }}] Add Success",
+    DELETE: "[{{ entityNamePascalCase }}] Delete",
+    DELETE_SUCCESS: "[{{ entityNamePascalCase }}] Delete Success",
+    SELECT: "[{{ entityNamePascalCase }}] Select"
+};
+
+export class {{ entityNamePascalCase }}DeleteSuccess extends CustomEvent {
+    constructor({{ entityNameCamelCase }}Id: any) {
+        super({{ entityNameCamelCase }}Actions.DELETE_SUCCESS, {
+            detail: {
+                {{ entityNameCamelCase }}Id: {{ entityNameCamelCase }}Id
+            }
+        });
+    }
+}
+
+export class {{ entityNamePascalCase }}AddSuccess extends CustomEvent {
+    constructor({{ entityNameCamelCase }}: {{ entityNamePascalCase }}) {
+        super({{ entityNameCamelCase }}Actions.ADD_SUCCESS, {
+            detail: {
+                {{ entityNameCamelCase }}: {{ entityNamePascalCase }}
+            }
+        });
+    }
+}
+
+export class {{ entityNamePascalCase }}DeleteSelect extends CustomEvent {
+    constructor(id: number) {
+        super({{ entityNameCamelCase }}Actions.DELETE, {
+            detail: {
+                {{ entityNameCamelCase }}Id: id,
+            }
+        });
+    }
+}
+
+export class {{ entityNamePascalCase }}EditSelect extends CustomEvent {
+    constructor(id: number) {
+        super({{ entityNameCamelCase }}Actions.SELECT, {
+            detail: {
+                {{ entityNameCamelCase }}Id: id,
+                readonly: false,
+            }
+        });
+    }
+}
+
+export class {{ entityNamePascalCase }}ViewSelect extends CustomEvent {
+    constructor(id: number) {
+        super({{ entityNameCamelCase }}Actions.SELECT, {
+            detail: {
+                {{ entityNameCamelCase }}Id: id,
+                readonly: true
+            }
+        });
+    }
+}

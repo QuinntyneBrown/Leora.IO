@@ -1,0 +1,22 @@
+﻿import { fetch } from "../utilities";
+import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
+
+export class {{ entityNamePascalCase }}Service {
+    
+    public get() {
+        return fetch({ url: "/api/{{ entityNameSnakeCase }}/get" });
+    }
+
+    public getById(id) {
+        return fetch({ url: `/api/{{ entityNameSnakeCase }}/getbyid?id=${id}` });
+    }
+
+    public add(entity) {
+        return fetch({ url: `/api/{{ entityNameSnakeCase }}/add`, method: "POST", data: entity });
+    }
+
+    public remove(options: { id : number }) {
+        return fetch({ url: `/api/{{ entityNameSnakeCase }}/remove?id=${options.id}`, method: "DELETE" });
+    }
+    
+}

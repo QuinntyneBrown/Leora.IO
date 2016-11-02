@@ -1,0 +1,10 @@
+﻿ce-{{ entityNameSnakeCase }}-edit {
+    margin-bottom:40px;
+
+}
+
+button {
+    width:100px;
+    line-height:30px;
+    font-size: 1em;
+}

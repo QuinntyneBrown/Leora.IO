@@ -11,8 +11,7 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
     }
 
     connectedCallback() {
-        let root = (this as any).attachShadow({mode: 'open'});
-        root.innerHTML = `<style>${styles}</style> ${template}`; 
+        this.innerHTML = `<style>${styles}</style> ${template}`; 
     }
 
     disconnectedCallback() {
@@ -27,6 +26,4 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
     }
 }
 
-document.addEventListener("DOMContentLoaded",function() {
-    (window as any).customElements.define(`{{ prefix }}-{{ entityNameSnakeCase }}`,{{ entityNamePascalCase }}Component);
-});
+document.addEventListener("DOMContentLoaded",() => window.customElements.define(`{{ prefix }}-{{ entityNameSnakeCase }}`,{{ entityNamePascalCase }}Component));
