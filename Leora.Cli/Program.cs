@@ -75,7 +75,8 @@ namespace Leora.Cli
 
                 ["ce"] = _container.Resolve<Leora.Commands.CustomElements.IGenerateCustomElementCommand>().Run,
                 ["ce-actions"] = _container.Resolve<Leora.Commands.CustomElements.IGenerateActionsCommand>().Run,
-
+                ["ce-service"] = _container.Resolve<Leora.Commands.CustomElements.IGenerateServiceCommand>().Run,
+                
                 ["dotnet-controller"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand>().Run,
                 ["dotnet-content-model"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateContentModelCommand>().Run,
                 ["dotnet-service"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateServiceCommand>().Run,

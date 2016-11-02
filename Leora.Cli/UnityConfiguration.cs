@@ -31,7 +31,7 @@ namespace Leora.Cli
             container.RegisterType<IGenerateContainerCommand, GenerateContainerCommand>();
             container.RegisterType<IGenerateModuleCommand, GenerateModuleCommand>();
             container.RegisterType<IGenerateModelCommand, GenerateModelCommand>();
-            container.RegisterType<IGenerateServiceCommand, GenerateServiceCommand>();
+            container.RegisterType<Commands.Angular1.Contracts.IGenerateServiceCommand, Commands.Angular1.GenerateServiceCommand>();
             container.RegisterType<IGenerateEditorCommand, GenerateEditorCommand>();
             container.RegisterType<IGenerateListCommand, GenerateListCommand>();
             container.RegisterType<IGenerateComponentCommand, GenerateComponentCommand>();
@@ -39,6 +39,7 @@ namespace Leora.Cli
 
             container.RegisterType<IGenerateCustomElementCommand, GenerateCustomElementCommand>();
             container.RegisterType<IGenerateActionsCommand, GenerateActionsCommand>();
+            container.RegisterType<Commands.CustomElements.IGenerateServiceCommand, Commands.CustomElements.GenerateServiceCommand>();
             container.RegisterType<ICustomElementsTemplateProcessor, CustomElementsTemplateProcessor>();
 
 

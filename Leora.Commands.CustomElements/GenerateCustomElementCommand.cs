@@ -43,11 +43,24 @@ namespace Leora.Commands.CustomElements
             var cssFileName = $"{snakeCaseName}.component.scss";
             var htmlFileName = $"{snakeCaseName}.component.html";
             var baseFilePath = $"{directory}//{snakeCaseName}";
+
+            var sufixList = new string[1] { "edit" };
+
+            var templateTypescript = _templateManager.Get(FileType.TypeScript, "CustomElementsComponent", "Components", entityNamePascalCase, BluePrintType.CustomElements,sufixList);
+            var templateHtml = _templateManager.Get(FileType.Html, "CustomElementsComponent", "Components", entityNamePascalCase, BluePrintType.CustomElements, sufixList);
+            var templateScss = _templateManager.Get(FileType.Scss, "CustomElementsComponent", "Components", entityNamePascalCase, BluePrintType.CustomElements, sufixList);
             
-            var templateTypescript = _templateManager.Get(FileType.TypeScript, "CustomElementsComponent", "Components", entityNamePascalCase, BluePrintType.CustomElements);
-            var templateHtml = _templateManager.Get(FileType.Html, "CustomElementsComponent", "Components", entityNamePascalCase, BluePrintType.CustomElements);
-            var templateScss = _templateManager.Get(FileType.Scss, "CustomElementsComponent", "Components", entityNamePascalCase, BluePrintType.CustomElements);
-            
+            foreach (var sufix in sufixList)
+            {
+                if (HasSufix(name, sufix))
+                {
+                    name = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
+                    var newSufix = _namingConventionConverter.Convert(NamingConvention.PascalCase, sufix);
+                    name = name.Substring(0, name.Length - newSufix.Length);
+                    break;
+                }
+            }
+
             _fileWriter.WriteAllLines($"{baseFilePath}.component.ts", _templateProcessor.ProcessTemplate(templateTypescript, name,prefix));
             _fileWriter.WriteAllLines($"{baseFilePath}.component.scss", _templateProcessor.ProcessTemplate(templateScss, name, prefix));
             _fileWriter.WriteAllLines($"{baseFilePath}.component.html", _templateProcessor.ProcessTemplate(templateHtml, name, prefix));
@@ -61,6 +74,30 @@ namespace Leora.Commands.CustomElements
             catch  { }
 
             return exitCode;
+        }
+
+
+        public bool HasSufix(string value, string sufix)
+        {
+            value = _namingConventionConverter.Convert(NamingConvention.PascalCase, value);
+            sufix = _namingConventionConverter.Convert(NamingConvention.PascalCase, sufix);
+            return value.EndsWith(sufix);
+        }
+
+        public string GetSufix(bool simple)
+        {
+            if (simple)
+                return "css";
+
+            return "scss";
+        }
+
+        public string ResolveComponentName(bool simple)
+        {
+            if (simple)
+                return "Angular2SimpleComponent";
+
+            return "Angular2Component";
         }
 
     }

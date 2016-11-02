@@ -29,7 +29,7 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
         
         if (this.{{ entityNameSnakeCase }}Id) {
             this._{{ entityNameSnakeCase }}.getById(this.{{ entityNameSnakeCase }}Id).then((results: string) => { 
-                var resultsJSON: {{ entityNameSnakeCase }} = JSON.parse(results) as {{ entityNameSnakeCase }};                
+                var resultsJSON: {{ entityNamePascalCase }} = JSON.parse(results) as {{ entityNamePascalCase }};                
                 this.nameInputElement.value = resultsJSON.name;              
             });
             this.titleElement.textContent = "Edit {{ entityNameSnakeCase }}";
@@ -40,16 +40,16 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
         var {{ entityNameSnakeCase }} = {
             id: this.{{ entityNameSnakeCase }}Id,
             name: this.nameInputElement.value
-        } as {{ entityNameSnakeCase }};
+        } as {{ entityNamePascalCase }};
         
         this._{{ entityNameSnakeCase }}.add({{ entityNameSnakeCase }}).then((results) => {
-            this.dispatchEvent(new {{ entityNameSnakeCase }}AddSuccess({{ entityNameSnakeCase }}));
+            this.dispatchEvent(new {{ entityNamePascalCase }}AddSuccess({{ entityNameSnakeCase }}));
         });
     }
 
     public onDelete() {        
         this._{{ entityNameSnakeCase }}.remove({ id: this.{{ entityNameSnakeCase }}Id }).then((results) => {
-            this.dispatchEvent(new {{ entityNameSnakeCase }}DeleteSuccess(this.{{ entityNameSnakeCase }}Id));
+            this.dispatchEvent(new {{ entityNamePascalCase }}DeleteSuccess(this.{{ entityNameSnakeCase }}Id));
         });
     }
 

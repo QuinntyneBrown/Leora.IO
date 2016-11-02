@@ -64,12 +64,13 @@ namespace Leora.Services
             Stream stream = null;
             stream = typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateFullName);
 
+
             if (stream == null) {
                 foreach(var sufix in sufixList)
-                {
-                    if (HasSufix(entityName,sufix)) {
+                {                    
+                    if (HasSufix(entityName,sufix)) {                        
                         var sufixPascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, sufix);
-                        templateFullName = $"Leora.Templates.{framework}.{section}.{framework}{sufixPascalCase}.{GetFileTypeExtension(fileType)}.txt";
+                        templateFullName = $"Leora.Templates.{framework}.{section}.{framework}{sufixPascalCase}.{GetFileTypeExtension(fileType)}.txt";                        
                         stream = typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateFullName);
                         if (stream != null)
                             break;
