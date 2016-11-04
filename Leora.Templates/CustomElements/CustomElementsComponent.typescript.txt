@@ -11,17 +11,18 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
     }
 
     connectedCallback() {
-        this._ractive = new Ractive({ el: this, template: `<style>${styles}</style> ${template}`, data: this }); 
+        this.innerHTML = `<style>${styles}</style> ${template}`;
     }
 
     disconnectedCallback() {
 
     }
 
-    private _ractive;
-
     attributeChangedCallback (name, oldValue, newValue) {
-        this._ractive.set(name, newValue);
+        switch (name) {
+            default:
+                break;
+        }
     }
 }
 
