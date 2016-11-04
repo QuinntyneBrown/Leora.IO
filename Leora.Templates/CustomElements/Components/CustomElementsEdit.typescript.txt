@@ -32,7 +32,9 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
                 var resultsJSON: {{ entityNamePascalCase }} = JSON.parse(results) as {{ entityNamePascalCase }};                
                 this.nameInputElement.value = resultsJSON.name;              
             });
-            this.titleElement.textContent = "Edit {{ entityNameSnakeCase }}";
+            this.titleElement.textContent = "Edit {{ entityNamePascalCase }}";
+        } else {
+            this.deleteButtonElement.style.display = "none";
         } 
     }
     
