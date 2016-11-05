@@ -12,6 +12,16 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
 
     connectedCallback() {
         this.innerHTML = `<style>${styles}</style> ${template}`;
+        this._bind();
+        this._addEventListeners();
+    }
+
+    private _bind() {
+
+    }
+
+    private _addEventListeners() {
+
     }
 
     disconnectedCallback() {
