@@ -6,7 +6,7 @@ let template = require("./{{ entityNameSnakeCase }}-list.component.html");
 let styles = require("./{{ entityNameSnakeCase }}-list.component.scss");
 
 export class {{ entityNamePascalCase }}ListComponent extends HTMLElement {
-    constructor(private _{{ entityNamePascalCase }}Service: {{ entityNamePascalCase }}Service = {{ entityNamePascalCase }}Service.Instance) {
+    constructor(private _{{ entityNameCamelCase }}Service: {{ entityNamePascalCase }}Service = {{ entityNamePascalCase }}Service.Instance) {
         super();
     }
 
