@@ -39,6 +39,7 @@ namespace Leora.Cli
 
             container.RegisterType<IGenerateCustomElementCommand, GenerateCustomElementCommand>();
             container.RegisterType<IGenerateActionsCommand, GenerateActionsCommand>();
+            container.RegisterType<IGenerateRoutesCommand, GenerateRoutesCommand>();
             container.RegisterType<Commands.CustomElements.IGenerateServiceCommand, Commands.CustomElements.GenerateServiceCommand>();
             container.RegisterType<ICustomElementsTemplateProcessor, CustomElementsTemplateProcessor>();
 

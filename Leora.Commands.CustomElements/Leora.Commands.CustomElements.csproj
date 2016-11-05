@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseCommand.cs" />
+    <Compile Include="GenerateRoutesCommand.cs" />
     <Compile Include="GenerateServiceCommand.cs" />
     <Compile Include="GenerateActionsCommand.cs" />
     <Compile Include="GenerateCustomElementCommand.cs" />

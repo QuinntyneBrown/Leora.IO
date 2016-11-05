@@ -1,0 +1,60 @@
+﻿import { RouteListener, RouterEventHub, routerEventHubEvents, RouterNavigate } from "../router";
+import { createElement, Store } from "../utilities";
+import { environment } from "../environment";
+import { AuthorizedRouteListener } from "../users";
+import { {{ entityNameCamelCase }}Actions, {{ entityNamePascalCase }}DeleteSelect, {{ entityNamePascalCase }}EditSelect} from "./actions";
+
+export class {{ entityNamePascalCase }}EditRouteListener extends AuthorizedRouteListener {
+    constructor() {
+        super("{{ entityNameSnakeCase }}-edit");
+    }
+
+    public onViewTransition(options: RouteChangeOptions): HTMLElement {
+        if (options.nextRouteName == "{{ entityNameSnakeCase }}-edit") {
+            return createElement(`<{{ prefix }}-{{ entityNameSnakeCase }}-edit {{ entityNameSnakeCase }}-id='${options.routeParams.id}'></{{ prefix }}-{{ entityNameSnakeCase }}-edit>`);
+        }
+        return null;
+    }
+}
+
+export class {{ entityNamePascalCase }}CreateRouteListener extends AuthorizedRouteListener {
+    constructor() {
+        super("{{ entityNameSnakeCase }}-create");
+    }
+
+    public onViewTransition(options: RouteChangeOptions): HTMLElement {
+        if (options.nextRouteName == "{{ entityNameSnakeCase }}-create") {
+            return createElement("<{{ prefix }}-{{ entityNameSnakeCase }}-edit></{{ prefix }}-{{ entityNameSnakeCase }}-edit>");
+        }
+        return null;
+    }
+}
+
+export class {{ entityNamePascalCase }}ListRouteListener extends AuthorizedRouteListener {
+    constructor(private _routerEventHub: RouterEventHub = RouterEventHub.Instance) {
+        super("{{ entityNameSnakeCase }}-list");
+    }
+
+    public beforeViewTransition(options: RouteChangeOptions) {
+        if (options.previousRouteName == "{{ entityNameSnakeCase }}-list") {
+            (options.currentView as HTMLElement).removeEventListener({{ entityNameCamelCase }}Actions.SELECT, this.onEditSelect.bind(this));
+        }
+    }
+
+    public onViewTransition(options: RouteChangeOptions): HTMLElement {
+        if (options.nextRouteName == "{{ entityNameSnakeCase }}-list") {
+            return createElement("<{{ prefix }}-{{ entityNameSnakeCase }}-list></{{ prefix }}-{{ entityNameSnakeCase }}-list>");
+        }
+        return null;
+    }
+
+    public afterViewTransition(options: RouteChangeOptions) {
+        if (options.nextRouteName == "{{ entityNameSnakeCase }}-list") {
+            (options.currentView as HTMLElement).addEventListener({{ entityNameCamelCase }}Actions.SELECT, this.onEditSelect.bind(this));
+        }
+    }
+
+    public onEditSelect(e: {{ entityNamePascalCase }}EditSelect) {
+        this._routerEventHub.dispatch(routerEventHubEvents.NAVIGATE, new RouterNavigate(["{{ entityNameSnakeCase }}", "edit", e.detail.{{ entityNameSnakeCase }}Id]));
+    }
+}
