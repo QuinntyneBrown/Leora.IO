@@ -1,0 +1,7 @@
+﻿{{ prefix }}-{{ entityNameSnakeCase }}-list {
+	display:block;
+
+    h2 {
+        margin-top:0px;
+    }
+}

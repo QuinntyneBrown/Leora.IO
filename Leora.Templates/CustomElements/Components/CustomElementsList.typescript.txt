@@ -1,0 +1,39 @@
+﻿import { {{ entityNamePascalCase }} } from "./{{ entityNamePascalCase }}.model";
+import { {{ entityNamePascalCase }}Service } from "./{{ entityNamePascalCase }}.service";
+import { createElement } from "../utilities";
+import { {{ entityNameCamelCase }}Actions, {{ entityNamePascalCase }}EditSelect } from "./actions";
+let template = require("./{{ entityNameSnakeCase }}-list.component.html");
+let styles = require("./{{ entityNameSnakeCase }}-list.component.scss");
+
+export class {{ entityNamePascalCase }}ListComponent extends HTMLElement {
+    constructor(private _{{ entityNamePascalCase }}Service: {{ entityNamePascalCase }}Service = {{ entityNamePascalCase }}Service.Instance) {
+        super();
+    }
+
+    connectedCallback() {
+        this.innerHTML = `<style>${styles}</style> ${template}`;
+        this._{{ entityNamePascalCase }}Service.get().then((results: string) => {
+            var resultsJSON: Array<{{ entityNamePascalCase }}> = JSON.parse(results) as Array<{{ entityNamePascalCase }}>;
+            for (var i = 0; i < resultsJSON.length; i++) {
+                this.appendChild(createElement(`<{{ prefix }}{{ entityNameSnakeCase }}-item entity='${JSON.stringify(resultsJSON[i])}'></{{ prefix }}{{ entityNameSnakeCase }}-item>`));
+                this.children[this.children.length - 1].addEventListener({{ entityNameCamelCase }}Actions.SELECT, this.on{{ entityNamePascalCase }}Listelect.bind(this));
+                this.children[this.children.length - 1].addEventListener({{ entityNameCamelCase }}Actions.DELETE, this.on{{ entityNamePascalCase }}DeleteSelect.bind(this));
+            }
+        });
+    }
+
+    public on{{ entityNamePascalCase }}Listelect(event: {{ entityNamePascalCase }}EditSelect) {
+        this.dispatchEvent(new {{ entityNamePascalCase }}EditSelect(event.detail.{{ entityNamePascalCase }}Id));
+    }
+
+    public on{{ entityNamePascalCase }}DeleteSelect(event: {{ entityNamePascalCase }}EditSelect) {
+        this._{{ entityNamePascalCase }}Service.remove({ id: event.detail.{{ entityNamePascalCase }}Id }).then((results) => {
+            event.target.removeEventListener({{ entityNameCamelCase }}Actions.SELECT, this.on{{ entityNamePascalCase }}Listelect.bind(this));
+            event.target.removeEventListener({{ entityNameCamelCase }}Actions.DELETE, this.on{{ entityNamePascalCase }}DeleteSelect.bind(this));
+            this.removeChild(event.target as any);
+        });
+    }
+
+}
+
+document.addEventListener("DOMContentLoaded", () => window.customElements.define("{{ prefix }}{{ entityNameSnakeCase }}-list", {{ entityNamePascalCase }}ListComponent));

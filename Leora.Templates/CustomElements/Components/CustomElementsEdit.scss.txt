@@ -1,4 +1,4 @@
-﻿ce-{{ entityNameSnakeCase }}-edit {
+﻿{{ prefix }}-{{ entityNameSnakeCase }}-edit {
     margin-bottom:40px;
 
     input {
