@@ -12,7 +12,7 @@ export class {{ entityNamePascalCase }}ListComponent extends HTMLElement {
 
     connectedCallback() {
         this.innerHTML = `<style>${styles}</style> ${template}`;
-        this._{{ entityNamePascalCase }}Service.get().then((results: string) => {
+        this._{{ entityNameCamelCase }}Service.get().then((results: string) => {
             var resultsJSON: Array<{{ entityNamePascalCase }}> = JSON.parse(results) as Array<{{ entityNamePascalCase }}>;
             for (var i = 0; i < resultsJSON.length; i++) {
                 this.appendChild(createElement(`<{{ prefix }}{{ entityNameSnakeCase }}-item entity='${JSON.stringify(resultsJSON[i])}'></{{ prefix }}{{ entityNameSnakeCase }}-item>`));
@@ -27,7 +27,7 @@ export class {{ entityNamePascalCase }}ListComponent extends HTMLElement {
     }
 
     public on{{ entityNamePascalCase }}DeleteSelect(event: {{ entityNamePascalCase }}EditSelect) {
-        this._{{ entityNamePascalCase }}Service.remove({ id: event.detail.{{ entityNamePascalCase }}Id }).then((results) => {
+        this._{{ entityNameCamelCase }}Service.remove({ id: event.detail.{{ entityNamePascalCase }}Id }).then((results) => {
             event.target.removeEventListener({{ entityNameCamelCase }}Actions.SELECT, this.on{{ entityNamePascalCase }}Listelect.bind(this));
             event.target.removeEventListener({{ entityNameCamelCase }}Actions.DELETE, this.on{{ entityNamePascalCase }}DeleteSelect.bind(this));
             this.removeChild(event.target as any);
