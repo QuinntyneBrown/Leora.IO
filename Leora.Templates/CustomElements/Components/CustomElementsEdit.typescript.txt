@@ -7,10 +7,9 @@ const template = require("./{{ entityNameSnakeCase }}-edit.component.html");
 const styles = require("./{{ entityNameSnakeCase }}-edit.component.scss");
 
 export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
-    constructor(private _{{ entityNameSnakeCase }}: {{ entityNamePascalCase }}Service = null) {
+    constructor(private _{{ entityNameSnakeCase }}Service: {{ entityNamePascalCase }}Service = {{ entityNamePascalCase }}Service.Instance) {
         super();
 
-        this._{{ entityNameSnakeCase }} = _{{ entityNameSnakeCase }} || new {{ entityNamePascalCase }}Service();
     }
 
     static get observedAttributes() {
@@ -28,7 +27,7 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
         this.deleteButtonElement.addEventListener("click", this.onDelete.bind(this));
         
         if (this.{{ entityNameSnakeCase }}Id) {
-            this._{{ entityNameSnakeCase }}.getById(this.{{ entityNameSnakeCase }}Id).then((results: string) => { 
+            this._{{ entityNameSnakeCase }}Service.getById(this.{{ entityNameSnakeCase }}Id).then((results: string) => { 
                 var resultsJSON: {{ entityNamePascalCase }} = JSON.parse(results) as {{ entityNamePascalCase }};                
                 this.nameInputElement.value = resultsJSON.name;              
             });
@@ -44,13 +43,13 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
             name: this.nameInputElement.value
         } as {{ entityNamePascalCase }};
         
-        this._{{ entityNameSnakeCase }}.add({{ entityNameSnakeCase }}).then((results) => {
+        this._{{ entityNameSnakeCase }}Service.add({{ entityNameSnakeCase }}).then((results) => {
             this.dispatchEvent(new {{ entityNamePascalCase }}AddSuccess({{ entityNameSnakeCase }}));
         });
     }
 
     public onDelete() {        
-        this._{{ entityNameSnakeCase }}.remove({ id: this.{{ entityNameSnakeCase }}Id }).then((results) => {
+        this._{{ entityNameSnakeCase }}Service.remove({ id: this.{{ entityNameSnakeCase }}Id }).then((results) => {
             this.dispatchEvent(new {{ entityNamePascalCase }}DeleteSuccess(this.{{ entityNameSnakeCase }}Id));
         });
     }
