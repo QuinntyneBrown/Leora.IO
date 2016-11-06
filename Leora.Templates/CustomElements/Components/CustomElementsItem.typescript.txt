@@ -1,0 +1,74 @@
+﻿import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
+import { {{ entityNamePascalCase }}Service } from "./{{ entityNameSnakeCase }}.service";
+import { EditorComponent } from "../shared";
+import { {{ entityNamePascalCase }}AddSuccess, {{ entityNamePascalCase }}DeleteSuccess } from "./actions";
+
+const template = require("./{{ entityNameSnakeCase }}-edit.component.html");
+const styles = require("./{{ entityNameSnakeCase }}-edit.component.scss");
+
+export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
+    constructor(private _{{ entityNameSnakeCase }}: {{ entityNamePascalCase }}Service = null) {
+        super();
+
+        this._{{ entityNameSnakeCase }} = _{{ entityNameSnakeCase }} || new {{ entityNamePascalCase }}Service();
+    }
+
+    static get observedAttributes() {
+        return ["{{ entityNameSnakeCase }}-id"];
+    }
+    
+    connectedCallback() {        
+        this.innerHTML = `<style>${styles}</style> ${template}`; 
+        this.saveButtonElement = this.querySelector(".save-button") as HTMLButtonElement;
+        this.deleteButtonElement = this.querySelector(".delete-button") as HTMLButtonElement;
+        this.titleElement = this.querySelector("h2") as HTMLElement;
+        this.nameInputElement = this.querySelector(".{{ entityNameSnakeCase }}-name") as HTMLInputElement;
+        this.titleElement.textContent = "Create {{ entityNameSnakeCase }}";
+        this.saveButtonElement.addEventListener("click", this.onSave.bind(this));
+        this.deleteButtonElement.addEventListener("click", this.onDelete.bind(this));
+        
+        if (this.{{ entityNameSnakeCase }}Id) {
+            this._{{ entityNameSnakeCase }}.getById(this.{{ entityNameSnakeCase }}Id).then((results: string) => { 
+                var resultsJSON: {{ entityNamePascalCase }} = JSON.parse(results) as {{ entityNamePascalCase }};                
+                this.nameInputElement.value = resultsJSON.name;              
+            });
+            this.titleElement.textContent = "Edit {{ entityNamePascalCase }}";
+        } else {
+            this.deleteButtonElement.style.display = "none";
+        } 
+    }
+    
+    public onSave() {
+        var {{ entityNameSnakeCase }} = {
+            id: this.{{ entityNameSnakeCase }}Id,
+            name: this.nameInputElement.value
+        } as {{ entityNamePascalCase }};
+        
+        this._{{ entityNameSnakeCase }}.add({{ entityNameSnakeCase }}).then((results) => {
+            this.dispatchEvent(new {{ entityNamePascalCase }}AddSuccess({{ entityNameSnakeCase }}));
+        });
+    }
+
+    public onDelete() {        
+        this._{{ entityNameSnakeCase }}.remove({ id: this.{{ entityNameSnakeCase }}Id }).then((results) => {
+            this.dispatchEvent(new {{ entityNamePascalCase }}DeleteSuccess(this.{{ entityNameSnakeCase }}Id));
+        });
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        switch (name) {
+
+            case "{{ entityNameSnakeCase }}-id":
+                this.{{ entityNameSnakeCase }}Id = newValue;
+				break;
+        }        
+    }
+
+    public {{ entityNameSnakeCase }}Id: number;
+    public titleElement: HTMLElement;
+    public saveButtonElement: HTMLButtonElement;
+    public deleteButtonElement: HTMLButtonElement;
+    public nameInputElement: HTMLInputElement;
+}
+
+document.addEventListener("DOMContentLoaded",() => window.customElements.define(`ce-{{ entityNameSnakeCase }}-edit`,{{ entityNamePascalCase }}EditComponent));

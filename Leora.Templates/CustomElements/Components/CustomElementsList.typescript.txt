@@ -23,11 +23,11 @@ export class {{ entityNamePascalCase }}ListComponent extends HTMLElement {
     }
 
     public on{{ entityNamePascalCase }}Listelect(event: {{ entityNamePascalCase }}EditSelect) {
-        this.dispatchEvent(new {{ entityNamePascalCase }}EditSelect(event.detail.{{ entityNamePascalCase }}Id));
+        this.dispatchEvent(new {{ entityNamePascalCase }}EditSelect(event.detail.{{ entityNameCamelCase }}Id));
     }
 
     public on{{ entityNamePascalCase }}DeleteSelect(event: {{ entityNamePascalCase }}EditSelect) {
-        this._{{ entityNameCamelCase }}Service.remove({ id: event.detail.{{ entityNamePascalCase }}Id }).then((results) => {
+        this._{{ entityNameCamelCase }}Service.remove({ id: event.detail.{{ entityNameCamelCase }}Id }).then((results) => {
             event.target.removeEventListener({{ entityNameCamelCase }}Actions.SELECT, this.on{{ entityNamePascalCase }}Listelect.bind(this));
             event.target.removeEventListener({{ entityNameCamelCase }}Actions.DELETE, this.on{{ entityNamePascalCase }}DeleteSelect.bind(this));
             this.removeChild(event.target as any);
