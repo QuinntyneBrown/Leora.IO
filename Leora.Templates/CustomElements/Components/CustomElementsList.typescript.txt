@@ -1,5 +1,5 @@
-﻿import { {{ entityNamePascalCase }} } from "./{{ entityNamePascalCase }}.model";
-import { {{ entityNamePascalCase }}Service } from "./{{ entityNamePascalCase }}.service";
+﻿import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
+import { {{ entityNamePascalCase }}Service } from "./{{ entityNameSnakeCase }}.service";
 import { createElement } from "../utilities";
 import { {{ entityNameCamelCase }}Actions, {{ entityNamePascalCase }}EditSelect } from "./actions";
 let template = require("./{{ entityNameSnakeCase }}-list.component.html");
