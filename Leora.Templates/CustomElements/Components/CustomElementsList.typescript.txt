@@ -15,7 +15,7 @@ export class {{ entityNamePascalCase }}ListComponent extends HTMLElement {
         this._{{ entityNameCamelCase }}Service.get().then((results: string) => {
             var resultsJSON: Array<{{ entityNamePascalCase }}> = JSON.parse(results) as Array<{{ entityNamePascalCase }}>;
             for (var i = 0; i < resultsJSON.length; i++) {
-                this.appendChild(createElement(`<{{ prefix }}{{ entityNameSnakeCase }}-item entity='${JSON.stringify(resultsJSON[i])}'></{{ prefix }}{{ entityNameSnakeCase }}-item>`));
+                this.appendChild(createElement(`<{{ prefix }}-{{ entityNameSnakeCase }}-item entity='${JSON.stringify(resultsJSON[i])}'></{{ prefix }}-{{ entityNameSnakeCase }}-item>`));
                 this.children[this.children.length - 1].addEventListener({{ entityNameCamelCase }}Actions.SELECT, this.on{{ entityNamePascalCase }}Listelect.bind(this));
                 this.children[this.children.length - 1].addEventListener({{ entityNameCamelCase }}Actions.DELETE, this.on{{ entityNamePascalCase }}DeleteSelect.bind(this));
             }
@@ -36,4 +36,4 @@ export class {{ entityNamePascalCase }}ListComponent extends HTMLElement {
 
 }
 
-document.addEventListener("DOMContentLoaded", () => window.customElements.define("{{ prefix }}{{ entityNameSnakeCase }}-list", {{ entityNamePascalCase }}ListComponent));
+document.addEventListener("DOMContentLoaded", () => window.customElements.define("{{ prefix }}-{{ entityNameSnakeCase }}-list", {{ entityNamePascalCase }}ListComponent));
