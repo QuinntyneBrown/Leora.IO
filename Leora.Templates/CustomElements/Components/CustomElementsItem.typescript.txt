@@ -1,74 +1,72 @@
 ﻿import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 import { {{ entityNamePascalCase }}Service } from "./{{ entityNameSnakeCase }}.service";
 import { EditorComponent } from "../shared";
-import { {{ entityNamePascalCase }}AddSuccess, {{ entityNamePascalCase }}DeleteSuccess } from "./actions";
+import { {{ entityNamePascalCase }}AddSuccess, {{ entityNamePascalCase }}DeleteSuccess, {{ entityNamePascalCase }}DeleteSelect } from "./actions";
+import { Router } from "../router";
 
-const template = require("./{{ entityNameSnakeCase }}-edit.component.html");
-const styles = require("./{{ entityNameSnakeCase }}-edit.component.scss");
+const template = require("./{{ entityNameSnakeCase }}-item.component.html");
+const styles = require("./{{ entityNameSnakeCase }}-item.component.scss");
 
-export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
-    constructor(private _{{ entityNameSnakeCase }}: {{ entityNamePascalCase }}Service = null) {
+export class {{ entityNamePascalCase }}ItemComponent extends HTMLElement {
+    constructor(
+        private _{{ entityNameCamelCase }}Service: {{ entityNamePascalCase }}Service = {{ entityNamePascalCase }}Service.Instance,
+        private _router: Router = Router.Instance) {
         super();
-
-        this._{{ entityNameSnakeCase }} = _{{ entityNameSnakeCase }} || new {{ entityNamePascalCase }}Service();
     }
 
     static get observedAttributes() {
-        return ["{{ entityNameSnakeCase }}-id"];
+        return ["entity"];
     }
     
     connectedCallback() {        
-        this.innerHTML = `<style>${styles}</style> ${template}`; 
-        this.saveButtonElement = this.querySelector(".save-button") as HTMLButtonElement;
-        this.deleteButtonElement = this.querySelector(".delete-button") as HTMLButtonElement;
-        this.titleElement = this.querySelector("h2") as HTMLElement;
-        this.nameInputElement = this.querySelector(".{{ entityNameSnakeCase }}-name") as HTMLInputElement;
-        this.titleElement.textContent = "Create {{ entityNameSnakeCase }}";
-        this.saveButtonElement.addEventListener("click", this.onSave.bind(this));
-        this.deleteButtonElement.addEventListener("click", this.onDelete.bind(this));
-        
-        if (this.{{ entityNameSnakeCase }}Id) {
-            this._{{ entityNameSnakeCase }}.getById(this.{{ entityNameSnakeCase }}Id).then((results: string) => { 
-                var resultsJSON: {{ entityNamePascalCase }} = JSON.parse(results) as {{ entityNamePascalCase }};                
-                this.nameInputElement.value = resultsJSON.name;              
-            });
-            this.titleElement.textContent = "Edit {{ entityNamePascalCase }}";
-        } else {
-            this.deleteButtonElement.style.display = "none";
-        } 
+        this.innerHTML = `<style>${styles}</style> ${template}`;
+        this._bind();
+        this._addEventListeners();
+    }
+
+    disconnectedCallback() {
+        this._deleteLinkElement.removeEventListener("click", this._onDeleteClick.bind(this));
+        this._editLinkElement.removeEventListener("click", this._onEditClick.bind(this));
+        this._viewLinkElement.removeEventListener("click", this._onViewClick.bind(this));
+    }
+
+    private _bind() {
+        this._nameElement.textContent = this.entity.name;
+    }
+
+    private _addEventListeners() {
+        this._deleteLinkElement.addEventListener("click", this._onDeleteClick.bind(this));
+        this._editLinkElement.addEventListener("click", this._onEditClick.bind(this));
+        this._viewLinkElement.addEventListener("click", this._onViewClick.bind(this));
+    }
+
+    private _onDeleteClick(e:Event) {
+        this._{{ entityNameCamelCase }}Service.remove({ id: this.entity.id }).then(() => {
+            this.parentNode.removeChild(this);
+        });
+    }
+
+    private _onEditClick() {
+        this._router.navigate(["{{ entityNameLowerCase }}", "edit", this.entity.id]);
+    }
+
+    private _onViewClick() {
+        this._router.navigate(["{{ entityNameLowerCase }}","view",this.entity.id]);
     }
     
-    public onSave() {
-        var {{ entityNameSnakeCase }} = {
-            id: this.{{ entityNameSnakeCase }}Id,
-            name: this.nameInputElement.value
-        } as {{ entityNamePascalCase }};
-        
-        this._{{ entityNameSnakeCase }}.add({{ entityNameSnakeCase }}).then((results) => {
-            this.dispatchEvent(new {{ entityNamePascalCase }}AddSuccess({{ entityNameSnakeCase }}));
-        });
-    }
-
-    public onDelete() {        
-        this._{{ entityNameSnakeCase }}.remove({ id: this.{{ entityNameSnakeCase }}Id }).then((results) => {
-            this.dispatchEvent(new {{ entityNamePascalCase }}DeleteSuccess(this.{{ entityNameSnakeCase }}Id));
-        });
-    }
-
     attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
-
-            case "{{ entityNameSnakeCase }}-id":
-                this.{{ entityNameSnakeCase }}Id = newValue;
+            case "entity":
+                this.entity = JSON.parse(newValue);
 				break;
         }        
     }
 
-    public {{ entityNameSnakeCase }}Id: number;
-    public titleElement: HTMLElement;
-    public saveButtonElement: HTMLButtonElement;
-    public deleteButtonElement: HTMLButtonElement;
-    public nameInputElement: HTMLInputElement;
+    private get _nameElement() { return this.querySelector("p") as HTMLElement; }
+    private get _deleteLinkElement() { return this.querySelector(".entity-item-delete") as HTMLElement; }
+    private get _editLinkElement() { return this.querySelector(".entity-item-edit") as HTMLElement; }
+    private get _viewLinkElement() { return this.querySelector(".entity-item-view") as HTMLElement; }
+    public entity: {{ entityNamePascalCase }};
 }
 
-document.addEventListener("DOMContentLoaded",() => window.customElements.define(`ce-{{ entityNameSnakeCase }}-edit`,{{ entityNamePascalCase }}EditComponent));
+document.addEventListener("DOMContentLoaded",() => window.customElements.define(`{{ prefix }}-{{ entityNameSnakeCase }}-item`,{{ entityNamePascalCase }}ItemComponent));
