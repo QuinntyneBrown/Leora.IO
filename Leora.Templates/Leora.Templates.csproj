@@ -352,6 +352,7 @@
     <EmbeddedResource Include="CustomElements\Components\CustomElementsItem.html.txt" />
     <EmbeddedResource Include="CustomElements\Components\CustomElementsItem.scss.txt" />
     <EmbeddedResource Include="CustomElements\Components\CustomElementsItem.typescript.txt" />
+    <EmbeddedResource Include="CustomElements\Components\CustomElementsOverlay.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

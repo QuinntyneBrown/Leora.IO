@@ -1,0 +1,47 @@
+﻿import { Modal } from "../shared";
+
+let template = require("./{{ entityNameSnakeCase }}-overlay.component.html");
+let styles = require("./{{ entityNameSnakeCase }}-overlay.component.scss");
+
+export class {{ entityNamePascalCase }}OverlayComponent extends HTMLElement {
+    constructor(private _modal: Modal = Modal.Instance) {
+        super();
+    }
+
+    static get observedAttributes () {
+        return [];
+    }
+
+    connectedCallback() {
+        this.innerHTML = `<style>${styles}</style> ${template}`;
+        this._bind();
+        this._addEventListeners();
+
+        
+    }
+
+    private _bind() {
+
+    }
+
+    private _addEventListeners() {
+        this.addEventListener("click", this.onClick.bind(this));
+    }
+
+    disconnectedCallback() {
+        this.removeEventListener("click", this.onClick.bind(this));
+    }
+
+    onClick() {
+        this._modal.closeAsync();
+    }
+
+    attributeChangedCallback (name, oldValue, newValue) {
+        switch (name) {
+            default:
+                break;
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded",() => window.customElements.define(`ce-{{ entityNameSnakeCase }}-overlay`,{{ entityNamePascalCase }}OverlayComponent));

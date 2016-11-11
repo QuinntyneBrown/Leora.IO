@@ -44,7 +44,7 @@ namespace Leora.Commands.CustomElements
             var htmlFileName = $"{snakeCaseName}.component.html";
             var baseFilePath = $"{directory}//{snakeCaseName}";
 
-            var sufixList = new string[3] { "edit","list","item" };
+            var sufixList = new string[4] { "edit","list","item", "overlay" };
 
             var templateTypescript = _templateManager.Get(FileType.TypeScript, "CustomElementsComponent", "Components", entityNamePascalCase, BluePrintType.CustomElements,sufixList);
             var templateHtml = _templateManager.Get(FileType.Html, "CustomElementsComponent", "Components", entityNamePascalCase, BluePrintType.CustomElements, sufixList);
