@@ -24,10 +24,15 @@ namespace Leora.Commands.Angular2
         {
             var exitCode = 1;
             var lines = new List<string>();
+            var scssLines = new List<string>();
+
             var exports = new List<string>();
 
             if (Exists($"{directory}//index.ts")) 
                 Delete($"{directory}//index.ts");
+
+            if (Exists($"{directory}//index.scss"))
+                Delete($"{directory}//index.scss");
 
             foreach (var directoryName in Directory.GetDirectories(directory)) 
                 if (!IsDirectoryEmpty(directoryName) && GetFileName(directoryName) != "example")
@@ -36,11 +41,15 @@ namespace Leora.Commands.Angular2
             foreach (var file in Directory.GetFiles(directory,"*.ts"))
                 if (!file.Contains(".spec.ts"))
                     lines.Add($"export * from \"./{GetFileNameWithoutExtension(file)}\";");
-            
-            _fileWriter.WriteAllLines($"{directory}//index.ts", lines);
 
+            foreach (var file in Directory.GetFiles(directory, "*.scss"))
+                scssLines.Add($"@import \"{GetFileNameWithoutExtension(file)}\";");
+
+            _fileWriter.WriteAllLines($"{directory}//index.ts", lines);
+            _fileWriter.WriteAllLines($"{directory}//index.scss", scssLines);
             try {
                 _projectManager.Process(directory, "index.ts", FileType.TypeScript);
+                _projectManager.Process(directory, "index.scss", FileType.Css);
             }
             catch { }
 
