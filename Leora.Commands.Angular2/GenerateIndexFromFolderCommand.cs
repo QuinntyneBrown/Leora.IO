@@ -34,9 +34,15 @@ namespace Leora.Commands.Angular2
             if (Exists($"{directory}//index.scss"))
                 Delete($"{directory}//index.scss");
 
-            foreach (var directoryName in Directory.GetDirectories(directory)) 
+            foreach (var directoryName in Directory.GetDirectories(directory))
+            {
                 if (!IsDirectoryEmpty(directoryName) && GetFileName(directoryName) != "example")
-                    lines.Add($"export * from \"./{GetFileName(directoryName)}\";");            
+                {
+                    lines.Add($"export * from \"./{GetFileName(directoryName)}\";");                    
+                    if (File.Exists($"{directoryName}\\index.scss")) 
+                        scssLines.Add($"@import \"{GetFileName(directoryName)}/index\";");                    
+                }
+            }         
 
             foreach (var file in Directory.GetFiles(directory,"*.ts"))
                 if (!file.Contains(".spec.ts"))
