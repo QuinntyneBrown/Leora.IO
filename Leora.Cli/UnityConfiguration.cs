@@ -43,6 +43,8 @@ namespace Leora.Cli
             container.RegisterType<Commands.CustomElements.IGenerateServiceCommand, Commands.CustomElements.GenerateServiceCommand>();
             container.RegisterType<ICustomElementsTemplateProcessor, CustomElementsTemplateProcessor>();
 
+            container.RegisterType<Leora.Commands.VanillaJS.IGenerateComponentCommand, Leora.Commands.VanillaJS.GenerateComponentCommand>();
+
 
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand, Commands.AspNetWebApi2.GenerateControllerCommand>();
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateContentModelCommand, Commands.AspNetWebApi2.GenerateContentModelCommand>();

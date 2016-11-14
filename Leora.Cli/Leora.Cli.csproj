@@ -97,6 +97,10 @@
       <Project>{012098c2-1ad5-49c5-bbbc-5bf58d54c055}</Project>
       <Name>Leora.Commands.React</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Leora.Commands.VanillaJS\Leora.Commands.VanillaJS.csproj">
+      <Project>{6fd7c081-c314-4a2a-81dc-4d56bc11c59d}</Project>
+      <Name>Leora.Commands.VanillaJS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Commands.VisualStudio\Leora.Commands.VisualStudio.csproj">
       <Project>{4e33f438-9d8c-4669-b76f-e36dea2295ce}</Project>
       <Name>Leora.Commands.VisualStudio</Name>

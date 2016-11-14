@@ -77,6 +77,7 @@
     <Folder Include="CustomElements\Services\" />
     <Folder Include="Node\Models\" />
     <Folder Include="Node\Routes\" />
+    <Folder Include="VanillaJS\Components\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Angular1\Angular1Component.css.txt" />
@@ -353,6 +354,9 @@
     <EmbeddedResource Include="CustomElements\Components\CustomElementsItem.scss.txt" />
     <EmbeddedResource Include="CustomElements\Components\CustomElementsItem.typescript.txt" />
     <EmbeddedResource Include="CustomElements\Components\CustomElementsOverlay.typescript.txt" />
+    <EmbeddedResource Include="VanillaJS\VanillaJSComponent.scss.txt" />
+    <EmbeddedResource Include="VanillaJS\VanillaJSComponent.html.txt" />
+    <EmbeddedResource Include="VanillaJS\VanillaJSComponent.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

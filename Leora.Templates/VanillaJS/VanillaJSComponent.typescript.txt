@@ -1,0 +1,24 @@
+﻿let template = require("./{{ entityNameSnakeCase }}.component.html");
+
+export class {{ entityNamePascalCase }}Component {
+    constructor(private el: HTMLElement) { }
+    
+    connectedCallback() {
+        this.el.innerHTML = template;
+        this._bind();
+        this._addEventListeners();
+    }
+
+    private _bind() {
+
+    }
+
+    private _addEventListeners() {
+
+    }
+
+    disconnectedCallback() {
+
+    }
+
+}

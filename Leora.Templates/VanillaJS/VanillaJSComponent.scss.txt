@@ -1,0 +1,3 @@
+﻿.{{ entityNameSnakeCase }} {
+	display: inline-block;
+}

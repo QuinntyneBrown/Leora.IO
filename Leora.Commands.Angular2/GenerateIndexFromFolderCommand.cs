@@ -18,9 +18,9 @@ namespace Leora.Commands.Angular2
         public GenerateIndexFromFolderCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter) 
             :base(templateManager,templateProcessor,namingConventionConverter,projectManager,fileWriter) { }
 
-        public override int Run(GenerateIndexFromFolderOptions options) => Run(options.Name, options.Directory);
+        public override int Run(GenerateIndexFromFolderOptions options) => Run(options.Name, options.Directory, options.IncludeScss);
 
-        public int Run(string name, string directory)
+        public int Run(string name, string directory, bool includeScss = false)
         {
             var exitCode = 1;
             var lines = new List<string>();
@@ -31,7 +31,7 @@ namespace Leora.Commands.Angular2
             if (Exists($"{directory}//index.ts")) 
                 Delete($"{directory}//index.ts");
 
-            if (Exists($"{directory}//index.scss"))
+            if (Exists($"{directory}//index.scss") && includeScss)
                 Delete($"{directory}//index.scss");
 
             foreach (var directoryName in Directory.GetDirectories(directory))
@@ -52,10 +52,15 @@ namespace Leora.Commands.Angular2
                 scssLines.Add($"@import \"{GetFileNameWithoutExtension(file)}\";");
 
             _fileWriter.WriteAllLines($"{directory}//index.ts", lines);
-            _fileWriter.WriteAllLines($"{directory}//index.scss", scssLines);
+
+            if(includeScss)
+                _fileWriter.WriteAllLines($"{directory}//index.scss", scssLines);
+
             try {
                 _projectManager.Process(directory, "index.ts", FileType.TypeScript);
-                _projectManager.Process(directory, "index.scss", FileType.Css);
+
+                if (includeScss)
+                    _projectManager.Process(directory, "index.scss", FileType.Css);
             }
             catch { }
 
