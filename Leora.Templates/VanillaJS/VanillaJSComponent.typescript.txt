@@ -1,4 +1,4 @@
-﻿let template = require("./{{ entityNameSnakeCase }}.component.html");
+﻿const template = require("./{{ entityNameSnakeCase }}.component.html");
 
 export class {{ entityNamePascalCase }}Component {
     constructor(private el: HTMLElement) { }

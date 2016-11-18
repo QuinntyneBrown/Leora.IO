@@ -1,5 +1,5 @@
-﻿let template = require("./{{ entityNameSnakeCase }}.component.html");
-let styles = require("./{{ entityNameSnakeCase }}.component.scss");
+﻿const template = require("./{{ entityNameSnakeCase }}.component.html");
+const styles = require("./{{ entityNameSnakeCase }}.component.scss");
 
 export class {{ entityNamePascalCase }}Component extends HTMLElement {
     constructor() {
