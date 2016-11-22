@@ -35,26 +35,10 @@ export class {{ entityNamePascalCase }}ListRouteListener extends AuthorizedRoute
         super("{{ entityNameSnakeCase }}-list");
     }
 
-    public beforeViewTransition(options: RouteChangeOptions) {
-        if (options.previousRouteName == "{{ entityNameSnakeCase }}-list") {
-            (options.currentView as HTMLElement).removeEventListener({{ entityNameCamelCase }}Actions.SELECT, this.onEditSelect.bind(this));
-        }
-    }
-
     public onViewTransition(options: RouteChangeOptions): HTMLElement {
         if (options.nextRouteName == "{{ entityNameSnakeCase }}-list") {
             return createElement("<{{ prefix }}-{{ entityNameSnakeCase }}-list></{{ prefix }}-{{ entityNameSnakeCase }}-list>");
         }
         return null;
-    }
-
-    public afterViewTransition(options: RouteChangeOptions) {
-        if (options.nextRouteName == "{{ entityNameSnakeCase }}-list") {
-            (options.currentView as HTMLElement).addEventListener({{ entityNameCamelCase }}Actions.SELECT, this.onEditSelect.bind(this));
-        }
-    }
-
-    public onEditSelect(e: {{ entityNamePascalCase }}EditSelect) {
-        this._routerEventHub.dispatch(routerEventHubEvents.NAVIGATE, new RouterNavigate(["{{ entityNameSnakeCase }}", "edit", e.detail.{{ entityNameSnakeCase }}Id]));
     }
 }
