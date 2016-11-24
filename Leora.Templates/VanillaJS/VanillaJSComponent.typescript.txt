@@ -1,7 +1,7 @@
 ﻿const template = require("./{{ entityNameSnakeCase }}.component.html");
 
 export class {{ entityNamePascalCase }}Component {
-    constructor(private el: HTMLElement) { }
+    constructor(public el: HTMLElement) { }
     
     connectedCallback() {
         this.el.innerHTML = template;
