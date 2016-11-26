@@ -1,39 +1,31 @@
 ﻿import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 import { {{ entityNamePascalCase }}Service } from "./{{ entityNameSnakeCase }}.service";
-import { createElement } from "../utilities";
-import { {{ entityNameCamelCase }}Actions, {{ entityNamePascalCase }}EditSelect } from "./actions";
-let template = require("./{{ entityNameSnakeCase }}-list.component.html");
-let styles = require("./{{ entityNameSnakeCase }}-list.component.scss");
+
+const template = require("./{{ entityNameSnakeCase }}-list.component.html");
+const styles = require("./{{ entityNameSnakeCase }}-list.component.scss");
 
 export class {{ entityNamePascalCase }}ListComponent extends HTMLElement {
-    constructor(private _{{ entityNameCamelCase }}Service: {{ entityNamePascalCase }}Service = {{ entityNamePascalCase }}Service.Instance) {
+    constructor(
+		private _document: Document = document,
+		private _{{ entityNameCamelCase }}Service: {{ entityNamePascalCase }}Service = {{ entityNamePascalCase }}Service.Instance) {
         super();
     }
 
     connectedCallback() {
         this.innerHTML = `<style>${styles}</style> ${template}`;
+		this._bind();
+    }
+
+	private _bind() {
         this._{{ entityNameCamelCase }}Service.get().then((results: string) => {
             var resultsJSON: Array<{{ entityNamePascalCase }}> = JSON.parse(results) as Array<{{ entityNamePascalCase }}>;
             for (var i = 0; i < resultsJSON.length; i++) {
-                this.appendChild(createElement(`<{{ prefix }}-{{ entityNameSnakeCase }}-item entity='${JSON.stringify(resultsJSON[i])}'></{{ prefix }}-{{ entityNameSnakeCase }}-item>`));
-                this.children[this.children.length - 1].addEventListener({{ entityNameCamelCase }}Actions.SELECT, this.on{{ entityNamePascalCase }}Listelect.bind(this));
-                this.children[this.children.length - 1].addEventListener({{ entityNameCamelCase }}Actions.DELETE, this.on{{ entityNamePascalCase }}DeleteSelect.bind(this));
+				let el = this._document.createElement(`{{ prefix }}-{{ entityNameSnakeCase }}-item`);
+				el.setAttribute("entity", JSON.stringify(resultsJSON[i]));
+				this.appendChild(el);
             }
-        });
-    }
-
-    public on{{ entityNamePascalCase }}Listelect(event: {{ entityNamePascalCase }}EditSelect) {
-        this.dispatchEvent(new {{ entityNamePascalCase }}EditSelect(event.detail.{{ entityNameCamelCase }}Id));
-    }
-
-    public on{{ entityNamePascalCase }}DeleteSelect(event: {{ entityNamePascalCase }}EditSelect) {
-        this._{{ entityNameCamelCase }}Service.remove({ id: event.detail.{{ entityNameCamelCase }}Id }).then((results) => {
-            event.target.removeEventListener({{ entityNameCamelCase }}Actions.SELECT, this.on{{ entityNamePascalCase }}Listelect.bind(this));
-            event.target.removeEventListener({{ entityNameCamelCase }}Actions.DELETE, this.on{{ entityNamePascalCase }}DeleteSelect.bind(this));
-            this.removeChild(event.target as any);
-        });
-    }
-
+        });	
+	}
 }
 
 document.addEventListener("DOMContentLoaded", () => window.customElements.define("{{ prefix }}-{{ entityNameSnakeCase }}-list", {{ entityNamePascalCase }}ListComponent));

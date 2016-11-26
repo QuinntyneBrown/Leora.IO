@@ -1,7 +1,6 @@
 ﻿import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 import { {{ entityNamePascalCase }}Service } from "./{{ entityNameSnakeCase }}.service";
 import { EditorComponent } from "../shared";
-import { {{ entityNamePascalCase }}AddSuccess, {{ entityNamePascalCase }}DeleteSuccess, {{ entityNamePascalCase }}DeleteSelect } from "./actions";
 import { Router } from "../router";
 
 const template = require("./{{ entityNameSnakeCase }}-item.component.html");
