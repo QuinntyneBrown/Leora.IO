@@ -1,4 +1,6 @@
-﻿{{ prefix }}-{{ entityNameSnakeCase }}-list {
+﻿@import "../../styles/base/index";
+
+{{ prefix }}-{{ entityNameSnakeCase }}-list {
 	display:block;
 
     h2 {

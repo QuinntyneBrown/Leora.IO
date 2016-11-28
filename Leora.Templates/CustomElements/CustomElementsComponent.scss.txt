@@ -1,3 +1,5 @@
-﻿{{ prefix }}-{{ entityNameSnakeCase }} {
+﻿@import "../../styles/base/index";
+
+{{ prefix }}-{{ entityNameSnakeCase }} {
 	display:block;
 }

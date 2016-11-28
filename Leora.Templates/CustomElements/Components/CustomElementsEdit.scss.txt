@@ -1,4 +1,6 @@
-﻿{{ prefix }}-{{ entityNameSnakeCase }}-edit {
+﻿@import "../../styles/base/index";
+
+{{ prefix }}-{{ entityNameSnakeCase }}-edit {
     margin-bottom:40px;
 
     input {

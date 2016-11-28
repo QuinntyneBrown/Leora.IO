@@ -1,16 +1,8 @@
-﻿{{ prefix }}-{{ entityNameSnakeCase }}-item {
-	display:block;
+﻿@import "../../styles/base/index";
 
-    a {
-        cursor:pointer;
-    }
-
-    p {
-        min-width:300px;
-        display:inline-block;
-    }
+{{ prefix }}-{{ entityNameSnakeCase }}-item {
+	@extend .view-item;
 }
-
 
 
 
