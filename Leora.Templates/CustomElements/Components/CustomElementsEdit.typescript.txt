@@ -25,26 +25,23 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
     }
     
 	private _bind() {
-        this.saveButtonElement = this.querySelector(".save-button") as HTMLButtonElement;
-        this.deleteButtonElement = this.querySelector(".delete-button") as HTMLButtonElement;
-        this.titleElement = this.querySelector("h2") as HTMLElement;
         this.nameInputElement = this.querySelector(".{{ entityNameSnakeCase }}-name") as HTMLInputElement;
-        this.titleElement.textContent = "Create {{ entityNameSnakeCase }}";
+        this._titleElement.textContent = "Create {{ entityNameSnakeCase }}";
 
         if (this.{{ entityNameSnakeCase }}Id) {
             this._{{ entityNameSnakeCase }}Service.getById(this.{{ entityNameSnakeCase }}Id).then((results: string) => { 
                 var resultsJSON: {{ entityNamePascalCase }} = JSON.parse(results) as {{ entityNamePascalCase }};                
                 this.nameInputElement.value = resultsJSON.name;              
             });
-            this.titleElement.textContent = "Edit {{ entityNamePascalCase }}";
+            this._titleElement.textContent = "Edit {{ entityNamePascalCase }}";
         } else {
             this.deleteButtonElement.style.display = "none";
         } 	
 	}
 
 	private _addEventListeners() {
-        this.saveButtonElement.addEventListener("click", this.onSave.bind(this));
-        this.deleteButtonElement.addEventListener("click", this.onDelete.bind(this));	
+        this._saveButtonElement.addEventListener("click", this.onSave.bind(this));
+        this._deleteButtonElement.addEventListener("click", this.onDelete.bind(this));	
 	}
 
     public onSave() {
@@ -74,9 +71,10 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
     }
 
     public {{ entityNameSnakeCase }}Id: number;
-    public titleElement: HTMLElement;
-    public saveButtonElement: HTMLButtonElement;
-    public deleteButtonElement: HTMLButtonElement;
+    
+	private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
+    private get _saveButtonElement(): HTMLElement { return this.querySelector(".save-button") as HTMLElement };
+    private get _deleteButtonElement(): HTMLElement { return this.querySelector(".delete-button") as HTMLElement };
     public nameInputElement: HTMLInputElement;
 }
 
