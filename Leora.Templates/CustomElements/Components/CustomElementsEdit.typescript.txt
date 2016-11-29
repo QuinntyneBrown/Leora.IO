@@ -48,7 +48,7 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
     public onSave() {
         var {{ entityNameSnakeCase }} = {
             id: this.{{ entityNameSnakeCase }}Id,
-            name: this.nameInputElement.value
+            name: this._nameInputElement.value
         } as {{ entityNamePascalCase }};
         
         this._{{ entityNameSnakeCase }}Service.add({{ entityNameSnakeCase }}).then((results) => {
