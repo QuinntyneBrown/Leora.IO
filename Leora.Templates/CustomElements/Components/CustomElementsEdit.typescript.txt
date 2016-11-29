@@ -12,6 +12,8 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
 		private _router: Router = Router.Instance
 		) {
         super();
+		this.onSave = this.onSave.bind(this);
+        this.onDelete = this.onDelete.bind(this);
     }
 
     static get observedAttributes() {
@@ -25,13 +27,12 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
     }
     
 	private _bind() {
-        this.nameInputElement = this.querySelector(".{{ entityNameSnakeCase }}-name") as HTMLInputElement;
         this._titleElement.textContent = "Create {{ entityNameSnakeCase }}";
 
         if (this.{{ entityNameSnakeCase }}Id) {
             this._{{ entityNameSnakeCase }}Service.getById(this.{{ entityNameSnakeCase }}Id).then((results: string) => { 
                 var resultsJSON: {{ entityNamePascalCase }} = JSON.parse(results) as {{ entityNamePascalCase }};                
-                this.nameInputElement.value = resultsJSON.name;              
+                this._nameInputElement.value = resultsJSON.name;              
             });
             this._titleElement.textContent = "Edit {{ entityNamePascalCase }}";
         } else {
@@ -40,8 +41,8 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
 	}
 
 	private _addEventListeners() {
-        this._saveButtonElement.addEventListener("click", this.onSave.bind(this));
-        this._deleteButtonElement.addEventListener("click", this.onDelete.bind(this));	
+        this._saveButtonElement.addEventListener("click", this.onSave.);
+        this._deleteButtonElement.addEventListener("click", this.onDelete);	
 	}
 
     public onSave() {
@@ -75,7 +76,7 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
 	private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
     private get _saveButtonElement(): HTMLElement { return this.querySelector(".save-button") as HTMLElement };
     private get _deleteButtonElement(): HTMLElement { return this.querySelector(".delete-button") as HTMLElement };
-    public nameInputElement: HTMLInputElement;
+    private get _nameInputElement(): HTMLInputElement { return this.querySelector(".{{ entityNameSnakeCase }}-name") as HTMLInputElement;}
 }
 
 document.addEventListener("DOMContentLoaded",() => window.customElements.define(`ce-{{ entityNameSnakeCase }}-edit`,{{ entityNamePascalCase }}EditComponent));
