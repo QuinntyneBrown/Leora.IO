@@ -35,7 +35,7 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
             });
             this._titleElement.textContent = "Edit {{ entityNamePascalCase }}";
         } else {
-            this.deleteButtonElement.style.display = "none";
+            this._deleteButtonElement.style.display = "none";
         } 	
 	}
 
