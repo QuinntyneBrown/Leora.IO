@@ -1,7 +1,7 @@
 ﻿@import "../../styles/base/index";
 
 {{ prefix }}-{{ entityNameSnakeCase }}-item {
-	@extend .view-item;
+	@extend .entity-item;
 }
 
 

@@ -41,7 +41,7 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
 	}
 
 	private _addEventListeners() {
-        this._saveButtonElement.addEventListener("click", this.onSave.);
+        this._saveButtonElement.addEventListener("click", this.onSave);
         this._deleteButtonElement.addEventListener("click", this.onDelete);	
 	}
 
