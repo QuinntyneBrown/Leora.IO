@@ -1,4 +1,6 @@
-﻿const template = require("./{{ entityNameSnakeCase }}.component.html");
+﻿import { Compiler } from "../../compiler";
+
+const template = require("./{{ entityNameSnakeCase }}.component.html");
 
 export class {{ entityNamePascalCase }}Component {
     constructor(public el: HTMLElement) { }
@@ -22,3 +24,5 @@ export class {{ entityNamePascalCase }}Component {
     }
 
 }
+
+Compiler.define({ component: {{ entityNamePascalCase }}Component, name: "{{ entityNameSnakeCase }}" });
