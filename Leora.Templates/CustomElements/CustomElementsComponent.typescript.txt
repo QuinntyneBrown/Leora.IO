@@ -1,5 +1,4 @@
 ﻿const template = require("./{{ entityNameSnakeCase }}.component.html");
-const styles = require("./{{ entityNameSnakeCase }}.component.scss");
 
 export class {{ entityNamePascalCase }}Component extends HTMLElement {
     constructor() {
@@ -11,7 +10,7 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
     }
 
     connectedCallback() {
-        this.innerHTML = `<style>${styles}</style> ${template}`;
+        this.innerHTML = template;
         this._bind();
         this._addEventListeners();
     }
@@ -36,4 +35,4 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
     }
 }
 
-document.addEventListener("DOMContentLoaded",() => window.customElements.define(`{{ prefix }}-{{ entityNameSnakeCase }}`,{{ entityNamePascalCase }}Component));
+customElements.define(`{{ prefix }}-{{ entityNameSnakeCase }}`,{{ entityNamePascalCase }}Component);
