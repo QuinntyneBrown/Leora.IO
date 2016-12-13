@@ -1,4 +1,5 @@
 ﻿const template = require("./{{ entityNameSnakeCase }}.component.html");
+const styles = require("./{{ entityNameSnakeCase }}.component.scss");
 
 export class {{ entityNamePascalCase }}Component extends HTMLElement {
     constructor() {
@@ -10,12 +11,12 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
     }
 
     connectedCallback() {
-        this.innerHTML = template;
+        this.innerHTML = `<style>${styles}</style> ${template}`;
         this._bind();
         this._addEventListeners();
     }
 
-    private _bind() {
+    private async _bind() {
 
     }
 

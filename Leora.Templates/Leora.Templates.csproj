@@ -357,6 +357,7 @@
     <EmbeddedResource Include="VanillaJS\VanillaJSComponent.scss.txt" />
     <EmbeddedResource Include="VanillaJS\VanillaJSComponent.html.txt" />
     <EmbeddedResource Include="VanillaJS\VanillaJSComponent.typescript.txt" />
+    <EmbeddedResource Include="CustomElements\CustomElementsWebpack.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

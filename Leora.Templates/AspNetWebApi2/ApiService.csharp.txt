@@ -19,8 +19,8 @@ namespace {{ namespacename }}
 
         public {{ entityNamePascalCase }}AddOrUpdateResponseDto AddOrUpdate({{ entityNamePascalCase }}AddOrUpdateRequestDto request)
         {
-            var entity = _repository.GetAll()
-                .FirstOrDefault(x => x.Id == request.Id && x.IsDeleted == false);
+            var entity = {{ entityNamePascalCase }}Query
+                .FirstOrDefault(x => x.Id == request.Id);
             if (entity == null) _repository.Add(entity = new {{ entityNamePascalCase }}());
             entity.Name = request.Name;
             _uow.SaveChanges();
@@ -37,16 +37,21 @@ namespace {{ namespacename }}
 
         public ICollection<{{ entityNamePascalCase }}Dto> Get()
         {
-            ICollection<{{ entityNamePascalCase }}Dto> response = new HashSet<{{ entityNamePascalCase }}Dto>();
-            var entities = _repository.GetAll().Where(x => x.IsDeleted == false).ToList();
-            foreach(var entity in entities) { response.Add(new {{ entityNamePascalCase }}Dto(entity)); }    
+            ICollection<{{ entityNamePascalCase }}Dto> response = new HashSet<{{ entityNamePascalCase }}Dto>();            
+            foreach(var entity in {{ entityNamePascalCase }}Query) { response.Add(new {{ entityNamePascalCase }}Dto(entity)); }    
             return response;
         }
 
 
         public {{ entityNamePascalCase }}Dto GetById(int id)
         {
-            return new {{ entityNamePascalCase }}Dto(_repository.GetAll().Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefault());
+            return new {{ entityNamePascalCase }}Dto({{ entityNamePascalCase }}Query.Where(x => x.Id == id).FirstOrDefault());
+        }
+
+        public IQueryable<{{ entityNamePascalCase }}> {{ entityNamePascalCase }}Query { get {
+                return _repository.GetAll()
+                    .Where(x => !x.IsDeleted);
+            }
         }
 
         protected readonly IUow _uow;
