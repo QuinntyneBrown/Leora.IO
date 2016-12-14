@@ -14,6 +14,7 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
         super();
 		this.onSave = this.onSave.bind(this);
         this.onDelete = this.onDelete.bind(this);
+		this.onTitleClick = this.onTitleClick.bind(this);
     }
 
     static get observedAttributes() {
@@ -40,13 +41,15 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
 
 	private _addEventListeners() {
         this._saveButtonElement.addEventListener("click", this.onSave);
-        this._deleteButtonElement.addEventListener("click", this.onDelete);	
-	}
+        this._createTemplateElement.addEventListener("click", this.onCreateTemplateClick);
+        this._titleElement.addEventListener("click", this.onTitleClick);
+    }
 
-	private disconnectedCallback() {
+    private disconnectedCallback() {
         this._saveButtonElement.removeEventListener("click", this.onSave);
-        this._deleteButtonElement.removeEventListener("click", this.onDelete);	
-	}
+        this._createTemplateElement.removeEventListener("click", this.onCreateTemplateClick);
+        this._titleElement.removeEventListener("click", this.onTitleClick);
+    }
 
     public async onSave() {
         var {{ entityNameSnakeCase }} = {
@@ -55,12 +58,16 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
         } as {{ entityNamePascalCase }};
         
         await this._{{ entityNameSnakeCase }}Service.add({{ entityNameSnakeCase }});
-		this._router.navigate(["{{ entityNameSnakeCase }}","list"]);
+		this._router.navigate(["{{ entityNameLowerCase }}","list"]);
     }
 
     public async onDelete() {        
         await this._{{ entityNameSnakeCase }}Service.remove({ id: this.{{ entityNameSnakeCase }}Id });
-		this._router.navigate(["{{ entityNameSnakeCase }}","list"]);
+		this._router.navigate(["{{ entityNameLowerCase }}","list"]);
+    }
+
+	public onTitleClick() {
+        this._router.navigate(["{{ entityNameLowerCase }}", "list"]);
     }
 
     attributeChangedCallback(name, oldValue, newValue) {

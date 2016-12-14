@@ -16,16 +16,15 @@ export class {{ entityNamePascalCase }}ListComponent extends HTMLElement {
 		this._bind();
     }
 
-	private _bind() {
-        this._{{ entityNameCamelCase }}Service.get().then((results: string) => {
-            var resultsJSON: Array<{{ entityNamePascalCase }}> = JSON.parse(results) as Array<{{ entityNamePascalCase }}>;
-            for (var i = 0; i < resultsJSON.length; i++) {
-				let el = this._document.createElement(`{{ prefix }}-{{ entityNameSnakeCase }}-item`);
-				el.setAttribute("entity", JSON.stringify(resultsJSON[i]));
-				this.appendChild(el);
-            }
-        });	
+	private async _bind() {
+		const results = await this._{{ entityNameCamelCase }}Service.get() as string;
+		const {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> = JSON.parse(results) as Array<{{ entityNamePascalCase }}>;
+        for (var i = 0; i < {{ entityNameCamelCase }}s.length; i++) {
+			let el = this._document.createElement(`{{ prefix }}-{{ entityNameSnakeCase }}-item`);
+			el.setAttribute("entity", JSON.stringify({{ entityNameCamelCase }}s[i]));
+			this.appendChild(el);
+        }	
 	}
 }
 
-document.addEventListener("DOMContentLoaded", () => window.customElements.define("{{ prefix }}-{{ entityNameSnakeCase }}-list", {{ entityNamePascalCase }}ListComponent));
+customElements.define("{{ prefix }}-{{ entityNameSnakeCase }}-list", {{ entityNamePascalCase }}ListComponent);
