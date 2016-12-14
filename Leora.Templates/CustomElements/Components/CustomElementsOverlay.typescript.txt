@@ -1,7 +1,7 @@
 ﻿import { Modal } from "../shared";
 
-let template = require("./{{ entityNameSnakeCase }}-overlay.component.html");
-let styles = require("./{{ entityNameSnakeCase }}-overlay.component.scss");
+const template = require("./{{ entityNameSnakeCase }}-overlay.component.html");
+const styles = require("./{{ entityNameSnakeCase }}-overlay.component.scss");
 
 export class {{ entityNamePascalCase }}OverlayComponent extends HTMLElement {
     constructor(private _modal: Modal = Modal.Instance) {
@@ -44,4 +44,4 @@ export class {{ entityNamePascalCase }}OverlayComponent extends HTMLElement {
     }
 }
 
-document.addEventListener("DOMContentLoaded",() => window.customElements.define(`ce-{{ entityNameSnakeCase }}-overlay`,{{ entityNamePascalCase }}OverlayComponent));
+customElements.define(`ce-{{ entityNameSnakeCase }}-overlay`,{{ entityNamePascalCase }}OverlayComponent);

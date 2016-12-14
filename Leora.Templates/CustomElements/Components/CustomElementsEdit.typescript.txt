@@ -26,15 +26,13 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
 		this._addEventListeners();
     }
     
-	private _bind() {
-        this._titleElement.textContent = "Create {{ entityNameSnakeCase }}";
+	private async _bind() {
+        this._titleElement.textContent = this.{{ entityNameSnakeCase }}Id ? "Edit {{ entityNamePascalCase }}": "Create {{ entityNameSnakeCase }}";
 
         if (this.{{ entityNameSnakeCase }}Id) {
-            this._{{ entityNameSnakeCase }}Service.getById(this.{{ entityNameSnakeCase }}Id).then((results: string) => { 
-                var resultsJSON: {{ entityNamePascalCase }} = JSON.parse(results) as {{ entityNamePascalCase }};                
-                this._nameInputElement.value = resultsJSON.name;              
-            });
-            this._titleElement.textContent = "Edit {{ entityNamePascalCase }}";
+			const results = await this._{{ entityNameSnakeCase }}Service.getById(this.{{ entityNameSnakeCase }}Id) as string;
+            const resultsJSON: {{ entityNamePascalCase }} = JSON.parse(results) as {{ entityNamePascalCase }};                
+			this._nameInputElement.value = resultsJSON.name;  
         } else {
             this._deleteButtonElement.style.display = "none";
         } 	
@@ -45,26 +43,28 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
         this._deleteButtonElement.addEventListener("click", this.onDelete);	
 	}
 
-    public onSave() {
+	private disconnectedCallback() {
+        this._saveButtonElement.removeEventListener("click", this.onSave);
+        this._deleteButtonElement.removeEventListener("click", this.onDelete);	
+	}
+
+    public async onSave() {
         var {{ entityNameSnakeCase }} = {
             id: this.{{ entityNameSnakeCase }}Id,
             name: this._nameInputElement.value
         } as {{ entityNamePascalCase }};
         
-        this._{{ entityNameSnakeCase }}Service.add({{ entityNameSnakeCase }}).then((results) => {
-			this._router.navigate(["{{ entityNameSnakeCase }}","list"]);
-        });
+        await this._{{ entityNameSnakeCase }}Service.add({{ entityNameSnakeCase }});
+		this._router.navigate(["{{ entityNameSnakeCase }}","list"]);
     }
 
-    public onDelete() {        
-        this._{{ entityNameSnakeCase }}Service.remove({ id: this.{{ entityNameSnakeCase }}Id }).then((results) => {
-            this._router.navigate(["{{ entityNameSnakeCase }}","list"]);
-        });
+    public async onDelete() {        
+        await this._{{ entityNameSnakeCase }}Service.remove({ id: this.{{ entityNameSnakeCase }}Id });
+		this._router.navigate(["{{ entityNameSnakeCase }}","list"]);
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
-
             case "{{ entityNameSnakeCase }}-id":
                 this.{{ entityNameSnakeCase }}Id = newValue;
 				break;
@@ -79,4 +79,4 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
     private get _nameInputElement(): HTMLInputElement { return this.querySelector(".{{ entityNameSnakeCase }}-name") as HTMLInputElement;}
 }
 
-document.addEventListener("DOMContentLoaded",() => window.customElements.define(`ce-{{ entityNameSnakeCase }}-edit`,{{ entityNamePascalCase }}EditComponent));
+customElements.define(`ce-{{ entityNameSnakeCase }}-edit`,{{ entityNamePascalCase }}EditComponent);
