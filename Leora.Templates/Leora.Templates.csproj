@@ -358,6 +358,7 @@
     <EmbeddedResource Include="VanillaJS\VanillaJSComponent.html.txt" />
     <EmbeddedResource Include="VanillaJS\VanillaJSComponent.typescript.txt" />
     <EmbeddedResource Include="CustomElements\CustomElementsWebpack.js.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\Controllers\AspNetWebApi2Health.csharp.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />
