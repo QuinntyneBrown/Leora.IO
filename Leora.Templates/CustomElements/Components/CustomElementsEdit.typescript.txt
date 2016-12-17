@@ -8,7 +8,7 @@ const styles = require("./{{ entityNameSnakeCase }}-edit.component.scss");
 
 export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
     constructor(
-		private _{{ entityNameSnakeCase }}Service: {{ entityNamePascalCase }}Service = {{ entityNamePascalCase }}Service.Instance,
+		private _{{ entityNameCamelCase }}Service: {{ entityNamePascalCase }}Service = {{ entityNamePascalCase }}Service.Instance,
 		private _router: Router = Router.Instance
 		) {
         super();
@@ -28,12 +28,12 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
     }
     
 	private async _bind() {
-        this._titleElement.textContent = this.{{ entityNameSnakeCase }}Id ? "Edit {{ entityNamePascalCase }}": "Create {{ entityNameSnakeCase }}";
+        this._titleElement.textContent = this.{{ entityNameCamelCase }}Id ? "Edit {{ entityNamePascalCase }}": "Create {{ entityNameSnakeCase }}";
 
-        if (this.{{ entityNameSnakeCase }}Id) {
-			const results = await this._{{ entityNameSnakeCase }}Service.getById(this.{{ entityNameSnakeCase }}Id) as string;
-            const resultsJSON: {{ entityNamePascalCase }} = JSON.parse(results) as {{ entityNamePascalCase }};                
-			this._nameInputElement.value = resultsJSON.name;  
+        if (this.{{ entityNameCamelCase }}Id) {
+			const results = await this._{{ entityNameCamelCase }}Service.getById(this.{{ entityNameCamelCase }}Id) as string;
+            const {{ entityNameCamelCase }}: {{ entityNamePascalCase }} = JSON.parse(results) as {{ entityNamePascalCase }};                
+			this._nameInputElement.value = {{ entityNameCamelCase }}.name;  
         } else {
             this._deleteButtonElement.style.display = "none";
         } 	
@@ -41,28 +41,28 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
 
 	private _addEventListeners() {
         this._saveButtonElement.addEventListener("click", this.onSave);
-        this._createTemplateElement.addEventListener("click", this.onCreateTemplateClick);
+		this._deleteButtonElement.addEventListener("click", this.onDelete);
         this._titleElement.addEventListener("click", this.onTitleClick);
     }
 
     private disconnectedCallback() {
         this._saveButtonElement.removeEventListener("click", this.onSave);
-        this._createTemplateElement.removeEventListener("click", this.onCreateTemplateClick);
+		this._deleteButtonElement.removeEventListener("click", this.onDelete);
         this._titleElement.removeEventListener("click", this.onTitleClick);
     }
 
     public async onSave() {
-        var {{ entityNameSnakeCase }} = {
-            id: this.{{ entityNameSnakeCase }}Id,
+        var {{ entityNameCamelCase }} = {
+            id: this.{{ entityNameCamelCase }}Id,
             name: this._nameInputElement.value
         } as {{ entityNamePascalCase }};
         
-        await this._{{ entityNameSnakeCase }}Service.add({{ entityNameSnakeCase }});
+        await this._{{ entityNameCamelCase }}Service.add({{ entityNamePascalCase }});
 		this._router.navigate(["{{ entityNameLowerCase }}","list"]);
     }
 
     public async onDelete() {        
-        await this._{{ entityNameSnakeCase }}Service.remove({ id: this.{{ entityNameSnakeCase }}Id });
+        await this._{{ entityNameCamelCase }}Service.remove({ id: this.{{ entityNameCamelCase }}Id });
 		this._router.navigate(["{{ entityNameLowerCase }}","list"]);
     }
 
@@ -73,12 +73,12 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
             case "{{ entityNameSnakeCase }}-id":
-                this.{{ entityNameSnakeCase }}Id = newValue;
+                this.{{ entityNameCamelCase }}Id = newValue;
 				break;
         }        
     }
 
-    public {{ entityNameSnakeCase }}Id: number;
+    public {{ entityNameCamelCase }}Id: number;
     
 	private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
     private get _saveButtonElement(): HTMLElement { return this.querySelector(".save-button") as HTMLElement };
