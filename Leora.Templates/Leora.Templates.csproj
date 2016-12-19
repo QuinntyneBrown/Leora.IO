@@ -359,6 +359,9 @@
     <EmbeddedResource Include="VanillaJS\VanillaJSComponent.typescript.txt" />
     <EmbeddedResource Include="CustomElements\CustomElementsWebpack.js.txt" />
     <EmbeddedResource Include="AspNetWebApi2\Controllers\AspNetWebApi2Health.csharp.txt" />
+    <EmbeddedResource Include="CustomElements\Components\CustomElementsEditEmbed.typescript.txt" />
+    <EmbeddedResource Include="CustomElements\Components\CustomElementsEditEmbed.scss.txt" />
+    <EmbeddedResource Include="CustomElements\Components\CustomElementsEditEmbed.html.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

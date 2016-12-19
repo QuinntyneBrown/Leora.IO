@@ -1,0 +1,11 @@
+﻿@import "../../styles/base/index";
+
+{{ prefix }}-{{ entityNameSnakeCase }}-edit {
+	@extend .view-card;
+
+	h2 {
+		cursor:pointer;
+	}
+}
+
+

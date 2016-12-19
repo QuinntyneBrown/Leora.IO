@@ -1,0 +1,75 @@
+﻿import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
+import { EditorComponent } from "../shared";
+import { Router } from "../router";
+
+const template = require("./{{ entityNameSnakeCase }}-edit-embed.component.html");
+const styles = require("./{{ entityNameSnakeCase }}-edit-embed.component.scss");
+
+export class {{ entityNamePascalCase }}EditEmbedComponent extends HTMLElement {
+    constructor() {
+        super();
+		this.onSave = this.onSave.bind(this);
+        this.onDelete = this.onDelete.bind(this);
+		this.onTitleClick = this.onTitleClick.bind(this);
+    }
+
+    static get observedAttributes() {
+        return [];
+    }
+    
+    connectedCallback() {        
+        this.innerHTML = `<style>${styles}</style> ${template}`; 
+		this._bind();
+		this._addEventListeners();
+    }
+    
+	private async _bind() {
+        this._titleElement.textContent = this.{{ entityNameCamelCase }}Id ? "Edit {{ entityNamePascalCase }}": "Create {{ entityNameSnakeCase }}";
+
+        if (this.{{ entityNameCamelCase }}Id) {
+			const results = await this._{{ entityNameCamelCase }}Service.getById(this.{{ entityNameCamelCase }}Id) as string;
+            const {{ entityNameCamelCase }}: {{ entityNamePascalCase }} = JSON.parse(results) as {{ entityNamePascalCase }};                
+			this._nameInputElement.value = {{ entityNameCamelCase }}.name;  
+        } else {
+            this._deleteButtonElement.style.display = "none";
+        } 	
+	}
+
+	private _addEventListeners() {
+        this._saveButtonElement.addEventListener("click", this.onSave);
+		this._deleteButtonElement.addEventListener("click", this.onDelete);
+    }
+
+    private disconnectedCallback() {
+        this._saveButtonElement.removeEventListener("click", this.onSave);
+		this._deleteButtonElement.removeEventListener("click", this.onDelete);
+    }
+
+    public async onSave() {
+        const {{ entityNameCamelCase }} = {
+            id: this.{{ entityNameCamelCase }}Id,
+            name: this._nameInputElement.value
+        } as {{ entityNamePascalCase }};       
+    }
+
+    public async onDelete() {        
+
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        switch (name) {
+            case "{{ entityNameSnakeCase }}":
+                this.{{ entityNameCamelCase }} = JSON.parse(newValue);
+				break;
+        }        
+    }
+
+    public {{ entityNameCamelCase }}Id: number;
+    
+	private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
+    private get _saveButtonElement(): HTMLElement { return this.querySelector(".save-button") as HTMLElement };
+    private get _deleteButtonElement(): HTMLElement { return this.querySelector(".delete-button") as HTMLElement };
+    private get _nameInputElement(): HTMLInputElement { return this.querySelector(".{{ entityNameSnakeCase }}-name") as HTMLInputElement;}
+}
+
+customElements.define(`ce-{{ entityNameSnakeCase }}-edit-embed`,{{ entityNamePascalCase }}EditEmbedComponent);
