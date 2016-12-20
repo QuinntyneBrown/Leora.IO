@@ -1,0 +1,9 @@
+﻿@import "../../styles/base/index";
+
+{{ prefix }}-{{ entityNameSnakeCase }}-list {
+	@extend .view-card;
+
+    h2 {
+        margin-top:0px;
+    }
+}

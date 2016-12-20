@@ -1,0 +1,34 @@
+﻿import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
+
+const template = require("./{{ entityNameSnakeCase }}-list-embed.component.html");
+const styles = require("./{{ entityNameSnakeCase }}-list-embed.component.scss");
+
+export class {{ entityNamePascalCase }}ListEmbedComponent extends HTMLElement {
+    constructor() {
+        super();
+    }
+
+    static get observedAttributes() {
+        return [
+			"{{ entityNameSnakeCase }}""
+		];
+    }
+
+    connectedCallback() {
+        this.innerHTML = `<style>${styles}</style> ${template}`;
+		this._bind();
+    }
+
+	private async _bind() {		
+		const {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> = JSON.parse(results) as Array<{{ entityNamePascalCase }}>;
+        for (var i = 0; i < this.{{ entityNameCamelCase }}s.length; i++) {
+			let el = this._document.createElement(`{{ prefix }}-{{ entityNameSnakeCase }}-item`);
+			el.setAttribute("entity", JSON.stringify({{ entityNameCamelCase }}s[i]));
+			this.appendChild(el);
+        }	
+	}
+
+	{{ entityNameCamelCase }}s:Array<{{ entityNamePascalCase }}>;
+}
+
+customElements.define("{{ prefix }}-{{ entityNameSnakeCase }}-list-embed", {{ entityNamePascalCase }}ListEmbedComponent);

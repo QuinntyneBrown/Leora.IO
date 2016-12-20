@@ -14,7 +14,9 @@ export class {{ entityNamePascalCase }}EditEmbedComponent extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return [];
+        return [
+			"{{ entityNameSnakeCase }}""
+		];
     }
     
     connectedCallback() {        

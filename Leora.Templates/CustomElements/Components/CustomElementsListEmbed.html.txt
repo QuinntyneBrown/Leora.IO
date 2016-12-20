@@ -1,0 +1,2 @@
+﻿<h2>{{ entityNameTitleCase }} List</h2>
+<ce-link class="{{ entityNameSnakeCase }}-create" routesegments='["{{ entityNameSnakeCase }}","create"]'>CREATE {{ entityNameAllCaps }}</ce-link>
