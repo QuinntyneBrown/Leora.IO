@@ -58,16 +58,16 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
         } as {{ entityNamePascalCase }};
         
         await this._{{ entityNameCamelCase }}Service.add({{ entityNamePascalCase }});
-		this._router.navigate(["{{ entityNameLowerCase }}","list"]);
+		this._router.navigate(["{{ entityNameSnakeCase }}","list"]);
     }
 
     public async onDelete() {        
         await this._{{ entityNameCamelCase }}Service.remove({ id: this.{{ entityNameCamelCase }}Id });
-		this._router.navigate(["{{ entityNameLowerCase }}","list"]);
+		this._router.navigate(["{{ entityNameSnakeCase }}","list"]);
     }
 
 	public onTitleClick() {
-        this._router.navigate(["{{ entityNameLowerCase }}", "list"]);
+        this._router.navigate(["{{ entityNameSnakeCase }}", "list"]);
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
