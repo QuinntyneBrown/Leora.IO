@@ -24,7 +24,7 @@ export class {{ entityNamePascalCase }}ListEmbedComponent extends HTMLElement {
 
 	private async _bind() {		
         for (let i = 0; i < this.{{ entityNameCamelCase }}s.length; i++) {
-			let el = this._document.createElement(`{{ prefix }}-{{ entityNameSnakeCase }}-item`);
+			let el = this._document.createElement(`{{ prefix }}-{{ entityNameSnakeCase }}-item-embed`);
 			el.setAttribute("entity", JSON.stringify(this.{{ entityNameCamelCase }}s[i]));
 			this.appendChild(el);
         }	
