@@ -57,7 +57,7 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
             name: this._nameInputElement.value
         } as {{ entityNamePascalCase }};
         
-        await this._{{ entityNameCamelCase }}Service.add({{ entityNamePascalCase }});
+        await this._{{ entityNameCamelCase }}Service.add({{ entityNameCamelCase }});
 		this._router.navigate(["{{ entityNameSnakeCase }}","list"]);
     }
 
