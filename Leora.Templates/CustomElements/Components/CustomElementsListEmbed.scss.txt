@@ -1,4 +1,4 @@
-﻿{{ prefix }}-{{ entityNameSnakeCase }}-list {
+﻿{{ prefix }}-{{ entityNameSnakeCase }}-list-embed {
     h2 {
         margin-top:0px;
     }

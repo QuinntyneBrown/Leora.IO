@@ -1,4 +1,4 @@
-﻿{{ prefix }}-{{ entityNameSnakeCase }}-edit {	
+﻿{{ prefix }}-{{ entityNameSnakeCase }}-edit-embed {	
 	h2 {
 		cursor:pointer;
 	}

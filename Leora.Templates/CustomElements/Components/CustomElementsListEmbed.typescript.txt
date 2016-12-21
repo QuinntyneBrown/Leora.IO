@@ -4,13 +4,16 @@ const template = require("./{{ entityNameSnakeCase }}-list-embed.component.html"
 const styles = require("./{{ entityNameSnakeCase }}-list-embed.component.scss");
 
 export class {{ entityNamePascalCase }}ListEmbedComponent extends HTMLElement {
-    constructor() {
+    constructor(
+        private _document: Document = document
+    ) {
         super();
     }
 
+
     static get observedAttributes() {
         return [
-			"{{ entityNameSnakeCase }}""
+			"{{ entityNameSnakeCase }}"
 		];
     }
 
@@ -20,10 +23,9 @@ export class {{ entityNamePascalCase }}ListEmbedComponent extends HTMLElement {
     }
 
 	private async _bind() {		
-		const {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> = JSON.parse(results) as Array<{{ entityNamePascalCase }}>;
-        for (var i = 0; i < this.{{ entityNameCamelCase }}s.length; i++) {
+        for (let i = 0; i < this.{{ entityNameCamelCase }}s.length; i++) {
 			let el = this._document.createElement(`{{ prefix }}-{{ entityNameSnakeCase }}-item`);
-			el.setAttribute("entity", JSON.stringify({{ entityNameCamelCase }}s[i]));
+			el.setAttribute("entity", JSON.stringify(this.{{ entityNameCamelCase }}s[i]));
 			this.appendChild(el);
         }	
 	}
