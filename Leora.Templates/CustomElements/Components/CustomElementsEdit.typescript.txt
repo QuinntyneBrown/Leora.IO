@@ -52,7 +52,7 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
     }
 
     public async onSave() {
-        var {{ entityNameCamelCase }} = {
+        const {{ entityNameCamelCase }} = {
             id: this.{{ entityNameCamelCase }}Id,
             name: this._nameInputElement.value
         } as {{ entityNamePascalCase }};
