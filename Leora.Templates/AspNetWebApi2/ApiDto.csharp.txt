@@ -4,8 +4,8 @@
     {
         public {{ entityNamePascalCase }}Dto({{ rootNamespacename }}.Models.{{ entityNamePascalCase }} entity)
         {
-            this.Id = entity.Id;
-            this.Name = entity.Name;
+            Id = entity.Id;
+            Name = entity.Name;
         }
 
         public {{ entityNamePascalCase }}Dto()
