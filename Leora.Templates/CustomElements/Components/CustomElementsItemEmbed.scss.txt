@@ -1,0 +1,5 @@
+﻿@import "../../styles/base/index";
+
+{{ prefix }}-{{ entityNameSnakeCase }}-item {
+	@extend .entity-item;
+}
