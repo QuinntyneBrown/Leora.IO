@@ -1,60 +1,35 @@
 ﻿import { {{ entityNamePascalCase }} } from "./{{ entityNameCamelCase }}.model";
 
-export var {{ entityNameCamelCase }}Actions = {
-    ADD_SUCCESS: "[{{ entityNamePascalCase }}] Add Success",
+export const {{ entityNameCamelCase }}Actions = {
+    ADD: "[{{ entityNamePascalCase }}] Add",
+    EDIT: "[{{ entityNamePascalCase }}] Edit",
     DELETE: "[{{ entityNamePascalCase }}] Delete",
-    DELETE_SUCCESS: "[{{ entityNamePascalCase }}] Delete Success",
-    SELECT: "[{{ entityNamePascalCase }}] Select"
 };
 
-export class {{ entityNamePascalCase }}DeleteSuccess extends CustomEvent {
-    constructor({{ entityNameCamelCase }}Id: any) {
-        super({{ entityNameCamelCase }}Actions.DELETE_SUCCESS, {
-            detail: {
-                {{ entityNameCamelCase }}Id: {{ entityNameCamelCase }}Id
-            }
+export class {{ entityNamePascalCase }}Event extends CustomEvent {
+    constructor(eventName:string, {{ entityNameCamelCase }}: {{ entityNamePascalCase }}) {
+        super(eventName, {
+            bubbles: true,
+            cancelable: true,
+            detail: { {{ entityNameCamelCase }} }
         });
     }
 }
 
-export class {{ entityNamePascalCase }}AddSuccess extends CustomEvent {
+export class {{ entityNamePascalCase }}Add extends {{ entityNamePascalCase }}Event {
     constructor({{ entityNameCamelCase }}: {{ entityNamePascalCase }}) {
-        super({{ entityNameCamelCase }}Actions.ADD_SUCCESS, {
-            detail: {
-                {{ entityNameCamelCase }}: {{ entityNamePascalCase }}
-            }
-        });
+        super({{ entityNameCamelCase }}Actions.ADD, {{ entityNameCamelCase }});        
     }
 }
 
-export class {{ entityNamePascalCase }}DeleteSelect extends CustomEvent {
-    constructor(id: number) {
-        super({{ entityNameCamelCase }}Actions.DELETE, {
-            detail: {
-                {{ entityNameCamelCase }}Id: id,
-            }
-        });
+export class {{ entityNamePascalCase }}Edit extends {{ entityNamePascalCase }}Event {
+    constructor({{ entityNameCamelCase }}: {{ entityNamePascalCase }}) {
+        super({{ entityNameCamelCase }}Actions.EDIT, {{ entityNameCamelCase }});
     }
 }
 
-export class {{ entityNamePascalCase }}EditSelect extends CustomEvent {
-    constructor(id: number) {
-        super({{ entityNameCamelCase }}Actions.SELECT, {
-            detail: {
-                {{ entityNameCamelCase }}Id: id,
-                readonly: false,
-            }
-        });
-    }
-}
-
-export class {{ entityNamePascalCase }}ViewSelect extends CustomEvent {
-    constructor(id: number) {
-        super({{ entityNameCamelCase }}Actions.SELECT, {
-            detail: {
-                {{ entityNameCamelCase }}Id: id,
-                readonly: true
-            }
-        });
+export class {{ entityNamePascalCase }}Delete extends {{ entityNamePascalCase }}Event {
+    constructor({{ entityNameCamelCase }}: {{ entityNamePascalCase }}) {
+        super({{ entityNameCamelCase }}Actions.DELETE, {{ entityNameCamelCase }});
     }
 }
