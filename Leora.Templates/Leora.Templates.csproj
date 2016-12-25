@@ -74,6 +74,7 @@
   <ItemGroup>
     <Folder Include="Angular2NgrxApp\" />
     <Folder Include="Angular2\Utilities\" />
+    <Folder Include="AspNetCore\" />
     <Folder Include="CustomElements\Services\" />
     <Folder Include="Node\Models\" />
     <Folder Include="Node\Routes\" />
