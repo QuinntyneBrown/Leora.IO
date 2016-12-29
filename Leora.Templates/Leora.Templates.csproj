@@ -369,6 +369,7 @@
     <EmbeddedResource Include="CustomElements\Components\CustomElementsItemEmbed.scss.txt" />
     <EmbeddedResource Include="CustomElements\Components\CustomElementsItemEmbed.html.txt" />
     <EmbeddedResource Include="CustomElements\Components\CustomElementsItemEmbed.typescript.txt" />
+    <EmbeddedResource Include="AspNetWebApi2\ApiApiModel.csharp.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

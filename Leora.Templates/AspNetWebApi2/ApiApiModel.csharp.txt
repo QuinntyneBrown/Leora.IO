@@ -1,0 +1,18 @@
+﻿using {{ rootNamespacename }}.Models;
+
+namespace {{ namespacename }}
+{
+    public class {{ entityNamePascalCase }}ApiModel
+    {        
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public static TModel From{{ entityNamePascalCase }}<TModel>({{ entityNamePascalCase }} {{ entityNameCamelCase }}) where
+            TModel : {{ entityNamePascalCase }}ApiModel, new()
+        {
+            var model = new TModel();
+            model.Id = {{ entityNameCamelCase }}.Id;
+            return model;
+        }
+    }
+}

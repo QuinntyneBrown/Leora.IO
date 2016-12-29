@@ -13,7 +13,7 @@ export class {{ entityNamePascalCase }}ListEmbedComponent extends HTMLElement {
 
     static get observedAttributes() {
         return [
-			"{{ entityNameSnakeCase }}"
+			"{{ entityNameSnakeCase }}s"
 		];
     }
 
@@ -30,7 +30,15 @@ export class {{ entityNamePascalCase }}ListEmbedComponent extends HTMLElement {
         }	
 	}
 
-	{{ entityNameCamelCase }}s:Array<{{ entityNamePascalCase }}>;
+	{{ entityNameCamelCase }}s:Array<{{ entityNamePascalCase }}> = [];
+
+	attributeChangedCallback(name, oldValue, newValue) {
+        switch (name) {
+            case "{{ entityNameSnakeCase }}s":
+                this.{{ entityNameCamelCase }}s = JSON.parse(newValue);
+                break;
+        }
+    }
 }
 
 customElements.define("{{ prefix }}-{{ entityNameSnakeCase }}-list-embed", {{ entityNamePascalCase }}ListEmbedComponent);

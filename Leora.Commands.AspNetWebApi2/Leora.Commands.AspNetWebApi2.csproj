@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BaseCommand.cs" />
     <Compile Include="Contracts\IAspNetWebApi2Command.cs" />
+    <Compile Include="Contracts\IGenerateApiModelCommand.cs" />
     <Compile Include="Contracts\IGenerateConfigurationCommand.cs" />
     <Compile Include="Contracts\IGenerateContentModelCommand.cs" />
     <Compile Include="Contracts\IGenerateControllerCommand.cs" />
@@ -54,11 +55,13 @@
     <Compile Include="Contracts\IGenerateExceptionCommand.cs" />
     <Compile Include="Contracts\IGenerateFileMultipartFormDataStreamProviderCommand.cs" />
     <Compile Include="Contracts\IGenerateInMemoryMultipartFormDataStreamProviderCommand.cs" />
+    <Compile Include="Contracts\IGenerateMessagesCommand.cs" />
     <Compile Include="Contracts\IGenerateMigrationsConfigurationCommand.cs" />
     <Compile Include="Contracts\IGenerateModelCommand.cs" />
     <Compile Include="Contracts\IGenerateServiceCommand.cs" />
     <Compile Include="Contracts\IGenerateStreamHelperCommand.cs" />
     <Compile Include="Contracts\IGenerateUploadHandlersCommand.cs" />
+    <Compile Include="GenerateApiModelCommand.cs" />
     <Compile Include="GenerateConfigurationCommand.cs" />
     <Compile Include="GenerateContentModelCommand.cs" />
     <Compile Include="GenerateControllerCommand.cs" />
@@ -67,6 +70,7 @@
     <Compile Include="GenerateExceptionCommand.cs" />
     <Compile Include="GenerateFileMultipartFormDataStreamProviderCommand.cs" />
     <Compile Include="GenerateInMemoryMultipartFormDataStreamProviderCommand.cs" />
+    <Compile Include="GenerateMessagesCommand.cs" />
     <Compile Include="GenerateMigrationsConfigurationCommand.cs" />
     <Compile Include="GenerateModelCommand.cs" />
     <Compile Include="GenerateNewCommand.cs" />
@@ -75,12 +79,14 @@
     <Compile Include="GenerateUowCommand.cs" />
     <Compile Include="GenerateUploadHandlersCommand.cs" />
     <Compile Include="Options\BaseOptions.cs" />
+    <Compile Include="Options\GenerateApiModelOptions.cs" />
     <Compile Include="Options\GenerateConfigurationOptions.cs" />
     <Compile Include="Options\GenerateContentModelOptions.cs" />
     <Compile Include="Options\GenerateControllerOptions.cs" />
     <Compile Include="Options\GenerateDbContextOptions.cs" />
     <Compile Include="Options\GenerateDtosOptions.cs" />
     <Compile Include="Options\GenerateExceptionOptions.cs" />
+    <Compile Include="Options\GenerateMessagesOptions.cs" />
     <Compile Include="Options\GenerateMigrationsConfigurationOptions.cs" />
     <Compile Include="Options\GenerateModelOptions.cs" />
     <Compile Include="Options\GenerateServiceOptions.cs" />

@@ -54,6 +54,7 @@ namespace Leora.Cli
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateMigrationsConfigurationCommand, Commands.AspNetWebApi2.GenerateMigrationsConfigurationCommand>();
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateUploadHandlersCommand, Commands.AspNetWebApi2.GenerateUploadHandlersCommand>();
             container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateConfigurationCommand , Commands.AspNetWebApi2.GenerateConfigurationCommand>();
+            container.RegisterType<Commands.AspNetWebApi2.Contracts.IGenerateApiModelCommand, Commands.AspNetWebApi2.GenerateApiModelCommand>();
 
             container.RegisterType<IGenerateCommandCommand, GenerateCommandCommand>();
 
