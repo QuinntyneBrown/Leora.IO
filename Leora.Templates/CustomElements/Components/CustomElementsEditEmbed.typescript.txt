@@ -45,7 +45,7 @@ export class {{ entityNamePascalCase }}EditEmbedComponent extends HTMLElement {
 
     public async onSave() {
         const {{ entityNameCamelCase }} = {
-            id: this.{{ entityNameCamelCase }}.id,
+            id: this.{{ entityNameCamelCase }} != null ? this.{{ entityNameCamelCase }}.id : null,
             name: this._nameInputElement.value
         } as {{ entityNamePascalCase }};       
     }
