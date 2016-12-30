@@ -19,7 +19,7 @@ export class {{ entityNamePascalCase }}ItemEmbedComponent extends HTMLElement {
     connectedCallback() {        
         this.innerHTML = `<style>${styles}</style> ${template}`;
         this._bind();
-        this._addEventListeners();
+        this._setEventListeners();
     }
 
     disconnectedCallback() {
@@ -32,7 +32,7 @@ export class {{ entityNamePascalCase }}ItemEmbedComponent extends HTMLElement {
         this._nameElement.textContent = this.entity.name;
     }
 
-    private _addEventListeners() {
+    private _setEventListeners() {
         this._deleteLinkElement.addEventListener("click", this._onDeleteClick);
         this._editLinkElement.addEventListener("click", this._onEditClick);
         this._viewLinkElement.addEventListener("click", this._onViewClick);
