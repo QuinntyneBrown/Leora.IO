@@ -15,7 +15,7 @@ export class {{ entityNamePascalCase }}OverlayComponent extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `<style>${styles}</style> ${template}`;
         this._bind();
-        this._addEventListeners();
+        this._setEventListeners();
 
         
     }
@@ -24,7 +24,7 @@ export class {{ entityNamePascalCase }}OverlayComponent extends HTMLElement {
 
     }
 
-    private _addEventListeners() {
+    private _setEventListeners() {
         this.addEventListener("click", this.onClick.bind(this));
     }
 
