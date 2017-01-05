@@ -1,5 +1,6 @@
 ﻿import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 import { EditorComponent } from "../shared";
+import {  {{ entityNamePascalCase }}DeleteEvent, {{ entityNamePascalCase }}EditEvent, {{ entityNamePascalCase }}SaveEvent } from "./{{ entityNameSnakeCase }}.actions";
 
 const template = require("./{{ entityNameSnakeCase }}-edit-embed.component.html");
 const styles = require("./{{ entityNameSnakeCase }}-edit-embed.component.scss");
@@ -13,7 +14,8 @@ export class {{ entityNamePascalCase }}EditEmbedComponent extends HTMLElement {
 
     static get observedAttributes() {
         return [
-			"{{ entityNameSnakeCase }}"
+			"{{ entityNameSnakeCase }}",
+			"{{ entityNameSnakeCase }}-id"
 		];
     }
     
@@ -43,23 +45,40 @@ export class {{ entityNamePascalCase }}EditEmbedComponent extends HTMLElement {
 		this._deleteButtonElement.removeEventListener("click", this.onDelete);
     }
 
-    public async onSave() {
+    public onSave() {
         const {{ entityNameCamelCase }} = {
             id: this.{{ entityNameCamelCase }} != null ? this.{{ entityNameCamelCase }}.id : null,
             name: this._nameInputElement.value
-        } as {{ entityNamePascalCase }};       
+        } as {{ entityNamePascalCase }};
+		
+		this.dispatchEvent(new {{ entityNamePascalCase }}SaveEvent({{ entityNameCamelCase }})); 	       
     }
 
-    public async onDelete() {        
+    public onDelete() {        
+        const {{ entityNameCamelCase }} = {
+            id: this.{{ entityNameCamelCase }} != null ? this.{{ entityNameCamelCase }}.id : null,
+            name: this._nameInputElement.value
+        } as {{ entityNamePascalCase }};
 
+        this.dispatchEvent(new {{ entityNamePascalCase }}DeleteEvent({{ entityNameCamelCase }})); 		
     }
+
+	public achievement: Achievement;
 
     attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
-            case "{{ entityNameSnakeCase }}":
-                this.{{ entityNameCamelCase }} = JSON.parse(newValue);
-				break;
-        }        
+            case "{{ entityNameSnakeCase }}-id":
+                this.{{ entityNameCamelCase }}Id = newValue;
+                break;
+            case "achievement":
+                this.achievement = JSON.parse(newValue);
+                if (this.parentNode) {
+                    this.achievementId = this.achievement.id;
+                    this._nameInputElement.value = this.achievement.name != undefined ? this.achievement.name : "";
+                    this._titleElement.textContent = this.achievementId ? "Edit Achievement" : "Create Achievement";
+                }
+                break;
+        }           
     }
 
     public {{ entityNameCamelCase }}: {{ entityNamePascalCase }};
