@@ -1,22 +1,28 @@
 ﻿import { compiler } from "../../compiler";
+import { routerEvents } from "../../router";
 
 const template = require("./{{ entityNameSnakeCase }}.component.html");
 
 export class {{ entityNamePascalCase }}Component {
-    constructor(public el: HTMLElement) { }
+    constructor(
+        public el: HTMLElement,
+        private _window: Window = window
+    ) {
+        this.disconnectedCallback = this.disconnectedCallback;
+	}
     
     connectedCallback() {
         this.el.innerHTML = template;
         this._bind();
-        this._addEventListeners();
+        this._setEventListeners();
     }
 
     private _bind() {
 
     }
 
-    private _addEventListeners() {
-
+    private _setEventListeners() {
+		this._window.addEventListener(routerEvents.BEFORE_ROUTE_CHANGE, this.disconnectedCallback);
     }
 
     disconnectedCallback() {
