@@ -11,6 +11,7 @@
         public static string Cli = "Cli";
         public static string VisualStudio = "VisualStudio";
         public static string MicroService = "MicroService";
+        public static string CQRS = "CQRS";
 
     }
 }

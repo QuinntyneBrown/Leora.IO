@@ -80,6 +80,9 @@ namespace Leora.Cli
 
                 ["v"] = _container.Resolve<Leora.Commands.VanillaJS.IGenerateComponentCommand>().Run,
 
+                ["cqrs-command"] = _container.Resolve<Commands.CQRS.IGenerateCommandCommand>().Run,
+                ["cqrs-query"] = _container.Resolve<Commands.CQRS.IGenerateQueryCommand>().Run,
+
                 ["dotnet-controller"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand>().Run,
                 ["dotnet-api-model"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateApiModelCommand>().Run,
                 //["dotnet-messages"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateMessagesCommand>().Run,
