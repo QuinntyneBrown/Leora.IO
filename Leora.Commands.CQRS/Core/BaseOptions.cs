@@ -15,6 +15,9 @@ namespace Leora.Commands.CQRS.Core
         [Option("name", Required = false, HelpText = "Name")]
         public string Name { get; set; }
 
+        [Option("entity", Required = false, HelpText = "Entity")]
+        public string Entity { get; set; }
+
         [Option("namespace", Required = false, HelpText = "NameSpace")]
         public string NameSpace { get; set; }
 

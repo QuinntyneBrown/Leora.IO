@@ -1,0 +1,48 @@
+﻿using MediatR;
+using {{ rootNamespacename }}.Data;
+using {{ rootNamespacename }}.Utilities;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Data.Entity;
+
+namespace {{ namespacename }}
+{
+    public class {{ entityNamePascalCase }}Command
+    {
+        public class {{ entityNamePascalCase }}Request : IAsyncRequest<{{ entityNamePascalCase }}Response>
+        {
+            public {{ entityNamePascalCase }}Request()
+            {
+
+            }
+        }
+
+        public class {{ entityNamePascalCase }}Response
+        {
+            public {{ entityNamePascalCase }}Response()
+            {
+
+            }
+        }
+
+        public class {{ entityNamePascalCase }}Handler : IAsyncRequestHandler<{{ entityNamePascalCase }}Request, {{ entityNamePascalCase }}Response>
+        {
+            public {{ entityNamePascalCase }}Handler(QuinntyneBrownPhotographyDataContext dataContext, ICache cache)
+            {
+                _dataContext = dataContext;
+                _cache = cache;
+            }
+
+            public async Task<{{ entityNamePascalCase }}Response> Handle({{ entityNamePascalCase }}Request request)
+            {
+				throw new System.NotImplementedException();
+            }
+
+            private readonly QuinntyneBrownPhotographyDataContext _dataContext;
+            private readonly ICache _cache;
+        }
+
+    }
+
+}

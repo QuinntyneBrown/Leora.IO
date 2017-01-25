@@ -1,4 +1,4 @@
-﻿using {{ rootNamespacename }}.Models;
+﻿using {{ rootNamespacename }}.Data.Models;
 
 namespace {{ namespacename }}
 {
@@ -14,5 +14,9 @@ namespace {{ namespacename }}
             model.Id = {{ entityNameCamelCase }}.Id;
             return model;
         }
+
+        public static {{ entityNamePascalCase }}ApiModel From{{ entityNamePascalCase }}({{ entityNamePascalCase }} {{ entityNameCamelCase }})
+            => From{{ entityNamePascalCase }}<{{ entityNamePascalCase }}ApiModel>({{ entityNameCamelCase }});
+
     }
 }

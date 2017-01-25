@@ -26,16 +26,16 @@ namespace Leora.Commands.CQRS
 
         public override int Run(GenerateCommandOptions options)
         {
-            return Run(options.NameSpace, options.Directory, options.Name, options.RootNamespace);
+            return Run(options.Entity, options.NameSpace, options.Directory, options.Name, options.RootNamespace);
         }
 
-        public int Run(string namespacename, string directory, string name, string rootNamespace)
+        public int Run(string entityName, string namespacename, string directory, string name, string rootNamespace)
         {
             int exitCode = 1;
-            var pascalCaseName = $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Command.cs";
-            var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
-            var templateCs = _templateManager.Get(FileType.CSharp, "CQRSCommand", "Commands", entityNamePascalCase, BluePrintType.CQRS);
-            _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(templateCs, name, namespacename, rootNamespace));
+            var pascalCaseName = $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, entityName)}Command.cs";
+            var namePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
+            var templateCs = _templateManager.Get(FileType.CSharp, "CQRSCommand", "Commands", namePascalCase, BluePrintType.CQRS);
+            _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(templateCs, entityName, name, namespacename, rootNamespace));
             _projectManager.Process(directory, $"{pascalCaseName}", FileType.CSharp);
             return exitCode;
         }

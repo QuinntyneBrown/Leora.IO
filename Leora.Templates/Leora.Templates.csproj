@@ -372,6 +372,11 @@
     <EmbeddedResource Include="AspNetWebApi2\ApiApiModel.csharp.txt" />
     <EmbeddedResource Include="CQRS\CQRSCommand.csharp.txt" />
     <EmbeddedResource Include="CQRS\CQRSQuery.csharp.txt" />
+    <EmbeddedResource Include="CQRS\Commands\CQRSAddOrUpdateCommand.csharp.txt" />
+    <EmbeddedResource Include="CQRS\Queries\CQRSGetQuery.csharp.txt" />
+    <EmbeddedResource Include="CQRS\Queries\CQRSGetByNameQuery.csharp.txt" />
+    <EmbeddedResource Include="CQRS\Queries\CQRSGetByIdQuery.csharp.txt" />
+    <EmbeddedResource Include="CQRS\Commands\CQRSRemoveCommand.csharp.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\BaseCommand.cs" />
-    <Compile Include="Core\BaseOption.cs" />
+    <Compile Include="Core\BaseOptions.cs" />
     <Compile Include="GenerateCommandCommand.cs" />
     <Compile Include="GenerateQueryCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -20,5 +20,10 @@ namespace Leora.Services.Mocks
         {
             return new List<string>().ToArray();
         }
+
+        public string[] ProcessTemplate(string[] template, string entityName, string name, string namespacename, string rootNamespace)
+        {
+            return new List<string>().ToArray();
+        }
     }
 }
