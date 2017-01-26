@@ -46,6 +46,10 @@
   <ItemGroup>
     <Compile Include="Core\BaseCommand.cs" />
     <Compile Include="Core\BaseOptions.cs" />
+    <Compile Include="GenerateGetByIdCommand.cs" />
+    <Compile Include="GenerateGetCommand.cs" />
+    <Compile Include="GenerateRemoveCommand.cs" />
+    <Compile Include="GenerateAddOrUpdateCommand.cs" />
     <Compile Include="GenerateCommandCommand.cs" />
     <Compile Include="GenerateQueryCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

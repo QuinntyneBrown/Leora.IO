@@ -377,6 +377,7 @@
     <EmbeddedResource Include="CQRS\Queries\CQRSGetByNameQuery.csharp.txt" />
     <EmbeddedResource Include="CQRS\Queries\CQRSGetByIdQuery.csharp.txt" />
     <EmbeddedResource Include="CQRS\Commands\CQRSRemoveCommand.csharp.txt" />
+    <EmbeddedResource Include="CQRS\CQRSAddOrUpdate.csharp.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

@@ -1,0 +1,52 @@
+﻿using MediatR;
+using {{ rootNamespacename }}.Data;
+using {{ rootNamespacename }}.Data.Models;
+using {{ rootNamespacename }}.Utilities;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Data.Entity;
+
+namespace {{ namespacename }}
+{
+    public class {{ namePascalCase }}Command
+    {
+        public class {{ namePascalCase }}Request : IAsyncRequest<{{ namePascalCase }}Response>
+        {
+            public {{ entityNamePascalCase }}ApiModel {{ entityNamePascalCase }} { get; set; }
+        }
+
+        public class {{ namePascalCase }}Response
+        {
+
+        }
+
+        public class {{ namePascalCase }}Handler : IAsyncRequestHandler<{{ namePascalCase }}Request, {{ namePascalCase }}Response>
+        {
+            public {{ namePascalCase }}Handler(QuinntyneBrownPhotographyDataContext dataContext, ICache cache)
+            {
+                _dataContext = dataContext;
+                _cache = cache;
+            }
+
+            public async Task<{{ namePascalCase }}Response> Handle({{ namePascalCase }}Request request)
+            {
+                var entity = await _dataContext.{{ entityNamePascalCase }}s
+                    .SingleOrDefaultAsync(x => x.Id == request.{{ entityNamePascalCase }}.Id && x.IsDeleted == false);
+                if (entity == null) _dataContext.{{ entityNamePascalCase }}s.Add(entity = new {{ entityNamePascalCase }}());
+                entity.Name = request.{{ entityNamePascalCase }}.Name;
+                await _dataContext.SaveChangesAsync();
+
+                return new AddOrUpdateResponse()
+                {
+
+                };
+            }
+
+            private readonly QuinntyneBrownPhotographyDataContext _dataContext;
+            private readonly ICache _cache;
+        }
+
+    }
+
+}

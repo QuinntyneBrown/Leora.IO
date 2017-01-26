@@ -39,6 +39,10 @@ namespace Leora.Cli
 
             container.RegisterType<Leora.Commands.CQRS.IGenerateCommandCommand, Leora.Commands.CQRS.GenerateCommandCommand>();
             container.RegisterType<Leora.Commands.CQRS.IGenerateQueryCommand, Leora.Commands.CQRS.GenerateQueryCommand>();
+            container.RegisterType<Leora.Commands.CQRS.IGenerateAddOrUpdateCommand, Leora.Commands.CQRS.GenerateAddOrUpdateCommand>();
+            container.RegisterType<Leora.Commands.CQRS.IGenerateRemoveCommand, Leora.Commands.CQRS.GenerateRemoveCommand>();
+            container.RegisterType<Leora.Commands.CQRS.IGenerateGetCommand, Leora.Commands.CQRS.GenerateGetCommand>();
+            container.RegisterType<Leora.Commands.CQRS.IGenerateGetByIdCommand, Leora.Commands.CQRS.GenerateGetByIdCommand>();
 
             container.RegisterType<IGenerateCustomElementCommand, GenerateCustomElementCommand>();
             container.RegisterType<IGenerateActionsCommand, GenerateActionsCommand>();
