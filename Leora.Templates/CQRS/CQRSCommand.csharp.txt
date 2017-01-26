@@ -8,33 +8,33 @@ using System.Data.Entity;
 
 namespace {{ namespacename }}
 {
-    public class {{ entityNamePascalCase }}Command
+    public class {{ namePascalCase }}Command
     {
-        public class {{ entityNamePascalCase }}Request : IAsyncRequest<{{ entityNamePascalCase }}Response>
+        public class {{ namePascalCase }}Request : IAsyncRequest<{{ namePascalCase }}Response>
         {
-            public {{ entityNamePascalCase }}Request()
+            public {{ namePascalCase }}Request()
             {
 
             }
         }
 
-        public class {{ entityNamePascalCase }}Response
+        public class {{ namePascalCase }}Response
         {
-            public {{ entityNamePascalCase }}Response()
+            public {{ namePascalCase }}Response()
             {
 
             }
         }
 
-        public class {{ entityNamePascalCase }}Handler : IAsyncRequestHandler<{{ entityNamePascalCase }}Request, {{ entityNamePascalCase }}Response>
+        public class {{ namePascalCase }}Handler : IAsyncRequestHandler<{{ namePascalCase }}Request, {{ namePascalCase }}Response>
         {
-            public {{ entityNamePascalCase }}Handler(QuinntyneBrownPhotographyDataContext dataContext, ICache cache)
+            public {{ namePascalCase }}Handler(QuinntyneBrownPhotographyDataContext dataContext, ICache cache)
             {
                 _dataContext = dataContext;
                 _cache = cache;
             }
 
-            public async Task<{{ entityNamePascalCase }}Response> Handle({{ entityNamePascalCase }}Request request)
+            public async Task<{{ namePascalCase }}Response> Handle({{ namePascalCase }}Request request)
             {
 				throw new System.NotImplementedException();
             }

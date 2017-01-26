@@ -32,11 +32,10 @@ namespace Leora.Commands.CQRS
         public int Run(string entityName, string namespacename, string directory, string name, string rootNamespace)
         {
             int exitCode = 1;
-            var pascalCaseName = $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, entityName)}Command.cs";
-            var namePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
-            var templateCs = _templateManager.Get(FileType.CSharp, "CQRSCommand", "Commands", namePascalCase, BluePrintType.CQRS);
-            _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(templateCs, entityName, name, namespacename, rootNamespace));
-            _projectManager.Process(directory, $"{pascalCaseName}", FileType.CSharp);
+
+            var templateCs = _templateManager.Get(FileType.CSharp, "CQRSCommand", "Commands", _namingConventionConverter.Convert(NamingConvention.PascalCase, name), BluePrintType.CQRS);
+            _fileWriter.WriteAllLines($"{directory}//{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Command.cs", _templateProcessor.ProcessTemplate(templateCs, entityName, name, namespacename, rootNamespace));
+            _projectManager.Process(directory, $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Command.cs", FileType.CSharp);
             return exitCode;
         }
     }
