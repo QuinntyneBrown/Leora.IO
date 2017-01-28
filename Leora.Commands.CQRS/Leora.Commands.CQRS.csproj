@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Core\BaseCommand.cs" />
     <Compile Include="Core\BaseOptions.cs" />
-    <Compile Include="GenerateControllerCommand.cs" />
+    <Compile Include="GenerateFeatureCommand.cs" />
     <Compile Include="GenerateGetByIdCommand.cs" />
     <Compile Include="GenerateGetCommand.cs" />
     <Compile Include="GenerateRemoveCommand.cs" />
@@ -56,6 +56,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Leora.Commands.AspNetWebApi2\Leora.Commands.AspNetWebApi2.csproj">
+      <Project>{fcd1c652-d683-45cd-8fd9-ddee37b702a5}</Project>
+      <Name>Leora.Commands.AspNetWebApi2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">
       <Project>{239c7774-bab3-4842-b86b-fe813708ce02}</Project>
       <Name>Leora.Commands.Contracts</Name>

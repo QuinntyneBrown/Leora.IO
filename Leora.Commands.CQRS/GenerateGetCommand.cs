@@ -26,6 +26,11 @@ namespace Leora.Commands.CQRS
 
         public override int Run(GenerateGetOptions options)
         {
+            if (string.IsNullOrEmpty(options.Name))
+            {
+                options.Name = $"Get{options.Entity}s";
+            }
+
             return Run(options.Entity, options.NameSpace, options.Directory, options.Name, options.RootNamespace);
         }
 

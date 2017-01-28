@@ -83,9 +83,10 @@ namespace Leora.Cli
                 ["cqrs-command"] = _container.Resolve<Commands.CQRS.IGenerateCommandCommand>().Run,
                 ["cqrs-query"] = _container.Resolve<Commands.CQRS.IGenerateQueryCommand>().Run,
                 ["cqrs-add-or-update"] = _container.Resolve<Commands.CQRS.IGenerateAddOrUpdateCommand>().Run,
-                ["cqrs-controller"] = _container.Resolve<Commands.CQRS.IGenerateControllerCommand>().Run,
                 ["cqrs-remove"] = _container.Resolve<Commands.CQRS.IGenerateRemoveCommand>().Run,
-
+                ["cqrs-get-by-id"] = _container.Resolve<Commands.CQRS.IGenerateGetByIdCommand>().Run,
+                ["cqrs-get"] = _container.Resolve<Commands.CQRS.IGenerateGetCommand>().Run,
+                ["cqrs-feature"] = _container.Resolve<Commands.CQRS.IGenerateFeatureCommand>().Run,
                 ["dotnet-controller"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand>().Run,
                 ["dotnet-api-model"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateApiModelCommand>().Run,
                 //["dotnet-messages"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateMessagesCommand>().Run,

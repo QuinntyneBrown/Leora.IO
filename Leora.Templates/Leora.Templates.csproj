@@ -382,6 +382,10 @@
     <EmbeddedResource Include="CQRS\CQRSController.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiControllerCQRS.csharp.txt" />
     <EmbeddedResource Include="CQRS\CQRSRemove.csharp.txt" />
+    <EmbeddedResource Include="CQRS\CQRSGet.csharp.txt" />
+    <EmbeddedResource Include="CQRS\CQRSGetById.csharp.txt" />
+    <EmbeddedResource Include="CQRS\CQRSGetByName.csharp.txt" />
+    <EmbeddedResource Include="CQRS\CQRSGetBySlug.csharp.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />
