@@ -14,6 +14,37 @@ namespace {{ namespacename }}
             _mediator = mediator;
         }
 
+        [Route("add")]
+        [HttpPost]
+        [ResponseType(typeof(AddOrUpdate{{ entityNamePascalCase }}Command.AddOrUpdate{{ entityNamePascalCase }}Response))]
+        public async Task<IHttpActionResult> Add(AddOrUpdate{{ entityNamePascalCase }}Command.AddOrUpdate{{ entityNamePascalCase }}Request request)
+            => Ok(await _mediator.SendAsync(request));
+
+        [Route("update")]
+        [HttpPut]
+        [ResponseType(typeof(AddOrUpdate{{ entityNamePascalCase }}Command.AddOrUpdate{{ entityNamePascalCase }}Response))]
+        public async Task<IHttpActionResult> Update(AddOrUpdate{{ entityNamePascalCase }}Command.AddOrUpdate{{ entityNamePascalCase }}Request request)
+            => Ok(await _mediator.SendAsync(request));
+        
+        [Route("get")]
+        [AllowAnonymous]
+        [HttpGet]
+        [ResponseType(typeof(Get{{ entityNamePascalCase }}sQuery.Get{{ entityNamePascalCase }}sResponse))]
+        public async Task<IHttpActionResult> Get()
+            => Ok(await _mediator.SendAsync(new Get{{ entityNamePascalCase }}sQuery.Get{{ entityNamePascalCase }}sRequest()));
+
+        [Route("getById")]
+        [HttpGet]
+        [ResponseType(typeof(Get{{ entityNamePascalCase }}ByIdQuery.Get{{ entityNamePascalCase }}ByIdResponse))]
+        public async Task<IHttpActionResult> GetById(Get{{ entityNamePascalCase }}ByIdQuery.Get{{ entityNamePascalCase }}ByIdRequest request)
+            => Ok(await _mediator.SendAsync(request));
+
+        [Route("remove")]
+        [HttpDelete]
+        [ResponseType(typeof(Remove{{ entityNamePascalCase }}Command.Remove{{ entityNamePascalCase }}Response))]
+        public async Task<IHttpActionResult> Remove(Remove{{ entityNamePascalCase }}Command.Remove{{ entityNamePascalCase }}Request request)
+            => Ok(await _mediator.SendAsync(request));
+
         protected readonly IMediator _mediator;
 
     }
