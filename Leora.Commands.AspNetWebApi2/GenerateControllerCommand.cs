@@ -10,9 +10,9 @@ namespace Leora.Commands.AspNetWebApi2
         public GenerateControllerCommand(IFileWriter fileWriter, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, INamespaceManager namespaceManager, IProjectManager projectManager)
             :base(fileWriter,templateManager,templateProcessor, namingConventionConverter, namespaceManager, projectManager) { }
 
-        public override int Run(GenerateControllerOptions options) => Run(options.NameSpace, options.Directory, options.Name, options.RootNamespace, options.Trace);
+        public override int Run(GenerateControllerOptions options) => Run(options.NameSpace, options.Directory, options.Name, options.RootNamespace, options.Trace, options.CQRS);
         
-        public int Run(string namespacename, string directory, string name, string rootNamespace, bool trace = false)
+        public int Run(string namespacename, string directory, string name, string rootNamespace, bool trace = false, bool cqrs = false)
         {
             int exitCode = 1;            
             var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
@@ -20,6 +20,10 @@ namespace Leora.Commands.AspNetWebApi2
             if (trace)
             {
                 _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiControllerTrace", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
+            }
+            else if(cqrs)
+            {
+                _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiControllerCQRS", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
             }
             else
             {

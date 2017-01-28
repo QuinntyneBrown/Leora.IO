@@ -6,5 +6,8 @@ namespace Leora.Commands.AspNetWebApi2.Options
     {
         [Option("trace", Required = false, HelpText = "Trace")]
         public bool Trace { get; set; }
+
+        [Option("cqrs", Required = false, HelpText = "CQRS")]
+        public bool CQRS { get; set; }
     }
 }

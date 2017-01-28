@@ -26,6 +26,11 @@ namespace Leora.Commands.CQRS
 
         public override int Run(GenerateRemoveOptions options)
         {
+            if (string.IsNullOrEmpty(options.Name))
+            {
+                options.Name = $"Remove{options.Entity}";
+            }
+
             return Run(options.Entity, options.NameSpace, options.Directory, options.Name, options.RootNamespace);
         }
 

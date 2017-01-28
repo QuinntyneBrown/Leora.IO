@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Core\BaseCommand.cs" />
     <Compile Include="Core\BaseOptions.cs" />
+    <Compile Include="GenerateControllerCommand.cs" />
     <Compile Include="GenerateGetByIdCommand.cs" />
     <Compile Include="GenerateGetCommand.cs" />
     <Compile Include="GenerateRemoveCommand.cs" />

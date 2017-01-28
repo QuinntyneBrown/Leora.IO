@@ -13,13 +13,10 @@ namespace {{ namespacename }}
     {
         public class {{ namePascalCase }}Request : IAsyncRequest<{{ namePascalCase }}Response>
         {
-            public {{ entityNamePascalCase }}ApiModel {{ entityNamePascalCase }} { get; set; }
+            public int Id { get; set; }
         }
 
-        public class {{ namePascalCase }}Response
-        {
-
-        }
+        public class {{ namePascalCase }}Response { }
 
         public class {{ namePascalCase }}Handler : IAsyncRequestHandler<{{ namePascalCase }}Request, {{ namePascalCase }}Response>
         {
@@ -31,22 +28,14 @@ namespace {{ namespacename }}
 
             public async Task<{{ namePascalCase }}Response> Handle({{ namePascalCase }}Request request)
             {
-                var entity = await _dataContext.{{ entityNamePascalCase }}s
-                    .SingleOrDefaultAsync(x => x.Id == request.{{ entityNamePascalCase }}.Id && x.IsDeleted == false);
-                if (entity == null) _dataContext.{{ entityNamePascalCase }}s.Add(entity = new {{ entityNamePascalCase }}());
-                entity.Name = request.{{ entityNamePascalCase }}.Name;
+                var {{ entityNameCamelCase }} = await _dataContext.{{ entityNamePascalCase }}s.FindAsync(request.Id);
+                {{ entityNameCamelCase }}.IsDeleted = true;
                 await _dataContext.SaveChangesAsync();
-
-                return new {{ namePascalCase }}Response()
-                {
-
-                };
+                return new Remove{{ entityNamePascalCase }}Response();
             }
 
             private readonly QuinntyneBrownPhotographyDataContext _dataContext;
             private readonly ICache _cache;
         }
-
     }
-
 }

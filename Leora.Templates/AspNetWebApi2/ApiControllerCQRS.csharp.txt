@@ -1,0 +1,20 @@
+﻿using MediatR;
+using System.Threading.Tasks;
+using System.Web.Http;
+using System.Web.Http.Description;
+
+namespace {{ namespacename }}
+{
+    [Authorize]
+    [RoutePrefix("api/{{ entityNameCamelCase }}")]
+    public class {{ entityNamePascalCase }}Controller : ApiController
+    {
+        public {{ entityNamePascalCase }}Controller(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+        protected readonly IMediator _mediator;
+
+    }
+}
