@@ -18,32 +18,32 @@ namespace {{ namespacename }}
         [HttpPost]
         [ResponseType(typeof(AddOrUpdate{{ entityNamePascalCase }}Command.AddOrUpdate{{ entityNamePascalCase }}Response))]
         public async Task<IHttpActionResult> Add(AddOrUpdate{{ entityNamePascalCase }}Command.AddOrUpdate{{ entityNamePascalCase }}Request request)
-            => Ok(await _mediator.SendAsync(request));
+            => Ok(await _mediator.Send(request));
 
         [Route("update")]
         [HttpPut]
         [ResponseType(typeof(AddOrUpdate{{ entityNamePascalCase }}Command.AddOrUpdate{{ entityNamePascalCase }}Response))]
         public async Task<IHttpActionResult> Update(AddOrUpdate{{ entityNamePascalCase }}Command.AddOrUpdate{{ entityNamePascalCase }}Request request)
-            => Ok(await _mediator.SendAsync(request));
+            => Ok(await _mediator.Send(request));
         
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
         [ResponseType(typeof(Get{{ entityNamePascalCase }}sQuery.Get{{ entityNamePascalCase }}sResponse))]
         public async Task<IHttpActionResult> Get()
-            => Ok(await _mediator.SendAsync(new Get{{ entityNamePascalCase }}sQuery.Get{{ entityNamePascalCase }}sRequest()));
+            => Ok(await _mediator.Send(new Get{{ entityNamePascalCase }}sQuery.Get{{ entityNamePascalCase }}sRequest()));
 
         [Route("getById")]
         [HttpGet]
         [ResponseType(typeof(Get{{ entityNamePascalCase }}ByIdQuery.Get{{ entityNamePascalCase }}ByIdResponse))]
         public async Task<IHttpActionResult> GetById([FromUri]Get{{ entityNamePascalCase }}ByIdQuery.Get{{ entityNamePascalCase }}ByIdRequest request)
-            => Ok(await _mediator.SendAsync(request));
+            => Ok(await _mediator.Send(request));
 
         [Route("remove")]
         [HttpDelete]
         [ResponseType(typeof(Remove{{ entityNamePascalCase }}Command.Remove{{ entityNamePascalCase }}Response))]
         public async Task<IHttpActionResult> Remove([FromUri]Remove{{ entityNamePascalCase }}Command.Remove{{ entityNamePascalCase }}Request request)
-            => Ok(await _mediator.SendAsync(request));
+            => Ok(await _mediator.Send(request));
 
         protected readonly IMediator _mediator;
 

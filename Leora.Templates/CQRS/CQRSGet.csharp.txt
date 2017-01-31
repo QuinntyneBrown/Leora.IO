@@ -10,7 +10,7 @@ namespace {{ namespacename }}
 {
     public class {{ namePascalCase }}Query
     {
-        public class {{ namePascalCase }}Request : IAsyncRequest<{{ namePascalCase }}Response> { }
+        public class {{ namePascalCase }}Request : IRequest<{{ namePascalCase }}Response> { }
 
         public class {{ namePascalCase }}Response
         {
