@@ -1,7 +1,5 @@
 ﻿using System.Data.Entity.Migrations;
 using {{ rootNamespacename }}.Data;
-using {{ rootNamespacename }}.Models;
-using {{ rootNamespacename }}.Services;
 
 namespace {{ namespacename }}
 {
