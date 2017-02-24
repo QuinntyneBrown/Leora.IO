@@ -19,7 +19,7 @@ namespace {{ namespacename }}
 
         public class {{ namePascalCase }}Handler : IAsyncRequestHandler<{{ namePascalCase }}Request, {{ namePascalCase }}Response>
         {
-            public {{ namePascalCase }}Handler(QuinntyneBrownPhotographyDataContext dataContext, ICache cache)
+            public {{ namePascalCase }}Handler(DataContext dataContext, ICache cache)
             {
                 _dataContext = dataContext;
                 _cache = cache;
@@ -34,7 +34,7 @@ namespace {{ namespacename }}
                 };
             }
 
-            private readonly QuinntyneBrownPhotographyDataContext _dataContext;
+            private readonly DataContext _dataContext;
             private readonly ICache _cache;
         }
 

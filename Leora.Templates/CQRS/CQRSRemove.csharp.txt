@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using {{ rootNamespacename }}.Data;
 using {{ rootNamespacename }}.Data.Models;
-using {{ rootNamespacename }}.Utilities;
+using {{ rootNamespacename }}.Features.Core;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace {{ namespacename }}
 
         public class {{ namePascalCase }}Handler : IAsyncRequestHandler<{{ namePascalCase }}Request, {{ namePascalCase }}Response>
         {
-            public {{ namePascalCase }}Handler(QuinntyneBrownPhotographyDataContext dataContext, ICache cache)
+            public {{ namePascalCase }}Handler(DataContext dataContext, ICache cache)
             {
                 _dataContext = dataContext;
                 _cache = cache;
@@ -34,7 +34,7 @@ namespace {{ namespacename }}
                 return new Remove{{ entityNamePascalCase }}Response();
             }
 
-            private readonly QuinntyneBrownPhotographyDataContext _dataContext;
+            private readonly DataContext _dataContext;
             private readonly ICache _cache;
         }
     }
