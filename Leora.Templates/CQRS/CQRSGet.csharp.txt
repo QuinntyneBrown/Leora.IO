@@ -27,7 +27,10 @@ namespace {{ namespacename }}
 
             public async Task<{{ namePascalCase }}Response> Handle({{ namePascalCase }}Request request)
             {
-                var {{ entityNameCamelCase }}s = await _dataContext.{{ entityNamePascalCase }}s.ToListAsync();
+                var {{ entityNameCamelCase }}s = await _dataContext.{{ entityNamePascalCase }}s
+                    .Where(x=>x.IsDeleted == false)
+                    .ToListAsync();
+
                 return new Get{{ entityNamePascalCase }}sResponse()
                 {
                     {{ entityNamePascalCase }}s = {{ entityNameCamelCase }}s.Select(x => {{ entityNamePascalCase }}ApiModel.From{{ entityNamePascalCase }}(x)).ToList()
