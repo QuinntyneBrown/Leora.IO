@@ -18,8 +18,8 @@ export class {{ entityNamePascalCase }}Service {
         return fetch({ url: `/api/{{ entityNameLowerCase }}/getbyid?id=${id}`, authRequired: true });
     }
 
-    public add(entity) {
-        return fetch({ url: `/api/{{ entityNameLowerCase }}/add`, method: "POST", data: entity, authRequired: true  });
+    public add({{ entityNameCamelCase }}) {
+        return fetch({ url: `/api/{{ entityNameLowerCase }}/add`, method: "POST", data: { {{ entityNameCamelCase }} }, authRequired: true  });
     }
 
     public remove(options: { id : number }) {
