@@ -10,12 +10,16 @@ export class {{ entityNamePascalCase }}Service {
         return this._instance;
     }
 
-    public get() {
-        return fetch({ url: "/api/{{ entityNameLowerCase }}/get", authRequired: true });
+    public get(): Array<{{ entityNamePascalCase }}> {
+        return fetch({ url: "/api/{{ entityNameLowerCase }}/get", authRequired: true }).then((results:string) => {
+            return (JSON.parse(results) as { {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> }).{{ entityNameCamelCase }}s;
+        });
     }
 
-    public getById(id) {
-        return fetch({ url: `/api/{{ entityNameLowerCase }}/getbyid?id=${id}`, authRequired: true });
+    public getById(id): {{ entityNamePascalCase }} {
+        return fetch({ url: `/api/{{ entityNameLowerCase }}/getbyid?id=${id}`, authRequired: true }).then((results:string) => {
+            return (JSON.parse(results) as { {{ entityNameCamelCase }}: {{ entityNamePascalCase }} }).{{ entityNameCamelCase }};
+        });
     }
 
     public add({{ entityNameCamelCase }}) {
