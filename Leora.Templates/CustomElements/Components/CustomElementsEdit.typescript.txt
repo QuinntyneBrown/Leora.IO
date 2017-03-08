@@ -28,11 +28,10 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
     }
     
 	private async _bind() {
-        this._titleElement.textContent = this.{{ entityNameCamelCase }}Id ? "Edit {{ entityNamePascalCase }}": "Create {{ entityNameSnakeCase }}";
+        this._titleElement.textContent = this.{{ entityNameCamelCase }}Id ? "Edit {{ entityNamePascalCase }}": "Create {{ entityNamePascalCase }}";
 
         if (this.{{ entityNameCamelCase }}Id) {
-			const results = await this._{{ entityNameCamelCase }}Service.getById(this.{{ entityNameCamelCase }}Id) as string;
-            const {{ entityNameCamelCase }}: {{ entityNamePascalCase }} = JSON.parse(results) as {{ entityNamePascalCase }};                
+            const {{ entityNameCamelCase }}: {{ entityNamePascalCase }} = await this._{{ entityNameCamelCase }}Service.getById(this.{{ entityNameCamelCase }}Id);                
 			this._nameInputElement.value = {{ entityNameCamelCase }}.name;  
         } else {
             this._deleteButtonElement.style.display = "none";

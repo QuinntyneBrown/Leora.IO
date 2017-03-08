@@ -17,8 +17,7 @@ export class {{ entityNamePascalCase }}ListComponent extends HTMLElement {
     }
 
 	private async _bind() {
-		const results = await this._{{ entityNameCamelCase }}Service.get() as string;
-		const {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> = JSON.parse(results) as Array<{{ entityNamePascalCase }}>;
+		const {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> = await this._{{ entityNameCamelCase }}Service.get();
         for (var i = 0; i < {{ entityNameCamelCase }}s.length; i++) {
 			let el = this._document.createElement(`{{ prefix }}-{{ entityNameSnakeCase }}-item`);
 			el.setAttribute("entity", JSON.stringify({{ entityNameCamelCase }}s[i]));
