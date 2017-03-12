@@ -28,9 +28,9 @@ namespace {{ namespacename }}
 
         public class {{ entityNamePascalCase }}Handler : IAsyncRequestHandler<{{ entityNamePascalCase }}Request, {{ entityNamePascalCase }}Response>
         {
-            public {{ entityNamePascalCase }}Handler(DataContext dataContext, ICache cache)
+            public {{ entityNamePascalCase }}Handler({{ rootNamespacename }}Context context, ICache cache)
             {
-                _dataContext = dataContext;
+                _context = context;
                 _cache = cache;
             }
 
@@ -39,7 +39,7 @@ namespace {{ namespacename }}
 				throw new System.NotImplementedException();
             }
 
-            private readonly DataContext _dataContext;
+            private readonly {{ rootNamespacename }}Context _context;
             private readonly ICache _cache;
         }
 

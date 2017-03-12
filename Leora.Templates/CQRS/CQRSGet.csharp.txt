@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using {{ rootNamespacename }}.Data;
-using {{ rootNamespacename }}.Utilities;
+using {{ rootNamespacename }}.Features.Core;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
@@ -19,15 +19,15 @@ namespace {{ namespacename }}
 
         public class {{ namePascalCase }}Handler : IAsyncRequestHandler<{{ namePascalCase }}Request, {{ namePascalCase }}Response>
         {
-            public {{ namePascalCase }}Handler(DataContext dataContext, ICache cache)
+            public {{ namePascalCase }}Handler({{ rootNamespacename }}Context context, ICache cache)
             {
-                _dataContext = dataContext;
+                _context = context;
                 _cache = cache;
             }
 
             public async Task<{{ namePascalCase }}Response> Handle({{ namePascalCase }}Request request)
             {
-                var {{ entityNameCamelCase }}s = await _dataContext.{{ entityNamePascalCase }}s
+                var {{ entityNameCamelCase }}s = await _context.{{ entityNamePascalCase }}s
                     .Where(x=>x.IsDeleted == false)
                     .ToListAsync();
 
@@ -37,7 +37,7 @@ namespace {{ namespacename }}
                 };
             }
 
-            private readonly DataContext _dataContext;
+            private readonly {{ rootNamespacename }}Context _context;
             private readonly ICache _cache;
         }
 

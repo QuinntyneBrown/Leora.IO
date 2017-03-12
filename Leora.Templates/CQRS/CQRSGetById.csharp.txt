@@ -11,19 +11,19 @@ namespace {{ namespacename }}
     public class {{ namePascalCase }}Query
     {
         public class {{ namePascalCase }}Request : IRequest<{{ namePascalCase }}Response> { 
-			public int Id { get; set; }
-		}
+            public int Id { get; set; }
+        }
 
         public class {{ namePascalCase }}Response
         {
             public {{ entityNamePascalCase }}ApiModel {{ entityNamePascalCase }} { get; set; } 
-		}
+        }
 
         public class {{ namePascalCase }}Handler : IAsyncRequestHandler<{{ namePascalCase }}Request, {{ namePascalCase }}Response>
         {
-            public {{ namePascalCase }}Handler(DataContext dataContext, ICache cache)
+            public {{ namePascalCase }}Handler({{ rootNamespacename }}Context context, ICache cache)
             {
-                _dataContext = dataContext;
+                _context = context;
                 _cache = cache;
             }
 
@@ -31,11 +31,11 @@ namespace {{ namespacename }}
             {                
                 return new {{ namePascalCase }}Response()
                 {
-                    {{ entityNamePascalCase }} = {{ entityNamePascalCase }}ApiModel.From{{ entityNamePascalCase }}(await _dataContext.{{ entityNamePascalCase }}s.FindAsync(request.Id))
+                    {{ entityNamePascalCase }} = {{ entityNamePascalCase }}ApiModel.From{{ entityNamePascalCase }}(await _context.{{ entityNamePascalCase }}s.FindAsync(request.Id))
                 };
             }
 
-            private readonly DataContext _dataContext;
+            private readonly {{ rootNamespacename }}Context _context;
             private readonly ICache _cache;
         }
 

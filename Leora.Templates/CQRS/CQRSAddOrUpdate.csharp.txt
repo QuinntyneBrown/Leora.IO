@@ -23,19 +23,19 @@ namespace {{ namespacename }}
 
         public class {{ namePascalCase }}Handler : IAsyncRequestHandler<{{ namePascalCase }}Request, {{ namePascalCase }}Response>
         {
-            public {{ namePascalCase }}Handler(DataContext dataContext, ICache cache)
+            public {{ namePascalCase }}Handler({{ rootNamespacename }}Context context, ICache cache)
             {
-                _dataContext = dataContext;
+                _context = context;
                 _cache = cache;
             }
 
             public async Task<{{ namePascalCase }}Response> Handle({{ namePascalCase }}Request request)
             {
-                var entity = await _dataContext.{{ entityNamePascalCase }}s
+                var entity = await _context.{{ entityNamePascalCase }}s
                     .SingleOrDefaultAsync(x => x.Id == request.{{ entityNamePascalCase }}.Id && x.IsDeleted == false);
-                if (entity == null) _dataContext.{{ entityNamePascalCase }}s.Add(entity = new {{ entityNamePascalCase }}());
+                if (entity == null) _context.{{ entityNamePascalCase }}s.Add(entity = new {{ entityNamePascalCase }}());
                 entity.Name = request.{{ entityNamePascalCase }}.Name;
-                await _dataContext.SaveChangesAsync();
+                await _context.SaveChangesAsync();
 
                 return new {{ namePascalCase }}Response()
                 {
@@ -43,7 +43,7 @@ namespace {{ namespacename }}
                 };
             }
 
-            private readonly DataContext _dataContext;
+            private readonly {{ rootNamespacename }}Context _context;
             private readonly ICache _cache;
         }
 
