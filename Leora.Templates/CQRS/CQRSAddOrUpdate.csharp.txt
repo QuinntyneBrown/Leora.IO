@@ -32,7 +32,7 @@ namespace {{ namespacename }}
             public async Task<{{ namePascalCase }}Response> Handle({{ namePascalCase }}Request request)
             {
                 var entity = await _context.{{ entityNamePascalCase }}s
-                    .SingleOrDefaultAsync(x => x.Id == request.{{ entityNamePascalCase }}.Id && x.IsDeleted == false);
+                    .SingleOrDefaultAsync(x => x.Id == request.{{ entityNamePascalCase }}.Id);
                 if (entity == null) _context.{{ entityNamePascalCase }}s.Add(entity = new {{ entityNamePascalCase }}());
                 entity.Name = request.{{ entityNamePascalCase }}.Name;
                 await _context.SaveChangesAsync();

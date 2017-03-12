@@ -28,7 +28,6 @@ namespace {{ namespacename }}
             public async Task<{{ namePascalCase }}Response> Handle({{ namePascalCase }}Request request)
             {
                 var {{ entityNameCamelCase }}s = await _context.{{ entityNamePascalCase }}s
-                    .Where(x=>x.IsDeleted == false)
                     .ToListAsync();
 
                 return new Get{{ entityNamePascalCase }}sResponse()
