@@ -5,7 +5,7 @@ namespace {{ namespacename }}
 {
     public class {{ entityNamePascalCase }}Configuration
     {
-        public static void Seed(DataContext context) {
+        public static void Seed({{ rootNamespacename }}Context context) {
 
             context.SaveChanges();
         }

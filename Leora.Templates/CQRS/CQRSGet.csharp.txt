@@ -10,7 +10,9 @@ namespace {{ namespacename }}
 {
     public class {{ namePascalCase }}Query
     {
-        public class {{ namePascalCase }}Request : IRequest<{{ namePascalCase }}Response> { }
+        public class {{ namePascalCase }}Request : IRequest<{{ namePascalCase }}Response> { 
+            public int? TenantId { get; set; }		
+		}
 
         public class {{ namePascalCase }}Response
         {
@@ -28,6 +30,7 @@ namespace {{ namespacename }}
             public async Task<{{ namePascalCase }}Response> Handle({{ namePascalCase }}Request request)
             {
                 var {{ entityNameCamelCase }}s = await _context.{{ entityNamePascalCase }}s
+				    .Where( x => x.TenantId == request.TenantId )
                     .ToListAsync();
 
                 return new Get{{ entityNamePascalCase }}sResponse()

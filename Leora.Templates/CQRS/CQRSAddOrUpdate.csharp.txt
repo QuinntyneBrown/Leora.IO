@@ -14,12 +14,10 @@ namespace {{ namespacename }}
         public class {{ namePascalCase }}Request : IRequest<{{ namePascalCase }}Response>
         {
             public {{ entityNamePascalCase }}ApiModel {{ entityNamePascalCase }} { get; set; }
+			public int? TenantId { get; set; }
         }
 
-        public class {{ namePascalCase }}Response
-        {
-
-        }
+        public class {{ namePascalCase }}Response { }
 
         public class {{ namePascalCase }}Handler : IAsyncRequestHandler<{{ namePascalCase }}Request, {{ namePascalCase }}Response>
         {
@@ -32,15 +30,14 @@ namespace {{ namespacename }}
             public async Task<{{ namePascalCase }}Response> Handle({{ namePascalCase }}Request request)
             {
                 var entity = await _context.{{ entityNamePascalCase }}s
-                    .SingleOrDefaultAsync(x => x.Id == request.{{ entityNamePascalCase }}.Id);
+                    .SingleOrDefaultAsync(x => x.Id == request.{{ entityNamePascalCase }}.Id && x.TenantId == request.TenantId);
                 if (entity == null) _context.{{ entityNamePascalCase }}s.Add(entity = new {{ entityNamePascalCase }}());
                 entity.Name = request.{{ entityNamePascalCase }}.Name;
+				entity.TenantId = request.TenantId;
+
                 await _context.SaveChangesAsync();
 
-                return new {{ namePascalCase }}Response()
-                {
-
-                };
+                return new {{ namePascalCase }}Response();
             }
 
             private readonly {{ rootNamespacename }}Context _context;

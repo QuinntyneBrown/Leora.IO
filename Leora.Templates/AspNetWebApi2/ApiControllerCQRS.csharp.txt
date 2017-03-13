@@ -24,32 +24,48 @@ namespace {{ namespacename }}
         [HttpPost]
         [ResponseType(typeof(AddOrUpdate{{ entityNamePascalCase }}Response))]
         public async Task<IHttpActionResult> Add(AddOrUpdate{{ entityNamePascalCase }}Request request)
-            => Ok(await _mediator.Send(request));
+        {
+            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            return Ok(await _mediator.Send(request));
+        }
 
         [Route("update")]
         [HttpPut]
         [ResponseType(typeof(AddOrUpdate{{ entityNamePascalCase }}Response))]
         public async Task<IHttpActionResult> Update(AddOrUpdate{{ entityNamePascalCase }}Request request)
-            => Ok(await _mediator.Send(request));
+        {
+            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            return Ok(await _mediator.Send(request));
+        }
         
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
         [ResponseType(typeof(Get{{ entityNamePascalCase }}sResponse))]
         public async Task<IHttpActionResult> Get()
-            => Ok(await _mediator.Send(new Get{{ entityNamePascalCase }}sRequest()));
+        {
+            var request = new Get{{ entityNamePascalCase }}sRequest();
+            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            return Ok(await _mediator.Send(request));
+        }
 
         [Route("getById")]
         [HttpGet]
         [ResponseType(typeof(Get{{ entityNamePascalCase }}ByIdResponse))]
         public async Task<IHttpActionResult> GetById([FromUri]Get{{ entityNamePascalCase }}ByIdRequest request)
-            => Ok(await _mediator.Send(request));
+        {
+            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            return Ok(await _mediator.Send(request));
+        }
 
         [Route("remove")]
         [HttpDelete]
         [ResponseType(typeof(Remove{{ entityNamePascalCase }}Response))]
         public async Task<IHttpActionResult> Remove([FromUri]Remove{{ entityNamePascalCase }}Request request)
-            => Ok(await _mediator.Send(request));
+        {
+            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            return Ok(await _mediator.Send(request));
+        }
 
         protected readonly IMediator _mediator;
         protected readonly IUserManager _userManager;

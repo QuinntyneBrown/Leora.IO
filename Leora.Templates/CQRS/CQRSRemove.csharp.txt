@@ -14,6 +14,7 @@ namespace {{ namespacename }}
         public class {{ namePascalCase }}Request : IRequest<{{ namePascalCase }}Response>
         {
             public int Id { get; set; }
+            public int? TenantId { get; set; }
         }
 
         public class {{ namePascalCase }}Response { }
@@ -28,7 +29,7 @@ namespace {{ namespacename }}
 
             public async Task<{{ namePascalCase }}Response> Handle({{ namePascalCase }}Request request)
             {
-                var {{ entityNameCamelCase }} = await _context.{{ entityNamePascalCase }}s.FindAsync(request.Id);
+                var {{ entityNameCamelCase }} = await _context.{{ entityNamePascalCase }}s.SingleAsync(x=>x.Id == request.Id && x.TenantId == request.TenantId);
                 {{ entityNameCamelCase }}.IsDeleted = true;
                 await _context.SaveChangesAsync();
                 return new Remove{{ entityNamePascalCase }}Response();
