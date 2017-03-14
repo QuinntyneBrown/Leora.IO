@@ -17,7 +17,7 @@ export default function {{ entityNamePascalCase }}({
   return (
     <div>
       id={ id }
-	  onClick={ onClick }>
+      onClick={ onClick }>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
 
 import {
-	HomePageComponent
+    HomePageComponent
 } from "../pages";
 
 export const routes: Routes = [

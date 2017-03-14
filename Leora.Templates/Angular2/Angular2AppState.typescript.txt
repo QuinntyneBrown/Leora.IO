@@ -2,7 +2,7 @@
 
 export interface AppState {
     {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}>;
-	currentUser: any;
+    currentUser: any;
     isLoggedIn: boolean;
     token: string;
 }

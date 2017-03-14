@@ -10,6 +10,6 @@ const providers = [];
     imports: [CommonModule, ReactiveFormsModule, RouterModule],
     exports: [declarables],
     declarations: [declarables],
-	providers: providers
+    providers: providers
 })
 export class ComponentsModule { }

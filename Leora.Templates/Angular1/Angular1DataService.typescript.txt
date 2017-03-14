@@ -2,8 +2,8 @@
 
 @Injectable()
 @Service({
-	serviceName: "{{ entityNameCamelCase }}Service",
-	viewProviders: ["$q","apiEndpoint","fetch"]
+    serviceName: "{{ entityNameCamelCase }}Service",
+    viewProviders: ["$q","apiEndpoint","fetch"]
 })
 export class {{ entityNamePascalCase }}Service {
     constructor(private $q: angular.IQService, private apiEndpoint, private fetch) {

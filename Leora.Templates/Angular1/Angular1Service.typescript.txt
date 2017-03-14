@@ -2,8 +2,8 @@
 
 @Injectable()
 @Service({
-	serviceName: "{{ entityNameCamelCase }}Service",
-	viewProviders: []
+    serviceName: "{{ entityNameCamelCase }}Service",
+    viewProviders: []
 })
 export class {{ entityNamePascalCase }}Service {
     constructor() {}

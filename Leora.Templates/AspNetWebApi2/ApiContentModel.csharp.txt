@@ -22,9 +22,9 @@ namespace {{ namespacename }}
             
             return contentModel;
         }
-		
-		[JsonConverter(typeof(StringEnumConverter))]
-		public ContentModelType ContentModelType { get; set; } = ContentModelType.{{ entityNamePascalCase }};
+        
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ContentModelType ContentModelType { get; set; } = ContentModelType.{{ entityNamePascalCase }};
 
         protected readonly ICache _cache;
     }

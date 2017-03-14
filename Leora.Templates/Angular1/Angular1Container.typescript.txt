@@ -9,7 +9,7 @@ import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
     styles: [require("./{{ entityNameSnakeCase }}s-container.component.scss")],
     selector: "{{ entityNameSnakeCase }}s-container",
     viewProviders: ["$location","$routeParams","{{ entityNameCamelCase }}ActionCreator","invokeAsync"],
-	changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 @CanActivate(["$q", "$route", "invokeAsync", "{{ entityNameCamelCase }}ActionCreator", ($q: angular.IQService, $route: angular.route.IRouteService, invokeAsync, {{ entityNameCamelCase }}ActionCreator: {{ entityNamePascalCase }}ActionCreator) => {
     let {{ entityNameCamelCase }}Id = $route.current.params.{{ entityNameCamelCase }}Id;
@@ -22,13 +22,13 @@ export class {{ entityNamePascalCase }}sContainerComponent {
     storeOnChange = state => {        
         this.entities = state.{{ entityNameCamelCase }}s;
 
-		if (state.lastTriggeredByAction instanceof actions.SetCurrent{{ entityNamePascalCase }}Action && !state.lastTriggeredByAction.entity) 
+        if (state.lastTriggeredByAction instanceof actions.SetCurrent{{ entityNamePascalCase }}Action && !state.lastTriggeredByAction.entity) 
             this.$location.path("/admin/{{ entityNameLowerCase }}s");
 
         if (state.lastTriggeredByAction instanceof actions.SetCurrent{{ entityNamePascalCase }}Action && state.lastTriggeredByAction.entity) 
             this.$location.path("/admin/{{ entityNameLowerCase }}/edit/" + state.lastTriggeredByAction.entity.id);
         
-		if (state.lastTriggeredByAction instanceof actions.AddOrUpdate{{ entityNamePascalCase }}Action)
+        if (state.lastTriggeredByAction instanceof actions.AddOrUpdate{{ entityNamePascalCase }}Action)
             this.entity = new {{ entityNamePascalCase }}();
 
         if (state.lastTriggeredByAction instanceof actions.Remove{{ entityNamePascalCase }}Action && this.entity && this.entity.id) {

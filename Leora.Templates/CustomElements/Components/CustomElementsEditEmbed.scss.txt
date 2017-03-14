@@ -1,11 +1,11 @@
-﻿{{ prefix }}-{{ entityNameSnakeCase }}-edit-embed {	
+﻿{{ prefix }}-{{ entityNameSnakeCase }}-edit-embed {    
 
     display:block;
     margin-bottom:40px;
 
-	h2 {
-		cursor:pointer;
-	}
+    h2 {
+        cursor:pointer;
+    }
 }
 
 

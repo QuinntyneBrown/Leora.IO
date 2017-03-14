@@ -11,7 +11,7 @@ export class {{ entityNamePascalCase }}ActionCreator extends BaseActionCreator {
         super($location,{{ entityNameCamelCase }}Service,dispatcher,guid,AddOrUpdate{{ entityNamePascalCase }}Action,All{{ entityNamePascalCase }}sAction,Remove{{ entityNamePascalCase }}Action,SetCurrent{{ entityNamePascalCase }}Action)
     }    
 
-	addOrUpdateSuccess = options => this.dispatcher.dispatch(new AddOrUpdate{{ entityNamePascalCase }}SuccessAction(options.entity));
+    addOrUpdateSuccess = options => this.dispatcher.dispatch(new AddOrUpdate{{ entityNamePascalCase }}SuccessAction(options.entity));
 
     current{{ entityNamePascalCase }}Removed = () => this.dispatcher.dispatch(new Current{{ entityNamePascalCase }}RemovedAction());
 

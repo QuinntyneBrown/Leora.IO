@@ -24,15 +24,15 @@ export class {{ entityNamePascalCase }}EditFormComponent implements AfterViewIni
     ngAfterViewInit() {
         this._renderer.invokeElementMethod(this.name, 'focus', []);
     }
-	    
+        
     @Input() public {{ entityNameCamelCase }}: {{ entityNamePascalCase }};
     
-	@Output() public onSubmit = new EventEmitter();
+    @Output() public onSubmit = new EventEmitter();
 
-	@Output() public onCancel = new EventEmitter();
+    @Output() public onCancel = new EventEmitter();
 
     public form = new FormGroup({
-		id: new FormControl("", []),
+        id: new FormControl("", []),
         name: new FormControl("", [
             Validators.required
         ])

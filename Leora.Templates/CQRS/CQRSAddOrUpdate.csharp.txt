@@ -14,7 +14,7 @@ namespace {{ namespacename }}
         public class {{ namePascalCase }}Request : IRequest<{{ namePascalCase }}Response>
         {
             public {{ entityNamePascalCase }}ApiModel {{ entityNamePascalCase }} { get; set; }
-			public int? TenantId { get; set; }
+            public int? TenantId { get; set; }
         }
 
         public class {{ namePascalCase }}Response { }
@@ -33,7 +33,7 @@ namespace {{ namespacename }}
                     .SingleOrDefaultAsync(x => x.Id == request.{{ entityNamePascalCase }}.Id && x.TenantId == request.TenantId);
                 if (entity == null) _context.{{ entityNamePascalCase }}s.Add(entity = new {{ entityNamePascalCase }}());
                 entity.Name = request.{{ entityNamePascalCase }}.Name;
-				entity.TenantId = request.TenantId;
+                entity.TenantId = request.TenantId;
 
                 await _context.SaveChangesAsync();
 

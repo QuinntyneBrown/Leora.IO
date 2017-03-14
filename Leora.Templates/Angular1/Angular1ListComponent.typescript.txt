@@ -5,7 +5,7 @@
     styles: [require("./{{ entityNameSnakeCase }}-list.component.scss")],
     selector: "{{ entityNameSnakeCase }}-list",
     inputs: ['entities','edit','remove'],
-	changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class {{ entityNamePascalCase }}ListComponent {
     constructor() { }     

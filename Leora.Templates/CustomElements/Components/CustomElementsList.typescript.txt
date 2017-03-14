@@ -6,24 +6,24 @@ const styles = require("./{{ entityNameSnakeCase }}-list.component.scss");
 
 export class {{ entityNamePascalCase }}ListComponent extends HTMLElement {
     constructor(
-		private _document: Document = document,
-		private _{{ entityNameCamelCase }}Service: {{ entityNamePascalCase }}Service = {{ entityNamePascalCase }}Service.Instance) {
+        private _document: Document = document,
+        private _{{ entityNameCamelCase }}Service: {{ entityNamePascalCase }}Service = {{ entityNamePascalCase }}Service.Instance) {
         super();
     }
 
     connectedCallback() {
         this.innerHTML = `<style>${styles}</style> ${template}`;
-		this._bind();
+        this._bind();
     }
 
-	private async _bind() {
-		const {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> = await this._{{ entityNameCamelCase }}Service.get();
+    private async _bind() {
+        const {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> = await this._{{ entityNameCamelCase }}Service.get();
         for (var i = 0; i < {{ entityNameCamelCase }}s.length; i++) {
-			let el = this._document.createElement(`{{ prefix }}-{{ entityNameSnakeCase }}-item`);
-			el.setAttribute("entity", JSON.stringify({{ entityNameCamelCase }}s[i]));
-			this.appendChild(el);
-        }	
-	}
+            let el = this._document.createElement(`{{ prefix }}-{{ entityNameSnakeCase }}-item`);
+            el.setAttribute("entity", JSON.stringify({{ entityNameCamelCase }}s[i]));
+            this.appendChild(el);
+        }    
+    }
 }
 
 customElements.define("{{ prefix }}-{{ entityNameSnakeCase }}-list", {{ entityNamePascalCase }}ListComponent);

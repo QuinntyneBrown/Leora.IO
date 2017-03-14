@@ -5,6 +5,6 @@ const providers = [];
 
 @NgModule({
     imports: [HttpModule],
-	providers: providers
+    providers: providers
 })
 export class HelpersModule { }

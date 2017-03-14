@@ -1,7 +1,7 @@
 ﻿import { Component } from "../core";
 
 @Component({
-	componentName: "{{ entityNameCamelCase }}Component",
+    componentName: "{{ entityNameCamelCase }}Component",
     template: require("./{{ entityNameSnakeCase }}.component.html"),
     styles: [require("./{{ entityNameSnakeCase }}.component.scss")],
     selector: "{{ entityNameSnakeCase }}"

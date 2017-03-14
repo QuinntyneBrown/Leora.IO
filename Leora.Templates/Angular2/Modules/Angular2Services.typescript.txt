@@ -6,6 +6,6 @@ const providers = [];
 
 @NgModule({
     imports: [CommonModule, HttpModule],
-	providers: providers
+    providers: providers
 })
 export class ServicesModule { }

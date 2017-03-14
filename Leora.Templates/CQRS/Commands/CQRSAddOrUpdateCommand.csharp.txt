@@ -36,7 +36,7 @@ namespace {{ namespacename }}
 
             public async Task<{{ entityNamePascalCase }}Response> Handle({{ entityNamePascalCase }}Request request)
             {
-				throw new System.NotImplementedException();
+                throw new System.NotImplementedException();
             }
 
             private readonly {{ rootNamespacename }}Context _context;

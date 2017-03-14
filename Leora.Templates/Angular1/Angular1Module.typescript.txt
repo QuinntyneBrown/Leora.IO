@@ -14,7 +14,7 @@ provide(app,{{ entityNamePascalCase }}ActionCreator);
 
 app.component({{ entityNamePascalCase }}Component);
 
-app.config(["reducersProvider", reducersProvider => {	
+app.config(["reducersProvider", reducersProvider => {    
     for (var reducer in reducers) { reducersProvider.configure(reducers[reducer]); }
 }]);
 

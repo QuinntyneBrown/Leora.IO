@@ -13,7 +13,7 @@ namespace {{ namespacename }}
             set { this["baseUri"] = value; }
         }
 
-		public static I{{ entityNamePascalCase }}Configuration Config
+        public static I{{ entityNamePascalCase }}Configuration Config
         {
             get { return ConfigurationManager.GetSection("{{ entityNameCamelCase }}Configuration") as I{{ entityNamePascalCase }}Configuration; }
         }

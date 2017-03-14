@@ -9,7 +9,7 @@ export class {{ entityNamePascalCase }}Component {
         private _window: Window = window
     ) {
         this.disconnectedCallback = this.disconnectedCallback;
-	}
+    }
     
     connectedCallback() {
         this.el.innerHTML = template;
@@ -22,7 +22,7 @@ export class {{ entityNamePascalCase }}Component {
     }
 
     private _setEventListeners() {
-		this._window.addEventListener(routerEvents.BEFORE_ROUTE_CHANGE, this.disconnectedCallback);
+        this._window.addEventListener(routerEvents.BEFORE_ROUTE_CHANGE, this.disconnectedCallback);
     }
 
     disconnectedCallback() {

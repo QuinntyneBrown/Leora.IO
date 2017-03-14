@@ -1,5 +1,5 @@
 ﻿@import "../../styles/base/_all";
 
 {{ prefix }}-{{ entityNameSnakeCase }}-item-embed {
-	@extend .entity-item;
+    @extend .entity-item;
 }

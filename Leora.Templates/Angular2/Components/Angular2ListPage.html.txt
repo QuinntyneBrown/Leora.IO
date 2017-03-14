@@ -1,5 +1,5 @@
 ﻿<div class="{{ entityNameSnakeCase }}-list-page">
-	<a [routerLink]="['/{{ entityNameCamelCase }}']" href="">CREATE {{ entityNameAllCaps }}</a>
+    <a [routerLink]="['/{{ entityNameCamelCase }}']" href="">CREATE {{ entityNameAllCaps }}</a>
     <{{ entityNameSnakeCase }}-list [entities]="_store.{{ entityNameCamelCase }}s$() | async"
                 (onDelete)="_{{ entityNameCamelCase }}Actions.remove({ id: $event.value.id })"
                 (onEdit)="_router.navigate(['{{ entityNameLowerCase }}', $event.value.id])"></{{ entityNameSnakeCase }}-list>

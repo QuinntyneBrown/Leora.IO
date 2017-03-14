@@ -12,7 +12,7 @@ namespace {{ namespacename }}
     {
         public class {{ namePascalCase }}Request : IRequest<{{ namePascalCase }}Response> { 
             public int Id { get; set; }
-			public int? TenantId { get; set; }
+            public int? TenantId { get; set; }
         }
 
         public class {{ namePascalCase }}Response

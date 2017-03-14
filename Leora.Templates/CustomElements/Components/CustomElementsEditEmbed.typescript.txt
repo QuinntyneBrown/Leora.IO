@@ -1,6 +1,6 @@
 ﻿import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 import { EditorComponent } from "../shared";
-import {  {{ entityNamePascalCase }}DeleteEvent, {{ entityNamePascalCase }}EditEvent, {{ entityNamePascalCase }}SaveEvent } from "./{{ entityNameSnakeCase }}.actions";
+import {  {{ entityNamePascalCase }}Delete, {{ entityNamePascalCase }}Edit, {{ entityNamePascalCase }}Save } from "./{{ entityNameSnakeCase }}.actions";
 
 const template = require("./{{ entityNameSnakeCase }}-edit-embed.component.html");
 const styles = require("./{{ entityNameSnakeCase }}-edit-embed.component.scss");
@@ -8,41 +8,41 @@ const styles = require("./{{ entityNameSnakeCase }}-edit-embed.component.scss");
 export class {{ entityNamePascalCase }}EditEmbedComponent extends HTMLElement {
     constructor() {
         super();
-		this.onSave = this.onSave.bind(this);
+        this.onSave = this.onSave.bind(this);
         this.onDelete = this.onDelete.bind(this);
     }
 
     static get observedAttributes() {
         return [
-			"{{ entityNameSnakeCase }}",
-			"{{ entityNameSnakeCase }}-id"
-		];
+            "{{ entityNameSnakeCase }}",
+            "{{ entityNameSnakeCase }}-id"
+        ];
     }
     
     connectedCallback() {        
         this.innerHTML = `<style>${styles}</style> ${template}`; 
-		this._bind();
-		this._setEventListeners();
+        this._bind();
+        this._setEventListeners();
     }
     
-	private async _bind() {
+    private async _bind() {
         this._titleElement.textContent = this.{{ entityNameCamelCase }} ? "Edit {{ entityNameTitleCase }}": "Create {{ entityNameTitleCase }}";
 
         if (this.{{ entityNameCamelCase }}) {                
-			this._nameInputElement.value = this.{{ entityNameCamelCase }}.name;  
+            this._nameInputElement.value = this.{{ entityNameCamelCase }}.name;  
         } else {
             this._deleteButtonElement.style.display = "none";
-        } 	
-	}
+        }     
+    }
 
-	private _setEventListeners() {
+    private _setEventListeners() {
         this._saveButtonElement.addEventListener("click", this.onSave);
-		this._deleteButtonElement.addEventListener("click", this.onDelete);
+        this._deleteButtonElement.addEventListener("click", this.onDelete);
     }
 
     private disconnectedCallback() {
         this._saveButtonElement.removeEventListener("click", this.onSave);
-		this._deleteButtonElement.removeEventListener("click", this.onDelete);
+        this._deleteButtonElement.removeEventListener("click", this.onDelete);
     }
 
     public onSave() {
@@ -50,8 +50,8 @@ export class {{ entityNamePascalCase }}EditEmbedComponent extends HTMLElement {
             id: this.{{ entityNameCamelCase }} != null ? this.{{ entityNameCamelCase }}.id : null,
             name: this._nameInputElement.value
         } as {{ entityNamePascalCase }};
-		
-		this.dispatchEvent(new {{ entityNamePascalCase }}SaveEvent({{ entityNameCamelCase }})); 	       
+        
+        this.dispatchEvent(new {{ entityNamePascalCase }}SaveEvent({{ entityNameCamelCase }}));            
     }
 
     public onDelete() {        
@@ -60,22 +60,22 @@ export class {{ entityNamePascalCase }}EditEmbedComponent extends HTMLElement {
             name: this._nameInputElement.value
         } as {{ entityNamePascalCase }};
 
-        this.dispatchEvent(new {{ entityNamePascalCase }}DeleteEvent({{ entityNameCamelCase }})); 		
+        this.dispatchEvent(new {{ entityNamePascalCase }}DeleteEvent({{ entityNameCamelCase }}));         
     }
 
-	public achievement: Achievement;
+    public {{ entityNameCamelCase }}: {{ entityNamePascalCase }};
 
     attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
             case "{{ entityNameSnakeCase }}-id":
                 this.{{ entityNameCamelCase }}Id = newValue;
                 break;
-            case "achievement":
-                this.achievement = JSON.parse(newValue);
+            case "{{ entityNameCamelCase }}":
+                this.{{ entityNameCamelCase }} = JSON.parse(newValue);
                 if (this.parentNode) {
-                    this.achievementId = this.achievement.id;
-                    this._nameInputElement.value = this.achievement.name != undefined ? this.achievement.name : "";
-                    this._titleElement.textContent = this.achievementId ? "Edit Achievement" : "Create Achievement";
+                    this.{{ entityNameCamelCase }}Id = this.{{ entityNameCamelCase }}.id;
+                    this._nameInputElement.value = this.{{ entityNameCamelCase }}.name != undefined ? this.{{ entityNameCamelCase }}.name : "";
+                    this._titleElement.textContent = this.{{ entityNameCamelCase }}Id ? "Edit {{ entityNamePacalCase }}" : "Create {{ entityNamePacalCase }}";
                 }
                 break;
         }           
@@ -83,7 +83,7 @@ export class {{ entityNamePascalCase }}EditEmbedComponent extends HTMLElement {
 
     public {{ entityNameCamelCase }}: {{ entityNamePascalCase }};
     
-	private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
+    private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
     private get _saveButtonElement(): HTMLElement { return this.querySelector(".save-button") as HTMLElement };
     private get _deleteButtonElement(): HTMLElement { return this.querySelector(".delete-button") as HTMLElement };
     private get _nameInputElement(): HTMLInputElement { return this.querySelector(".{{ entityNameSnakeCase }}-name") as HTMLInputElement;}

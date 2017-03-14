@@ -12,7 +12,7 @@ export class {{ entityNamePascalCase }}ItemComponent extends HTMLElement {
         private _router: Router = Router.Instance) {
         super();
 
-		this._onDeleteClick = this._onDeleteClick.bind(this);
+        this._onDeleteClick = this._onDeleteClick.bind(this);
         this._onEditClick = this._onEditClick.bind(this);
         this._onViewClick = this._onViewClick.bind(this);
     }
@@ -44,8 +44,8 @@ export class {{ entityNamePascalCase }}ItemComponent extends HTMLElement {
     }
 
     private async _onDeleteClick(e:Event) {
-        await this._{{ entityNameCamelCase }}Service.remove({ id: this.entity.id });		
-		this.parentNode.removeChild(this);
+        await this._{{ entityNameCamelCase }}Service.remove({ id: this.entity.id });        
+        this.parentNode.removeChild(this);
     }
 
     private _onEditClick() {
@@ -60,7 +60,7 @@ export class {{ entityNamePascalCase }}ItemComponent extends HTMLElement {
         switch (name) {
             case "entity":
                 this.entity = JSON.parse(newValue);
-				break;
+                break;
         }        
     }
 

@@ -3,6 +3,6 @@
 const providers = [];
 
 @NgModule({
-	providers: providers
+    providers: providers
 })
 export class ActionsModule { }

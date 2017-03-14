@@ -5,7 +5,7 @@
     styles: [require("./{{ entityNameSnakeCase }}-editor.component.scss")],
     selector: "{{ entityNameSnakeCase }}-editor",
     inputs: ['entity','addOrUpdate','remove','create'],
-	changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class {{ entityNamePascalCase }}EditorComponent {}
 

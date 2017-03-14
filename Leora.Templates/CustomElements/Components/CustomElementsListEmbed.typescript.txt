@@ -13,26 +13,26 @@ export class {{ entityNamePascalCase }}ListEmbedComponent extends HTMLElement {
 
     static get observedAttributes() {
         return [
-			"{{ entityNameSnakeCase }}s"
-		];
+            "{{ entityNameSnakeCase }}s"
+        ];
     }
 
     connectedCallback() {
         this.innerHTML = `<style>${styles}</style> ${template}`;
-		this._bind();
+        this._bind();
     }
 
-	private async _bind() {		
+    private async _bind() {        
         for (let i = 0; i < this.{{ entityNameCamelCase }}s.length; i++) {
-			let el = this._document.createElement(`{{ prefix }}-{{ entityNameSnakeCase }}-item-embed`);
-			el.setAttribute("entity", JSON.stringify(this.{{ entityNameCamelCase }}s[i]));
-			this.appendChild(el);
-        }	
-	}
+            let el = this._document.createElement(`{{ prefix }}-{{ entityNameSnakeCase }}-item-embed`);
+            el.setAttribute("entity", JSON.stringify(this.{{ entityNameCamelCase }}s[i]));
+            this.appendChild(el);
+        }    
+    }
 
-	{{ entityNameCamelCase }}s:Array<{{ entityNamePascalCase }}> = [];
+    {{ entityNameCamelCase }}s:Array<{{ entityNamePascalCase }}> = [];
 
-	attributeChangedCallback(name, oldValue, newValue) {
+    attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
             case "{{ entityNameSnakeCase }}s":
                 this.{{ entityNameCamelCase }}s = JSON.parse(newValue);

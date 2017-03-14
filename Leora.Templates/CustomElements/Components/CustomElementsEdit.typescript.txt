@@ -8,13 +8,13 @@ const styles = require("./{{ entityNameSnakeCase }}-edit.component.scss");
 
 export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
     constructor(
-		private _{{ entityNameCamelCase }}Service: {{ entityNamePascalCase }}Service = {{ entityNamePascalCase }}Service.Instance,
-		private _router: Router = Router.Instance
-		) {
+        private _{{ entityNameCamelCase }}Service: {{ entityNamePascalCase }}Service = {{ entityNamePascalCase }}Service.Instance,
+        private _router: Router = Router.Instance
+        ) {
         super();
-		this.onSave = this.onSave.bind(this);
+        this.onSave = this.onSave.bind(this);
         this.onDelete = this.onDelete.bind(this);
-		this.onTitleClick = this.onTitleClick.bind(this);
+        this.onTitleClick = this.onTitleClick.bind(this);
     }
 
     static get observedAttributes() {
@@ -23,30 +23,30 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
     
     connectedCallback() {        
         this.innerHTML = `<style>${styles}</style> ${template}`; 
-		this._bind();
-		this._setEventListeners();
+        this._bind();
+        this._setEventListeners();
     }
     
-	private async _bind() {
+    private async _bind() {
         this._titleElement.textContent = this.{{ entityNameCamelCase }}Id ? "Edit {{ entityNamePascalCase }}": "Create {{ entityNamePascalCase }}";
 
         if (this.{{ entityNameCamelCase }}Id) {
             const {{ entityNameCamelCase }}: {{ entityNamePascalCase }} = await this._{{ entityNameCamelCase }}Service.getById(this.{{ entityNameCamelCase }}Id);                
-			this._nameInputElement.value = {{ entityNameCamelCase }}.name;  
+            this._nameInputElement.value = {{ entityNameCamelCase }}.name;  
         } else {
             this._deleteButtonElement.style.display = "none";
-        } 	
-	}
+        }     
+    }
 
-	private _setEventListeners() {
+    private _setEventListeners() {
         this._saveButtonElement.addEventListener("click", this.onSave);
-		this._deleteButtonElement.addEventListener("click", this.onDelete);
+        this._deleteButtonElement.addEventListener("click", this.onDelete);
         this._titleElement.addEventListener("click", this.onTitleClick);
     }
 
     private disconnectedCallback() {
         this._saveButtonElement.removeEventListener("click", this.onSave);
-		this._deleteButtonElement.removeEventListener("click", this.onDelete);
+        this._deleteButtonElement.removeEventListener("click", this.onDelete);
         this._titleElement.removeEventListener("click", this.onTitleClick);
     }
 
@@ -57,15 +57,15 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
         } as {{ entityNamePascalCase }};
         
         await this._{{ entityNameCamelCase }}Service.add({{ entityNameCamelCase }});
-		this._router.navigate(["{{ entityNameSnakeCase }}","list"]);
+        this._router.navigate(["{{ entityNameSnakeCase }}","list"]);
     }
 
     public async onDelete() {        
         await this._{{ entityNameCamelCase }}Service.remove({ id: this.{{ entityNameCamelCase }}Id });
-		this._router.navigate(["{{ entityNameSnakeCase }}","list"]);
+        this._router.navigate(["{{ entityNameSnakeCase }}","list"]);
     }
 
-	public onTitleClick() {
+    public onTitleClick() {
         this._router.navigate(["{{ entityNameSnakeCase }}", "list"]);
     }
 
@@ -73,13 +73,13 @@ export class {{ entityNamePascalCase }}EditComponent extends HTMLElement {
         switch (name) {
             case "{{ entityNameSnakeCase }}-id":
                 this.{{ entityNameCamelCase }}Id = newValue;
-				break;
+                break;
         }        
     }
 
     public {{ entityNameCamelCase }}Id: number;
     
-	private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
+    private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
     private get _saveButtonElement(): HTMLElement { return this.querySelector(".save-button") as HTMLElement };
     private get _deleteButtonElement(): HTMLElement { return this.querySelector(".delete-button") as HTMLElement };
     private get _nameInputElement(): HTMLInputElement { return this.querySelector(".{{ entityNameSnakeCase }}-name") as HTMLInputElement;}

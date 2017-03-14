@@ -6,18 +6,18 @@
             required
         </span>
 
-		<div>
-			<button type="submit"
-					(click)="onSubmit.emit({ value: this.form.value })"
-					[disabled]="form.invalid">
-				Submit
-			</button>
+        <div>
+            <button type="submit"
+                    (click)="onSubmit.emit({ value: this.form.value })"
+                    [disabled]="form.invalid">
+                Submit
+            </button>
 
-			<button
-				(click)="onCancel.emit()"
-				[disabled]="form.invalid">
-				Cancel
-			</button>
-		</div>
+            <button
+                (click)="onCancel.emit()"
+                [disabled]="form.invalid">
+                Cancel
+            </button>
+        </div>
     </form>
 </section>

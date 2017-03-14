@@ -1,7 +1,7 @@
 ﻿export class Article {
-	public id: string;
-	public htmlBody: string;
-	public authorName: string;
-	public authorImageUrl: string;
-	public tags:Array<string> = [];
+    public id: string;
+    public htmlBody: string;
+    public authorName: string;
+    public authorImageUrl: string;
+    public tags:Array<string> = [];
 }

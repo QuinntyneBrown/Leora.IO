@@ -7,7 +7,7 @@ export class {{ entityNamePascalCase }}ItemEmbedComponent extends HTMLElement {
     constructor() {
         super();
 
-		this._onDeleteClick = this._onDeleteClick.bind(this);
+        this._onDeleteClick = this._onDeleteClick.bind(this);
         this._onEditClick = this._onEditClick.bind(this);
         this._onViewClick = this._onViewClick.bind(this);
     }
@@ -54,7 +54,7 @@ export class {{ entityNamePascalCase }}ItemEmbedComponent extends HTMLElement {
         switch (name) {
             case "entity":
                 this.entity = JSON.parse(newValue);
-				break;
+                break;
         }        
     }
 
