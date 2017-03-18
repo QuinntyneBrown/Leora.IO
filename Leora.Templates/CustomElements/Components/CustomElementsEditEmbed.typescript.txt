@@ -1,6 +1,6 @@
 ﻿import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 import { EditorComponent } from "../shared";
-import {  {{ entityNamePascalCase }}Delete, {{ entityNamePascalCase }}Edit, {{ entityNamePascalCase }}Save } from "./{{ entityNameSnakeCase }}.actions";
+import {  {{ entityNamePascalCase }}Delete, {{ entityNamePascalCase }}Edit, {{ entityNamePascalCase }}Add } from "./{{ entityNameSnakeCase }}.actions";
 
 const template = require("./{{ entityNameSnakeCase }}-edit-embed.component.html");
 const styles = require("./{{ entityNameSnakeCase }}-edit-embed.component.scss");
@@ -51,7 +51,7 @@ export class {{ entityNamePascalCase }}EditEmbedComponent extends HTMLElement {
             name: this._nameInputElement.value
         } as {{ entityNamePascalCase }};
         
-        this.dispatchEvent(new {{ entityNamePascalCase }}SaveEvent({{ entityNameCamelCase }}));            
+        this.dispatchEvent(new {{ entityNamePascalCase }}Add({{ entityNameCamelCase }}));            
     }
 
     public onDelete() {        
@@ -60,10 +60,8 @@ export class {{ entityNamePascalCase }}EditEmbedComponent extends HTMLElement {
             name: this._nameInputElement.value
         } as {{ entityNamePascalCase }};
 
-        this.dispatchEvent(new {{ entityNamePascalCase }}DeleteEvent({{ entityNameCamelCase }}));         
+        this.dispatchEvent(new {{ entityNamePascalCase }}Delete({{ entityNameCamelCase }}));         
     }
-
-    public {{ entityNameCamelCase }}: {{ entityNamePascalCase }};
 
     attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
@@ -75,12 +73,13 @@ export class {{ entityNamePascalCase }}EditEmbedComponent extends HTMLElement {
                 if (this.parentNode) {
                     this.{{ entityNameCamelCase }}Id = this.{{ entityNameCamelCase }}.id;
                     this._nameInputElement.value = this.{{ entityNameCamelCase }}.name != undefined ? this.{{ entityNameCamelCase }}.name : "";
-                    this._titleElement.textContent = this.{{ entityNameCamelCase }}Id ? "Edit {{ entityNamePacalCase }}" : "Create {{ entityNamePacalCase }}";
+                    this._titleElement.textContent = this.{{ entityNameCamelCase }}Id ? "Edit {{ entityNamePascalCase }}" : "Create {{ entityNamePascalCase }}";
                 }
                 break;
         }           
     }
 
+    public {{ entityNameCamelCase }}Id: any;
     public {{ entityNameCamelCase }}: {{ entityNamePascalCase }};
     
     private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
