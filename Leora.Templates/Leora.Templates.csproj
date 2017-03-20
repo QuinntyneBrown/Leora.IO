@@ -386,6 +386,9 @@
     <EmbeddedResource Include="CQRS\CQRSGetById.csharp.txt" />
     <EmbeddedResource Include="CQRS\CQRSGetByName.csharp.txt" />
     <EmbeddedResource Include="CQRS\CQRSGetBySlug.csharp.txt" />
+    <EmbeddedResource Include="CustomElements\Components\CustomElementsMasterDetailEmbed.html.txt" />
+    <EmbeddedResource Include="CustomElements\Components\CustomElementsMasterDetailEmbed.scss.txt" />
+    <EmbeddedResource Include="CustomElements\Components\CustomElementsMasterDetailEmbed.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />
