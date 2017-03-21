@@ -36,6 +36,8 @@ export class {{ entityNamePascalCase }}ListEmbedComponent extends HTMLElement {
         switch (name) {
             case "{{ entityNameSnakeCase }}s":
                 this.{{ entityNameCamelCase }}s = JSON.parse(newValue);
+                if (this.parentElement)
+                    this.connectedCallback();
                 break;
         }
     }

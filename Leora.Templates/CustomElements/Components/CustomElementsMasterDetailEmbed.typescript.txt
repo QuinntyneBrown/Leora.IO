@@ -1,13 +1,21 @@
-﻿const template = require("./{{ entityNameSnakeCase }}.component.html");
-const styles = require("./{{ entityNameSnakeCase }}.component.scss");
+﻿import { {{ entityNamePascalCase }}Add, {{ entityNamePascalCase }}Delete, {{ entityNamePascalCase }}Edit, {{ entityNameCamelCase }}Actions } from "./{{ entityNameSnakeCase }}.actions";
+import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 
-export class {{ entityNamePascalCase }}Component extends HTMLElement {
+const template = require("./{{ entityNameSnakeCase }}-master-detail-embed.component.html");
+const styles = require("./{{ entityNameSnakeCase }}-master-detail-embed.component.scss");
+
+export class {{ entityNamePascalCase }}MasterDetailEmbedComponent extends HTMLElement {
     constructor() {
         super();
+        this.on{{ entityNamePascalCase }}Add = this.on{{ entityNamePascalCase }}Add.bind(this);
+        this.on{{ entityNamePascalCase }}Edit = this.on{{ entityNamePascalCase }}Edit.bind(this);
+        this.on{{ entityNamePascalCase }}Delete = this.on{{ entityNamePascalCase }}Delete.bind(this);
     }
 
     static get observedAttributes () {
-        return [];
+        return [
+            "{{ entityNameSnakeCase }}s"
+        ];
     }
 
     connectedCallback() {
@@ -17,23 +25,77 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
     }
 
     private async _bind() {
-
+        this.{{ entityNameCamelCase }}ListElement.setAttribute("{{ entityNameSnakeCase }}s", JSON.stringify(this.{{ entityNameCamelCase }}s));
     }
 
     private _setEventListeners() {
-
+        this.addEventListener({{ entityNameCamelCase }}Actions.ADD, this.on{{ entityNamePascalCase }}Add);
+        this.addEventListener({{ entityNameCamelCase }}Actions.EDIT, this.on{{ entityNamePascalCase }}Edit);
+        this.addEventListener({{ entityNameCamelCase }}Actions.DELETE, this.on{{ entityNamePascalCase }}Delete);
     }
 
     disconnectedCallback() {
+        this.removeEventListener({{ entityNameCamelCase }}Actions.ADD, this.on{{ entityNamePascalCase }}Add);
+        this.removeEventListener({{ entityNameCamelCase }}Actions.EDIT, this.on{{ entityNamePascalCase }}Edit);
+        this.removeEventListener({{ entityNameCamelCase }}Actions.DELETE, this.on{{ entityNamePascalCase }}Delete);
+    }
 
+    public on{{ entityNamePascalCase }}Add(e) {
+
+        const index = this.{{ entityNameCamelCase }}s.findIndex(o => o.id == e.detail.{{ entityNameCamelCase }}.id);
+        const indexBaseOnUniqueIdentifier = this.{{ entityNameCamelCase }}s.findIndex(o => o.name == e.detail.{{ entityNameCamelCase }}.name);
+
+        if (index > -1 && e.detail.{{ entityNameCamelCase }}.id != null) {
+            this.{{ entityNameCamelCase }}s[index] = e.detail.{{ entityNameCamelCase }};
+        } else if (indexBaseOnUniqueIdentifier > -1) {
+            for (var i = 0; i < this.{{ entityNameCamelCase }}s.length; ++i) {
+                if (this.{{ entityNameCamelCase }}s[i].name == e.detail.{{ entityNameCamelCase }}.name)
+                    this.{{ entityNameCamelCase }}s[i] = e.detail.{{ entityNameCamelCase }};
+            }
+        } else {
+            this.{{ entityNameCamelCase }}s.push(e.detail.{{ entityNameCamelCase }});
+        }
+        
+        this.{{ entityNameCamelCase }}ListElement.setAttribute("{{ entityNameSnakeCase }}s", JSON.stringify(this.{{ entityNameCamelCase }}s));
+        this.{{ entityNameCamelCase }}EditElement.setAttribute("{{ entityNameSnakeCase }}", JSON.stringify(new {{ entityNamePascalCase }}()));
+    }
+
+    public on{{ entityNamePascalCase }}Edit(e) {
+        this.{{ entityNameCamelCase }}EditElement.setAttribute("{{ entityNameSnakeCase }}", JSON.stringify(e.detail.{{ entityNameCamelCase }}));
+    }
+
+    public on{{ entityNamePascalCase }}Delete(e) {
+        if (e.detail.{{ entityNameCamelCase }}.Id != null && e.detail.{{ entityNameCamelCase }}.Id != undefined) {
+            this.{{ entityNameCamelCase }}s.splice(this.{{ entityNameCamelCase }}s.findIndex(o => o.id == e.detail.optionId), 1);
+        } else {
+            for (var i = 0; i < this.{{ entityNameCamelCase }}s.length; ++i) {
+                if (this.{{ entityNameCamelCase }}s[i].name == e.detail.{{ entityNameCamelCase }}.name)
+                    this.{{ entityNameCamelCase }}s.splice(i, 1);
+            }
+        }
+
+        this.{{ entityNameCamelCase }}ListElement.setAttribute("{{ entityNameSnakeCase }}s", JSON.stringify(this.{{ entityNameCamelCase }}s));
+        this.{{ entityNameCamelCase }}EditElement.setAttribute("{{ entityNameSnakeCase }}", JSON.stringify(new {{ entityNamePascalCase }}()));
     }
 
     attributeChangedCallback (name, oldValue, newValue) {
         switch (name) {
-            default:
+            case "{{ entityNameSnakeCase }}s":
+                this.{{ entityNameCamelCase }}s = JSON.parse(newValue);
+
+                if (this.parentNode)
+                    this.connectedCallback();
+
                 break;
         }
     }
+
+    public get value(): Array<{{ entityNamePascalCase }}> { return this.{{ entityNameCamelCase }}s; }
+
+    private {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> = [];
+    public {{ entityNameCamelCase }}: {{ entityNamePascalCase }} = <{{ entityNamePascalCase }}>{};
+    public get {{ entityNameCamelCase }}EditElement(): HTMLElement { return this.querySelector("ce-{{ entityNameSnakeCase }}-edit-embed") as HTMLElement; }
+    public get {{ entityNameCamelCase }}ListElement(): HTMLElement { return this.querySelector("ce-{{ entityNameSnakeCase }}-list-embed") as HTMLElement; }
 }
 
-customElements.define(`{{ prefix }}-{{ entityNameSnakeCase }}`,{{ entityNamePascalCase }}Component);
+customElements.define(`ce-{{ entityNameSnakeCase }}-master-detail-embed`,{{ entityNamePascalCase }}MasterDetailEmbedComponent);
