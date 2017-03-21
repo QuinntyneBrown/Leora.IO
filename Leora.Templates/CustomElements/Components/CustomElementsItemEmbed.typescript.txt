@@ -40,11 +40,11 @@ export class {{ entityNamePascalCase }}ItemEmbedComponent extends HTMLElement {
     }
 
     private async _onDeleteClick(e:Event) {
-        this.dispatchEvent(new BduDelete(this.entity)); 
+        this.dispatchEvent(new {{ entityNamePascalCase }}Delete(this.entity)); 
     }
 
     private _onEditClick() {
-        this.dispatchEvent(new BduEdit(this.entity));
+        this.dispatchEvent(new {{ entityNamePascalCase }}Edit(this.entity));
     }
 
     private _onViewClick() {

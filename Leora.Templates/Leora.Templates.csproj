@@ -389,6 +389,9 @@
     <EmbeddedResource Include="CustomElements\Components\CustomElementsMasterDetailEmbed.html.txt" />
     <EmbeddedResource Include="CustomElements\Components\CustomElementsMasterDetailEmbed.scss.txt" />
     <EmbeddedResource Include="CustomElements\Components\CustomElementsMasterDetailEmbed.typescript.txt" />
+    <EmbeddedResource Include="CustomElements\Components\CustomElementsMasterDetail.html.txt" />
+    <EmbeddedResource Include="CustomElements\Components\CustomElementsMasterDetail.scss.txt" />
+    <EmbeddedResource Include="CustomElements\Components\CustomElementsMasterDetail.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />
