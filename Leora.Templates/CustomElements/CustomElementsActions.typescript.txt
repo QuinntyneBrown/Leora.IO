@@ -4,6 +4,7 @@ export const {{ entityNameCamelCase }}Actions = {
     ADD: "[{{ entityNamePascalCase }}] Add",
     EDIT: "[{{ entityNamePascalCase }}] Edit",
     DELETE: "[{{ entityNamePascalCase }}] Delete",
+    {{ entityNameUpperCase }}S_CHANGED: "[{{ entityNamePascalCase }}] {{ entityNamePascalCase }}s Changed"
 };
 
 export class {{ entityNamePascalCase }}Event extends CustomEvent {
@@ -31,5 +32,15 @@ export class {{ entityNamePascalCase }}Edit extends {{ entityNamePascalCase }}Ev
 export class {{ entityNamePascalCase }}Delete extends {{ entityNamePascalCase }}Event {
     constructor({{ entityNameCamelCase }}: {{ entityNamePascalCase }}) {
         super({{ entityNameCamelCase }}Actions.DELETE, {{ entityNameCamelCase }});
+    }
+}
+
+export class {{ entityNamePascalCase }}sChanged extends CustomEvent {
+    constructor(contacts: Array<{{ entityNamePascalCase }}>) {
+        super({{ entityNameCamelCase }}Actions.{{ entityNameUpperCase }}S_CHANGED, {
+            bubbles: true,
+            cancelable: true,
+            detail: { {{ entityNameCamelCase }}s }
+        });
     }
 }
