@@ -1,6 +1,6 @@
 ﻿@import "../../styles/base/_all";
 
-{{ prefix }}-{{ entityNameSnakeCase }}-master-detail {
+{{ prefix }}-{{ entityNameSnakeCase }}-master-detail-embed {
     display:block;
 	@extend .view-card;
 
@@ -13,7 +13,7 @@
     }
 }
 
-{{ prefix }}-{{ entityNameSnakeCase }}-master-detail::after {
+{{ prefix }}-{{ entityNameSnakeCase }}-master-detail-embed::after {
     clear:both;
     display:block;
     content:" ";
