@@ -1,8 +1,8 @@
 ﻿import { {{ entityNamePascalCase }}Add, {{ entityNamePascalCase }}Delete, {{ entityNamePascalCase }}Edit, {{ entityNameCamelCase }}Actions } from "./{{ entityNameSnakeCase }}.actions";
 import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 
-const template = require("./{{ entityNameSnakeCase }}-master-detail-embed.component.html");
-const styles = require("./{{ entityNameSnakeCase }}-master-detail-embed.component.scss");
+const template = require("./{{ entityNameSnakeCase }}-master-detail.component.html");
+const styles = require("./{{ entityNameSnakeCase }}-master-detail.component.scss");
 
 export class {{ entityNamePascalCase }}MasterDetailEmbedComponent extends HTMLElement {
     constructor() {
