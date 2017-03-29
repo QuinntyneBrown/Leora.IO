@@ -4,7 +4,7 @@ import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 const template = require("./{{ entityNameSnakeCase }}-master-detail.component.html");
 const styles = require("./{{ entityNameSnakeCase }}-master-detail.component.scss");
 
-export class {{ entityNamePascalCase }}MasterDetailEmbedComponent extends HTMLElement {
+export class {{ entityNamePascalCase }}MasterDetailComponent extends HTMLElement {
     constructor() {
         super();
         this.on{{ entityNamePascalCase }}Add = this.on{{ entityNamePascalCase }}Add.bind(this);
@@ -98,4 +98,4 @@ export class {{ entityNamePascalCase }}MasterDetailEmbedComponent extends HTMLEl
     public get {{ entityNameCamelCase }}ListElement(): HTMLElement { return this.querySelector("ce-{{ entityNameSnakeCase }}-list-embed") as HTMLElement; }
 }
 
-customElements.define(`ce-{{ entityNameSnakeCase }}-master-detail`,{{ entityNamePascalCase }}MasterDetailEmbedComponent);
+customElements.define(`ce-{{ entityNameSnakeCase }}-master-detail`,{{ entityNamePascalCase }}MasterDetailComponent);

@@ -2,7 +2,6 @@
 
 {{ prefix }}-{{ entityNameSnakeCase }}-master-detail-embed {
     display:block;
-	@extend .view-card;
 
     {{ prefix }}-{{ entityNameSnakeCase }}-edit-embed,
     {{ prefix }}-{{ entityNameSnakeCase }}-list-embed {
