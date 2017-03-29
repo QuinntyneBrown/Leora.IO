@@ -1,4 +1,4 @@
-﻿import { {{ entityNamePascalCase }}Add, {{ entityNamePascalCase }}Delete, {{ entityNamePascalCase }}Edit, {{ entityNameCamelCase }}Actions } from "./{{ entityNameSnakeCase }}.actions";
+﻿import { {{ entityNamePascalCase }}Add, {{ entityNamePascalCase }}Delete, {{ entityNamePascalCase }}Edit, {{ entityNamePascalCase }}sChanged, {{ entityNameCamelCase }}Actions } from "./{{ entityNameSnakeCase }}.actions";
 import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 
 const template = require("./{{ entityNameSnakeCase }}-master-detail-embed.component.html");
@@ -58,6 +58,7 @@ export class {{ entityNamePascalCase }}MasterDetailEmbedComponent extends HTMLEl
         
         this.{{ entityNameCamelCase }}ListElement.setAttribute("{{ entityNameSnakeCase }}s", JSON.stringify(this.{{ entityNameCamelCase }}s));
         this.{{ entityNameCamelCase }}EditElement.setAttribute("{{ entityNameSnakeCase }}", JSON.stringify(new {{ entityNamePascalCase }}()));
+        this.dispatchEvent(new {{ entityNamePascalCase }}sChanged(this.{{ entityNameCamelCase }}s));
     }
 
     public on{{ entityNamePascalCase }}Edit(e) {
@@ -76,6 +77,7 @@ export class {{ entityNamePascalCase }}MasterDetailEmbedComponent extends HTMLEl
 
         this.{{ entityNameCamelCase }}ListElement.setAttribute("{{ entityNameSnakeCase }}s", JSON.stringify(this.{{ entityNameCamelCase }}s));
         this.{{ entityNameCamelCase }}EditElement.setAttribute("{{ entityNameSnakeCase }}", JSON.stringify(new {{ entityNamePascalCase }}()));
+        this.dispatchEvent(new {{ entityNamePascalCase }}sChanged(this.{{ entityNameCamelCase }}s));
     }
 
     attributeChangedCallback (name, oldValue, newValue) {
