@@ -14,10 +14,9 @@ namespace {{ namespacename }}
     [RoutePrefix("api/{{ entityNameCamelCase }}")]
     public class {{ entityNamePascalCase }}Controller : ApiController
     {
-        public {{ entityNamePascalCase }}Controller(IMediator mediator, IUserManager userManager)
+        public {{ entityNamePascalCase }}Controller(IMediator mediator)
         {
             _mediator = mediator;
-            _userManager = userManager;
         }
 
         [Route("add")]
@@ -25,7 +24,7 @@ namespace {{ namespacename }}
         [ResponseType(typeof(AddOrUpdate{{ entityNamePascalCase }}Response))]
         public async Task<IHttpActionResult> Add(AddOrUpdate{{ entityNamePascalCase }}Request request)
         {
-            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
             return Ok(await _mediator.Send(request));
         }
 
@@ -34,7 +33,7 @@ namespace {{ namespacename }}
         [ResponseType(typeof(AddOrUpdate{{ entityNamePascalCase }}Response))]
         public async Task<IHttpActionResult> Update(AddOrUpdate{{ entityNamePascalCase }}Request request)
         {
-            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
             return Ok(await _mediator.Send(request));
         }
         
@@ -45,7 +44,7 @@ namespace {{ namespacename }}
         public async Task<IHttpActionResult> Get()
         {
             var request = new Get{{ entityNamePascalCase }}sRequest();
-            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
             return Ok(await _mediator.Send(request));
         }
 
@@ -54,7 +53,7 @@ namespace {{ namespacename }}
         [ResponseType(typeof(Get{{ entityNamePascalCase }}ByIdResponse))]
         public async Task<IHttpActionResult> GetById([FromUri]Get{{ entityNamePascalCase }}ByIdRequest request)
         {
-            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
             return Ok(await _mediator.Send(request));
         }
 
@@ -63,11 +62,10 @@ namespace {{ namespacename }}
         [ResponseType(typeof(Remove{{ entityNamePascalCase }}Response))]
         public async Task<IHttpActionResult> Remove([FromUri]Remove{{ entityNamePascalCase }}Request request)
         {
-            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
             return Ok(await _mediator.Send(request));
         }
 
         protected readonly IMediator _mediator;
-        protected readonly IUserManager _userManager;
     }
 }
