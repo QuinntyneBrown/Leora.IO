@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using {{ rootNamespacename }}.Data;
 using {{ rootNamespacename }}.Features.Core;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
@@ -12,10 +13,7 @@ namespace {{ namespacename }}
     {
         public class {{ namePascalCase }}Request : IRequest<{{ namePascalCase }}Response>
         {
-            public {{ namePascalCase }}Request()
-            {
-
-            }
+            public Guid TenantUniqueId { get; set; }
         }
 
         public class {{ namePascalCase }}Response

@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using {{ rootNamespacename }}.Data;
 using {{ rootNamespacename }}.Features.Core;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace {{ namespacename }}
     {
         public class {{ namePascalCase }}Request : IRequest<{{ namePascalCase }}Response> { 
             public int Id { get; set; }
-            public int? TenantId { get; set; }
+            public Guid TenantUniqueId { get; set; }
         }
 
         public class {{ namePascalCase }}Response
@@ -32,7 +33,9 @@ namespace {{ namespacename }}
             {                
                 return new {{ namePascalCase }}Response()
                 {
-                    {{ entityNamePascalCase }} = {{ entityNamePascalCase }}ApiModel.From{{ entityNamePascalCase }}(await _context.{{ entityNamePascalCase }}s.SingleAsync(x=>x.Id == request.Id && x.TenantId == request.TenantId))
+                    {{ entityNamePascalCase }} = {{ entityNamePascalCase }}ApiModel.From{{ entityNamePascalCase }}(await _context.{{ entityNamePascalCase }}s
+                    .Include(x => x.Tenant)				
+					.SingleAsync(x=>x.Id == request.Id &&  x.Tenant.UniqueId == request.TenantUniqueId))
                 };
             }
 

@@ -2,6 +2,7 @@
 using {{ rootNamespacename }}.Data;
 using {{ rootNamespacename }}.Data.Model;
 using {{ rootNamespacename }}.Features.Core;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace {{ namespacename }}
         public class {{ namePascalCase }}Request : IRequest<{{ namePascalCase }}Response>
         {
             public int Id { get; set; }
-            public int? TenantId { get; set; }
+            public Guid TenantUniqueId { get; set; } 
         }
 
         public class {{ namePascalCase }}Response { }

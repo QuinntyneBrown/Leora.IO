@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using {{ rootNamespacename }}.Data;
 using {{ rootNamespacename }}.Features.Core;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace {{ namespacename }}
     public class {{ namePascalCase }}Query
     {
         public class {{ namePascalCase }}Request : IRequest<{{ namePascalCase }}Response> { 
-            public int? TenantId { get; set; }        
+            public Guid TenantUniqueId { get; set; }       
         }
 
         public class {{ namePascalCase }}Response
@@ -30,7 +31,8 @@ namespace {{ namespacename }}
             public async Task<{{ namePascalCase }}Response> Handle({{ namePascalCase }}Request request)
             {
                 var {{ entityNameCamelCase }}s = await _context.{{ entityNamePascalCase }}s
-                    .Where( x => x.TenantId == request.TenantId )
+                    .Include(x => x.Tenant)
+                    .Where(x => x.Tenant.UniqueId == request.TenantUniqueId )
                     .ToListAsync();
 
                 return new Get{{ entityNamePascalCase }}sResponse()
