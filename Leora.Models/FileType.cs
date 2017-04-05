@@ -11,6 +11,7 @@
         Project,
         MarkDown,
         Json,
-        JavaScript
+        JavaScript,
+        Config
     }
 }

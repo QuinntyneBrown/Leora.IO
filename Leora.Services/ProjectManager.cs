@@ -101,7 +101,11 @@ namespace Leora.Services
             if (fileType == FileType.TypeScript)
                 return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "TypeScriptCompile").Any());
 
-            if (fileType == FileType.Css || fileType == FileType.Html || fileType == FileType.JavaScript || fileType == FileType.Json)
+            if (fileType == FileType.Css 
+                || fileType == FileType.Html 
+                || fileType == FileType.JavaScript 
+                || fileType == FileType.Json 
+                || fileType == FileType.Config)
                 return itemGroups.FirstOrDefault(x => x.Descendants(msbuild + "Content").Any());
 
             if (fileType == FileType.CSharp)
@@ -121,7 +125,7 @@ namespace Leora.Services
             var itemGroup = csproj.Descendants(msbuild + "PropertyGroup").Single(x => x.Descendants(msbuild + "ProductVersion").Any());
 
             if (itemGroup.Descendants(msbuild + "TypeScriptToolsVersion").SingleOrDefault() == null)
-                itemGroup.Add(new XElement(msbuild + "TypeScriptToolsVersion") { Value = "1.8" });
+                itemGroup.Add(new XElement(msbuild + "TypeScriptToolsVersion") { Value = "2.2" });
 
             if (itemGroup.Descendants(msbuild + "TypeScriptEmitDecoratorMetadata").SingleOrDefault() == null)
                 itemGroup.Add(new XElement(msbuild + "TypeScriptEmitDecoratorMetadata") { Value = "true" });

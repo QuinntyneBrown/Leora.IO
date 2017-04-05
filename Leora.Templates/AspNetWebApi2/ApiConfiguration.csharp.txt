@@ -3,6 +3,11 @@ using System.Configuration;
 
 namespace {{ namespacename }}
 {    
+    public interface I{{ entityNamePascalCase }}Configuration
+    {
+        string BaseUri { get; set; }
+    }
+
     public class {{ entityNamePascalCase }}Configuration: ConfigurationSection, I{{ entityNamePascalCase }}Configuration
     {
 

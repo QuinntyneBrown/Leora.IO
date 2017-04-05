@@ -120,6 +120,8 @@ namespace Leora.Services
                     return "json";
                 case FileType.JavaScript:
                     return "js";
+                case FileType.Config:
+                    return "config";
             }
             throw new NotImplementedException();
         }
