@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using {{ rootNamespacename }}.Features.Core;
 using static {{ namespacename }}.AddOrUpdate{{ entityNamePascalCase }}Command;
 using static {{ namespacename }}.Get{{ entityNamePascalCase }}sQuery;
 using static {{ namespacename }}.Get{{ entityNamePascalCase }}ByIdQuery;
@@ -25,7 +26,7 @@ namespace {{ namespacename }}
         [ResponseType(typeof(AddOrUpdate{{ entityNamePascalCase }}Response))]
         public async Task<IHttpActionResult> Add(AddOrUpdate{{ entityNamePascalCase }}Request request)
         {
-            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
+            request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
 
@@ -34,7 +35,7 @@ namespace {{ namespacename }}
         [ResponseType(typeof(AddOrUpdate{{ entityNamePascalCase }}Response))]
         public async Task<IHttpActionResult> Update(AddOrUpdate{{ entityNamePascalCase }}Request request)
         {
-            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
+            request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
         
@@ -45,7 +46,7 @@ namespace {{ namespacename }}
         public async Task<IHttpActionResult> Get()
         {
             var request = new Get{{ entityNamePascalCase }}sRequest();
-            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
+            request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
 
@@ -54,7 +55,7 @@ namespace {{ namespacename }}
         [ResponseType(typeof(Get{{ entityNamePascalCase }}ByIdResponse))]
         public async Task<IHttpActionResult> GetById([FromUri]Get{{ entityNamePascalCase }}ByIdRequest request)
         {
-            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
+            request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
 
@@ -63,7 +64,7 @@ namespace {{ namespacename }}
         [ResponseType(typeof(Remove{{ entityNamePascalCase }}Response))]
         public async Task<IHttpActionResult> Remove([FromUri]Remove{{ entityNamePascalCase }}Request request)
         {
-            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
+            request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
 
