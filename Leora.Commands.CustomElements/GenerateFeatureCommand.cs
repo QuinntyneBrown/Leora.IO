@@ -39,12 +39,15 @@ namespace Leora.Commands.CustomElements
 
         private readonly IGenerateServiceCommand _generateServiceCommand;
 
+        
+
         public GenerateFeatureCommand(
             ITemplateManager templateManager, 
             ICustomElementsTemplateProcessor templateProcessor, 
             INamingConventionConverter namingConventionConverter, 
             IProjectManager projectManager, 
             IFileWriter fileWriter, 
+            IGenerateModelCommand generateModelCommand,
             IGenerateCustomElementCommand generateCustomElementCommand,
             IGenerateActionsCommand generateActionsCommand,
             IGenerateServiceCommand generateServiceCommand   
@@ -53,6 +56,7 @@ namespace Leora.Commands.CustomElements
             _generateCustomElementCommand = generateCustomElementCommand;
             _generateActionsCommand = generateActionsCommand;
             _generateServiceCommand = generateServiceCommand;
+            _generateModelCommand = generateModelCommand;
         }
 
         public override int Run(GenerateFeatureOptions options) => Run(options.Name, options.Directory, options.Prefix);
