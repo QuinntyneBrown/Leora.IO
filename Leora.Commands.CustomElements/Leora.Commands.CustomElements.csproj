@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseCommand.cs" />
+    <Compile Include="GenerateFeatureCommand.cs" />
     <Compile Include="GenerateRoutesCommand.cs" />
     <Compile Include="GenerateServiceCommand.cs" />
     <Compile Include="GenerateActionsCommand.cs" />
@@ -52,6 +53,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Leora.Commands.Angular2\Leora.Commands.Angular2.csproj">
+      <Project>{29c5a412-7336-45b2-9d3b-2c76de500f83}</Project>
+      <Name>Leora.Commands.Angular2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leora.Commands.Contracts\Leora.Commands.Contracts.csproj">
       <Project>{239c7774-bab3-4842-b86b-fe813708ce02}</Project>
       <Name>Leora.Commands.Contracts</Name>

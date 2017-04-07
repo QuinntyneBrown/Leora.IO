@@ -77,6 +77,8 @@ namespace Leora.Cli
                 ["ce-actions"] = _container.Resolve<Leora.Commands.CustomElements.IGenerateActionsCommand>().Run,
                 ["ce-service"] = _container.Resolve<Leora.Commands.CustomElements.IGenerateServiceCommand>().Run,
                 ["ce-routes"] = _container.Resolve<Leora.Commands.CustomElements.IGenerateRoutesCommand>().Run,
+                ["ce-feature"] = _container.Resolve<Leora.Commands.CustomElements.IGenerateFeatureCommand>().Run,
+
 
                 ["v"] = _container.Resolve<Leora.Commands.VanillaJS.IGenerateComponentCommand>().Run,
 

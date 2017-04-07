@@ -35,7 +35,7 @@ namespace Leora.Cli
             container.RegisterType<IGenerateEditorCommand, GenerateEditorCommand>();
             container.RegisterType<IGenerateListCommand, GenerateListCommand>();
             container.RegisterType<IGenerateComponentCommand, GenerateComponentCommand>();
-            container.RegisterType<IGenerateFeatureCommand, GenerateFeatureCommand>();
+            container.RegisterType<Commands.Angular1.Contracts.IGenerateFeatureCommand, Commands.Angular1.GenerateFeatureCommand>();
 
             container.RegisterType<Leora.Commands.CQRS.IGenerateCommandCommand, Leora.Commands.CQRS.GenerateCommandCommand>();
             container.RegisterType<Leora.Commands.CQRS.IGenerateQueryCommand, Leora.Commands.CQRS.GenerateQueryCommand>();
@@ -50,7 +50,7 @@ namespace Leora.Cli
             container.RegisterType<IGenerateRoutesCommand, GenerateRoutesCommand>();
             container.RegisterType<Commands.CustomElements.IGenerateServiceCommand, Commands.CustomElements.GenerateServiceCommand>();
             container.RegisterType<ICustomElementsTemplateProcessor, CustomElementsTemplateProcessor>();
-
+            container.RegisterType<Commands.CustomElements.IGenerateFeatureCommand, Commands.CustomElements.GenerateFeatureCommand>();
             container.RegisterType<Leora.Commands.VanillaJS.IGenerateComponentCommand, Leora.Commands.VanillaJS.GenerateComponentCommand>();
 
 

@@ -39,12 +39,12 @@ namespace Leora.Commands.CustomElements
             var exitCode = 1;
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
             var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
-            var typeScriptFileName = "actions.ts";
+            var typeScriptFileName = $"{snakeCaseName}.actions.ts";
             var baseFilePath = $"{directory}//{snakeCaseName}";
             
             var templateTypescript = _templateManager.Get(FileType.TypeScript, "CustomElementsActions", "Actions", entityNamePascalCase, BluePrintType.CustomElements);
             
-            _fileWriter.WriteAllLines($"actions.ts", _templateProcessor.ProcessTemplate(templateTypescript, name,prefix));
+            _fileWriter.WriteAllLines(typeScriptFileName, _templateProcessor.ProcessTemplate(templateTypescript, name,prefix));
 
             try
             {
