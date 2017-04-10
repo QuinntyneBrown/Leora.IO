@@ -5,7 +5,9 @@ const template = require("./{{ entityNameSnakeCase }}-master-detail.component.ht
 const styles = require("./{{ entityNameSnakeCase }}-master-detail.component.scss");
 
 export class {{ entityNamePascalCase }}MasterDetailComponent extends HTMLElement {
-    constructor() {
+    constructor(
+        private _{{ entityNameCamelCase }}Service: {{ entityNamePascalCase }}Service = {{ entityNamePascalCase }}Service.Instance	
+	) {
         super();
         this.on{{ entityNamePascalCase }}Add = this.on{{ entityNamePascalCase }}Add.bind(this);
         this.on{{ entityNamePascalCase }}Edit = this.on{{ entityNamePascalCase }}Edit.bind(this);
@@ -25,6 +27,7 @@ export class {{ entityNamePascalCase }}MasterDetailComponent extends HTMLElement
     }
 
     private async _bind() {
+        this.{{ entityNameCamelCase }}s = await this._{{ entityNameCamelCase }}Service.get();
         this.{{ entityNameCamelCase }}ListElement.setAttribute("{{ entityNameSnakeCase }}s", JSON.stringify(this.{{ entityNameCamelCase }}s));
     }
 
@@ -40,21 +43,10 @@ export class {{ entityNamePascalCase }}MasterDetailComponent extends HTMLElement
         this.removeEventListener({{ entityNameCamelCase }}Actions.DELETE, this.on{{ entityNamePascalCase }}Delete);
     }
 
-    public on{{ entityNamePascalCase }}Add(e) {
+    public async on{{ entityNamePascalCase }}Add(e) {
 
-        const index = this.{{ entityNameCamelCase }}s.findIndex(o => o.id == e.detail.{{ entityNameCamelCase }}.id);
-        const indexBaseOnUniqueIdentifier = this.{{ entityNameCamelCase }}s.findIndex(o => o.name == e.detail.{{ entityNameCamelCase }}.name);
-
-        if (index > -1 && e.detail.{{ entityNameCamelCase }}.id != null) {
-            this.{{ entityNameCamelCase }}s[index] = e.detail.{{ entityNameCamelCase }};
-        } else if (indexBaseOnUniqueIdentifier > -1) {
-            for (var i = 0; i < this.{{ entityNameCamelCase }}s.length; ++i) {
-                if (this.{{ entityNameCamelCase }}s[i].name == e.detail.{{ entityNameCamelCase }}.name)
-                    this.{{ entityNameCamelCase }}s[i] = e.detail.{{ entityNameCamelCase }};
-            }
-        } else {
-            this.{{ entityNameCamelCase }}s.push(e.detail.{{ entityNameCamelCase }});
-        }
+        await this._{{ entityNameCamelCase }}Service.add(e.detail.{{ entityNameCamelCase }});
+        this.{{ entityNameCamelCase }}s = await this._{{ entityNameCamelCase }}Service.get();
         
         this.{{ entityNameCamelCase }}ListElement.setAttribute("{{ entityNameSnakeCase }}s", JSON.stringify(this.{{ entityNameCamelCase }}s));
         this.{{ entityNameCamelCase }}EditElement.setAttribute("{{ entityNameSnakeCase }}", JSON.stringify(new {{ entityNamePascalCase }}()));
@@ -64,16 +56,11 @@ export class {{ entityNamePascalCase }}MasterDetailComponent extends HTMLElement
         this.{{ entityNameCamelCase }}EditElement.setAttribute("{{ entityNameSnakeCase }}", JSON.stringify(e.detail.{{ entityNameCamelCase }}));
     }
 
-    public on{{ entityNamePascalCase }}Delete(e) {
-        if (e.detail.{{ entityNameCamelCase }}.Id != null && e.detail.{{ entityNameCamelCase }}.Id != undefined) {
-            this.{{ entityNameCamelCase }}s.splice(this.{{ entityNameCamelCase }}s.findIndex(o => o.id == e.detail.optionId), 1);
-        } else {
-            for (var i = 0; i < this.{{ entityNameCamelCase }}s.length; ++i) {
-                if (this.{{ entityNameCamelCase }}s[i].name == e.detail.{{ entityNameCamelCase }}.name)
-                    this.{{ entityNameCamelCase }}s.splice(i, 1);
-            }
-        }
+    public async on{{ entityNamePascalCase }}Delete(e) {
 
+        await this._{{ entityNameCamelCase }}Service.remove(e.detail.{{ entityNameCamelCase }}.id);
+        this.{{ entityNameCamelCase }}s = await this._{{ entityNameCamelCase }}Service.get();
+        
         this.{{ entityNameCamelCase }}ListElement.setAttribute("{{ entityNameSnakeCase }}s", JSON.stringify(this.{{ entityNameCamelCase }}s));
         this.{{ entityNameCamelCase }}EditElement.setAttribute("{{ entityNameSnakeCase }}", JSON.stringify(new {{ entityNamePascalCase }}()));
     }
