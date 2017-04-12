@@ -1,5 +1,6 @@
 ﻿import { {{ entityNamePascalCase }}Add, {{ entityNamePascalCase }}Delete, {{ entityNamePascalCase }}Edit, {{ entityNameCamelCase }}Actions } from "./{{ entityNameSnakeCase }}.actions";
 import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
+import { {{ entityNamePascalCase }}Service } from "./{{ entityNameSnakeCase }}.service";
 
 const template = require("./{{ entityNameSnakeCase }}-master-detail.component.html");
 const styles = require("./{{ entityNameSnakeCase }}-master-detail.component.scss");
