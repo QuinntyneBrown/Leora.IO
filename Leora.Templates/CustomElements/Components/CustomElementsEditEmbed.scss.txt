@@ -3,7 +3,8 @@
     display:block;
     margin-bottom:40px;
 
-    h2 {
+    h2,
+    .{{ entityNameSnakeCase }}-create {
         cursor:pointer;
     }
 }
