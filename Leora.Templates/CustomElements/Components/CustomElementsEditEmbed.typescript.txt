@@ -75,7 +75,7 @@ export class {{ entityNamePascalCase }}EditEmbedComponent extends HTMLElement {
             case "{{ entityNameSnakeCase }}-id":
                 this.{{ entityNameCamelCase }}Id = newValue;
                 break;
-            case "{{ entityNameCamelCase }}":
+            case "{{ entityNameSnakeCase }}":
                 this.{{ entityNameCamelCase }} = JSON.parse(newValue);
                 if (this.parentNode) {
                     this.{{ entityNameCamelCase }}Id = this.{{ entityNameCamelCase }}.id;
