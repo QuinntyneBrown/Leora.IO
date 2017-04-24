@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using {{ rootNamespacename }}.Data.Helpers;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
+using static {{ rootNamespacename }}.Constants;
 
 namespace {{ namespacename }}
 {
@@ -13,8 +16,9 @@ namespace {{ namespacename }}
 		[ForeignKey("Tenant")]
         public int? TenantId { get; set; }
         
-		[Index("NameIndex", IsUnique = false)]
-        [Column(TypeName = "VARCHAR")]        
+		[Index("{{ entityNamePascalCase }}NameIndex", IsUnique = false)]
+        [Column(TypeName = "VARCHAR")]     
+        [StringLength(MaxStringLength)]		   
 		public string Name { get; set; }
         
 		public DateTime CreatedOn { get; set; }

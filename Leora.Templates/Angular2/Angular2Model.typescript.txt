@@ -1,10 +1,15 @@
 ﻿export class {{ entityNamePascalCase }} { 
+
     public id:any;
+    
     public name:string;
 
-    public fromJSON(data: { name:string }): {{ entityNamePascalCase }} {
+    public static fromJSON(data: { name:string }): {{ entityNamePascalCase }} {
+
         let {{ entityNameCamelCase }} = new {{ entityNamePascalCase }}();
+
         {{ entityNameCamelCase }}.name = data.name;
+
         return {{ entityNameCamelCase }};
     }
 }
