@@ -394,6 +394,9 @@
     <EmbeddedResource Include="CustomElements\Components\CustomElementsMasterDetail.typescript.txt" />
     <EmbeddedResource Include="AspNetWebApi2\Config\Config.config.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiConfig.config.txt" />
+    <EmbeddedResource Include="CustomElements\Components\CustomElementsPaginatedListEmbed.typescript.txt" />
+    <EmbeddedResource Include="CustomElements\Components\CustomElementsPaginatedListEmbed.scss.txt" />
+    <EmbeddedResource Include="CustomElements\Components\CustomElementsPaginatedListEmbed.html.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />
