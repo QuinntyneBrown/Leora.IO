@@ -64,7 +64,7 @@ namespace Leora.Commands.CustomElements
         public int Run(string name, string directory, string prefix)
         {
             _generateCustomElementCommand.Run($"{name}-edit-embed", directory, prefix);
-            _generateCustomElementCommand.Run($"{name}-list-embed", directory, prefix);
+            _generateCustomElementCommand.Run($"{name}-paginated-list-embed", directory, prefix);
             _generateCustomElementCommand.Run($"{name}-item-embed", directory, prefix);
             _generateCustomElementCommand.Run($"{name}-master-detail", directory, prefix);
             _generateActionsCommand.Run(name, directory, prefix);

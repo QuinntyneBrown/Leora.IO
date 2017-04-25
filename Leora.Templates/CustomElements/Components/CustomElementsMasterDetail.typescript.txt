@@ -83,7 +83,7 @@ export class {{ entityNamePascalCase }}MasterDetailComponent extends HTMLElement
     private {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> = [];
     public {{ entityNameCamelCase }}: {{ entityNamePascalCase }} = <{{ entityNamePascalCase }}>{};
     public get {{ entityNameCamelCase }}EditElement(): HTMLElement { return this.querySelector("ce-{{ entityNameSnakeCase }}-edit-embed") as HTMLElement; }
-    public get {{ entityNameCamelCase }}ListElement(): HTMLElement { return this.querySelector("ce-{{ entityNameSnakeCase }}-list-embed") as HTMLElement; }
+    public get {{ entityNameCamelCase }}ListElement(): HTMLElement { return this.querySelector("ce-{{ entityNameSnakeCase }}-paginated-list-embed") as HTMLElement; }
 }
 
 customElements.define(`ce-{{ entityNameSnakeCase }}-master-detail`,{{ entityNamePascalCase }}MasterDetailComponent);

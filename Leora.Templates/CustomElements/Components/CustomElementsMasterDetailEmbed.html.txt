@@ -1,2 +1,2 @@
 ﻿<ce-{{ entityNameSnakeCase }}-edit-embed></ce-{{ entityNameSnakeCase }}-edit-embed>
-<ce-{{ entityNameSnakeCase }}-list-embed></ce-{{ entityNameSnakeCase }}-list-embed>
+<ce-{{ entityNameSnakeCase }}-paginated-list-embed></ce-{{ entityNameSnakeCase }}-list-embed>

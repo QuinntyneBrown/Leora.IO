@@ -4,7 +4,7 @@
     display:block;
 
     {{ prefix }}-{{ entityNameSnakeCase }}-edit-embed,
-    {{ prefix }}-{{ entityNameSnakeCase }}-list-embed {
+    {{ prefix }}-{{ entityNameSnakeCase }}-paginated-list-embed {
         float:left;
         display:inline-block;
         position:relative;
