@@ -1,8 +1,8 @@
 ﻿import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 import { toPageListFromInMemory, PaginatedComponent } from "../pagination";
 
-const template = require("./{{ entityNameSnakeCase }}-list-embed.component.html");
-const styles = require("./{{ entityNameSnakeCase }}-list-embed.component.scss");
+const template = require("./{{ entityNameSnakeCase }}-paginated-list-embed.component.html");
+const styles = require("./{{ entityNameSnakeCase }}-paginated-list-embed.component.scss");
 
 export class {{ entityNamePascalCase }}PaginatedListEmbedComponent extends PaginatedComponent<{{ entityNamePascalCase }}> {
     constructor(
