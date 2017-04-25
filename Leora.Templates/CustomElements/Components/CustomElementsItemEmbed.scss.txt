@@ -2,4 +2,5 @@
 
 {{ prefix }}-{{ entityNameSnakeCase }}-item-embed {
     @extend .entity-item;
+	text-align:left;
 }

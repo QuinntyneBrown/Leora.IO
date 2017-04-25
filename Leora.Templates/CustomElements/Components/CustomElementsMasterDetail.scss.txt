@@ -9,7 +9,15 @@
         float:left;
         display:inline-block;
         position:relative;
-        width:50%;
+        width:calc(50% - 10px);
+    }
+
+    {{ prefix }}-{{ entityNameSnakeCase }}-edit-embed {
+        margin-right:10px;
+    }
+
+    {{ prefix }}-{{ entityNameSnakeCase }}-paginated-list-embed {
+        margin-left:10px;
     }
 }
 
