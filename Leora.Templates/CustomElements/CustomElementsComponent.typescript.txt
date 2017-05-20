@@ -1,5 +1,8 @@
-﻿const template = require("./{{ entityNameSnakeCase }}.component.html");
+﻿const htmlTemplate = require("./{{ entityNameSnakeCase }}.component.html");
 const styles = require("./{{ entityNameSnakeCase }}.component.scss");
+
+const template = document.createElement("template");
+template.innerHTML = `${htmlTemplate}<style>${styles}</style>`;
 
 export class {{ entityNamePascalCase }}Component extends HTMLElement {
     constructor() {
@@ -11,7 +14,8 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
     }
 
     connectedCallback() {
-        this.innerHTML = `<style>${styles}</style> ${template}`;
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.appendChild(document.importNode(template.content, true));  
         this._bind();
         this._setEventListeners();
     }
