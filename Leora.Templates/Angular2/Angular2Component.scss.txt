@@ -1,16 +1,28 @@
-﻿@import "../../styles/base/all";
+﻿:host {
+    display:block;
 
-@media only screen and (min-width: $small-screen) { 
+    * {
+        margin:0;
+        padding:0;
+    }
+}
 
+:host-context(.extra-small) {
 
 }
 
-@media only screen and (min-width: $medium-screen) { 
-
+:host-context(.small) {
 
 }
 
-@media only screen and (min-width: $large-screen) { 
+:host-context(.medium) {
 
+}
+
+:host-context(.large) {
+
+}
+
+:host-context(.extra-large) {
 
 }
