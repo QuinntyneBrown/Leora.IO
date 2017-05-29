@@ -1,13 +1,9 @@
-﻿import { Component, ChangeDetectionStrategy, Input, OnInit } from "@angular/core";
+﻿import {Component, ViewEncapsulation} from "@angular/core";
 
 @Component({
     template: require("./{{ entityNameSnakeCase }}.component.html"),
     styles: [require("./{{ entityNameSnakeCase }}.component.scss")],
-    selector: "{{ entityNameSnakeCase }}",
-    changeDetection: ChangeDetectionStrategy.OnPush
+    selector: "ce-{{ entityNameSnakeCase }}",
+    encapsulation: ViewEncapsulation.Native
 })
-export class {{ entityNamePascalCase }}Component implements OnInit { 
-    ngOnInit() {
-
-    }
-}
+export class {{ entityNamePascalCase }}Component { }
