@@ -12,6 +12,7 @@ export class {{ entityNamePascalCase }}Event extends CustomEvent {
         super(eventName, {
             bubbles: true,
             cancelable: true,
+            composed: true,
             detail: { {{ entityNameCamelCase }} }
         });
     }
