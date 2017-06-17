@@ -1,9 +1,9 @@
 ﻿import {Component, ViewEncapsulation} from "@angular/core";
 
 @Component({
-    template: require("./{{ entityNameSnakeCase }}.component.html"),
-    styles: [require("./{{ entityNameSnakeCase }}.component.scss")],
-    selector: "ce-{{ entityNameSnakeCase }}",
+    templateUrl: "./{{ entityNameSnakeCase }}.component.html",
+    styleUrls: ["./{{ entityNameSnakeCase }}.component.css"],
+    selector: "cs-{{ entityNameSnakeCase }}",
     encapsulation: ViewEncapsulation.Native
 })
 export class {{ entityNamePascalCase }}Component { }

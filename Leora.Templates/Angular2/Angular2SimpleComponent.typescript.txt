@@ -1,8 +1,9 @@
-﻿import { Component, Input } from "@angular/core";
+﻿import { Component, Input, OnInit, ViewEncapsulation } from "@angular/core";
 
 @Component({
     templateUrl: "./{{ entityNameSnakeCase }}.component.html",
     styleUrls: ["./{{ entityNameSnakeCase }}.component.css"],
-    selector: "{{ entityNameSnakeCase }}"
+    selector: "cs-{{ entityNameSnakeCase }}",
+    encapsulation: ViewEncapsulation.Native
 })
 export class {{ entityNamePascalCase }}Component { }

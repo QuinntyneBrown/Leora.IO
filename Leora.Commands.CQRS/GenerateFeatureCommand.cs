@@ -35,7 +35,7 @@ namespace Leora.Commands.CQRS
 
         public int Run(string[] args)
         {
-
+            Console.Write("WTF");
             var argsList = args.ToList();
             argsList.Add("--cqrs");
 
