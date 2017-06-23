@@ -320,9 +320,9 @@
     <EmbeddedResource Include="Angular2\Components\Angular2EditPage.typescript.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2EditPage.html.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2EditForm.html.txt" />
-    <EmbeddedResource Include="Angular2\Components\Angular2EditForm.scss.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2EditForm.css.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2List.typescript.txt" />
-    <EmbeddedResource Include="Angular2\Components\Angular2List.scss.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2List.css.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2List.html.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2ListPage.typescript.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2ListPage.html.txt" />
@@ -397,6 +397,12 @@
     <EmbeddedResource Include="CustomElements\Components\CustomElementsPaginatedListEmbed.typescript.txt" />
     <EmbeddedResource Include="CustomElements\Components\CustomElementsPaginatedListEmbed.scss.txt" />
     <EmbeddedResource Include="CustomElements\Components\CustomElementsPaginatedListEmbed.html.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2ListItem.html.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2ListItem.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2ListItem.css.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2MasterDetail.css.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2MasterDetail.html.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2MasterDetail.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

@@ -1,4 +1,16 @@
-﻿import { Component, ChangeDetectionStrategy, Input, Output, AfterViewInit, EventEmitter, Renderer, ElementRef } from "@angular/core";
+﻿import {
+    Component,
+    ChangeDetectionStrategy,
+    Input,
+    OnInit,
+    EventEmitter,
+    Output,
+    AfterViewInit,
+    AfterContentInit,
+    Renderer,
+    ElementRef,
+    ViewEncapsulation
+} from "@angular/core";
 
 import {
     FormGroup,
@@ -6,35 +18,25 @@ import {
     Validators
 } from "@angular/forms";
 
-import { {{ entityNamePascalCase }} } from "../models";
-
 @Component({
-    template: require("./{{ entityNameSnakeCase }}-edit-form.component.html"),
-    styles: [require("./{{ entityNameSnakeCase }}-edit-form.component.scss")],
-    selector: "{{ entityNameSnakeCase }}-edit-form",
+    templateUrl: "./{{ entityNameSnakeCase }}-edit-form.component.html",
+    styleUrls: ["./{{ entityNameSnakeCase }}-edit-form.component.css"],
+    selector: "cs-{{ entityNameSnakeCase }}-edit-form",
+    encapsulation: ViewEncapsulation.Native
 })
-export class {{ entityNamePascalCase }}EditFormComponent implements AfterViewInit  { 
-
-    constructor(private _renderer: Renderer, private _elementRef: ElementRef) { } 
-
-    public get name(): HTMLElement {
-        return this._elementRef.nativeElement.querySelector("#name");
-    }
-
-    ngAfterViewInit() {
-        this._renderer.invokeElementMethod(this.name, 'focus', []);
-    }
-        
-    @Input() public {{ entityNameCamelCase }}: {{ entityNamePascalCase }};
-    
-    @Output() public onSubmit = new EventEmitter();
-
-    @Output() public onCancel = new EventEmitter();
+export class {{ entityNamePascalCase }}EditFormComponent { 
 
     public form = new FormGroup({
-        id: new FormControl("", []),
-        name: new FormControl("", [
-            Validators.required
-        ])
+        {{ entityNameCamelCase }}Id: new FormControl(0),
+        name: new FormControl('', [Validators.required])        
     });
+
+    @Output()
+    public tryToSave{{ entityNamePascalCase }}: EventEmitter<any> = new EventEmitter();
+
+    @Input("{{ entityNameLowerCase }}")
+    public set {{ entityNameCamelCase }}(value: any) {
+        this.form.patchValue({ '{{ entityNameCamelCase }}Id': value.{{ entityNameCamelCase }}Id });
+        this.form.patchValue({ 'name': value.name });        
+    }  
 }

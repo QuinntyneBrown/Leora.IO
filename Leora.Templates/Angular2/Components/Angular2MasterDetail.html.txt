@@ -1,0 +1,6 @@
+﻿<cs-{{ entityNameSnakeCase }}-edit-form (tryToSave{{ entityNamePascalCase }})="handleSaveAttempt($event)"                      
+                      [{{ entityNameCamelCase }}]="{{ entityNameCamelCase }}">
+</cs-{{ entityNameSnakeCase }}-edit-form>
+<cs-{{ entityNameSnakeCase }}-list [{{ entityNameCamelCase }}s]="{{ entityNameCamelCase }}s"
+                  (delete)="handleDelete($event)"
+                  (select)="handleEdit($event)"></cs-{{ entityNameSnakeCase }}-list>

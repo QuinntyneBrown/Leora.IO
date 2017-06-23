@@ -1,0 +1,19 @@
+﻿import {Component,Input,ViewEncapsulation,Output,EventEmitter} from "@angular/core";
+import {{{ entityNamePascalCase }}} from "@quinntynebrown/models";
+
+@Component({
+    templateUrl: "./{{ entityNameSnakeCase }}-list-item.component.html",
+    styleUrls: ["./{{ entityNameSnakeCase }}-list-item.component.css"],
+    selector: "cs-{{ entityNameSnakeCase }}-list-item",
+    encapsulation: ViewEncapsulation.Native
+})
+export class {{ entityNamePascalCase }}ListItemComponent {    
+    @Input()
+    public {{ entityNameCamelCase }}: any = <{{ entityNamePascalCase }}>{};
+    
+    @Output()
+    public select: EventEmitter<any> = new EventEmitter();
+
+    @Output()
+    public delete: EventEmitter<any> = new EventEmitter();        
+}

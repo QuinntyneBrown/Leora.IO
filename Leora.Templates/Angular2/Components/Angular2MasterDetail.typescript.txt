@@ -1,0 +1,40 @@
+﻿import { Component, Input, Output, EventEmitter, OnInit, ViewEncapsulation } from "@angular/core";
+import { {{ entityNamePascalCase }} } from "@quinntynebrown/models";
+import { {{ entityNamePascalCase }}Service } from "../shared";
+
+@Component({
+    templateUrl: "./{{ entityNameSnakeCase }}-master-detail.component.html",
+    styleUrls: ["./{{ entityNameSnakeCase }}-master-detail.component.css"],
+    selector: "cs-{{ entityNameSnakeCase }}-master-detail",
+    encapsulation: ViewEncapsulation.Native
+})
+export class {{ entityNamePascalCase }}MasterDetailComponent implements OnInit {
+    constructor(private _{{ entityNameCamelCase }}Service: {{ entityNamePascalCase }}Service) { }
+
+    ngOnInit() {
+        this._{{ entityNameCamelCase }}Service.get()
+            .subscribe(({{ entityNameCamelCase }}s:any) => {
+                this.{{ entityNameCamelCase }}s = {{ entityNameCamelCase }}s;
+            })
+    }
+
+    @Input()
+    public {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> = [];
+
+    @Input()
+    public {{ entityNameCamelCase }}: {{ entityNamePascalCase }} = <{{ entityNamePascalCase }}>{};
+    
+    public async handleSaveAttempt($event) {
+        var response = await this._{{ entityNameCamelCase }}Service.add($event.detail.{{ entityNameCamelCase }}).toPromise();
+        this._{{ entityNameCamelCase }}Service.get().subscribe(({{ entityNameCamelCase }}s: any) => this.{{ entityNameCamelCase }}s = {{ entityNameCamelCase }}s);
+    }
+    
+    public async handleEdit($event) {
+        this.{{ entityNameCamelCase }} = $event.detail.{{ entityNameCamelCase }};
+    }
+
+    public async handleDelete($event) {     
+        var response = await this._{{ entityNameCamelCase }}Service.remove({ id: $event.detail.{{ entityNameCamelCase }}.{{ entityNameCamelCase }}Id }).toPromise();
+        this._{{ entityNameCamelCase }}Service.get().subscribe(({{ entityNameCamelCase }}s: any) => this.{{ entityNameCamelCase }}s = {{ entityNameCamelCase }}s);
+    }
+}

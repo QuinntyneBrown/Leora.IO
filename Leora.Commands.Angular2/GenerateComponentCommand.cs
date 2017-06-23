@@ -20,15 +20,15 @@ namespace Leora.Commands.Angular2
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
             var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
             var typeScriptFileName = $"{snakeCaseName}.component.ts";
-            var cssFileName = $"{snakeCaseName}.component.{GetSufix(simple)}";
+            var cssFileName = $"{snakeCaseName}.component.css";
             var htmlFileName = $"{snakeCaseName}.component.html";
             var baseFilePath = $"{directory}//{snakeCaseName}";
             //var sufixList = new string[4] { "edit-page","edit-form", "list-page", "list" };
-            var sufixList = new string[0] { };
+            var sufixList = new string[4] { "edit-form", "list", "list-item", "master-detail" };
 
             var templateTypescript = _templateManager.Get(FileType.TypeScript, ResolveComponentName(simple), "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);            
             var templateHtml = _templateManager.Get(FileType.Html, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
-            var templateScss = _templateManager.Get(FileType.Scss, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
+            var templateScss = _templateManager.Get(FileType.Css, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
 
             foreach(var sufix in sufixList)
             {
@@ -42,7 +42,7 @@ namespace Leora.Commands.Angular2
             }
             
             _fileWriter.WriteAllLines($"{baseFilePath}.component.ts", _templateProcessor.ProcessTemplate(templateTypescript, name));
-            _fileWriter.WriteAllLines($"{baseFilePath}.component.{GetSufix(simple)}", _templateProcessor.ProcessTemplate(templateScss, name));
+            _fileWriter.WriteAllLines($"{baseFilePath}.component.css", _templateProcessor.ProcessTemplate(templateScss, name));
             _fileWriter.WriteAllLines($"{baseFilePath}.component.html", _templateProcessor.ProcessTemplate(templateHtml, name));
 
             try

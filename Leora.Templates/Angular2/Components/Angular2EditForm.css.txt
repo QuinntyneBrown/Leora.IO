@@ -1,0 +1,17 @@
+﻿:host {
+    display:block;
+}
+
+input {
+    display:inline-block;
+    margin: 10px 0px;
+    padding: 0px 10px;
+    width: 300px;
+    font-size:0.875em;
+    line-height:2.25em;
+    height:32px;
+}
+
+cs-button {
+    padding: 0px 10px;
+}

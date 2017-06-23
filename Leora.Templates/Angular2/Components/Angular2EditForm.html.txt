@@ -1,23 +1,7 @@
-﻿<section class="{{ entityNameSnakeCase }}-edit-form">
-    <h1>Edit {{ entityNamePascalCase }}</h1>
-    <form novalidate [formGroup]="form">
-        <input placeholder="Name" formControlName="name" id="name" />
-        <span *ngIf="form.get('name').touched && form.hasError('required', 'name')">
-            required
-        </span>
-
-        <div>
-            <button type="submit"
-                    (click)="onSubmit.emit({ value: this.form.value })"
-                    [disabled]="form.invalid">
-                Submit
-            </button>
-
-            <button
-                (click)="onCancel.emit()"
-                [disabled]="form.invalid">
-                Cancel
-            </button>
-        </div>
-    </form>
-</section>
+﻿<form novalidate [formGroup]="form">
+    <input type="text" placeholder="Name" formControlName="name" />
+    <br/>
+    <cs-button (click)="tryToSave{{ entityNamePascalCase }}.emit({ {{ entityNameCamelCase }}: this.form.value })">
+        Save {{ entityNamePascalCase }}
+    </cs-button>
+</form>
