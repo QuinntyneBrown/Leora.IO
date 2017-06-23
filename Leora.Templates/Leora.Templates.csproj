@@ -341,7 +341,7 @@
     <EmbeddedResource Include="Node\NodeTsConfigJson.json.txt" />
     <EmbeddedResource Include="Node\NodeJsConfigJson.json.txt" />
     <EmbeddedResource Include="CustomElements\CustomElementsComponent.html.txt" />
-    <EmbeddedResource Include="CustomElements\CustomElementsComponent.scss.txt" />
+    <EmbeddedResource Include="CustomElements\CustomElementsComponent.css.txt" />
     <EmbeddedResource Include="CustomElements\CustomElementsComponent.typescript.txt" />
     <EmbeddedResource Include="CustomElements\CustomElementsService.typescript.txt" />
     <EmbeddedResource Include="CustomElements\Components\CustomElementsEdit.html.txt" />

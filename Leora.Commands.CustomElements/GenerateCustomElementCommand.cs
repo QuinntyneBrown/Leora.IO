@@ -40,7 +40,7 @@ namespace Leora.Commands.CustomElements
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
             var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
             var typeScriptFileName = $"{snakeCaseName}.component.ts";
-            var cssFileName = $"{snakeCaseName}.component.scss";
+            var cssFileName = $"{snakeCaseName}.component.css";
             var htmlFileName = $"{snakeCaseName}.component.html";
             var baseFilePath = $"{directory}//{snakeCaseName}";
 
@@ -48,7 +48,7 @@ namespace Leora.Commands.CustomElements
 
             var templateTypescript = _templateManager.Get(FileType.TypeScript, "CustomElementsComponent", "Components", entityNamePascalCase, BluePrintType.CustomElements,sufixList);
             var templateHtml = _templateManager.Get(FileType.Html, "CustomElementsComponent", "Components", entityNamePascalCase, BluePrintType.CustomElements, sufixList);
-            var templateScss = _templateManager.Get(FileType.Scss, "CustomElementsComponent", "Components", entityNamePascalCase, BluePrintType.CustomElements, sufixList);
+            var templateScss = _templateManager.Get(FileType.Css, "CustomElementsComponent", "Components", entityNamePascalCase, BluePrintType.CustomElements, sufixList);
             
             foreach (var sufix in sufixList)
             {
@@ -62,7 +62,7 @@ namespace Leora.Commands.CustomElements
             }
 
             _fileWriter.WriteAllLines($"{baseFilePath}.component.ts", _templateProcessor.ProcessTemplate(templateTypescript, name,prefix));
-            _fileWriter.WriteAllLines($"{baseFilePath}.component.scss", _templateProcessor.ProcessTemplate(templateScss, name, prefix));
+            _fileWriter.WriteAllLines($"{baseFilePath}.component.css", _templateProcessor.ProcessTemplate(templateScss, name, prefix));
             _fileWriter.WriteAllLines($"{baseFilePath}.component.html", _templateProcessor.ProcessTemplate(templateHtml, name, prefix));
 
             try
