@@ -1,2 +1,2 @@
-﻿<span class="name" (click)="select.emit(this.{{ entityNameCamelCase }})">{{ {{ entityNameCamelCase }}.name }}</span>
-<span class="actions" (click)="delete.emit({{{ entityNameCamelCase }}: {{ entityNameCamelCase }}})">DELETE</span>
+﻿<span class="name" (click)="select.emit({ detail: { {{ entityNameCamelCase }}: {{ entityNameCamelCase }}} })">{{ {{ entityNameCamelCase }}.name }}</span>
+<span class="actions" (click)="delete.emit({ detail: { {{ entityNameCamelCase }}: {{ entityNameCamelCase }}} })">DELETE</span>

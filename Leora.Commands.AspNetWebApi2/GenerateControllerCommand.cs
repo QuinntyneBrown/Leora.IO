@@ -16,7 +16,7 @@ namespace Leora.Commands.AspNetWebApi2
         {
             int exitCode = 1;            
             var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
-            var pascalCaseName = $"{entityNamePascalCase}Controller.cs";
+            var pascalCaseName = $"{entityNamePascalCase}sController.cs";
             if (trace)
             {
                 _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiControllerTrace", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));

@@ -15,7 +15,8 @@ namespace Leora.Commands.Angular2
         public override int Run(GenerateComponentOptions options) => Run(options.Name, options.Directory, options.Simple);
 
         public int Run(string name, string directory, bool simple = false)
-        {            
+        {
+
             var exitCode = 1;
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
             var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
@@ -26,34 +27,38 @@ namespace Leora.Commands.Angular2
             //var sufixList = new string[4] { "edit-page","edit-form", "list-page", "list" };
             var sufixList = new string[4] { "edit-form", "list", "list-item", "master-detail" };
 
-            var templateTypescript = _templateManager.Get(FileType.TypeScript, ResolveComponentName(simple), "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);            
-            var templateHtml = _templateManager.Get(FileType.Html, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
-            var templateScss = _templateManager.Get(FileType.Css, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
-
-            foreach(var sufix in sufixList)
-            {
-                if (HasSufix(name, sufix))
-                {
-                    name = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
-                    var newSufix = _namingConventionConverter.Convert(NamingConvention.PascalCase, sufix);
-                    name = name.Substring(0, name.Length - newSufix.Length);
-                    break;
-                }
-            }
-            
-            _fileWriter.WriteAllLines($"{baseFilePath}.component.ts", _templateProcessor.ProcessTemplate(templateTypescript, name));
-            _fileWriter.WriteAllLines($"{baseFilePath}.component.css", _templateProcessor.ProcessTemplate(templateScss, name));
-            _fileWriter.WriteAllLines($"{baseFilePath}.component.html", _templateProcessor.ProcessTemplate(templateHtml, name));
-
             try
             {
+                var templateTypescript = _templateManager.Get(FileType.TypeScript, ResolveComponentName(simple), "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
+
+                Console.WriteLine("HERE");
+
+                var templateHtml = _templateManager.Get(FileType.Html, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
+                var templateScss = _templateManager.Get(FileType.Css, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
+
+                foreach(var sufix in sufixList)
+                {
+                    if (HasSufix(name, sufix))
+                    {
+                        name = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
+                        var newSufix = _namingConventionConverter.Convert(NamingConvention.PascalCase, sufix);
+                        name = name.Substring(0, name.Length - newSufix.Length);
+                        break;
+                    }
+                }
+
+                _fileWriter.WriteAllLines($"{baseFilePath}.component.ts", _templateProcessor.ProcessTemplate(templateTypescript, name));
+                _fileWriter.WriteAllLines($"{baseFilePath}.component.css", _templateProcessor.ProcessTemplate(templateScss, name));
+                _fileWriter.WriteAllLines($"{baseFilePath}.component.html", _templateProcessor.ProcessTemplate(templateHtml, name));
+
+
                 _projectManager.Process(directory, typeScriptFileName, FileType.TypeScript);
                 _projectManager.Process(directory, cssFileName, FileType.Css);
                 _projectManager.Process(directory, htmlFileName, FileType.Html);
             }
             catch (Exception e)
             {
-
+                Console.WriteLine("Issues");
             }
 
             return exitCode;

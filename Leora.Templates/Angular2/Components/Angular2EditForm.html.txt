@@ -1,7 +1,7 @@
 ﻿<form novalidate [formGroup]="form">
     <input type="text" placeholder="Name" formControlName="name" />
     <br/>
-    <cs-button (click)="tryToSave{{ entityNamePascalCase }}.emit({ {{ entityNameCamelCase }}: this.form.value })">
+    <cs-button (click)="tryToSave{{ entityNamePascalCase }}.emit({ detail: { {{ entityNameCamelCase }}: this.form.value } })">
         Save {{ entityNamePascalCase }}
     </cs-button>
 </form>

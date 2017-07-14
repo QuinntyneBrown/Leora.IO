@@ -193,7 +193,7 @@
     <EmbeddedResource Include="Angular1\Angular1ComponentSpec.typescript.txt" />
     <EmbeddedResource Include="Angular1\Angular1ComponentFramework.typescript.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiControllerTrace.csharp.txt" />
-    <EmbeddedResource Include="Angular2\Angular2Component.scss.txt" />
+    <EmbeddedResource Include="Angular2\Angular2Component.css.txt" />
     <EmbeddedResource Include="Angular2\Angular2Component.html.txt" />
     <EmbeddedResource Include="Angular2\Angular2Component.typescript.txt" />
     <EmbeddedResource Include="Angular2\Angular2ComponentSpec.typescript.txt" />

@@ -6,10 +6,12 @@ input {
     display:inline-block;
     margin: 10px 0px;
     padding: 0px 10px;
-    width: 300px;
+    width: calc(100% - 22px);
+    max-width: 300px;
     font-size:0.875em;
     line-height:2.25em;
     height:32px;
+    border: 1px dotted #999;
 }
 
 cs-button {
