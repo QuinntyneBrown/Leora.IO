@@ -11,27 +11,27 @@ namespace {{ namespacename }}
 {
     public class {{ namePascalCase }}Query
     {
-        public class {{ namePascalCase }}Request : IRequest<{{ namePascalCase }}Response> { 
+        public class Request : IRequest<Response> { 
             public int Id { get; set; }
             public Guid TenantUniqueId { get; set; }
         }
 
-        public class {{ namePascalCase }}Response
+        public class Response
         {
             public {{ entityNamePascalCase }}ApiModel {{ entityNamePascalCase }} { get; set; } 
         }
 
-        public class {{ namePascalCase }}Handler : IAsyncRequestHandler<{{ namePascalCase }}Request, {{ namePascalCase }}Response>
+        public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public {{ namePascalCase }}Handler({{ rootNamespacename }}Context context, ICache cache)
+            public Handler({{ rootNamespacename }}Context context, ICache cache)
             {
                 _context = context;
                 _cache = cache;
             }
 
-            public async Task<{{ namePascalCase }}Response> Handle({{ namePascalCase }}Request request)
+            public async Task<Response> Handle(Request request)
             {                
-                return new {{ namePascalCase }}Response()
+                return new Response()
                 {
                     {{ entityNamePascalCase }} = {{ entityNamePascalCase }}ApiModel.From{{ entityNamePascalCase }}(await _context.{{ entityNamePascalCase }}s
                     .Include(x => x.Tenant)				
