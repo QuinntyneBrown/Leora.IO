@@ -35,7 +35,7 @@ namespace {{ namespacename }}
                     .Where(x => x.Tenant.UniqueId == request.TenantUniqueId )
                     .ToListAsync();
 
-                return new Get{{ entityNamePascalCase }}sResponse()
+                return new Response()
                 {
                     {{ entityNamePascalCase }}s = {{ entityNameCamelCase }}s.Select(x => {{ entityNamePascalCase }}ApiModel.From{{ entityNamePascalCase }}(x)).ToList()
                 };

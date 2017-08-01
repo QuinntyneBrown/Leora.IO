@@ -30,9 +30,6 @@ namespace Leora.Commands.Angular2
             try
             {
                 var templateTypescript = _templateManager.Get(FileType.TypeScript, ResolveComponentName(simple), "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
-
-                Console.WriteLine("HERE");
-
                 var templateHtml = _templateManager.Get(FileType.Html, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
                 var templateScss = _templateManager.Get(FileType.Css, "Angular2Component", "Components", entityNamePascalCase, BluePrintType.Angular2, sufixList);
 

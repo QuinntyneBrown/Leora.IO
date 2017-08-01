@@ -24,9 +24,9 @@ namespace {{ namespacename }}
             }
         }
 
-        public class {{ namePascalCase }}Handler : IAsyncRequestHandler<{{ namePascalCase }}Request, {{ namePascalCase }}Response>
+        public class Handler : IAsyncRequestHandler<{{ namePascalCase }}Request, {{ namePascalCase }}Response>
         {
-            public {{ namePascalCase }}Handler({{ rootNamespacename }}Context context, ICache cache)
+            public Handler({{ rootNamespacename }}Context context, ICache cache)
             {
                 _context = context;
                 _cache = cache;

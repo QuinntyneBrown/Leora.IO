@@ -12,7 +12,7 @@ namespace {{ namespacename }}
 {
     public class {{ namePascalCase }}Command
     {
-        public class Request : IRequest<{{ namePascalCase }}Response>
+        public class Request : IRequest<Response>
         {
             public {{ entityNamePascalCase }}ApiModel {{ entityNamePascalCase }} { get; set; }
             public Guid TenantUniqueId { get; set; }
