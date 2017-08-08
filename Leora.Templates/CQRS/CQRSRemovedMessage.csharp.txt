@@ -1,0 +1,16 @@
+﻿using {{ rootNamespacename }}.Data.Model;
+using {{ rootNamespacename }}.Features.Core;
+using System;
+
+namespace {{ namespacename }}
+{
+    public class Removed{{ namePascalCase }}Message : BaseEventBusMessage
+    {
+        public Removed{{ namePascalCase }}Message(int {{ nameCamelCase }}Id, Guid correlationId, Guid tenantId)
+        {
+            Payload = new { Id = {{ nameCamelCase }}Id, CorrelationId = correlationId };
+            TenantUniqueId = tenantId;
+        }
+        public override string Type { get; set; } = {{ namePascalCase }}sEventBusMessages.Removed{{ namePascalCase }}Message;        
+    }
+}

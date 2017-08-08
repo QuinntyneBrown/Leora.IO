@@ -1,0 +1,17 @@
+﻿using {{ rootNamespacename }}.Data.Model;
+using {{ rootNamespacename }}.Features.Core;
+using System;
+
+namespace {{ namespacename }}
+{
+
+    public class AddedOrUpdated{{ entityNamePascalCase }}Message : BaseEventBusMessage
+    {
+        public AddedOrUpdated{{ entityNamePascalCase }}Message({{ entityNamePascalCase }} {{ entityNameCamelCase }}, Guid correlationId, Guid tenantId)
+        {
+            Payload = new { Entity = {{ entityNameCamelCase }}, CorrelationId = correlationId };
+            TenantUniqueId = tenantId;
+        }
+        public override string Type { get; set; } = {{ entityNamePascalCase }}sEventBusMessages.AddedOrUpdated{{ entityNamePascalCase }}Message;        
+    }
+}
