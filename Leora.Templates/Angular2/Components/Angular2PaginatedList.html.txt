@@ -1,0 +1,17 @@
+﻿<h1>{{ entityNamePascalCase }} List</h1>
+<label>Filter</label>
+<input type="text" placeholder="Filter" (keyup)="filterKeyUp.emit({ detail: { value: $event.target.value } })" />
+<div>
+    <h2>Name</h2>
+    <h2>Actions</h2>
+</div>
+<ce-{{ entityNameSnakeCase }}-list-item *ngFor="let {{ entityNameCamelCase }} of pagedList.data"
+                      [{{ entityNameCamelCase }}]="{{ entityNameCamelCase }}"
+                      (edit)="edit.emit($event)"
+                      (delete)="delete.emit($event)">
+</ce-{{ entityNameSnakeCase }}-list-item>
+<ce-pager [pageNumber]="pageNumber" 
+          [totalPages]="pagedList.totalPages" 
+          (next)="setPageNumber($event)" 
+          (previous)="setPageNumber($event)">
+</ce-pager>

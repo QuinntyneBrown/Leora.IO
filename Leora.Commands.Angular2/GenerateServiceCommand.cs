@@ -22,7 +22,7 @@ namespace Leora.Commands.Angular2
             var exitCode = 1;
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
             var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
-            var typeScriptFileName = entityNamePascalCase.Contains("Guard") ? $"{snakeCaseName}.ts" : $"{snakeCaseName}.service.ts";
+            var typeScriptFileName = entityNamePascalCase.Contains("Guard") ? $"{snakeCaseName}.ts" : $"{snakeCaseName}s.service.ts";
 
             var templateTypescript = _templateManager.Get(FileType.TypeScript, "Angular2Service", "Services", entityNamePascalCase, BluePrintType.Angular2);
 

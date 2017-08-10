@@ -403,6 +403,12 @@
     <EmbeddedResource Include="Angular2\Components\Angular2MasterDetail.css.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2MasterDetail.html.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2MasterDetail.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2PaginatedListPage.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2PaginatedListPage.css.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2PaginatedListPage.html.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2PaginatedList.css.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2PaginatedList.html.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2PaginatedList.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

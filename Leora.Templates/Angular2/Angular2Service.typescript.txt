@@ -1,49 +1,39 @@
 ﻿import { Injectable } from "@angular/core";
-import { Http } from "@angular/http";
+import { HttpClient } from "@angular/common/http";
 import { {{ entityNamePascalCase }} } from "./{{ entityNameCamelCase }}.model";
 import { Observable } from "rxjs";
-
+import { ErrorService } from "../shared/services/error.service";
 
 @Injectable()
-export class {{ entityNamePascalCase }}Service {
-    constructor(private _http: Http) { }
+export class {{ entityNamePascalCase }}sService {
+    constructor(
+        private _errorService: ErrorService,
+        private _httpClient: HttpClient)
+    { }
 
-    public add(entity: {{ entityNamePascalCase }}) {
-        return this._http
-            .post(`${this._baseUrl}/api/{{ entityNameLowerCase }}/add`, entity)
-            .map(data => data.json())
-            .catch(err => {
-                return Observable.of(false);
-            });
+    public add(options: { {{ entityNameCamelCase }}: {{ entityNamePascalCase }}, correlationId: string }) {
+        return this._httpClient
+            .post(`${this._baseUrl}/api/{{ entityNameCamelCase }}/add`, options)
+            .catch(this._errorService.catchErrorResponse);
     }
 
-    public get() {
-        return this._http
-            .get(`${this._baseUrl}/api/{{ entityNameLowerCase }}/get`)
-            .map(data => data.json())
-            .catch(err => {
-                return Observable.of(false);
-            });
+    public get(): Observable<{ {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> }> {
+        return this._httpClient
+            .get<{ {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> }>(`${this._baseUrl}/api/{{ entityNameCamelCase }}/get`)
+            .catch(this._errorService.catchErrorResponse);
     }
 
-    public getById(options: { id: number }) {
-        return this._http
-            .get(`${this._baseUrl}/api/{{ entityNameLowerCase }}/getById?id=${options.id}`)
-            .map(data => data.json())
-            .catch(err => {
-                return Observable.of(false);
-            });
+    public getById(options: { id: number }): Observable<{{ entityNamePascalCase }}> {
+        return this._httpClient
+            .get<{{{ entityNameCamelCase }}: {{ entityNamePascalCase }}}>(`${this._baseUrl}/api/{{ entityNameCamelCase }}/getById?id=${options.id}`)
+            .catch(this._errorService.catchErrorResponse);
     }
 
-    public remove(options: { id: number }) {
-        return this._http
-            .delete(`${this._baseUrl}/api/{{ entityNameLowerCase }}/remove?id=${options.id}`)
-            .map(data => data.json())
-            .catch(err => {
-                return Observable.of(false);
-            });
+    public remove(options: { {{ entityNameCamelCase }}: {{ entityNamePascalCase }}, correlationId: string }) {
+        return this._httpClient
+            .delete(`${this._baseUrl}/api/{{ entityNameCamelCase }}/remove?id=${options.{{ entityNameCamelCase }}.id}`)
+            .catch(this._errorService.catchErrorResponse);
     }
 
     public get _baseUrl() { return ""; }
-
 }

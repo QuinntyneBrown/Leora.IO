@@ -1,19 +1,25 @@
-﻿import {Component,Input,ViewEncapsulation,Output,EventEmitter} from "@angular/core";
-import {{{ entityNamePascalCase }}} from "@quinntynebrown/models";
+﻿import {Component,Input,Output,EventEmitter} from "@angular/core";
 
 @Component({
     templateUrl: "./{{ entityNameSnakeCase }}-list-item.component.html",
-    styleUrls: ["./{{ entityNameSnakeCase }}-list-item.component.css"],
-    selector: "cs-{{ entityNameSnakeCase }}-list-item",
-    encapsulation: ViewEncapsulation.Native
+    styleUrls: [
+        "../../styles/list-item.css",
+        "./{{ entityNameSnakeCase }}-list-item.component.css"
+    ],
+    selector: "ce-{{ entityNameSnakeCase }}-list-item"
 })
-export class {{ entityNamePascalCase }}ListItemComponent {    
+export class {{ entityNamePascalCase }}ListItemComponent {  
+    constructor() {
+        this.edit = new EventEmitter();
+        this.delete = new EventEmitter();		
+    }
+      
     @Input()
-    public {{ entityNameCamelCase }}: any = <{{ entityNamePascalCase }}>{};
+    public {{ entityNameCamelCase }}: any = {};
     
     @Output()
-    public select: EventEmitter<any> = new EventEmitter();
+    public edit: EventEmitter<any>;
 
     @Output()
-    public delete: EventEmitter<any> = new EventEmitter();        
+    public delete: EventEmitter<any>;        
 }

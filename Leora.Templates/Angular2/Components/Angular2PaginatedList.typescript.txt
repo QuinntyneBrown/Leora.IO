@@ -1,0 +1,56 @@
+﻿import {Component,Input, Output, EventEmitter, NgZone} from "@angular/core";
+import {toPageListFromInMemory,IPagedList} from "../shared/components/pager.component";
+import {Observable} from "rxjs/Observable";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+
+@Component({
+    templateUrl: "./{{ entityNameSnakeCase }}-paginated-list.component.html",
+    styleUrls: [
+        "../../styles/forms.css",
+        "../../styles/list.css",
+        "./{{ entityNameSnakeCase }}-paginated-list.component.css"
+    ],
+    selector: "ce-{{ entityNameSnakeCase }}-paginated-list"
+})
+export class {{ entityNamePascalCase }} { 
+    constructor() {
+        this.edit = new EventEmitter();
+        this.delete = new EventEmitter();
+        this.filterKeyUp = new EventEmitter();
+        this.pagedList = toPageListFromInMemory([], this.pageNumber, this.pageSize);
+    }
+
+    ngOnInit() {
+        this.pagedList = toPageListFromInMemory(this.{{ entityNameCamelCase }}s, this.pageNumber, this.pageSize);
+    }
+
+    public setPageNumber($event) {        
+        this.pageNumber = $event.detail.pageNumber;
+        this.pagedList = toPageListFromInMemory(this.{{ entityNameCamelCase }}s, this.pageNumber, this.pageSize);
+    }
+    private _{{ entityNameCamelCase }}s = [];
+
+    public get {{ entityNameCamelCase }}s() {
+        return this._{{ entityNameCamelCase }}s;
+    }
+    @Input("{{ entityNameCamelCase }}s")
+    public set {{ entityNameCamelCase }}s(value) {        
+        this._{{ entityNameCamelCase }}s = value;
+        this.pagedList = toPageListFromInMemory(this.{{ entityNameCamelCase }}s, this.pageNumber, this.pageSize);           
+    }
+    
+    public pagedList: IPagedList<any> = <any>{};
+
+    @Output()
+    public edit: EventEmitter<any>;
+
+    @Output()
+    public delete: EventEmitter<any>;
+    
+    @Output()
+    public filterKeyUp: EventEmitter<any>;
+    
+    public pageNumber: number = 1;
+
+    public pageSize: number = 5;    
+}

@@ -1,0 +1,79 @@
+﻿import {Component, ChangeDetectorRef} from "@angular/core";
+import {{{ entityNamePascalCase }}sService} from "./{{ entityNameSnakeCase }}s.service";
+import {Router} from "@angular/router";
+import {pluckOut} from "../shared/utilities/pluck-out";
+import {EventHub} from "../shared/services/event-hub";
+import {Subscription} from "rxjs/Subscription";
+import {CorrelationIdsList} from "../shared/services/correlation-ids-list";
+
+@Component({
+    templateUrl: "./{{ entityNameSnakeCase }}-paginated-list-page.component.html",
+    styleUrls: ["./{{ entityNameSnakeCase }}-paginated-list-page.component.css"],
+    selector: "ce-{{ entityNameSnakeCase }}-paginated-list-page"   
+})
+export class {{ entityNamePascalCase }}PaginatedListPageComponent {
+    constructor(
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _{{ entityNameCamelCase }}sService: {{ entityNamePascalCase }}sService,
+        private _correlationIdsList: CorrelationIdsList,
+        private _eventHub: EventHub,
+        private _router: Router
+    ) {
+        this.subscription = this._eventHub.events.subscribe(x => {      
+            
+            if (this._correlationIdsList.hasId(x.payload.correlationId) && x.type == "[{{ entityNamePascalCase }}s] {{ entityNamePascalCase }}AddedOrUpdated") {
+                this._{{ entityNameCamelCase }}sService.get().toPromise().then(x => {
+                    this.unfiltered{{ entityNamePascalCase }}s = x.{{ entityNameCamelCase }}s;
+                    this.{{ entityNameCamelCase }}s = this.filterTerm != null ? this.filtered{{ entityNamePascalCase }}s : this.unfiltered{{ entityNamePascalCase }}s;
+                    this._changeDetectorRef.detectChanges();
+                });
+            } else if (x.type == "[{{ entityNamePascalCase }}s] {{ entityNamePascalCase }}AddedOrUpdated") {
+                
+            }
+        });      
+    }
+    
+    public async ngOnInit() {
+        this.unfiltered{{ entityNamePascalCase }}s = (await this._{{ entityNameCamelCase }}sService.get().toPromise()).{{ entityNameCamelCase }}s;   
+        this.{{ entityNameCamelCase }}s = this.filterTerm != null ? this.filtered{{ entityNamePascalCase }}s : this.unfiltered{{ entityNamePascalCase }}s;       
+    }
+
+    public tryToDelete($event) {        
+        const correlationId = this._correlationIdsList.newId();
+
+        this.unfiltered{{ entityNamePascalCase }}s = pluckOut({
+            items: this.unfiltered{{ entityNamePascalCase }}s,
+            value: $event.detail.{{ entityNameCamelCase }}.id
+        });
+
+        this.{{ entityNameCamelCase }}s = this.filterTerm != null ? this.filtered{{ entityNamePascalCase }}s : this.unfiltered{{ entityNamePascalCase }}s;
+        
+        this._{{ entityNameCamelCase }}sService.remove({ {{ entityNameCamelCase }}: $event.detail.{{ entityNameCamelCase }}, correlationId });
+    }
+
+    public tryToEdit($event) {
+        this._router.navigate(["{{ entityNameCamelCase }}s", $event.detail.{{ entityNameCamelCase }}.id]);
+    }
+
+    public handle{{ entityNamePascalCase }}sFilterKeyUp($event) {
+        this.filterTerm = $event.detail.value;
+        this.pageNumber = 1;
+        this.{{ entityNameCamelCase }}s = this.filterTerm != null ? this.filtered{{ entityNamePascalCase }}s : this.unfiltered{{ entityNamePascalCase }}s;        
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+        this.subscription = null;
+    }
+
+    private subscription: Subscription;
+    public _{{ entityNameCamelCase }}s: Array<any> = [];
+    public filterTerm: string;
+    public pageNumber: number;
+
+    public {{ entityNameCamelCase }}s: Array<any> = [];
+    public unfiltered{{ entityNamePascalCase }}s: Array<any> = [];
+    public get filtered{{ entityNamePascalCase }}s() {
+        return this.unfiltered{{ entityNamePascalCase }}s.filter((x) => x.email.indexOf(this.filterTerm) > -1);
+    }
+}

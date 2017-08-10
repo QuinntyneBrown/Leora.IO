@@ -1,19 +1,6 @@
-﻿import { Base } from "./base.model";
+﻿export class {{ entityNamePascalCase }} { 
 
-export class {{ entityNamePascalCase }} extends Base { 
-
-    public {{ entityNameCamelCase }}Id:any;
+    public id:any;
     
     public name:string;
-
-    public static fromJSON(data: any): {{ entityNamePascalCase }} {
-
-        let {{ entityNameCamelCase }} = new {{ entityNamePascalCase }}();
-
-        {{ entityNameCamelCase }}.{{ entityNameCamelCase }}Id = data.{{ entityNameCamelCase }}Id;
-
-        {{ entityNameCamelCase }}.name = data.name;
-
-        return {{ entityNameCamelCase }};
-    }
 }

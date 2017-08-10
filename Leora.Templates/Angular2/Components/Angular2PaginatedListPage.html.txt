@@ -1,0 +1,5 @@
+﻿<ce-{{ entityNameSnakeCase }}-paginated-list [{{ entityNameCamelCase }}s]="{{ entityNameCamelCase }}s"                           
+                           (delete)="tryToDelete($event)"
+                           (edit)="tryToEdit($event)"
+                           (filterKeyUp)="handle{{ entityNamePascalCase }}sFilterKeyUp($event)">
+</ce-{{ entityNameSnakeCase }}-paginated-list>
