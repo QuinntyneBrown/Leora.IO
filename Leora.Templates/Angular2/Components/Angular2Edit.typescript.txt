@@ -1,0 +1,47 @@
+﻿import {
+    Component,
+    Input,
+    OnInit,
+    EventEmitter,
+    Output,
+    AfterViewInit,
+    AfterContentInit,
+    Renderer,
+    ElementRef,
+} from "@angular/core";
+
+import {FormGroup,FormControl,Validators} from "@angular/forms";
+
+@Component({
+    templateUrl: "./{{ entityNameSnakeCase }}-edit.component.html",
+    styleUrls: [
+        "../../styles/forms.css",
+        "../../styles/edit.css",
+        "./{{ entityNameSnakeCase }}-edit.component.css"],
+    selector: "ce-{{ entityNameSnakeCase }}-edit"
+})
+export class {{ entityNamePascalCase }}EditComponent {
+    constructor() {
+        this.tryToSave = new EventEmitter();
+    }
+
+    @Output()
+    public tryToSave: EventEmitter<any>;
+
+    private _{{ entityNameCamelCase }}: any = {};
+
+    @Input("{{ entityNameCamelCase }}")
+    public set {{ entityNameCamelCase }}(value) {
+        this._{{ entityNameCamelCase }} = value;
+
+        this.form.patchValue({
+            id: this._{{ entityNameCamelCase }}.id,
+            name: this._{{ entityNameCamelCase }}.name,
+        });
+    }
+   
+    public form = new FormGroup({
+        id: new FormControl(0, []),
+        name: new FormControl('', [Validators.required])
+    });
+}

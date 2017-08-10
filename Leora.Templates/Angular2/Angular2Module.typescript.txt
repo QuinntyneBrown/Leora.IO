@@ -1,15 +1,27 @@
 ﻿import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { SharedModule } from "../shared/shared.module";
 
-import { {{ entityNamePascalCase }}Component } from './{{ entityNameSnakeCase }}.component';
+import { {{ entityNamePascalCase }}sService } from "./{{ entityNameSnakeCase }}s.service";
 
-const declarables = [{{ entityNamePascalCase }}Component];
-const providers = [];
+import { {{ entityNamePascalCase }}EditComponent } from "./{{ entityNameSnakeCase }}-edit.component";
+import { {{ entityNamePascalCase }}ListItemComponent } from "./{{ entityNameSnakeCase }}-list-item.component";
+import { {{ entityNamePascalCase }}PaginatedListComponent } from "./{{ entityNameSnakeCase }}-paginated-list.component";
+
+const declarables = [
+    {{ entityNamePascalCase }}EditComponent,
+    {{ entityNamePascalCase }}ListItemComponent,
+    {{ entityNamePascalCase }}PaginatedListComponent
+];
+
+const providers = [{{ entityNamePascalCase }}sService];
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule, SharedModule],
     exports: [declarables],
     declarations: [declarables],
     providers: providers
 })
-export class {{ entityNamePascalCase }}Module { }
+export class {{ entityNamePascalCase }}sModule { }

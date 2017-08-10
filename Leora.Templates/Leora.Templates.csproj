@@ -413,6 +413,9 @@
     <EmbeddedResource Include="CQRS\CQRSRemovedMessage.csharp.txt" />
     <EmbeddedResource Include="CQRS\CQRSEventBusMessages.csharp.txt" />
     <EmbeddedResource Include="CQRS\CQRSEventBusMessageHandler.csharp.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2Edit.html.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2Edit.css.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2Edit.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

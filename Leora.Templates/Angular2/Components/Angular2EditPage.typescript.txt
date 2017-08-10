@@ -1,39 +1,32 @@
-﻿import { Component, Input, OnInit } from "@angular/core";
-import { {{ entityNamePascalCase }}Actions } from "../actions";
-import { Router, ActivatedRoute } from "@angular/router";
-import { AppStore } from "../store";
+﻿import {Component} from "@angular/core";
+import {{{ entityNamePascalCase }}sService} from "./{{ entityNameCamelCase }}s.service";
+import {Router,ActivatedRoute} from "@angular/router";
+import {guid} from "../shared/utilities/guid";
+import {CorrelationIdsList} from "../shared/services/correlation-ids-list";
 
 @Component({
-    template: require("./{{ entityNameSnakeCase }}-edit-page.component.html"),
-    styles: [require("./{{ entityNameSnakeCase }}-edit-page.component.scss")],
-    selector: "{{ entityNameSnakeCase }}-edit-page"
+    templateUrl: "./{{ entityNameSnakeCase }}-edit-page.component.html",
+    styleUrls: ["./{{ entityNameSnakeCase }}-edit-page.component.css"],
+    selector: "ce-{{ entityNameSnakeCase }}-edit-page"
 })
-export class {{ entityNamePascalCase }}EditPageComponent { 
-    constructor(private _{{ entityNameCamelCase }}Actions: {{ entityNamePascalCase }}Actions, 
+export class {{ entityNamePascalCase }}EditPageComponent {
+    constructor(private _{{ entityNameCamelCase }}sService: {{ entityNamePascalCase }}sService,
         private _router: Router,
         private _activatedRoute: ActivatedRoute,
-        private _store: AppStore
+        private _correlationIdsList: CorrelationIdsList
     ) { }
 
-    ngOnInit() {
-        this._{{ entityNameCamelCase }}Actions.getById({ id: this._activatedRoute.snapshot.params["id"] });
+    public async ngOnInit() {
+        if (this._activatedRoute.snapshot.params["id"]) {            
+            this.{{ entityNameCamelCase }} = (await this._{{ entityNameCamelCase }}sService.getById({ id: this._activatedRoute.snapshot.params["id"] }).toPromise()).{{ entityNameCamelCase }};
+        }
     }
 
-    public get entity$() {
-        return this._store.{{ entityNameCamelCase }}ById$(this._activatedRoute.snapshot.params["id"]);
+    public tryToSave($event) {
+        const correlationId = this._correlationIdsList.newId();
+        this._{{ entityNameCamelCase }}sService.addOrUpdate({ {{ entityNameCamelCase }}: $event.detail.{{ entityNameCamelCase }}, correlationId });
+        this._router.navigateByUrl("/{{ entityNameCamelCase }}s");
     }
 
-    public onSubmit($event: any) {
-        this._{{ entityNameCamelCase }}Actions.add({
-            id: $event.value.id,
-            name: $event.value.name
-        });
-
-        setTimeout(() => { this._router.navigate(["/{{ entityNameCamelCase }}s"]); }, 0);
-        
-    }
-
-    public onCancel() {
-        setTimeout(() => { this._router.navigate(["/{{ entityNameCamelCase }}s"]); }, 0);
-    }
+    public {{ entityNameCamelCase }} = {};
 }

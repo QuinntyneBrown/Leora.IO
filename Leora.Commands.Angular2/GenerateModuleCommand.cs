@@ -20,9 +20,9 @@ namespace Leora.Commands.Angular2
             var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
             var template = _templateManager.Get(FileType.TypeScript, "Angular2Module", "Modules", entityNamePascalCase, BluePrintType.Angular2);
 
-            _fileWriter.WriteAllLines($"{directory}//{entityNameSnakeCase}.module.ts", _templateProcessor.ProcessTemplate(template, name));
+            _fileWriter.WriteAllLines($"{directory}//{entityNameSnakeCase}s.module.ts", _templateProcessor.ProcessTemplate(template, name));
 
-            try { _projectManager.Process(directory, $"{entityNameSnakeCase}.module.ts", FileType.TypeScript); }
+            try { _projectManager.Process(directory, $"{entityNameSnakeCase}s.module.ts", FileType.TypeScript); }
             catch { }
 
             return exitCode;
