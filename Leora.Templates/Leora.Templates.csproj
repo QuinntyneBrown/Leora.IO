@@ -416,6 +416,9 @@
     <EmbeddedResource Include="Angular2\Components\Angular2Edit.html.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2Edit.css.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2Edit.typescript.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2LeftNav.css.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2LeftNav.html.txt" />
+    <EmbeddedResource Include="Angular2\Components\Angular2LeftNav.typescript.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

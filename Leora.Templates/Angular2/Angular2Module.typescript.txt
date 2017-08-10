@@ -9,11 +9,13 @@ import { {{ entityNamePascalCase }}sService } from "./{{ entityNameSnakeCase }}s
 import { {{ entityNamePascalCase }}EditComponent } from "./{{ entityNameSnakeCase }}-edit.component";
 import { {{ entityNamePascalCase }}ListItemComponent } from "./{{ entityNameSnakeCase }}-list-item.component";
 import { {{ entityNamePascalCase }}PaginatedListComponent } from "./{{ entityNameSnakeCase }}-paginated-list.component";
+import { {{ entityNamePascalCase }}sLeftNavComponent } from "./{{ entityNameSnakeCase }}s-left-nav.component";
 
 const declarables = [
     {{ entityNamePascalCase }}EditComponent,
     {{ entityNamePascalCase }}ListItemComponent,
-    {{ entityNamePascalCase }}PaginatedListComponent
+    {{ entityNamePascalCase }}PaginatedListComponent,
+    {{ entityNamePascalCase }}sLeftNavComponent
 ];
 
 const providers = [{{ entityNamePascalCase }}sService];

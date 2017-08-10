@@ -1,7 +1,7 @@
 ﻿import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { {{ entityNamePascalCase }} } from "./{{ entityNameCamelCase }}.model";
-import { Observable } from "rxjs";
+import { Observable } from "rxjs/Observable";
 import { ErrorService } from "../shared/services/error.service";
 
 @Injectable()
@@ -31,7 +31,7 @@ export class {{ entityNamePascalCase }}sService {
 
     public remove(options: { {{ entityNameCamelCase }}: {{ entityNamePascalCase }}, correlationId: string }) {
         return this._httpClient
-            .delete(`${this._baseUrl}/api/{{ entityNameCamelCase }}/remove?id=${options.{{ entityNameCamelCase }}.id}`)
+            .delete(`${this._baseUrl}/api/{{ entityNameCamelCase }}/remove?id=${options.{{ entityNameCamelCase }}.id}&correlationId=${options.correlationId}`)
             .catch(this._errorService.catchErrorResponse);
     }
 

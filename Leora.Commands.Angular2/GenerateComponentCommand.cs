@@ -24,7 +24,7 @@ namespace Leora.Commands.Angular2
             var cssFileName = $"{snakeCaseName}.component.css";
             var htmlFileName = $"{snakeCaseName}.component.html";
             var baseFilePath = $"{directory}//{snakeCaseName}";
-            var sufixList = new string[8] { "edit-form","edit", "edit-page", "paginated-list", "list", "list-item", "master-detail", "paginated-list-page" };
+            var sufixList = new string[9] { "left-nav", "edit-form","edit", "edit-page", "paginated-list", "list", "list-item", "master-detail", "paginated-list-page" };
 
             try
             {
@@ -41,7 +41,15 @@ namespace Leora.Commands.Angular2
                         sufixResolved = true;
                         name = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
                         var newSufix = _namingConventionConverter.Convert(NamingConvention.PascalCase, sufix);
-                        name = name.Substring(0, name.Length - newSufix.Length);
+
+                        if (newSufix == "LeftNav")
+                        {
+                            name = name.Substring(0, name.Length - newSufix.Length - 1);
+                        }
+                        else {
+                            name = name.Substring(0, name.Length - newSufix.Length);
+                        }
+                        
                         break;
                     }
                 }

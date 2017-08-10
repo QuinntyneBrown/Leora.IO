@@ -1,0 +1,9 @@
+﻿<h3>{{ entityNameTitleCase }}s</h3>
+<ul>
+    <li>
+        <a routerLink="/{{ entityNameCamelCase }}s/create">create</a>
+    </li>
+    <li>
+        <a routerLink="/{{ entityNameCamelCase }}s">list</a>
+    </li>
+</ul>
