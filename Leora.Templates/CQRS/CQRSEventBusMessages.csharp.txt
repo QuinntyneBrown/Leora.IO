@@ -1,0 +1,8 @@
+﻿namespace {{ namespacename }}
+{
+    public class {{ namePascalCase }}sEventBusMessages
+    {
+        public static string AddedOrUpdated{{ namePascalCase }}Message = "[{{ namePascalCase }}s] C{{ namePascalCase }}AddedOrUpdated";
+        public static string Removed{{ namePascalCase }}Message = "[{{ namePascalCase }}s] {{ namePascalCase }}Removed";
+    }
+}

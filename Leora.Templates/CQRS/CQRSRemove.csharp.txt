@@ -12,32 +12,34 @@ namespace {{ namespacename }}
 {
     public class {{ namePascalCase }}Command
     {
-        public class {{ namePascalCase }}Request : IRequest<{{ namePascalCase }}Response>
+        public class Request : BaseRequest, IRequest<Response>
         {
             public int Id { get; set; }
-            public Guid TenantUniqueId { get; set; } 
+            public Guid TenantUniqueId { get; set; }
+            public Guid CorrelationId { get; set; }
         }
 
-        public class {{ namePascalCase }}Response { }
+        public class Response { }
 
-        public class {{ namePascalCase }}Handler : IAsyncRequestHandler<{{ namePascalCase }}Request, {{ namePascalCase }}Response>
+        public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public {{ namePascalCase }}Handler({{ rootNamespacename }}Context context, ICache cache)
+            public Handler({{ rootNamespacename }}Context context, IEventBus _bus)
             {
                 _context = context;
-                _cache = cache;
+                _bus = bus;
             }
 
-            public async Task<{{ namePascalCase }}Response> Handle({{ namePascalCase }}Request request)
+            public async Task<Response> Handle(Request request)
             {
                 var {{ entityNameCamelCase }} = await _context.{{ entityNamePascalCase }}s.SingleAsync(x=>x.Id == request.Id && x.Tenant.UniqueId == request.TenantUniqueId);
                 {{ entityNameCamelCase }}.IsDeleted = true;
                 await _context.SaveChangesAsync();
-                return new Remove{{ entityNamePascalCase }}Response();
+                _bus.Publish(new Removed{{ entityNamePascalCase }}Message(request.Id, request.CorrelationId, request.TenantUniqueId));
+                return new Response();
             }
 
             private readonly {{ rootNamespacename }}Context _context;
-            private readonly ICache _cache;
+            private readonly IEventBus _bus;
         }
     }
 }

@@ -54,6 +54,8 @@
     <Compile Include="GenerateCommandCommand.cs" />
     <Compile Include="GenerateQueryCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GenerateAddedOrUpdatedMessageCommand.cs" />
+    <Compile Include="GenerateRemovedMessageCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Leora.Commands.AspNetWebApi2\Leora.Commands.AspNetWebApi2.csproj">
@@ -83,6 +85,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Contracts\" />
+    <Folder Include="Options\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

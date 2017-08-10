@@ -1,0 +1,39 @@
+﻿using {{ rootNamespacename }}.Features.Core;
+using Microsoft.AspNet.SignalR;
+using Newtonsoft.Json.Linq;
+using System;
+
+namespace {{ namespacename }}
+{
+    public interface I{{ entityNamePascalCase }}sEventBusMessageHandler: IEventBusMessageHandler { }
+
+    public class {{ entityNamePascalCase }}sEventBusMessageHandler: I{{ entityNamePascalCase }}sEventBusMessageHandler
+    {
+        public {{ entityNamePascalCase }}sEventBusMessageHandler(ICache cache)
+        {
+            _cache = cache;
+        }
+
+        public void Handle(JObject message)
+        {
+            try
+            {
+                if ($"{message["Type"]}" == {{ entityNamePascalCase }}sEventBusMessages.AddedOrUpdated{{ entityNamePascalCase }}Message)
+                {
+                    _cache.Remove($"[{{ entityNamePascalCase }}s] Get {message["TenantUniqueId"]}");
+                }
+
+                if ($"{message["Type"]}" == {{ entityNamePascalCase }}sEventBusMessages.Removed{{ entityNamePascalCase }}Message)
+                {
+                    _cache.Remove($"[{{ entityNamePascalCase }}s] Get {message["TenantUniqueId"]}");
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        private readonly ICache _cache;
+    }
+}
