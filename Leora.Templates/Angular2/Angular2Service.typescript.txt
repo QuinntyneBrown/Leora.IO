@@ -1,6 +1,6 @@
 ﻿import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { {{ entityNamePascalCase }} } from "./{{ entityNameCamelCase }}.model";
+import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 import { Observable } from "rxjs/Observable";
 import { ErrorService } from "../shared/services/error.service";
 
@@ -11,27 +11,27 @@ export class {{ entityNamePascalCase }}sService {
         private _httpClient: HttpClient)
     { }
 
-    public add(options: { {{ entityNameCamelCase }}: {{ entityNamePascalCase }}, correlationId: string }) {
+    public addOrUpdate(options: { {{ entityNameCamelCase }}: {{ entityNamePascalCase }}, correlationId: string }) {
         return this._httpClient
-            .post(`${this._baseUrl}/api/{{ entityNameCamelCase }}/add`, options)
+            .post(`${this._baseUrl}/api/{{ entityNameCamelCase }}s/add`, options)
             .catch(this._errorService.catchErrorResponse);
     }
 
     public get(): Observable<{ {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> }> {
         return this._httpClient
-            .get<{ {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> }>(`${this._baseUrl}/api/{{ entityNameCamelCase }}/get`)
+            .get<{ {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> }>(`${this._baseUrl}/api/{{ entityNameCamelCase }}s/get`)
             .catch(this._errorService.catchErrorResponse);
     }
 
-    public getById(options: { id: number }): Observable<{{ entityNamePascalCase }}> {
+    public getById(options: { id: number }): Observable<{ {{ entityNameCamelCase }}:{{ entityNamePascalCase }}}> {
         return this._httpClient
-            .get<{{{ entityNameCamelCase }}: {{ entityNamePascalCase }}}>(`${this._baseUrl}/api/{{ entityNameCamelCase }}/getById?id=${options.id}`)
+            .get<{{{ entityNameCamelCase }}: {{ entityNamePascalCase }}}>(`${this._baseUrl}/api/{{ entityNameCamelCase }}s/getById?id=${options.id}`)
             .catch(this._errorService.catchErrorResponse);
     }
 
     public remove(options: { {{ entityNameCamelCase }}: {{ entityNamePascalCase }}, correlationId: string }) {
         return this._httpClient
-            .delete(`${this._baseUrl}/api/{{ entityNameCamelCase }}/remove?id=${options.{{ entityNameCamelCase }}.id}&correlationId=${options.correlationId}`)
+            .delete(`${this._baseUrl}/api/{{ entityNameCamelCase }}s/remove?id=${options.{{ entityNameCamelCase }}.id}&correlationId=${options.correlationId}`)
             .catch(this._errorService.catchErrorResponse);
     }
 

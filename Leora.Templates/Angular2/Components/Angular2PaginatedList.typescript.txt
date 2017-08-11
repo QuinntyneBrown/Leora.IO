@@ -12,7 +12,7 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
     ],
     selector: "ce-{{ entityNameSnakeCase }}-paginated-list"
 })
-export class {{ entityNamePascalCase }} { 
+export class {{ entityNamePascalCase }}PaginatedListComponent { 
     constructor() {
         this.edit = new EventEmitter();
         this.delete = new EventEmitter();
