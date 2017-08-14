@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using {{ rootNamespacename }}.Data;
-using {{ rootNamespacename }}.Data.Model;
+using {{ rootNamespacename }}.Model;
 using {{ rootNamespacename }}.Features.Core;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,6 @@ namespace {{ namespacename }}
         public class Request : BaseRequest, IRequest<Response>
         {
             public int Id { get; set; }
-            public Guid TenantUniqueId { get; set; }
             public Guid CorrelationId { get; set; }
         }
 

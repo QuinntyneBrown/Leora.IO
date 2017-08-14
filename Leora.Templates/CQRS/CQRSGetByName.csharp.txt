@@ -11,17 +11,14 @@ namespace {{ namespacename }}
 {
     public class {{ namePascalCase }}Query
     {
-        public class {{ namePascalCase }}Request : IRequest<{{ namePascalCase }}Response>
+        public class {{ namePascalCase }}Request : BaseRequest, IRequest<{{ namePascalCase }}Response>
         {
-            public Guid TenantUniqueId { get; set; }
+            public string Name { get; set; }
         }
 
         public class {{ namePascalCase }}Response
         {
-            public {{ namePascalCase }}Response()
-            {
 
-            }
         }
 
         public class Handler : IAsyncRequestHandler<{{ namePascalCase }}Request, {{ namePascalCase }}Response>
@@ -40,7 +37,5 @@ namespace {{ namespacename }}
             private readonly {{ rootNamespacename }}Context _context;
             private readonly ICache _cache;
         }
-
     }
-
 }

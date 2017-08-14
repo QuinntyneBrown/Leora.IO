@@ -20,18 +20,25 @@ namespace Leora.Commands.CQRS
 
     }
 
-    public class GenerateRemovedMessageCommand : BaseCommand<GenerateRemovedOptions>, IGenerateRemovedMessageCommand
+    public class GenerateRemovedMessageCommand : Leora.Commands.CQRS.Core.BaseCommand<GenerateRemovedOptions>, IGenerateRemovedMessageCommand
     {
         public GenerateRemovedMessageCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
             : base(templateManager, templateProcessor, namingConventionConverter, projectManager, fileWriter, namespaceManager)
         {
         }
-        public override int Run(GenerateRemovedOptions options) => Run(options.Name, options.Directory);
 
-        public int Run(string name, string directory)
+        public override int Run(GenerateRemovedOptions options)
+        {
+            return Run(options.Entity, options.Directory, options.NameSpace, options.RootNamespace);
+        }
+
+        public int Run(string entityName, string directory, string namespacename, string rootNamespace)
         {
             int exitCode = 1;
-
+            var templateCs = _templateManager.Get(FileType.CSharp, "CQRSRemovedMessage", "Commands", _namingConventionConverter.Convert(NamingConvention.PascalCase, entityName), BluePrintType.CQRS);
+            var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, entityName);
+            _fileWriter.WriteAllLines($"{directory}//Removed{entityNamePascalCase}Message.cs", _templateProcessor.ProcessTemplate(templateCs, entityName, entityName, namespacename, rootNamespace));
+            _projectManager.Process(directory, $"Removed{_namingConventionConverter.Convert(NamingConvention.PascalCase, entityName)}Message.cs", FileType.CSharp);
             return exitCode;
         }
 

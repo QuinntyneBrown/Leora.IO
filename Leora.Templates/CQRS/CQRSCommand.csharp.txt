@@ -11,9 +11,9 @@ namespace {{ namespacename }}
 {
     public class {{ namePascalCase }}Command
     {
-        public class Request : IRequest<Response>
+        public class Request : BaseRequest, IRequest<Response>
         {
-            public Guid TenantUniqueId { get; set; }
+
         }
 
         public class Response { }

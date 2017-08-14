@@ -15,10 +15,7 @@ namespace Leora.Commands.CQRS
         }
     }
 
-    public interface IGenerateAddedOrUpdatedMessageCommand : ICommand
-    {
-
-    }
+    public interface IGenerateAddedOrUpdatedMessageCommand : ICommand { }
 
     public class GenerateAddedOrUpdatedMessageCommand : Leora.Commands.CQRS.Core.BaseCommand<GenerateAddedOrUpdatedOptions>, IGenerateAddedOrUpdatedMessageCommand
     {
@@ -33,14 +30,12 @@ namespace Leora.Commands.CQRS
 
         public int Run(string entityName, string directory, string namespacename, string rootNamespace)
         {
-            int exitCode = 1;
-            
+            int exitCode = 1;            
             var templateCs = _templateManager.Get(FileType.CSharp, "CQRSAddedOrUpdatedMessage", "Commands", _namingConventionConverter.Convert(NamingConvention.PascalCase, entityName), BluePrintType.CQRS);
             var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, entityName);
-            _fileWriter.WriteAllLines($"{directory}//AddedOrUpdated{entityNamePascalCase}MessageCommand.cs", _templateProcessor.ProcessTemplate(templateCs, entityName, entityName, namespacename, rootNamespace));
-            _projectManager.Process(directory, $"AddedOrUpdated{_namingConventionConverter.Convert(NamingConvention.PascalCase, entityName)}MessageCommand.cs", FileType.CSharp);
+            _fileWriter.WriteAllLines($"{directory}//AddedOrUpdated{entityNamePascalCase}Message.cs", _templateProcessor.ProcessTemplate(templateCs, entityName, entityName, namespacename, rootNamespace));
+            _projectManager.Process(directory, $"AddedOrUpdated{_namingConventionConverter.Convert(NamingConvention.PascalCase, entityName)}Message.cs", FileType.CSharp);
             return exitCode;
         }
-
     }
 }

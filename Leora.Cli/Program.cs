@@ -86,6 +86,7 @@ namespace Leora.Cli
                 ["cqrs-query"] = _container.Resolve<Commands.CQRS.IGenerateQueryCommand>().Run,
                 ["cqrs-add-or-update"] = _container.Resolve<Commands.CQRS.IGenerateAddOrUpdateCommand>().Run,
                 ["cqrs-added-or-updated-message"] = _container.Resolve<Commands.CQRS.IGenerateAddedOrUpdatedMessageCommand>().Run,
+                ["cqrs-removed-message"] = _container.Resolve<Commands.CQRS.IGenerateRemovedMessageCommand>().Run,
                 ["cqrs-remove"] = _container.Resolve<Commands.CQRS.IGenerateRemoveCommand>().Run,
                 ["cqrs-get-by-id"] = _container.Resolve<Commands.CQRS.IGenerateGetByIdCommand>().Run,
                 ["cqrs-get"] = _container.Resolve<Commands.CQRS.IGenerateGetCommand>().Run,
