@@ -16,6 +16,8 @@ namespace Leora.Commands.Angular2
         protected readonly IGenerateComponentCommand _generateComponentCommand;
         protected readonly IGenerateReadMeCommand _generateReadMeCommand;
         protected readonly IGeneratePackageJsonCommand _generatePackageJsonCommand;
+        protected readonly IGenerateServiceCommand _generateServiceCommand;
+        protected readonly IGenerateModelCommand _generateModelCommand;
 
         public GenerateFeatureCommand(
             ITemplateManager templateManager, 
@@ -28,7 +30,9 @@ namespace Leora.Commands.Angular2
             IGenerateModuleCommand generateModuleCommand,
             IGenerateComponentCommand generateComponentCommand,
             IGenerateReadMeCommand generateReadMeCommand,
-            IGeneratePackageJsonCommand generatePackageJsonCommand)
+            IGenerateServiceCommand generateServiceCommand,
+            IGenerateModelCommand generateModelCommand
+            )
             : base(templateManager, templateProcessor, namingConventionConverter, projectManager, fileWriter) {
 
             _generateBootstrapCommand = generateBootstrapCommand;
@@ -36,7 +40,8 @@ namespace Leora.Commands.Angular2
             _generateIndexCommand = generateIndexCommand;
             _generateModuleCommand = generateModuleCommand;
             _generateReadMeCommand = generateReadMeCommand;
-            _generatePackageJsonCommand = generatePackageJsonCommand;
+            _generateServiceCommand = generateServiceCommand;
+            _generateModelCommand = generateModelCommand;
         }
 
         public override int Run(GenerateFeatureOptions options) => Run(options.Name, options.Directory);
@@ -46,17 +51,23 @@ namespace Leora.Commands.Angular2
             int exitCode = 1;
 
             var snakeCaseName = _namingConventionConverter.Convert(NamingConvention.SnakeCase, name);
-            var path = $"{directory}\\{snakeCaseName}";
-            var examplesPath = $"{directory}\\{snakeCaseName}\\example";
-            CreateDirectory(path);
-            CreateDirectory(examplesPath);
+            var path = $"{directory}\\{snakeCaseName}s";
 
-            _generateComponentCommand.Run(name, path);
+            Console.WriteLine(path);
+
+            CreateDirectory(path);
+
+            _generateModelCommand.Run($"{name}", path);
+            _generateComponentCommand.Run($"{name}-edit", path);
+            _generateComponentCommand.Run($"{name}-paginated-list", path);
+            _generateComponentCommand.Run($"{name}-list-item", path);
+            _generateComponentCommand.Run($"{name}-paginated-list-page", path);
+            _generateComponentCommand.Run($"{name}-edit-page", path);
+            _generateComponentCommand.Run($"{name}s-left-nav", path);
+            _generateServiceCommand.Run($"{name}", path);
+
             _generateModuleCommand.Run(name, path);
-            _generateReadMeCommand.Run(name, path);
-            _generatePackageJsonCommand.Run(name, path);
-            _generateBootstrapCommand.Run(name, examplesPath);
-            _generateIndexCommand.Run(name, examplesPath);
+
             return exitCode;
         }
 

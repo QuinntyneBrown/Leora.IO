@@ -1,5 +1,5 @@
 ﻿import {Component} from "@angular/core";
-import {{{ entityNamePascalCase }}sService} from "./{{ entityNameCamelCase }}s.service";
+import {{{ entityNamePascalCase }}sService} from "./{{ entityNameSnakeCase }}s.service";
 import {Router,ActivatedRoute} from "@angular/router";
 import {guid} from "../shared/utilities/guid";
 import {CorrelationIdsList} from "../shared/services/correlation-ids-list";
