@@ -48,7 +48,7 @@ export class {{ entityNamePascalCase }}PaginatedListPageComponent {
 
         this.{{ entityNameCamelCase }}s = this.filterTerm != null ? this.filtered{{ entityNamePascalCase }}s : this.unfiltered{{ entityNamePascalCase }}s;
         
-        this._{{ entityNameCamelCase }}sService.remove({ {{ entityNameCamelCase }}: $event.detail.{{ entityNameCamelCase }}, correlationId });
+        this._{{ entityNameCamelCase }}sService.remove({ {{ entityNameCamelCase }}: $event.detail.{{ entityNameCamelCase }}, correlationId }).subscribe();
     }
 
     public tryToEdit($event) {

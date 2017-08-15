@@ -10,60 +10,36 @@ namespace {{ namespacename }}
 {
     [Authorize]
     [RoutePrefix("api/{{ entityNameCamelCase }}s")]
-    public class {{ entityNamePascalCase }}Controller : ApiController
+    public class {{ entityNamePascalCase }}Controller : BaseApiController
     {
         public {{ entityNamePascalCase }}Controller(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
+            :base(mediator) { }
 
         [Route("add")]
         [HttpPost]
         [ResponseType(typeof(AddOrUpdate{{ entityNamePascalCase }}Command.Response))]
-        public async Task<IHttpActionResult> Add(AddOrUpdate{{ entityNamePascalCase }}Command.Request request)
-        {
-            request.TenantUniqueId = Request.GetTenantUniqueId();
-            return Ok(await _mediator.Send(request));
-        }
+        public async Task<IHttpActionResult> Add(AddOrUpdate{{ entityNamePascalCase }}Command.Request request) => Ok(await Send(request));
 
         [Route("update")]
         [HttpPut]
         [ResponseType(typeof(AddOrUpdate{{ entityNamePascalCase }}Command.Response))]
-        public async Task<IHttpActionResult> Update(AddOrUpdate{{ entityNamePascalCase }}Command.Request request)
-        {
-            request.TenantUniqueId = Request.GetTenantUniqueId();
-            return Ok(await _mediator.Send(request));
-        }
+        public async Task<IHttpActionResult> Update(AddOrUpdate{{ entityNamePascalCase }}Command.Request request) => Ok(await Send(request));
         
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
         [ResponseType(typeof(Get{{ entityNamePascalCase }}sQuery.Response))]
-        public async Task<IHttpActionResult> Get()
-        {
-            var request = new Get{{ entityNamePascalCase }}sQuery.Request();
-            request.TenantUniqueId = Request.GetTenantUniqueId();
-            return Ok(await _mediator.Send(request));
-        }
+        public async Task<IHttpActionResult> Get() => Ok(await Send(new Get{{ entityNamePascalCase }}sQuery.Request()));
 
         [Route("getById")]
         [HttpGet]
         [ResponseType(typeof(Get{{ entityNamePascalCase }}ByIdQuery.Response))]
-        public async Task<IHttpActionResult> GetById([FromUri]Get{{ entityNamePascalCase }}ByIdQuery.Request request)
-        {
-            request.TenantUniqueId = Request.GetTenantUniqueId();
-            return Ok(await _mediator.Send(request));
-        }
+        public async Task<IHttpActionResult> GetById([FromUri]Get{{ entityNamePascalCase }}ByIdQuery.Request request) => Ok(await Send(request));
 
         [Route("remove")]
         [HttpDelete]
         [ResponseType(typeof(Remove{{ entityNamePascalCase }}Command.Response))]
-        public async Task<IHttpActionResult> Remove([FromUri]Remove{{ entityNamePascalCase }}Command.Request request)
-        {
-            request.TenantUniqueId = Request.GetTenantUniqueId();
-            return Ok(await _mediator.Send(request));
-        }
+        public async Task<IHttpActionResult> Remove([FromUri]Remove{{ entityNamePascalCase }}Command.Request request) => Ok(await Send(request));
 
-        protected readonly IMediator _mediator;
     }
 }

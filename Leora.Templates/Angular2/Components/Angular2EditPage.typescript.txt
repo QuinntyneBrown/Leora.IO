@@ -24,7 +24,7 @@ export class {{ entityNamePascalCase }}EditPageComponent {
 
     public tryToSave($event) {
         const correlationId = this._correlationIdsList.newId();
-        this._{{ entityNameCamelCase }}sService.addOrUpdate({ {{ entityNameCamelCase }}: $event.detail.{{ entityNameCamelCase }}, correlationId });
+        this._{{ entityNameCamelCase }}sService.addOrUpdate({ {{ entityNameCamelCase }}: $event.detail.{{ entityNameCamelCase }}, correlationId }).subscribe();
         this._router.navigateByUrl("/{{ entityNameCamelCase }}s");
     }
 
