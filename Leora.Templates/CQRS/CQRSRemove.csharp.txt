@@ -22,7 +22,7 @@ namespace {{ namespacename }}
 
         public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public Handler({{ rootNamespacename }}Context context, IEventBus _bus)
+            public Handler({{ rootNamespacename }}Context context, IEventBus bus)
             {
                 _context = context;
                 _bus = bus;

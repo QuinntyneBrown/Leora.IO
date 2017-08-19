@@ -1,4 +1,4 @@
-﻿using {{ rootNamespacename }}.Data.Model;
+﻿using {{ rootNamespacename }}.Model;
 
 namespace {{ namespacename }}
 {
