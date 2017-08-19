@@ -419,6 +419,7 @@
     <EmbeddedResource Include="Angular2\Components\Angular2LeftNav.css.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2LeftNav.html.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2LeftNav.typescript.txt" />
+    <EmbeddedResource Include="CQRS\CQRSCacheKeyFactory.csharp.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

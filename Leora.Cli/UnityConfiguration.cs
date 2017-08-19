@@ -46,6 +46,9 @@ namespace Leora.Cli
             container.RegisterType<Leora.Commands.CQRS.IGenerateFeatureCommand, Leora.Commands.CQRS.GenerateFeatureCommand>();
             container.RegisterType<Leora.Commands.CQRS.IGenerateAddedOrUpdatedMessageCommand, Leora.Commands.CQRS.GenerateAddedOrUpdatedMessageCommand>();
             container.RegisterType<Leora.Commands.CQRS.IGenerateRemovedMessageCommand, Leora.Commands.CQRS.GenerateRemovedMessageCommand>();
+            container.RegisterType<Leora.Commands.CQRS.IGenerateCacheKeyFactoryCommand, Leora.Commands.CQRS.GenerateCacheKeyFactoryCommand>();
+            container.RegisterType<Leora.Commands.CQRS.IGenerateEventBusMessageHandlerCommand, Leora.Commands.CQRS.GenerateEventBusMessageHandlerCommand>();
+            container.RegisterType<Leora.Commands.CQRS.IGenerateEventBusMessagesCommand, Leora.Commands.CQRS.GenerateEventBusMessagesCommand>();
 
             container.RegisterType<IGenerateCustomElementCommand, GenerateCustomElementCommand>();
             container.RegisterType<IGenerateActionsCommand, GenerateActionsCommand>();

@@ -46,6 +46,9 @@
   <ItemGroup>
     <Compile Include="Core\BaseCommand.cs" />
     <Compile Include="Core\BaseOptions.cs" />
+    <Compile Include="GenerateEventBusMessagesCommand.cs" />
+    <Compile Include="GenerateEventBusMessageHandlerCommand.cs" />
+    <Compile Include="GenerateCacheKeyFactoryCommand.cs" />
     <Compile Include="GenerateFeatureCommand.cs" />
     <Compile Include="GenerateGetByIdCommand.cs" />
     <Compile Include="GenerateGetCommand.cs" />

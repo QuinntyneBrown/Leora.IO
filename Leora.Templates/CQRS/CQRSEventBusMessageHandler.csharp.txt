@@ -20,12 +20,12 @@ namespace {{ namespacename }}
             {
                 if ($"{message["Type"]}" == {{ entityNamePascalCase }}sEventBusMessages.AddedOrUpdated{{ entityNamePascalCase }}Message)
                 {
-                    _cache.Remove($"[{{ entityNamePascalCase }}s] Get {message["TenantUniqueId"]}");
+                    _cache.Remove({{ entityNamePascalCase }}sCacheKeyFactory.Get(new Guid(message["TenantUniqueId"].ToString())));
                 }
 
                 if ($"{message["Type"]}" == {{ entityNamePascalCase }}sEventBusMessages.Removed{{ entityNamePascalCase }}Message)
                 {
-                    _cache.Remove($"[{{ entityNamePascalCase }}s] Get {message["TenantUniqueId"]}");
+                    _cache.Remove({{ entityNamePascalCase }}sCacheKeyFactory.Get(new Guid(message["TenantUniqueId"].ToString())));
                 }
             }
             catch (Exception e)

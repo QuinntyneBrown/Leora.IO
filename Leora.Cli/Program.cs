@@ -91,6 +91,10 @@ namespace Leora.Cli
                 ["cqrs-get-by-id"] = _container.Resolve<Commands.CQRS.IGenerateGetByIdCommand>().Run,
                 ["cqrs-get"] = _container.Resolve<Commands.CQRS.IGenerateGetCommand>().Run,
                 ["cqrs-feature"] = _container.Resolve<Commands.CQRS.IGenerateFeatureCommand>().Run,
+                ["cqrs-cache-key-factory"] =_container.Resolve<Commands.CQRS.IGenerateCacheKeyFactoryCommand>().Run,
+                ["cqrs-event-bus-message-handler"] = _container.Resolve<Commands.CQRS.IGenerateEventBusMessageHandlerCommand>().Run,
+                ["cqrs-event-bus-messages"] = _container.Resolve<Commands.CQRS.IGenerateEventBusMessagesCommand>().Run,
+
                 ["dotnet-controller"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateControllerCommand>().Run,
                 ["dotnet-api-model"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateApiModelCommand>().Run,
                 //["dotnet-messages"] = _container.Resolve<Commands.AspNetWebApi2.Contracts.IGenerateMessagesCommand>().Run,
