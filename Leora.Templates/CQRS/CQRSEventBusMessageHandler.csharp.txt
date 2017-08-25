@@ -18,14 +18,14 @@ namespace {{ namespacename }}
         {
             try
             {
-                if ($"{message["Type"]}" == {{ entityNamePascalCase }}sEventBusMessages.AddedOrUpdated{{ entityNamePascalCase }}Message)
+                if ($"{message["type"]}" == {{ entityNamePascalCase }}sEventBusMessages.AddedOrUpdated{{ entityNamePascalCase }}Message)
                 {
-                    _cache.Remove({{ entityNamePascalCase }}sCacheKeyFactory.Get(new Guid(message["TenantUniqueId"].ToString())));
+                    _cache.Remove({{ entityNamePascalCase }}sCacheKeyFactory.Get(new Guid(message["tenantUniqueId"].ToString())));
                 }
 
-                if ($"{message["Type"]}" == {{ entityNamePascalCase }}sEventBusMessages.Removed{{ entityNamePascalCase }}Message)
+                if ($"{message["type"]}" == {{ entityNamePascalCase }}sEventBusMessages.Removed{{ entityNamePascalCase }}Message)
                 {
-                    _cache.Remove({{ entityNamePascalCase }}sCacheKeyFactory.Get(new Guid(message["TenantUniqueId"].ToString())));
+                    _cache.Remove({{ entityNamePascalCase }}sCacheKeyFactory.Get(new Guid(message["tenantUniqueId"].ToString())));
                 }
             }
             catch (Exception e)
