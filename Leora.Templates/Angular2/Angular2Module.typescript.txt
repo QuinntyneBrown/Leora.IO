@@ -2,7 +2,7 @@
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { RouterModule } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
 import { SharedModule } from "../shared/shared.module";
 import { UsersModule } from "../users/users.module";
 
@@ -19,7 +19,7 @@ import { {{ entityNamePascalCase }}ListItemComponent } from "./{{ entityNameSnak
 import { {{ entityNamePascalCase }}PaginatedListComponent } from "./{{ entityNameSnakeCase }}-paginated-list.component";
 import { {{ entityNamePascalCase }}PaginatedListPageComponent } from "./{{ entityNameSnakeCase }}-paginated-list-page.component";
 
-export const {{ entityNameUpperCase }}_ROUTES: Routes = [{
+export const {{ entityNameAllCaps }}_ROUTES: Routes = [{
     path: '{{ entityNameCamelCase }}s',
     component: {{ entityNamePascalCase }}PaginatedListPageComponent,
     canActivate: [
@@ -61,7 +61,7 @@ const declarables = [
 const providers = [{{ entityNamePascalCase }}sService];
 
 @NgModule({
-    imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule, RouterModule.forChild({{ entityNameUpperCase }}_ROUTES), SharedModule, UsersModule],
+    imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule, RouterModule.forChild({{ entityNameAllCaps }}_ROUTES), SharedModule, UsersModule],
     exports: [declarables],
     declarations: [declarables],
     providers: providers
