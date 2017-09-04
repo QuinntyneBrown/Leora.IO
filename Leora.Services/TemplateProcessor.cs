@@ -30,6 +30,9 @@ namespace Leora.Services
                     newline = newline.Replace("{{ entityNameTitleCase }}", _namingConventionConverter.Convert(NamingConvention.TitleCase, name));
                     newline = newline.Replace("{{ entityNameAllCaps }}", _namingConventionConverter.Convert(NamingConvention.AllCaps, name));
                     newline = newline.Replace("{{ entityNameLowerCase }}", _namingConventionConverter.Convert(NamingConvention.CamelCase, name).ToLower());
+
+                    newline = newline.Replace("{{ entityNameTitleCase | pluralize }}", _namingConventionConverter.Convert(NamingConvention.TitleCase, name, true));
+                    newline = newline.Replace("{{ entityNameLowerCase | pluralize }}", _namingConventionConverter.Convert(NamingConvention.CamelCase, name, true).ToLower());
                 }
                 lines.Add(newline);
                 index++;

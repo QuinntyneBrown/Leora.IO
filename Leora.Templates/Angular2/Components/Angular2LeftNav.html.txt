@@ -1,9 +1,9 @@
-﻿<h3>{{ entityNameTitleCase }}s</h3>
+﻿<h3>{{ entityNameTitleCase | pluralize }}</h3>
 <ul>
     <li>
-        <a routerLink="/{{ entityNameCamelCase }}s/create">create</a>
+        <a routerLink="/{{ entityNameCamelCase | pluralize }}/create">create</a>
     </li>
     <li>
-        <a routerLink="/{{ entityNameCamelCase }}s">list</a>
+        <a routerLink="/{{ entityNameCamelCase | pluralize }}">list</a>
     </li>
 </ul>

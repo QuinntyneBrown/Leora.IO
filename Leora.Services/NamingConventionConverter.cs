@@ -5,6 +5,7 @@ using System.Text;
 using System.Linq;
 using System.Globalization;
 using System.Collections.Generic;
+using Humanizer;
 
 namespace Leora.Services
 {
@@ -219,5 +220,7 @@ namespace Leora.Services
             }
             return newText.ToString();
         }
+
+        public string Convert(NamingConvention to, string value, bool pluralize) => Convert(to, pluralize ? value.Pluralize(false) : value);
     }
 }
