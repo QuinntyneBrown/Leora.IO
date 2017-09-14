@@ -75,6 +75,6 @@ export class {{ entityNamePascalCase }}PaginatedListPageComponent {
     public {{ entityNameCamelCase }}s: Array<any> = [];
     public unfiltered{{ entityNamePascalCase }}s: Array<any> = [];
     public get filtered{{ entityNamePascalCase }}s() {
-        return this.unfiltered{{ entityNamePascalCase }}s.filter((x) => x.email.indexOf(this.filterTerm) > -1);
+        return this.unfiltered{{ entityNamePascalCase }}s.filter((x) => x.name.toLowerCase().indexOf(this.filterTerm.toLowerCase()) > -1);
     }
 }
