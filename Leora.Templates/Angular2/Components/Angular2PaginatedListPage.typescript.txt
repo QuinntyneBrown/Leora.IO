@@ -1,4 +1,4 @@
-﻿import {Component, ChangeDetectorRef} from "@angular/core";
+﻿import {Component, ChangeDetectorRef, NgZone} from "@angular/core";
 import {{{ entityNamePascalCase }}sService} from "./{{ entityNameSnakeCase }}s.service";
 import {Router} from "@angular/router";
 import {pluckOut} from "../shared/utilities/pluck-out";
@@ -17,16 +17,17 @@ export class {{ entityNamePascalCase }}PaginatedListPageComponent {
         private _{{ entityNameCamelCase }}sService: {{ entityNamePascalCase }}sService,
         private _correlationIdsList: CorrelationIdsList,
         private _eventHub: EventHub,
-        private _router: Router
+        private _router: Router,
+        private _ngZone: NgZone
     ) {
-        this.subscription = this._eventHub.events.subscribe(x => {      
-            
+        this.subscription = this._eventHub.events.subscribe(x => {                  
             if (this._correlationIdsList.hasId(x.payload.correlationId) && x.type == "[{{ entityNamePascalCase }}s] {{ entityNamePascalCase }}AddedOrUpdated") {
-                this._{{ entityNameCamelCase }}sService.get().toPromise().then(x => {
-                    this.unfiltered{{ entityNamePascalCase }}s = x.{{ entityNameCamelCase }}s;
-                    this.{{ entityNameCamelCase }}s = this.filterTerm != null ? this.filtered{{ entityNamePascalCase }}s : this.unfiltered{{ entityNamePascalCase }}s;
-                    this._changeDetectorRef.detectChanges();
-                });
+                this._ngZone.run(() => {
+                    this._{{ entityNameCamelCase }}sService.get().toPromise().then(x => {
+                        this.unfiltered{{ entityNamePascalCase }}s = x.{{ entityNameCamelCase }}s;
+                        this.{{ entityNameCamelCase }}s = this.filterTerm != null ? this.filtered{{ entityNamePascalCase }}s : this.unfiltered{{ entityNamePascalCase }}s;                        
+                    });
+                }
             } else if (x.type == "[{{ entityNamePascalCase }}s] {{ entityNamePascalCase }}AddedOrUpdated") {
                 
             }
