@@ -1,9 +1,16 @@
-﻿import {Component, ViewEncapsulation} from "@angular/core";
+﻿import { Component } from "@angular/core";
+import { Subject } from "rxjs/Subject";
 
 @Component({
     templateUrl: "./{{ entityNameSnakeCase }}.component.html",
     styleUrls: ["./{{ entityNameSnakeCase }}.component.css"],
-    selector: "cs-{{ entityNameSnakeCase }}",
-    encapsulation: ViewEncapsulation.Native
+    selector: "ce-{{ entityNameSnakeCase }}"
 })
-export class {{ entityNamePascalCase }}Component { }
+export class {{ entityNamePascalCase }}Component { 
+
+    private _ngUnsubscribe: Subject<void> = new Subject<void>();
+
+    ngOnDestroy() {
+         this._ngUnsubscribe.next();	
+    }
+}
