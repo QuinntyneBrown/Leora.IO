@@ -4,6 +4,6 @@ namespace Leora.Services.Contracts
 {
     public interface ILeoraJSONFileManager
     {
-        LeoraJSONFile GetLeoraJSONFile(string path);
+        LeoraJSONFile GetLeoraJSONFile(string path, int depth);
     }
 }

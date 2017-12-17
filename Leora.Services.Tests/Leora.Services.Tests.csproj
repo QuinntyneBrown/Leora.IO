@@ -71,6 +71,7 @@
     <Compile Include="NamespaceManagerTests.cs" />
     <Compile Include="ProjectManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LeoraJSONFileManagerTests.cs" />
     <Compile Include="UnityConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
