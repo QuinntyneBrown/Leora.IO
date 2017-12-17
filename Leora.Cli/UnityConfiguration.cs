@@ -24,6 +24,7 @@ namespace Leora.Cli
             container.RegisterType<IDotNetTemplateProcessor, DotNetTemplateProcessor>();
             container.RegisterType<IProjectManager, ProjectManager>();
             container.RegisterType<IFileWriter, FileWriter>();
+            container.RegisterType<ILeoraJSONFileManager, LeoraJSONFileManager>();
 
             container.RegisterType<IGenerateActionCreatorCommand, GenerateActionCreatorCommand>();
             container.RegisterType<IGeneratePagedListCommand, GeneratePagedListCommand>();

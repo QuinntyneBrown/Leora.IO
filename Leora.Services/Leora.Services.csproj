@@ -49,6 +49,7 @@
     <Compile Include="CustomElementsTemplateProcessor.cs" />
     <Compile Include="DotNetTemplateProcessor.cs" />
     <Compile Include="FileWriter.cs" />
+    <Compile Include="LeoraJSONFileManager.cs" />
     <Compile Include="MicroserviceTemplateProcessor.cs" />
     <Compile Include="NamespaceManager.cs" />
     <Compile Include="NamingConventionConverter.cs" />
