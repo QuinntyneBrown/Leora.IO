@@ -14,7 +14,7 @@ namespace Leora.Services
             _namingConventionConverter = namingConventionConverter;
         }
 
-        public string[] ProcessTemplate(string[] template, string name)
+        public string[] ProcessTemplate(string[] template, string name, string namespacename = "")
         {            
             var lines = new List<string>();
             var index = 0;
@@ -30,7 +30,8 @@ namespace Leora.Services
                     newline = newline.Replace("{{ entityNameTitleCase }}", _namingConventionConverter.Convert(NamingConvention.TitleCase, name));
                     newline = newline.Replace("{{ entityNameAllCaps }}", _namingConventionConverter.Convert(NamingConvention.AllCaps, name));
                     newline = newline.Replace("{{ entityNameLowerCase }}", _namingConventionConverter.Convert(NamingConvention.CamelCase, name).ToLower());
-                    
+                    newline = newline.Replace("{{ namespacename }}", _namingConventionConverter.Convert(NamingConvention.SnakeCase, namespacename));
+
                     newline = newline.Replace("{{ entityNamePascalCase | pluralize }}", _namingConventionConverter.Convert(NamingConvention.PascalCase, name, true));
                     newline = newline.Replace("{{ entityNameCamelCase | pluralize }}", _namingConventionConverter.Convert(NamingConvention.CamelCase, name, true));
                     newline = newline.Replace("{{ entityNameSnakeCase | pluralize }}", _namingConventionConverter.Convert(NamingConvention.SnakeCase, name, true));

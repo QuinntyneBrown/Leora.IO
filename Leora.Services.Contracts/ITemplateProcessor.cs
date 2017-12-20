@@ -2,6 +2,6 @@
 {
     public interface ITemplateProcessor
     {
-        string[] ProcessTemplate(string[] template, string name);
+        string[] ProcessTemplate(string[] template, string name, string namespacename = "");
     }
 }

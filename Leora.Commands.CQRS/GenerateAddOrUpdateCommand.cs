@@ -22,14 +22,22 @@ namespace Leora.Commands.CQRS
 
     public class GenerateAddOrUpdateCommand : Leora.Commands.CQRS.Core.BaseCommand<GenerateAddOrUpdateOptions>, IGenerateAddOrUpdateCommand
     {
-        public GenerateAddOrUpdateCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
+        public GenerateAddOrUpdateCommand(ITemplateManager templateManager, 
+            IDotNetTemplateProcessor templateProcessor, 
+            INamingConventionConverter namingConventionConverter, 
+            IProjectManager projectManager, IFileWriter fileWriter, 
+            INamespaceManager namespaceManager,
+            ILeoraJSONFileManager leoraJSONFileManager)
             :base(templateManager,templateProcessor, namingConventionConverter, projectManager,fileWriter, namespaceManager)
         {
-
+            _leoraJSONFileManager = leoraJSONFileManager;
         }
 
         public override int Run(GenerateAddOrUpdateOptions options)
         {
+            var s = _leoraJSONFileManager.GetLeoraJSONFile(options.Directory, -1);
+            Console.WriteLine(s.UseMessaging);
+
             if (string.IsNullOrEmpty(options.Name))
             {
                 options.Name = $"AddOrUpdate{options.Entity}";
@@ -47,5 +55,7 @@ namespace Leora.Commands.CQRS
             _projectManager.Process(directory, $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Command.cs", FileType.CSharp);
             return exitCode;
         }
+
+        protected ILeoraJSONFileManager _leoraJSONFileManager;
     }
 }

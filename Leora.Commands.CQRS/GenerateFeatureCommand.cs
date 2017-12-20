@@ -27,7 +27,8 @@ namespace Leora.Commands.CQRS
             IGenerateAddedOrUpdatedMessageCommand generateAddedOrUpdatedMessageCommand,
             IGenerateCacheKeyFactoryCommand generateCacheKeyFactoryCommand,
             IGenerateEventBusMessagesCommand generateEventBusMessagesCommand,
-            IGenerateEventBusMessageHandlerCommand generateEventBusMessageHandlerCommand
+            IGenerateEventBusMessageHandlerCommand generateEventBusMessageHandlerCommand,
+            ILeoraJSONFileManager leoraJSONFileManager
             )
         {
             _generateAddOrUpdateCommand = generateAddOrUpdateCommand;
@@ -41,6 +42,7 @@ namespace Leora.Commands.CQRS
             _generateCacheKeyFactoryCommand = generateCacheKeyFactoryCommand;
             _generateEventBusMessageHandlerCommand = generateEventBusMessageHandlerCommand;
             _generateEventBusMessagesCommand = generateEventBusMessagesCommand;
+            _leoraJSONFileManager = leoraJSONFileManager;
         }
 
         public int Run(string[] args)
@@ -52,18 +54,20 @@ namespace Leora.Commands.CQRS
             _generateGetCommand.Run(argsList.ToArray());
             _generateGeyByIdCommand.Run(argsList.ToArray());
             _generateRemoveCommand.Run(argsList.ToArray());
-
-            _generateCacheKeyFactoryCommand.Run(argsList.ToArray());
-            _generateEventBusMessageHandlerCommand.Run(argsList.ToArray());
-            _generateEventBusMessagesCommand.Run(argsList.ToArray());
-            _generateAddedOrUpdatedMessageCommand.Run(argsList.ToArray());
-            _generateRemovedMessageCommand.Run(argsList.ToArray());
-
+            
             argsList.Add("--name");
             argsList.Add(argsList.ElementAt(1));
      
             _generateApiModelCommand.Run(argsList.ToArray());
             _generateControllerCommand.Run(argsList.ToArray());
+
+            if (_leoraJSONFileManager.GetLeoraJSONFile(System.Environment.CurrentDirectory, -1).UseMessaging) {
+                _generateCacheKeyFactoryCommand.Run(argsList.ToArray());
+                _generateEventBusMessageHandlerCommand.Run(argsList.ToArray());
+                _generateEventBusMessagesCommand.Run(argsList.ToArray());
+                _generateAddedOrUpdatedMessageCommand.Run(argsList.ToArray());
+                _generateRemovedMessageCommand.Run(argsList.ToArray());
+            }
 
             return 0;
         }
@@ -80,5 +84,6 @@ namespace Leora.Commands.CQRS
         private IGenerateRemovedMessageCommand _generateRemovedMessageCommand { get; set; }
 
         private IGenerateEventBusMessageHandlerCommand _generateEventBusMessageHandlerCommand { get; set; }
+        protected ILeoraJSONFileManager _leoraJSONFileManager;
     }
 }

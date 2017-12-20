@@ -378,10 +378,10 @@
     <EmbeddedResource Include="CQRS\Queries\CQRSGetByNameQuery.csharp.txt" />
     <EmbeddedResource Include="CQRS\Queries\CQRSGetByIdQuery.csharp.txt" />
     <EmbeddedResource Include="CQRS\Commands\CQRSRemoveCommand.csharp.txt" />
-    <EmbeddedResource Include="CQRS\CQRSAddOrUpdate.csharp.txt" />
+    <EmbeddedResource Include="CQRS\CQRSAddOrUpdate_M.csharp.txt" />
     <EmbeddedResource Include="CQRS\CQRSController.csharp.txt" />
     <EmbeddedResource Include="AspNetWebApi2\ApiControllerCQRS.csharp.txt" />
-    <EmbeddedResource Include="CQRS\CQRSRemove.csharp.txt" />
+    <EmbeddedResource Include="CQRS\CQRSRemove_M.csharp.txt" />
     <EmbeddedResource Include="CQRS\CQRSGet.csharp.txt" />
     <EmbeddedResource Include="CQRS\CQRSGetById.csharp.txt" />
     <EmbeddedResource Include="CQRS\CQRSGetByName.csharp.txt" />
@@ -420,6 +420,8 @@
     <EmbeddedResource Include="Angular2\Components\Angular2LeftNav.html.txt" />
     <EmbeddedResource Include="Angular2\Components\Angular2LeftNav.typescript.txt" />
     <EmbeddedResource Include="CQRS\CQRSCacheKeyFactory.csharp.txt" />
+    <EmbeddedResource Include="CQRS\CQRSAddOrUpdate.csharp.txt" />
+    <EmbeddedResource Include="CQRS\CQRSRemove.csharp.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

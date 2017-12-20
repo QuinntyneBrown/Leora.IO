@@ -4,7 +4,7 @@ import { Subject } from "rxjs/Subject";
 @Component({
     templateUrl: "./{{ entityNameSnakeCase }}.component.html",
     styleUrls: ["./{{ entityNameSnakeCase }}.component.css"],
-    selector: "ce-{{ entityNameSnakeCase }}"
+    selector: "{{ namespacename }}-{{ entityNameSnakeCase }}"
 })
 export class {{ entityNamePascalCase }}Component { 
 

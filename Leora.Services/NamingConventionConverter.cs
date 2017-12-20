@@ -15,6 +15,9 @@ namespace Leora.Services
 
         public string Convert(NamingConvention from, NamingConvention to, string value)
         {
+            if (string.IsNullOrEmpty(value))
+                return value;
+
             switch (to) {
                 case NamingConvention.CamelCase:
                     value = FirstCharacterUpperAfterADash(value);
@@ -100,6 +103,9 @@ namespace Leora.Services
 
         public NamingConvention GetNamingConvention(string value)
         {
+            if (string.IsNullOrEmpty(value))
+                return NamingConvention.None;
+
             if (IsNamingConventionType(NamingConvention.CamelCase, value))
                 return NamingConvention.CamelCase;
 

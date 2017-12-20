@@ -21,5 +21,10 @@ namespace Leora.Services.Mocks
         {
             return new List<string>().ToArray();
         }
+
+        public string[] Get(FileType fileType, string namespacename, string name, string section, string entityName, string framework = null, string[] sufixList = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

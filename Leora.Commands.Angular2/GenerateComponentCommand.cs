@@ -9,8 +9,17 @@ namespace Leora.Commands.Angular2
 {
     public class GenerateComponentCommand : BaseCommand<GenerateComponentOptions>, IGenerateComponentCommand
     {
-        public GenerateComponentCommand(ITemplateManager templateManager, ITemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter)
-            : base(templateManager, templateProcessor, namingConventionConverter, projectManager, fileWriter) { }
+        public GenerateComponentCommand(
+            ITemplateManager templateManager, 
+            ITemplateProcessor templateProcessor, 
+            INamingConventionConverter namingConventionConverter, 
+            IProjectManager projectManager, 
+            IFileWriter fileWriter,
+            ILeoraJSONFileManager leoraJSONFileManager)
+            : base(templateManager, templateProcessor, namingConventionConverter, projectManager, fileWriter) {
+
+            _leoraJSONFileManager = leoraJSONFileManager;
+        }
 
         public override int Run(GenerateComponentOptions options) => Run(options.Name, options.Directory, options.Simple);
 
@@ -54,7 +63,11 @@ namespace Leora.Commands.Angular2
                     }
                 }
 
-                _fileWriter.WriteAllLines($"{baseFilePath}.component.ts", _templateProcessor.ProcessTemplate(templateTypescript, name));
+                var namespacename = _leoraJSONFileManager.GetLeoraJSONFile(directory, -1).ClientNamespace;
+
+                Console.Write(namespacename);
+
+                _fileWriter.WriteAllLines($"{baseFilePath}.component.ts", _templateProcessor.ProcessTemplate(templateTypescript, name, namespacename));
                 _fileWriter.WriteAllLines($"{baseFilePath}.component.css", _templateProcessor.ProcessTemplate(templateCss, name));
                 _fileWriter.WriteAllLines($"{baseFilePath}.component.html", _templateProcessor.ProcessTemplate(templateHtml, name));
 
@@ -93,5 +106,7 @@ namespace Leora.Commands.Angular2
 
             return "Angular2Component";
         }
+
+        protected ILeoraJSONFileManager _leoraJSONFileManager;
     }
 }

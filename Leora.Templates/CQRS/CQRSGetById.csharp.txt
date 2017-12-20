@@ -22,7 +22,7 @@ namespace {{ namespacename }}
 
         public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public Handler({{ rootNamespacename }}Context context, ICache cache)
+            public Handler(I{{ rootNamespacename }}Context context, ICache cache)
             {
                 _context = context;
                 _cache = cache;
@@ -38,7 +38,7 @@ namespace {{ namespacename }}
                 };
             }
 
-            private readonly {{ rootNamespacename }}Context _context;
+            private readonly I{{ rootNamespacename }}Context _context;
             private readonly ICache _cache;
         }
 

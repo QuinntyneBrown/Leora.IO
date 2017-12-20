@@ -131,5 +131,10 @@ namespace Leora.Services
             sufix = _namingConventionConverter.Convert(NamingConvention.PascalCase, sufix);
             return value.EndsWith(sufix);
         }
+
+        public string[] Get(FileType fileType, string namespacename, string name, string section, string entityName, string framework = null, string[] sufixList = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

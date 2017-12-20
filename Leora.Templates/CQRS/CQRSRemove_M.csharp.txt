@@ -15,15 +15,17 @@ namespace {{ namespacename }}
         public class Request : BaseRequest, IRequest<Response>
         {
             public int Id { get; set; }
+            public Guid CorrelationId { get; set; }
         }
 
         public class Response { }
 
         public class Handler : IAsyncRequestHandler<Request, Response>
         {
-            public Handler(I{{ rootNamespacename }}Context context, IEventBus bus)
+            public Handler({{ rootNamespacename }}Context context, IEventBus bus)
             {
                 _context = context;
+                _bus = bus;
             }
 
             public async Task<Response> Handle(Request request)
@@ -31,10 +33,12 @@ namespace {{ namespacename }}
                 var {{ entityNameCamelCase }} = await _context.{{ entityNamePascalCase }}s.SingleAsync(x=>x.Id == request.Id && x.Tenant.UniqueId == request.TenantUniqueId);
                 {{ entityNameCamelCase }}.IsDeleted = true;
                 await _context.SaveChangesAsync();
+                _bus.Publish(new Removed{{ entityNamePascalCase }}Message(request.Id, request.CorrelationId, request.TenantUniqueId));
                 return new Response();
             }
 
-            private readonly I{{ rootNamespacename }}Context _context;
+            private readonly {{ rootNamespacename }}Context _context;
+            private readonly IEventBus _bus;
         }
     }
 }
