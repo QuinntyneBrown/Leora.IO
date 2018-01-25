@@ -41,14 +41,13 @@ namespace Leora.Commands.CustomElements
             var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
             var typeScriptFileName = $"{snakeCaseName}.component.ts";
             var cssFileName = $"{snakeCaseName}.component.css";
-            var htmlFileName = $"{snakeCaseName}.component.html";
+
             var baseFilePath = $"{directory}//{snakeCaseName}";
 
             //var sufixList = new string[10] { "edit","list","item", "master-detail", "edit-embed", "paginated-list-embed", "list-embed", "item-embed", "overlay", "master-detail-embed" };
             var sufixList = new string[0] { };
 
             var templateTypescript = _templateManager.Get(FileType.TypeScript, "CustomElementsComponent", "Components", entityNamePascalCase, BluePrintType.CustomElements,sufixList);
-            var templateHtml = _templateManager.Get(FileType.Html, "CustomElementsComponent", "Components", entityNamePascalCase, BluePrintType.CustomElements, sufixList);
             var templateScss = _templateManager.Get(FileType.Css, "CustomElementsComponent", "Components", entityNamePascalCase, BluePrintType.CustomElements, sufixList);
             
             foreach (var sufix in sufixList)
@@ -64,13 +63,11 @@ namespace Leora.Commands.CustomElements
 
             _fileWriter.WriteAllLines($"{baseFilePath}.component.ts", _templateProcessor.ProcessTemplate(templateTypescript, name,prefix));
             _fileWriter.WriteAllLines($"{baseFilePath}.component.css", _templateProcessor.ProcessTemplate(templateScss, name, prefix));
-            _fileWriter.WriteAllLines($"{baseFilePath}.component.html", _templateProcessor.ProcessTemplate(templateHtml, name, prefix));
 
             try
             {
                 _projectManager.Process(directory, typeScriptFileName, FileType.TypeScript);
                 _projectManager.Process(directory, cssFileName, FileType.Css);
-                _projectManager.Process(directory, htmlFileName, FileType.Html);
             }
             catch  { }
 

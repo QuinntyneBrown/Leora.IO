@@ -1,7 +1,8 @@
-﻿const template = document.createElement("template");
+﻿import { html, TemplateResult, render } from "lit-html";
+import { repeat } from "lit-html/lib/repeat";
+import { unsafeHTML } from "../../../node_modules/lit-html/lib/unsafe-html.js";
 
-const html = require("./{{ entityNameSnakeCase }}.component.html");
-const css = require("./{{ entityNameSnakeCase }}.component.css");
+const styles = unsafeHTML(`<style>${require("./{{ entityNameSnakeCase }}.component.css")}<style>`);
 
 export class {{ entityNamePascalCase }}Component extends HTMLElement {
     constructor() {
@@ -12,18 +13,23 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
         return [];
     }
 
-    async connectedCallback() {
-    
-        template.innerHTML = `<style>${css}</style>${html}`; 
+    connectedCallback() {     
 
         this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(document.importNode(template.content, true));  
+        
+		render(this.template, this.shadowRoot);
 
         if (!this.hasAttribute('role'))
             this.setAttribute('role', '{{ entityNameLowerCase }}');
 
         this._bind();
         this._setEventListeners();
+    }
+
+    get template(): TemplateResult {
+        return html`
+            ${styles}
+        `;
     }
 
     private async _bind() {
