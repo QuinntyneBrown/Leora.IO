@@ -1,2 +1,10 @@
-﻿<ce-{{ entityNameSnakeCase }}-edit (tryToSave)="tryToSave($event)"
-                 [{{ entityNameCamelCase }}]="{{ entityNameCamelCase }}"></ce-{{ entityNameSnakeCase }}-edit>
+﻿<section>
+    <h2 *ngIf="{{ entityNameCamelCase }}.id">Edit {{ entityNamePascalCase }}: {{ {{ entityNameCamelCase }}.name }}</h2>
+    <h2 *ngIf="!{{ entityNameCamelCase }}.id">Create {{ entityNamePascalCase }}</h2>
+
+    <h3>Name</h3>
+    <input [formControl]="nameFormControl" />
+
+    <button (click)="tryToSave()">Save</button>
+    <button (click)="tryToDelete()" *ngIf="{{ entityNameCamelCase }}.id">Delete</button>
+</section>
