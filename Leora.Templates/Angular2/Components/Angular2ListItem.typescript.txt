@@ -9,17 +9,12 @@
     selector: "ce-{{ entityNameSnakeCase }}-list-item"
 })
 export class {{ entityNamePascalCase }}ListItemComponent {  
-    constructor() {
-        this.edit = new EventEmitter();
-        this.delete = new EventEmitter();		
-    }
-      
     @Input()
-    public {{ entityNameCamelCase }}: any = {};
+    public Partial<{{ entityNameCamelCase }}>: any = {};
     
     @Output()
-    public edit: EventEmitter<any>;
+    public onEditClick: EventEmitter<any> = new EventEmitter();
 
     @Output()
-    public delete: EventEmitter<any>;        
+    public onDeleteClick: EventEmitter<any> = new EventEmitter();     
 }

@@ -1,19 +1,48 @@
-﻿import { Component, ChangeDetectionStrategy, Input, OnInit } from "@angular/core";
-import { {{ entityNamePascalCase }}Actions } from "../actions";
-import { AppStore } from "../store";
-import { Router } from "@angular/router";   
+﻿import { Component } from "@angular/core";
+import { Subject } from "rxjs/Subject";
+import { {{ entityNamePascalCase }}sService } from "./{{ entityNameCamelCase }}s.service";
+import { Router } from "@angular/router";
+import { pluckOut } from "../shared/utilities/pluck-out";
 
 @Component({
-    template: require("./{{ entityNameSnakeCase }}-list-page.component.html"),
-    styles: [require("./{{ entityNameSnakeCase }}-list-page.component.scss")],
-    selector: "{{ entityNameSnakeCase }}-list-page",
-    changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: "./{{ entityNameSnakeCase }}-list-page.component.html",
+    styleUrls: [
+        "../shared/components/page.css",
+        "./{{ entityNameSnakeCase }}-list-page.component.css"
+    ],
+    selector: "ce-{{ entityNameSnakeCase }}-list-page"
 })
-export class {{ entityNamePascalCase }}ListPageComponent implements OnInit {
-    constructor(private _{{ entityNameCamelCase }}Actions: {{ entityNamePascalCase }}Actions, private _store: AppStore, private _router:Router) { }
+export class {{ entityNamePascalCase }}ListPageComponent { 
+    constructor(
+        private _router: Router,
+        private _{{ entityNameCamelCase }}sService: {{ entityNamePascalCase }}sService) {
 
-    ngOnInit() {
-        this._{{ entityNameCamelCase }}Actions.get(); 
     }
-    
+
+    public handleEditClick($event) {        
+        this._router.navigateByUrl(`/stories/edit/${$event.{{ entityNameCamelCase }}.id}`);
+    }
+
+    public handleDeleteClick($event) {
+        this._{{ entityNameCamelCase }}esService.remove({ {{ entityNameCamelCase }}: $event.{{ entityNameCamelCase }} })
+            .takeUntil(this._ngUnsubscribe)
+            .subscribe();
+
+        pluckOut({ items: this.{{ entityNameCamelCase }}s, value: $event.{{ entityNameCamelCase }}.id });
+    }
+
+    public ngOnInit() {
+        this._{{ entityNameCamelCase }}sService.get()
+            .takeUntil(this._ngUnsubscribe)
+            .subscribe((data) => {
+                this.stories = data.{{ entityNameCamelCase }}s;
+            });
+    }
+    private _ngUnsubscribe: Subject<void> = new Subject<void>();
+
+    ngOnDestroy() {
+         this._ngUnsubscribe.next();	
+    }
+
+    public {{ entityNameCamelCase }}s: Array<any> = [];
 }

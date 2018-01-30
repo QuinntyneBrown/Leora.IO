@@ -1,4 +1,9 @@
-﻿a,
+﻿:host {
+    display:block;
+    content:contain;
+}
+
+a,
 a:visited,
 a:link {
     text-decoration:none;

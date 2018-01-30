@@ -1,6 +1,10 @@
-﻿<div class="{{ entityNameSnakeCase }}-list-page">
-    <a [routerLink]="['/{{ entityNameCamelCase }}']" href="">CREATE {{ entityNameAllCaps }}</a>
-    <{{ entityNameSnakeCase }}-list [entities]="_store.{{ entityNameCamelCase }}s$() | async"
-                (onDelete)="_{{ entityNameCamelCase }}Actions.remove({ id: $event.value.id })"
-                (onEdit)="_router.navigate(['{{ entityNameLowerCase }}', $event.value.id])"></{{ entityNameSnakeCase }}-list>
-</div>
+﻿<section>
+    <h2>{{ entityNamePascalCase }} List</h2>
+
+    <a routerLink="/{{ entityNameLowerCase }}s/create">CREATE {{ entityNameUpperCase }}</a>
+    <ce-{{ entityNameSnakeCase }}-item *ngFor="let {{ entityNameCamelCase }} of {{ entityNameCamelCase }}s" 
+                   [{{ entityNameCamelCase }}]="{{ entityNameCamelCase }}"
+                   (onEditClick)="handleEditClick($event)"
+                   (onDeleteClick)="handleDeleteClick($event)">
+    </ce-{{ entityNameSnakeCase }}-item>
+</section>
