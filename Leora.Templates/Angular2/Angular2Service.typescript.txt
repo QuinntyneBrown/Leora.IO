@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { {{ entityNamePascalCase }} } from "./{{ entityNameSnakeCase }}.model";
 import { Observable } from "rxjs/Observable";
 import { constants } from "../shared/constants";
+import { catchError } from "rxjs/operators";
 
 @Injectable()
 export class {{ entityNamePascalCase }}sService {
@@ -13,21 +14,33 @@ export class {{ entityNamePascalCase }}sService {
 
     public addOrUpdate(options: { {{ entityNameCamelCase }}: Partial<{{ entityNamePascalCase }}>}) {
         return this._httpClient
-            .post(`${this._baseUrl}/api/{{ entityNameCamelCase }}s/add`, options);
+            .post(`${this._baseUrl}/api/{{ entityNameCamelCase }}s/add`, options)
+            .pipe(
+                catchError((error) => Observable.throw(error.json()))
+            );
     }
 
     public get(): Observable<{ {{ entityNameCamelCase }}s: Array<Partial<{{ entityNamePascalCase }}>> }> {
         return this._httpClient
-            .get<{ {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> }>(`${this._baseUrl}/api/{{ entityNameCamelCase }}s/get`);
+            .get<{ {{ entityNameCamelCase }}s: Array<{{ entityNamePascalCase }}> }>(`${this._baseUrl}/api/{{ entityNameCamelCase }}s/get`)
+            .pipe(
+                catchError((error) => Observable.throw(error.json()))
+            );
     }
 
     public getById(options: { id: number }): Observable<{ {{ entityNameCamelCase }}:Partial<{{ entityNamePascalCase }}>}> {
         return this._httpClient
-            .get<{{{ entityNameCamelCase }}: {{ entityNamePascalCase }}}>(`${this._baseUrl}/api/{{ entityNameCamelCase }}s/getById?id=${options.id}`);
+            .get<{{{ entityNameCamelCase }}: {{ entityNamePascalCase }}}>(`${this._baseUrl}/api/{{ entityNameCamelCase }}s/getById?id=${options.id}`)
+            .pipe(
+                catchError((error) => Observable.throw(error.json()))
+            );
     }
 
     public remove(options: { {{ entityNameCamelCase }}: Partial<{{ entityNamePascalCase }}>}) {
         return this._httpClient
-            .delete(`${this._baseUrl}/api/{{ entityNameCamelCase }}s/remove?id=${options.{{ entityNameCamelCase }}.id}`);
+            .delete(`${this._baseUrl}/api/{{ entityNameCamelCase }}s/remove?id=${options.{{ entityNameCamelCase }}.id}`)
+            .pipe(
+                catchError((error) => Observable.throw(error.json()))
+            );
     }
 }
