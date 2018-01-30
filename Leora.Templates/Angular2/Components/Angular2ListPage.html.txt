@@ -1,7 +1,7 @@
 ﻿<section>
     <h2>{{ entityNamePascalCase }} List</h2>
 
-    <a routerLink="/{{ entityNameLowerCase }}s/create">CREATE {{ entityNameUpperCase }}</a>
+    <a routerLink="/{{ entityNameLowerCase }}s/create">CREATE {{ entityNameAllCaps }}</a>
     <ce-{{ entityNameSnakeCase }}-item *ngFor="let {{ entityNameCamelCase }} of {{ entityNameCamelCase }}s" 
                    [{{ entityNameCamelCase }}]="{{ entityNameCamelCase }}"
                    (onEditClick)="handleEditClick($event)"

@@ -4,64 +4,47 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { SharedModule } from "../shared/shared.module";
-import { UsersModule } from "../users/users.module";
-
-import { AuthGuardService } from "../shared/guards/auth-guard.service";
-import { TenantGuardService } from "../shared/guards/tenant-guard.service";
-import { EventHubConnectionGuardService } from "../shared/guards/event-hub-connection-guard.service";
-import { CurrentUserGuardService } from "../users/current-user-guard.service";
 
 import { {{ entityNamePascalCase }}sService } from "./{{ entityNameSnakeCase }}s.service";
-
-import { {{ entityNamePascalCase }}EditComponent } from "./{{ entityNameSnakeCase }}-edit.component";
 import { {{ entityNamePascalCase }}EditPageComponent } from "./{{ entityNameSnakeCase }}-edit-page.component";
-import { {{ entityNamePascalCase }}ListItemComponent } from "./{{ entityNameSnakeCase }}-list-item.component";
-import { {{ entityNamePascalCase }}PaginatedListComponent } from "./{{ entityNameSnakeCase }}-paginated-list.component";
-import { {{ entityNamePascalCase }}PaginatedListPageComponent } from "./{{ entityNameSnakeCase }}-paginated-list-page.component";
-
-export const {{ entityNameAllCaps }}_ROUTES: Routes = [{
-    path: '{{ entityNameCamelCase }}s',
-    component: {{ entityNamePascalCase }}PaginatedListPageComponent,
-    canActivate: [
-        TenantGuardService,
-        AuthGuardService,
-        EventHubConnectionGuardService,
-        CurrentUserGuardService
-    ]
-},
-{
-    path: '{{ entityNameCamelCase }}s/create',
-    component: {{ entityNamePascalCase }}EditPageComponent,
-    canActivate: [
-        TenantGuardService,
-        AuthGuardService,
-        EventHubConnectionGuardService,
-        CurrentUserGuardService
-    ]
-},
-{
-    path: '{{ entityNameCamelCase }}s/:id',
-    component: {{ entityNamePascalCase }}EditPageComponent,
-    canActivate: [
-        TenantGuardService,
-        AuthGuardService,
-        EventHubConnectionGuardService,
-        CurrentUserGuardService
-    ]
-}];
+import { {{ entityNamePascalCase }}ListPageComponent } from "./{{ entityNameSnakeCase }}-list-page.component";
+import { {{ entityNamePascalCase }}ItemComponent } from "./{{ entityNameSnakeCase }}-item.component";
 
 const declarables = [
-    {{ entityNamePascalCase }}EditComponent,
+    {{ entityNamePascalCase }}ItemComponent,
     {{ entityNamePascalCase }}EditPageComponent,
-    {{ entityNamePascalCase }}ListItemComponent,
-    {{ entityNamePascalCase }}PaginatedListComponent,
-    {{ entityNamePascalCase }}PaginatedListPageComponent
+    {{ entityNamePascalCase }}ListPageComponent
 ];
 
-const providers = [{{ entityNamePascalCase }}sService];
+const providers = [
+    {{ entityNamePascalCase }}sService
+];
+
+const ROUTES: Routes = [
+    { path: '', redirectTo: 'list', pathMatch: 'full' },
+    {
+        path: 'list',
+        component: {{ entityNamePascalCase }}ListPageComponent
+    },
+    {
+        path: 'edit/:id',
+        component: {{ entityNamePascalCase }}EditPageComponent
+    },
+    {
+        path: 'create',
+        component: {{ entityNamePascalCase }}EditPageComponent
+    }
+];
 
 @NgModule({
-    imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule, RouterModule.forChild({{ entityNameAllCaps }}_ROUTES), SharedModule, UsersModule],
+    imports: [
+        CommonModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        RouterModule.forChild(ROUTES),
+        SharedModule
+    ],
     exports: [declarables],
     declarations: [declarables],
     providers: providers

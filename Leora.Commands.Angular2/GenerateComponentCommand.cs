@@ -33,7 +33,7 @@ namespace Leora.Commands.Angular2
             var cssFileName = $"{snakeCaseName}.component.css";
             var htmlFileName = $"{snakeCaseName}.component.html";
             var baseFilePath = $"{directory}//{snakeCaseName}";
-            var sufixList = new string[9] { "left-nav", "edit-form","edit", "edit-page", "paginated-list", "list", "list-item", "master-detail", "paginated-list-page" };
+            var sufixList = new string[10] { "left-nav", "edit-form","edit", "edit-page", "list-page", "paginated-list", "list", "list-item", "master-detail", "paginated-list-page" };
 
             try
             {

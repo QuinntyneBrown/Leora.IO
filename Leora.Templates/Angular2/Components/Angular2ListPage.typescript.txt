@@ -15,16 +15,14 @@ import { pluckOut } from "../shared/utilities/pluck-out";
 export class {{ entityNamePascalCase }}ListPageComponent { 
     constructor(
         private _router: Router,
-        private _{{ entityNameCamelCase }}sService: {{ entityNamePascalCase }}sService) {
-
-    }
+        private _{{ entityNameCamelCase }}sService: {{ entityNamePascalCase }}sService) { }
 
     public handleEditClick($event) {        
-        this._router.navigateByUrl(`/stories/edit/${$event.{{ entityNameCamelCase }}.id}`);
+        this._router.navigateByUrl(`/{{ entityNameLowerCase }}s/edit/${$event.{{ entityNameCamelCase }}.id}`);
     }
 
     public handleDeleteClick($event) {
-        this._{{ entityNameCamelCase }}esService.remove({ {{ entityNameCamelCase }}: $event.{{ entityNameCamelCase }} })
+        this._{{ entityNameCamelCase }}sService.remove({ {{ entityNameCamelCase }}: $event.{{ entityNameCamelCase }} })
             .takeUntil(this._ngUnsubscribe)
             .subscribe();
 
@@ -34,10 +32,10 @@ export class {{ entityNamePascalCase }}ListPageComponent {
     public ngOnInit() {
         this._{{ entityNameCamelCase }}sService.get()
             .takeUntil(this._ngUnsubscribe)
-            .subscribe((data) => {
-                this.stories = data.{{ entityNameCamelCase }}s;
-            });
+            .map(data => this.{{ entityNameCamelCase }}s = data.{{ entityNameCamelCase }}s)
+            .subscribe();
     }
+
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     ngOnDestroy() {
