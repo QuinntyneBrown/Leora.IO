@@ -25,7 +25,7 @@ namespace Leora.Commands.AspNetWebApi2
             var pascalCaseName = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
             var apiModelName = $"{pascalCaseName}ApiModel.cs";
             
-            _fileWriter.WriteAllLines($"{directory}//{apiModelName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiApiModel", BluePrintType.AspNetWebApi2), name, namespacename, rootNamespace));
+            _fileWriter.WriteAllLines($"{directory}//{apiModelName}", _templateProcessor.ProcessTemplate(_templateManager.Get(FileType.CSharp, "ApiApiModel", framework), name, namespacename, rootNamespace));
             _projectManager.Process(directory, $"{apiModelName}", FileType.CSharp);
 
             return exitCode;
