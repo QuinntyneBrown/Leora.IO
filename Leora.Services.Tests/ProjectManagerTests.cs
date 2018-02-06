@@ -22,13 +22,14 @@ namespace Leora.Services.Tests
         [TestInitialize]
         public void Setup()
         {
-            _projectManager = new ProjectManager();
+            _projectManager = new ProjectManager(null);
+
         }
 
         [TestMethod]
         public void TestAddMethod()
         {
-            _projectManager = new ProjectManager();
+            _projectManager = new ProjectManager(null);
             var csproj = XDocument.Parse(Get("empty-project-file.txt"));
             var result = _projectManager.Add(csproj, "/my-file.ts", FileType.TypeScript);
             var typeScriptCompileNodes = result.Descendants(msbuild + "ItemGroup").FirstOrDefault(x => x.Descendants(msbuild + "TypeScriptCompile").Any());
@@ -40,7 +41,7 @@ namespace Leora.Services.Tests
         [TestMethod]
         public void TestAddItemGroupMethod()
         {
-            _projectManager = new ProjectManager();
+            _projectManager = new ProjectManager(null);
             var csproj = XDocument.Parse(Get("empty-project-file.txt"));
             var originalCount = csproj.Descendants(msbuild + "ItemGroup").Count();
             var result = _projectManager.AddItemGroup(FileType.TypeScript, csproj);
@@ -50,7 +51,7 @@ namespace Leora.Services.Tests
         [TestMethod]
         public void TestAddTypeSciptFlagsMethod()
         {
-            _projectManager = new ProjectManager();
+            _projectManager = new ProjectManager(null);
             var csproj = XDocument.Parse(Get("empty-project-file.txt"));
             var result = _projectManager.AddTypeSciptFlags(csproj);
         }

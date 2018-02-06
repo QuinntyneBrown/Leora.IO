@@ -74,7 +74,6 @@
   <ItemGroup>
     <Folder Include="Angular2NgrxApp\" />
     <Folder Include="Angular2\Utilities\" />
-    <Folder Include="AspNetCore\" />
     <Folder Include="CQRS\Controllers\" />
     <Folder Include="CustomElements\Services\" />
     <Folder Include="Node\Models\" />
@@ -421,6 +420,9 @@
     <EmbeddedResource Include="CQRS\CQRSCacheKeyFactory.csharp.txt" />
     <EmbeddedResource Include="CQRS\CQRSAddOrUpdate.csharp.txt" />
     <EmbeddedResource Include="CQRS\CQRSRemove.csharp.txt" />
+    <EmbeddedResource Include="AspNetCore\ApiModel.csharp.txt" />
+    <EmbeddedResource Include="AspNetCore\ApiController.csharp.txt" />
+    <EmbeddedResource Include="AspNetCore\CQRSQuery.csharp.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />

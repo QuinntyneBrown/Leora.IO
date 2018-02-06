@@ -19,8 +19,8 @@ namespace Leora.Commands.CQRS
 
     public class GenerateCacheKeyFactoryCommand : Leora.Commands.CQRS.Core.BaseCommand<GenerateCacheKeyFactoryOptions>, IGenerateCacheKeyFactoryCommand
     {
-        public GenerateCacheKeyFactoryCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
-            :base(templateManager,templateProcessor,namingConventionConverter,projectManager,fileWriter,namespaceManager) {
+        public GenerateCacheKeyFactoryCommand(ILeoraJSONFileManager leoraJSONFileManager, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
+            :base(templateManager,templateProcessor,namingConventionConverter,projectManager,fileWriter,namespaceManager, leoraJSONFileManager) {
         }
         
         public override int Run(GenerateCacheKeyFactoryOptions options)

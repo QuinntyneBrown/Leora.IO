@@ -18,8 +18,8 @@ namespace Leora.Commands.CQRS
 
     public class GenerateCommandCommand : Leora.Commands.CQRS.Core.BaseCommand<GenerateCommandOptions>, IGenerateCommandCommand
     {
-        public GenerateCommandCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
-            :base(templateManager,templateProcessor, namingConventionConverter, projectManager,fileWriter, namespaceManager)
+        public GenerateCommandCommand(ILeoraJSONFileManager leoraJSONFileManager, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
+            :base(templateManager,templateProcessor, namingConventionConverter, projectManager,fileWriter, namespaceManager, leoraJSONFileManager)
         {
 
         }

@@ -7,6 +7,7 @@
         public static string CustomElements = "CustomElements";
         public static string VanillaJS = "VanillaJS";
         public static string AspNetWebApi2 = "AspNetWebApi2";
+        public static string AspNetCore = "AspNetCore";
         public static string React = "React";
         public static string Cli = "Cli";
         public static string VisualStudio = "VisualStudio";

@@ -53,7 +53,7 @@ namespace Leora.Services
             return ConvertFileStreamToStringArray(typeof(Leora.Templates.Infrastructure.Constants).Assembly.GetManifestResourceStream(templateName));
         }
 
-        public string[] Get(FileType fileType, string name, string section, string entityName, string framework = null, string[] sufixList = null)
+        public string[] Get(FileType fileType, string name, string section, string entityName, string framework=null, string[] sufixList = null)
         {
             sufixList = sufixList == null ? new string[0] : sufixList;
              

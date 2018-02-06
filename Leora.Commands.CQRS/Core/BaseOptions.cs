@@ -23,5 +23,6 @@ namespace Leora.Commands.CQRS.Core
 
         [Option("entity", Required = false, HelpText = "Entity")]
         public string Entity { get; set; }
+        public string Framework { get; set; }
     }
 }

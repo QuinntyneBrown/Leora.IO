@@ -12,8 +12,9 @@ namespace Leora.Commands.AspNetWebApi2
         protected readonly IProjectManager _projectManager;
         protected readonly INamespaceManager _namespaceManager;
         protected readonly IFileWriter _fileWriter;
+        protected readonly ILeoraJSONFileManager _leoraJSONFileManager;
 
-        public BaseCommand(IFileWriter fileWriter, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, INamespaceManager namespaceManager, IProjectManager projectManager)
+        public BaseCommand(IFileWriter fileWriter, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, INamespaceManager namespaceManager, IProjectManager projectManager, ILeoraJSONFileManager leoraJSONFileManager)
         {
             _fileWriter = fileWriter;
             _templateProcessor = templateProcessor;
@@ -21,6 +22,7 @@ namespace Leora.Commands.AspNetWebApi2
             _namingConventionConverter = namingConventionConverter;
             _projectManager = projectManager;
             _namespaceManager = namespaceManager;
+            _leoraJSONFileManager = leoraJSONFileManager;
         }
 
         public virtual int Run(string[] args)
@@ -29,6 +31,7 @@ namespace Leora.Commands.AspNetWebApi2
             Default.ParseArguments(args, options);
             options.NameSpace = _namespaceManager.GetNamespace(options.Directory).Namespace;
             options.RootNamespace = _namespaceManager.GetNamespace(options.Directory).RootNamespace;
+            options.Framework = _leoraJSONFileManager.GetLeoraJSONFile(options.Directory, -1).Framework;
             return Run(options);
         }
 

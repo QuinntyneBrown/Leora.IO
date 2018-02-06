@@ -28,7 +28,7 @@ namespace Leora.Commands.CQRS
             IProjectManager projectManager, IFileWriter fileWriter, 
             INamespaceManager namespaceManager,
             ILeoraJSONFileManager leoraJSONFileManager)
-            :base(templateManager,templateProcessor, namingConventionConverter, projectManager,fileWriter, namespaceManager)
+            :base(templateManager,templateProcessor, namingConventionConverter, projectManager,fileWriter, namespaceManager,leoraJSONFileManager)
         {
             _leoraJSONFileManager = leoraJSONFileManager;
         }

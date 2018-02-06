@@ -12,10 +12,17 @@ namespace Leora.Services
 {
     public class ProjectManager : IProjectManager
     {
+        private readonly ILeoraJSONFileManager _leoraJSONFileManager;
         protected readonly XNamespace msbuild = "http://schemas.microsoft.com/developer/msbuild/2003";
-
+        public ProjectManager(ILeoraJSONFileManager leoraJSONFileManager)
+        {
+            _leoraJSONFileManager = leoraJSONFileManager;
+        }
         public void Process(string currentDirectory, string fileName, FileType fileType = FileType.TypeScript, bool trace = false)
         {
+            if (_leoraJSONFileManager.GetLeoraJSONFile(currentDirectory, -1).Version.ToLower() == "core")
+                return;
+
             var relativePathAndProjFile = GetRelativePathAndProjFile($"{currentDirectory}//{fileName}", 0,trace);
             if (relativePathAndProjFile != null)
             {

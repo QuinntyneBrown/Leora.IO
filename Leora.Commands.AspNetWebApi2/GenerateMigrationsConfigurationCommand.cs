@@ -7,8 +7,8 @@ namespace Leora.Commands.AspNetWebApi2
 {
     public class GenerateMigrationsConfigurationCommand : BaseCommand<GenerateMigrationsConfigurationOptions>, IGenerateMigrationsConfigurationCommand
     {
-        public GenerateMigrationsConfigurationCommand(IFileWriter fileWriter, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, INamespaceManager namespaceManager, IProjectManager projectManager)
-            : base(fileWriter, templateManager, templateProcessor, namingConventionConverter, namespaceManager, projectManager) { }
+        public GenerateMigrationsConfigurationCommand(ILeoraJSONFileManager leoraJSONFileManager,IFileWriter fileWriter, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, INamespaceManager namespaceManager, IProjectManager projectManager)
+            : base(fileWriter, templateManager, templateProcessor, namingConventionConverter, namespaceManager, projectManager,leoraJSONFileManager) { }
 
         public override int Run(GenerateMigrationsConfigurationOptions options) => Run(options.NameSpace, options.Directory, options.Name, options.RootNamespace);
 

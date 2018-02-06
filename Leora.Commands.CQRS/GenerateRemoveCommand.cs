@@ -18,8 +18,8 @@ namespace Leora.Commands.CQRS
 
     public class GenerateRemoveCommand : Leora.Commands.CQRS.Core.BaseCommand<GenerateRemoveOptions>, IGenerateRemoveCommand
     {
-        public GenerateRemoveCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
-            :base(templateManager,templateProcessor, namingConventionConverter, projectManager,fileWriter, namespaceManager)
+        public GenerateRemoveCommand(ILeoraJSONFileManager leoraJSONFileManager, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
+            :base(templateManager,templateProcessor, namingConventionConverter, projectManager,fileWriter, namespaceManager, leoraJSONFileManager)
         {
 
         }

@@ -12,8 +12,8 @@ namespace Leora.Commands.AspNetWebApi2
 {
     public class GenerateUploadHandlersCommand: BaseCommand<GenerateUploadHandlersOptions>, IGenerateUploadHandlersCommand
     {
-        public GenerateUploadHandlersCommand(IFileWriter fileWriter, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, INamespaceManager namespaceManager, IProjectManager projectManager)
-            :base(fileWriter,templateManager,templateProcessor, namingConventionConverter, namespaceManager, projectManager) { }
+        public GenerateUploadHandlersCommand(ILeoraJSONFileManager leoraJSONFileManager,IFileWriter fileWriter, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, INamespaceManager namespaceManager, IProjectManager projectManager)
+            :base(fileWriter,templateManager,templateProcessor, namingConventionConverter, namespaceManager, projectManager,leoraJSONFileManager) { }
 
         public override int Run(GenerateUploadHandlersOptions options) => Run(options.NameSpace, options.Directory, options.Name, options.RootNamespace);
 

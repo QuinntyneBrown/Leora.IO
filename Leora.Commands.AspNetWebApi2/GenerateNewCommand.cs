@@ -8,8 +8,8 @@ namespace Leora.Commands.AspNetWebApi2
 {
     public class GenerateNewCommand : BaseCommand<GenerateNewOptions>, IGenerateNewCommand
     {
-        public GenerateNewCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
-            :base(fileWriter,templateManager,templateProcessor,namingConventionConverter,namespaceManager,projectManager) { }
+        public GenerateNewCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager, ILeoraJSONFileManager leoraJSONFileManager)
+            :base(fileWriter,templateManager,templateProcessor,namingConventionConverter,namespaceManager,projectManager,leoraJSONFileManager) { }
 
         public override int Run(GenerateNewOptions options) => Run(options.Name, options.Directory);        
 

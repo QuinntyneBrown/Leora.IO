@@ -15,6 +15,7 @@ namespace Leora.Commands.AspNetWebApi2.Tests
         public void SetUp()
         {
             _generateControllerCommand = new GenerateControllerCommand(
+                new MockLeoraJSONFileManager(),
                 new MockFileWriter(),
                 new MockTemplateManager(),
                 new MockTemplateProcessor(),

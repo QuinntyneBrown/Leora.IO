@@ -15,22 +15,25 @@ namespace Leora.Services
     {
         protected readonly XNamespace msbuild = "http://schemas.microsoft.com/developer/msbuild/2003";
         protected readonly INamingConventionConverter _namingConventionConverter;
-
-        public NamespaceManager(INamingConventionConverter namingConventionConverter)
+        protected readonly ILeoraJSONFileManager _leoraJSONFileManager;
+        public NamespaceManager(INamingConventionConverter namingConventionConverter, ILeoraJSONFileManager leoraJSONFileManager)
         {
             _namingConventionConverter = namingConventionConverter;
+            _leoraJSONFileManager = leoraJSONFileManager;
         }
 
         public NamespaceManager()
         {
             _namingConventionConverter = new NamingConventionConverter();
+            _leoraJSONFileManager = new LeoraJSONFileManager();
         }
 
         public FileNamespace GetNamespace(string path)
         {
+            var rootNamespace = _leoraJSONFileManager.GetLeoraJSONFile(path, -1).RootNamespace;
+
             var projectPath = GetProjectPath(path);
-            var projectGroups = Load(projectPath).Descendants(msbuild + "PropertyGroup");
-            var rootNamespace = projectGroups.Descendants(msbuild + "RootNamespace").First().Value;
+            
             var subNamespaces = GetSubNamespaces(path, projectPath);
 
             if(subNamespaces.Count() < 1)

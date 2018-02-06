@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MockFileWriter.cs" />
+    <Compile Include="MockLeoraJSONFileManager.cs" />
     <Compile Include="MockMainManager.cs" />
     <Compile Include="MockNamespaceManager.cs" />
     <Compile Include="MockProjectManager.cs" />

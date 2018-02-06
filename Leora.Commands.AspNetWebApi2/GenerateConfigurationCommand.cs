@@ -16,27 +16,28 @@ namespace Leora.Commands.AspNetWebApi2
             INamingConventionConverter namingConventionConverter,
             INamespaceManager namespaceManager,
             IProjectManager projectManager,
-            IGenerateConfigCommand generateConfigCommand
+            IGenerateConfigCommand generateConfigCommand,
+            ILeoraJSONFileManager leoraJSONFileManager
             )
-            :base(fileWriter, templateManager,templateProcessor, namingConventionConverter, namespaceManager, projectManager) {
+            :base(fileWriter, templateManager,templateProcessor, namingConventionConverter, namespaceManager, projectManager,leoraJSONFileManager) {
 
             _generateConfigCommand = generateConfigCommand;
 
         }
 
-        public override int Run(GenerateConfigurationOptions options) => Run(options.NameSpace, options.Directory, options.Name, options.RootNamespace);
+        public override int Run(GenerateConfigurationOptions options) => Run(options.NameSpace, options.Directory, options.Name, options.RootNamespace, options.Framework);
 
-        public int Run(string namespacename, string directory, string name, string rootNamespace)
+        public int Run(string namespacename, string directory, string name, string rootNamespace, string framework)
         {
             int exitCode = 1;
             var pascalCaseName = $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Configuration.cs";
             var interfacePascalCaseName = $"I{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Configuration.cs";
             var entityNamePascalCase = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
-            var template = _templateManager.Get(FileType.CSharp, "ApiConfiguration", "Configuration", entityNamePascalCase, BluePrintType.AspNetWebApi2);
+            var template = _templateManager.Get(FileType.CSharp, "ApiConfiguration", "Configuration", entityNamePascalCase, framework);
 
             _fileWriter.WriteAllLines($"{directory}//{pascalCaseName}", _templateProcessor.ProcessTemplate(template, name, namespacename, rootNamespace));
 
-            _generateConfigCommand.Run(namespacename, System.IO.Path.GetDirectoryName(_projectManager.GetRelativePathAndProjFile(directory).ProjFile), name, rootNamespace);
+            _generateConfigCommand.Run(namespacename, System.IO.Path.GetDirectoryName(_projectManager.GetRelativePathAndProjFile(directory).ProjFile), name, rootNamespace,framework);
 
             try
             {

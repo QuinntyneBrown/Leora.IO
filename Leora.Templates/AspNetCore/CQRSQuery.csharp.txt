@@ -1,0 +1,41 @@
+﻿using MediatR;
+using {{ rootNamespacename }}.Data;
+using {{ rootNamespacename }}.Features.Core;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Threading;
+using Microsoft.EntityFrameworkCore;
+
+namespace {{ namespacename }}
+{
+    public class {{ namePascalCase }}Query
+    {
+        public class Request : BaseRequest, IRequest<Response>
+        {
+            
+        }
+
+        public class Response
+        {
+
+        }
+
+        public class Handler : IRequestHandler<Request, Response>
+        {
+            public Handler(I{{ rootNamespacename }}Context context, ICache cache)
+            {
+                _context = context;
+                _cache = cache;
+            }
+
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
+            {
+                throw new System.NotImplementedException();
+            }
+
+            private readonly I{{ rootNamespacename }}Context _context;
+            private readonly ICache _cache;
+        }
+    }
+}

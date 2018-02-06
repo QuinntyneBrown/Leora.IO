@@ -7,8 +7,8 @@ namespace Leora.Commands.AspNetWebApi2
 {
     public class GenerateControllerCommand : BaseCommand<GenerateControllerOptions>, IGenerateControllerCommand
     {
-        public GenerateControllerCommand(IFileWriter fileWriter, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, INamespaceManager namespaceManager, IProjectManager projectManager)
-            :base(fileWriter,templateManager,templateProcessor, namingConventionConverter, namespaceManager, projectManager) { }
+        public GenerateControllerCommand(ILeoraJSONFileManager leoraJSONFileManager,IFileWriter fileWriter, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, INamespaceManager namespaceManager, IProjectManager projectManager)
+            :base(fileWriter,templateManager,templateProcessor, namingConventionConverter, namespaceManager, projectManager, leoraJSONFileManager) { }
 
         public override int Run(GenerateControllerOptions options) => Run(options.NameSpace, options.Directory, options.Name, options.RootNamespace, options.Trace, options.CQRS);
         

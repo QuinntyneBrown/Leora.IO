@@ -20,5 +20,6 @@ namespace Leora.Commands.AspNetWebApi2.Options
 
         [Option("rootnamespace", Required = false, HelpText = "RootNameSpace")]
         public string RootNamespace { get; set; }
+        public string Framework { get; set; }
     }
 }

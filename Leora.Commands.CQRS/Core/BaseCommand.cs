@@ -12,8 +12,8 @@ namespace Leora.Commands.CQRS.Core
         protected readonly IProjectManager _projectManager;
         protected readonly IFileWriter _fileWriter;
         protected readonly INamespaceManager _namespaceManager;
-
-        public BaseCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
+        protected readonly ILeoraJSONFileManager _leoraJSONFileManager;
+        public BaseCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager, ILeoraJSONFileManager leoraJSONFileManager)
         {
             _templateProcessor = templateProcessor;
             _templateManager = templateManager;
@@ -21,6 +21,7 @@ namespace Leora.Commands.CQRS.Core
             _projectManager = projectManager;
             _fileWriter = fileWriter;
             _namespaceManager = namespaceManager;
+            _leoraJSONFileManager = leoraJSONFileManager;
         }
 
         public virtual int Run(string[] args)
@@ -29,6 +30,7 @@ namespace Leora.Commands.CQRS.Core
             Default.ParseArguments(args, options);
             options.NameSpace = _namespaceManager.GetNamespace(options.Directory).Namespace;
             options.RootNamespace = _namespaceManager.GetNamespace(options.Directory).RootNamespace;
+            options.Framework = _leoraJSONFileManager.GetLeoraJSONFile(options.Directory, -1).Framework;
             return Run(options);
         }
 

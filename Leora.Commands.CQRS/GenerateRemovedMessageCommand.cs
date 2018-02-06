@@ -22,8 +22,8 @@ namespace Leora.Commands.CQRS
 
     public class GenerateRemovedMessageCommand : Leora.Commands.CQRS.Core.BaseCommand<GenerateRemovedOptions>, IGenerateRemovedMessageCommand
     {
-        public GenerateRemovedMessageCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
-            : base(templateManager, templateProcessor, namingConventionConverter, projectManager, fileWriter, namespaceManager)
+        public GenerateRemovedMessageCommand(ILeoraJSONFileManager leoraJSONFileManager, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
+            : base(templateManager, templateProcessor, namingConventionConverter, projectManager, fileWriter, namespaceManager, leoraJSONFileManager)
         {
         }
 

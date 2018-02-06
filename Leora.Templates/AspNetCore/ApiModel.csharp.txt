@@ -1,0 +1,10 @@
+﻿namespace {{ namespacename }}
+{
+    public class {{ entityNamePascalCase }}
+    {
+        public int {{ entityNamePascalCase }}Id { get; set; }           
+		public string Name { get; set; }        
+		public bool IsDeleted { get; set; }
+        public Tenant Tenant { get; set; }
+    }
+}

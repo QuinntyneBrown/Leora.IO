@@ -18,8 +18,8 @@ namespace Leora.Commands.CQRS
 
     public class GenerateGetByIdCommand : Leora.Commands.CQRS.Core.BaseCommand<GenerateGetByIdOptions>, IGenerateGetByIdCommand
     {
-        public GenerateGetByIdCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
-            : base(templateManager, templateProcessor, namingConventionConverter, projectManager, fileWriter, namespaceManager)
+        public GenerateGetByIdCommand(ILeoraJSONFileManager leoraJSONFileManager, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
+            : base(templateManager, templateProcessor, namingConventionConverter, projectManager, fileWriter, namespaceManager, leoraJSONFileManager)
         {
 
         }

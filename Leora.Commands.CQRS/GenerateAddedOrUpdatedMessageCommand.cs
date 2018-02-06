@@ -19,8 +19,8 @@ namespace Leora.Commands.CQRS
 
     public class GenerateAddedOrUpdatedMessageCommand : Leora.Commands.CQRS.Core.BaseCommand<GenerateAddedOrUpdatedOptions>, IGenerateAddedOrUpdatedMessageCommand
     {
-        public GenerateAddedOrUpdatedMessageCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
-            :base(templateManager,templateProcessor,namingConventionConverter,projectManager,fileWriter,namespaceManager) {
+        public GenerateAddedOrUpdatedMessageCommand(ILeoraJSONFileManager leoraJSONFileManager, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
+            :base(templateManager,templateProcessor,namingConventionConverter,projectManager,fileWriter,namespaceManager,leoraJSONFileManager) {
         }
         
         public override int Run(GenerateAddedOrUpdatedOptions options)

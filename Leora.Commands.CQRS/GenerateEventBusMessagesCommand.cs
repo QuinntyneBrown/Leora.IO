@@ -19,8 +19,8 @@ namespace Leora.Commands.CQRS
 
     public class GenerateEventBusMessagesCommand : Leora.Commands.CQRS.Core.BaseCommand<GenerateEventBusMessagesOptions>, IGenerateEventBusMessagesCommand
     {
-        public GenerateEventBusMessagesCommand(ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
-            :base(templateManager,templateProcessor,namingConventionConverter,projectManager,fileWriter,namespaceManager) {
+        public GenerateEventBusMessagesCommand(ILeoraJSONFileManager leoraJSONFileManager, ITemplateManager templateManager, IDotNetTemplateProcessor templateProcessor, INamingConventionConverter namingConventionConverter, IProjectManager projectManager, IFileWriter fileWriter, INamespaceManager namespaceManager)
+            :base(templateManager,templateProcessor,namingConventionConverter,projectManager,fileWriter,namespaceManager, leoraJSONFileManager) {
         }
         
         public override int Run(GenerateEventBusMessagesOptions options)

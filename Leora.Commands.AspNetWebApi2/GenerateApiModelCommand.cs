@@ -13,12 +13,13 @@ namespace Leora.Commands.AspNetWebApi2
             IDotNetTemplateProcessor templateProcessor,
             INamingConventionConverter namingConventionConverter,
             INamespaceManager namespaceManager,
-            IProjectManager projectManager)
-            : base(fileWriter, templateManager, templateProcessor, namingConventionConverter, namespaceManager, projectManager) { }
+            IProjectManager projectManager,
+            ILeoraJSONFileManager leoraJSONFileManager)
+            : base(fileWriter, templateManager, templateProcessor, namingConventionConverter, namespaceManager, projectManager,leoraJSONFileManager) { }
 
-        public override int Run(GenerateApiModelOptions options) => Run(options.NameSpace, options.Directory, options.Name, options.RootNamespace);
+        public override int Run(GenerateApiModelOptions options) => Run(options.NameSpace, options.Directory, options.Name, options.RootNamespace,options.Framework);
 
-        public int Run(string namespacename, string directory, string name, string rootNamespace)
+        public int Run(string namespacename, string directory, string name, string rootNamespace, string framework)
         {
             int exitCode = 1;
             var pascalCaseName = _namingConventionConverter.Convert(NamingConvention.PascalCase, name);
