@@ -27,6 +27,8 @@ namespace Leora.Services
                 newline = newline.Replace("{{ entityNameCamelCase }}", _namingConventionConverter.Convert(NamingConvention.CamelCase, name));
                 newline = newline.Replace("{{ entityNameSnakeCase }}", _namingConventionConverter.Convert(NamingConvention.SnakeCase, name));
                 newline = newline.Replace("{{ entityNameTitleCase }}", _namingConventionConverter.Convert(NamingConvention.TitleCase, name));
+                newline = newline.Replace("{{ entityNameAllCaps }}", _namingConventionConverter.Convert(NamingConvention.AllCaps, name));
+                newline = newline.Replace("{{ entityNameLowerCase }}", _namingConventionConverter.Convert(NamingConvention.CamelCase, name).ToLower());
                 newline = newline.Replace("{{ namespacename }}", _namingConventionConverter.Convert(NamingConvention.PascalCase, namespacename));
 
                 if(!string.IsNullOrEmpty(rootNamespace))
@@ -51,6 +53,7 @@ namespace Leora.Services
                 newline = newline.Replace("{{ entityNameSnakeCase }}", _namingConventionConverter.Convert(NamingConvention.SnakeCase, entityName));
                 newline = newline.Replace("{{ entityNameTitleCase }}", _namingConventionConverter.Convert(NamingConvention.TitleCase, entityName));
                 newline = newline.Replace("{{ namePascalCase }}", _namingConventionConverter.Convert(NamingConvention.PascalCase, name));
+                newline = newline.Replace("{{ entityNameAllCaps }}", _namingConventionConverter.Convert(NamingConvention.AllCaps, name));
                 newline = newline.Replace("{{ namespacename }}", _namingConventionConverter.Convert(NamingConvention.PascalCase, namespacename));
 
                 if (!string.IsNullOrEmpty(rootNamespace))

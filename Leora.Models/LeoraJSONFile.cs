@@ -8,5 +8,6 @@ namespace Leora.Models
         public string RootNamespace { get; set; }
         public string Version { get; set; }
         public string Framework { get; set; }
+        public bool VanillaSql { get; set; }
     }
 }

@@ -424,6 +424,10 @@
     <EmbeddedResource Include="AspNetCore\ApiController.csharp.txt" />
     <EmbeddedResource Include="AspNetCore\CQRSQuery.csharp.txt" />
     <EmbeddedResource Include="AspNetCore\ApiApiModel.csharp.txt" />
+    <EmbeddedResource Include="AspNetCore\CQRSController.csharp.txt" />
+    <EmbeddedResource Include="AspNetCore\ApiControllerCQRS.csharp.txt" />
+    <EmbeddedResource Include="AspNetCore\CQRSCommand.csharp.txt" />
+    <EmbeddedResource Include="AspNetCore\CQRSVanillaSQLQuery.csharp.txt" />
     <Content Include="WebComponents\Name.gulpfile.config.js.txt" />
     <Content Include="WebComponents\Name.gulpfile.js.txt" />
     <Content Include="WebComponents\Name.index.html.txt" />
