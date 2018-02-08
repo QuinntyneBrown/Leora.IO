@@ -6,39 +6,36 @@ using Microsoft.AspNetCore.Mvc;
 namespace {{ namespacename }}
 {
     [Authorize]
-    [Route("api/{{ entityNameLowerCase }}s")]
+    [Route("api/{{ entityNameCamelCase }}s")]
     public class {{ entityNamePascalCase }}sController : Controller
     {
         private readonly IMediator _mediator;
 
-        public {{ entityNamePascalCase }}Controller(IMediator mediator)
+        public {{ entityNamePascalCase }}sController(IMediator mediator)
         {
             _mediator = mediator;
         }
-        [Route("add")]
+
+        [HttpGet]
+        [Route("getAll")]
+        public async Task<IActionResult> GetAll{{ entityNamePascalCase }}s()
+            => Ok(await _mediator.Send(new GetAll{{ entityNamePascalCase }}sQuery.Request()));
+
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody]AddOrUpdate{{ entityNamePascalCase }}Command.Request request)
-            => Ok(await _mediator.Send(request));
-        
-        [Route("update")]
-        [HttpPut]
-        public async Task<IActionResult> Update([FromBody]AddOrUpdate{{ entityNamePascalCase }}Command.Request request)
-            => Ok(await _mediator.Send(request));
-        
-        [Route("get")]
-        [HttpGet]
-        public async Task<IActionResult> Get()
-            => Ok(await _mediator.Send(new Get{{ entityNamePascalCase }}sQuery.Request()));
+        [Route("save")]        
+        public async Task<IActionResult> Save([FromBody]Save{{ entityNamePascalCase }}Command.Request request)
+        {
+            await _mediator.Send(request);
+            return Ok();
+        }
 
-        [Route("getById")]
-        [HttpGet]
-        public async Task<IActionResult> GetById([FromQuery]Get{{ entityNamePascalCase }}ByIdQuery.Request request)
-            => Ok(await _mediator.Send(request));
-
-        [Route("remove")]
         [HttpDelete]
-        public async Task<IActionResult> Remove([FromQuery]Remove{{ entityNamePascalCase }}Command.Request request)
-            => Ok(await _mediator.Send(request));
+        [Route("delete/{{{ entityNameCamelCase }}Id}")]
+        public async Task<IActionResult> Save(Delete{{ entityNamePascalCase }}Command.Request request)
+        {
+            await _mediator.Send(request);
+            return Ok();
+        }
 
     }
 }
