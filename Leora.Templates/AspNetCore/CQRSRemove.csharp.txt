@@ -1,0 +1,34 @@
+﻿using MediatR;
+using {{ rootNamespacename }}.Data;
+using {{ rootNamespacename }}.Features.Core;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace {{ namespacename }}
+{
+    public class {{ namePascalCase }}Command
+    {
+        public class Request : BaseAuthenticatedRequest, IRequest { 
+            public int Id { get; set; }            
+        }
+
+        public class Handler : IRequestHandler<Request>
+        {
+            public Handler({{ rootNamespacename }}Context context, ICache cache)
+            {
+                _context = context;
+                _cache = cache;
+            }
+
+            public async Task Handle(Request request, CancellationToken cancellationToken)
+            {
+                var {{ entityNameCamelCase }} = await _context.{{ entityNamePascalCase }}s.FindAsync(request.Id);
+                _context.Tags.Remove({{ entityNameCamelCase }});
+                await _context.SaveChangesAsync(cancellationToken);
+            }
+
+            private readonly {{ rootNamespacename }}Context _context;
+            private readonly ICache _cache;
+        }
+    }
+}

@@ -1,0 +1,57 @@
+﻿using MediatR;
+using {{ rootNamespacename }}.Data;
+using {{ rootNamespacename }}.Features.Core;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Threading;
+using Microsoft.EntityFrameworkCore;
+
+namespace {{ namespacename }}
+{
+    public class {{ namePascalCase }}Command
+    {
+        public class Request : BaseAuthenticatedRequest, IRequest<Response>
+        {
+            public Request() { }
+
+            public {{ entityNamePascalCase }}ApiModel {{ entityNamePascalCase }} { get; set; }
+        }
+
+        public class Response
+        {
+            public Response() { }
+
+            public int {{ entityNamePascalCase }}Id { get; set; }
+        }
+
+        public class Handler : IRequestHandler<Request, Response>
+        {
+            public Handler({{ rootNamespacename }}Context context, ICache cache)
+            {
+                _context = context;
+                _cache = cache;
+            }
+
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
+            {
+                var {{ entityNameCamelCase }} = await _context.{{ entityNamePascalCase }}s
+                    .SingleOrDefaultAsync(x => x.{{ entityNamePascalCase }}Id == request.{{ entityNamePascalCase }}.{{ entityNamePascalCase }}Id);
+                
+                if ({{ entityNameCamelCase }} == null)
+                    _context.{{ entityNamePascalCase }}s.Add({{ entityNameCamelCase }} = new {{ entityNamePascalCase }}());
+
+                {{ entityNameCamelCase }}.Name = request.{{ entityNamePascalCase }}.Name;
+                
+                await _context.SaveChangesAsync();
+
+                return new Response() { {{ entityNamePascalCase }}Id = {{ entityNameCamelCase }}.{{ entityNamePascalCase }}Id };
+            }
+
+            private readonly {{ rootNamespacename }}Context _context;
+            private readonly ICache _cache;
+        }
+
+    }
+
+}

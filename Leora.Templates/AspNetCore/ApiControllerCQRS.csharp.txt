@@ -37,8 +37,9 @@ namespace {{ namespacename }}
 
         [Route("remove")]
         [HttpDelete]
-        public async Task<IActionResult> Remove([FromQuery]Remove{{ entityNamePascalCase }}Command.Request request)
-            => Ok(await _mediator.Send(request));
-
+        public async Task<IActionResult> Remove([FromQuery]Remove{{ entityNamePascalCase }}Command.Request request) {
+            await _mediator.Send(request);
+            return Ok();
+        }
     }
 }
