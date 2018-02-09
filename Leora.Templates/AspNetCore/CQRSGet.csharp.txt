@@ -30,7 +30,7 @@ namespace {{ namespacename }}
             {
                 return new Response()
                 {
-                    {{ entityNamePascalCase }}s = await _context.{{ entityNamePascalCase }}s.Select(x => {{ entityNamePascalCase }}ApiModel.FromTag(x)).ToListAsync()
+                    {{ entityNamePascalCase }}s = await _context.{{ entityNamePascalCase }}s.Select(x => {{ entityNamePascalCase }}ApiModel.From{{ entityNamePascalCase }}(x)).ToListAsync()
                 };
             }
 

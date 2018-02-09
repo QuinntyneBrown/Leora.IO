@@ -23,7 +23,7 @@ namespace {{ namespacename }}
             public async Task Handle(Request request, CancellationToken cancellationToken)
             {
                 var {{ entityNameCamelCase }} = await _context.{{ entityNamePascalCase }}s.FindAsync(request.Id);
-                _context.Tags.Remove({{ entityNameCamelCase }});
+                _context.{{ entityNamePascalCase }}s.Remove({{ entityNameCamelCase }});
                 await _context.SaveChangesAsync(cancellationToken);
             }
 
