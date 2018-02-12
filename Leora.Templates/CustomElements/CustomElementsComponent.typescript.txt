@@ -1,6 +1,6 @@
 ﻿import { html, TemplateResult, render } from "lit-html";
 import { repeat } from "lit-html/lib/repeat";
-import { unsafeHTML } from "../../../node_modules/lit-html/lib/unsafe-html.js";
+import { unsafeHTML } from "lit-html/lib/unsafe-html";
 
 const styles = unsafeHTML(`<style>${require("./{{ entityNameSnakeCase }}.component.css")}<style>`);
 
