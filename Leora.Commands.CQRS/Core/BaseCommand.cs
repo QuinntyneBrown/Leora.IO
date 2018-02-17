@@ -37,5 +37,9 @@ namespace Leora.Commands.CQRS.Core
         public string[] GetTemplate(FileType fileType, string templateName) => _templateManager.Get(fileType, templateName, BluePrintType.CQRS);
 
         public abstract int Run(TOptions options);
+
+        public bool IsVanillaSql(string directory) {
+            return _leoraJSONFileManager.GetLeoraJSONFile(directory, -1).VanillaSql;
+        }
     }
 }

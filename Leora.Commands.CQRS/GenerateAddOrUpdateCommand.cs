@@ -35,8 +35,7 @@ namespace Leora.Commands.CQRS
 
         public override int Run(GenerateAddOrUpdateOptions options)
         {
-            var s = _leoraJSONFileManager.GetLeoraJSONFile(options.Directory, -1);
-            Console.WriteLine(s.UseMessaging);
+            
 
             if (string.IsNullOrEmpty(options.Name))
             {
@@ -50,7 +49,12 @@ namespace Leora.Commands.CQRS
         {
             int exitCode = 1;
 
-            var templateCs = _templateManager.Get(FileType.CSharp, "CQRSAddOrUpdate", "Commands", _namingConventionConverter.Convert(NamingConvention.PascalCase, name), framework);
+            Console.WriteLine("Is Vanilla SQL" + IsVanillaSql(directory));
+
+            var templateCs = IsVanillaSql(directory)
+                ? _templateManager.Get(FileType.CSharp, "CQRSVanillaSqlAddOrUpdate", "Commands", _namingConventionConverter.Convert(NamingConvention.PascalCase, name), framework)
+                : _templateManager.Get(FileType.CSharp, "CQRSAddOrUpdate", "Commands", _namingConventionConverter.Convert(NamingConvention.PascalCase, name), framework);
+
             _fileWriter.WriteAllLines($"{directory}//{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Command.cs", _templateProcessor.ProcessTemplate(templateCs, entityName, name, namespacename, rootNamespace));
             _projectManager.Process(directory, $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Command.cs", FileType.CSharp);
             return exitCode;

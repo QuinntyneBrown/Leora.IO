@@ -15,7 +15,7 @@ export class {{ entityNamePascalCase }}Component extends HTMLElement {
 
     connectedCallback() {     
 
-        this.attachShadow({ mode: 'open' });
+        if(!this.shadowRoot) this.attachShadow({ mode: 'open' });
         
 		render(this.template, this.shadowRoot);
 

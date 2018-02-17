@@ -1,0 +1,103 @@
+﻿using {{ rootNamespacename }}.Data;
+using {{ rootNamespacename }}.Extensions;
+using {{ rootNamespacename }}.Features.Core;
+using {{ rootNamespacename }}.Features.Concurrency;
+using {{ rootNamespacename }}.Infrastructure.Exceptions;
+using Dapper;
+using Hangfire.Server;
+using Hangfire;
+using MediatR;
+using Microsoft.AspNetCore.SignalR;
+using static System.Data.ParameterDirection;
+using System.Threading.Tasks;
+using System.Threading;
+using System.Data;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+
+namespace namespace {{ namespacename }}
+{
+    public class Save{{ entityNamePascalCase }}Command
+    {
+        public class Request : BaseAuthenticatedRequest, IRequest<Response> {
+            public {{ entityNamePascalCase }}ApiModel Dashboard { get; set; }
+        }
+
+        public class Response {
+            public string CorrelationId { get; set; }
+        }
+
+        public class Handler : IRequestHandler<Request,Response>
+        {
+            private readonly ISqlConnectionManager _sqlConnectionManager;
+            private readonly IHubContext<EventsHub> _hub;
+            private readonly IRequestHandler<HasConcurrencyConflictQuery.Request,HasConcurrencyConflictQuery.Response> _hasConcurrencyConflictHandler;
+            private readonly IRequestHandler<SaveConcurrencyCommand.Request, SaveConcurrencyCommand.Response> _saveConcurrencyHandler;
+            
+			public Handler(
+                ISqlConnectionManager sqlConnectionManager,
+                IHubContext<EventsHub> hub,
+                IRequestHandler<HasConcurrencyConflictQuery.Request, HasConcurrencyConflictQuery.Response> hasConcurrencyConflictHandler,
+                IRequestHandler<SaveConcurrencyCommand.Request, SaveConcurrencyCommand.Response> saveConcurrencyHandler
+                )
+            {
+                _hub = hub;
+                _sqlConnectionManager = sqlConnectionManager;
+                _hasConcurrencyConflictHandler = hasConcurrencyConflictHandler;
+                _saveConcurrencyHandler = saveConcurrencyHandler;
+            }
+
+            public async Task PerformSave(Request request, PerformContext context)
+            {
+                var hasConcurrencyConflictResponse = await _hasConcurrencyConflictHandler.Handle(new HasConcurrencyConflictQuery.Request()
+                {
+                    Domain = "{{ entityNamePascalCase }}",
+                    Id = request.{{ entityNamePascalCase }}.{{ entityNamePascalCase }}Id,
+                    Version = request.{{ entityNamePascalCase }}.ConcurrencyVersion
+                }, default(CancellationToken));
+
+                if (hasConcurrencyConflictResponse.HasConflict)
+                    throw new ConcurrencyDomainException("Has Concurrency Conflict");
+
+                using (var sqlConnection = _sqlConnectionManager.GetConnection())
+                {
+                    var dynamicParameters = new DynamicParameters();
+
+                    dynamicParameters.AddDynamicParams(new
+                    {
+                        request.{{ entityNamePascalCase }}.Code,
+                        request.{{ entityNamePascalCase }}.Sort,
+                        request.UserId
+                    });
+
+                    dynamicParameters.Add("{{ entityNamePascalCase }}Id", request.{{ entityNamePascalCase }}.{{ entityNamePascalCase }}Id, DbType.Int16, Output);
+
+                    await sqlConnection.OpenAsync();
+
+                    await sqlConnection.ExecuteProcAsync(Constants.PROC_{{ entityNameAllCaps }}_SAVE, dynamicParameters);
+
+                    sqlConnection.Close();
+
+                    request.{{ entityNamePascalCase }}.{{ entityNamePascalCase }}Id = dynamicParameters.Get<short>("@{{ entityNamePascalCase }}Id");
+                }
+                var saveConcurrencyResponse = await _saveConcurrencyHandler.Handle(new SaveConcurrencyCommand.Request() {
+                    Concurrency = new ConcurrencyApiModel() { Domain = "{{ entityNamePascalCase }}", Id = request.{{ entityNamePascalCase }}.{{ entityNamePascalCase }}Id }
+                }, default(CancellationToken));
+
+                request.{{ entityNamePascalCase }}.ConcurrencyVersion = saveConcurrencyResponse.ConcurrencyVersion;
+                
+                await _hub.Clients.All.InvokeAsync(ServerEvents.DEFAULT, JsonConvert.SerializeObject(
+                    new ServerEventResponse(context.BackgroundJob.Id, request.{{ entityNamePascalCase }}), new JsonSerializerSettings
+                {
+                    ContractResolver = new CamelCasePropertyNamesContractResolver()
+                }));
+            }
+
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
+                => await Task.FromResult(new Response()
+                {
+                    CorrelationId = BackgroundJob.Enqueue(() => PerformSave(request, null))
+                });
+        }
+    }
+}
