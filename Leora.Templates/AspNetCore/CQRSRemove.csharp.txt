@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using {{ rootNamespacename }}.Data;
 using {{ rootNamespacename }}.Features.Core;
+using {{ rootNamespacename }}.Model;
 using System.Threading.Tasks;
 using System.Threading;
 
@@ -22,9 +23,8 @@ namespace {{ namespacename }}
 
             public async Task Handle(Request request, CancellationToken cancellationToken)
             {
-                var {{ entityNameCamelCase }} = await _context.{{ entityNamePascalCase }}s.FindAsync(request.Id);
-                _context.{{ entityNamePascalCase }}s.Remove({{ entityNameCamelCase }});
-                await _context.SaveChangesAsync(cancellationToken);
+                _context.{{ entityNamePascalCase }}s.Remove(await _context.{{ entityNamePascalCase }}s.FindAsync(request.Id));
+                await _context.SaveChangesAsync(cancellationToken, request.Username);
             }
 
             private readonly {{ rootNamespacename }}Context _context;

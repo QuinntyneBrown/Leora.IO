@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using {{ rootNamespacename }}.Data;
 using {{ rootNamespacename }}.Features.Core;
+using {{ rootNamespacename }}.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
@@ -12,22 +13,18 @@ namespace {{ namespacename }}
     public class {{ namePascalCase }}Command
     {
         public class Request : BaseAuthenticatedRequest, IRequest<Response>
-        {
-            public Request() { }
-
+        {            
             public {{ entityNamePascalCase }}ApiModel {{ entityNamePascalCase }} { get; set; }
         }
 
         public class Response
-        {
-            public Response() { }
-
+        {            
             public int {{ entityNamePascalCase }}Id { get; set; }
         }
 
         public class Handler : IRequestHandler<Request, Response>
         {
-            public Handler({{ rootNamespacename }}Context context, ICache cache)
+            public Handler(I{{ rootNamespacename }}Context context, ICache cache)
             {
                 _context = context;
                 _cache = cache;
@@ -43,12 +40,12 @@ namespace {{ namespacename }}
 
                 {{ entityNameCamelCase }}.Name = request.{{ entityNamePascalCase }}.Name;
                 
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync(cancellationToken, request.Username);
 
                 return new Response() { {{ entityNamePascalCase }}Id = {{ entityNameCamelCase }}.{{ entityNamePascalCase }}Id };
             }
 
-            private readonly {{ rootNamespacename }}Context _context;
+            private readonly I{{ rootNamespacename }}Context _context;
             private readonly ICache _cache;
         }
 

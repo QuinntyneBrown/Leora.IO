@@ -1,11 +1,10 @@
 ﻿using MediatR;
 using {{ rootNamespacename }}.Data;
 using {{ rootNamespacename }}.Features.Core;
-using System.Collections.Generic;
+using {{ rootNamespacename }}.Model;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Threading;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace {{ namespacename }}
 {
@@ -32,8 +31,7 @@ namespace {{ namespacename }}
             {
                 return new Response()
                 {
-                    {{ entityNamePascalCase }} = {{ entityNamePascalCase }}ApiModel.From{{ entityNamePascalCase }}(await _context.{{ entityNamePascalCase }}s
-					.SingleAsync(x => x.{{ entityNamePascalCase }}Id == request.Id))
+                    {{ entityNamePascalCase }} = {{ entityNamePascalCase }}ApiModel.From{{ entityNamePascalCase }}(await _context.{{ entityNamePascalCase }}s.FindAsync(request.Id))
                 };
             }
 
