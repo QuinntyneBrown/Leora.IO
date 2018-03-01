@@ -1,4 +1,4 @@
-﻿using {{ rootNamespacename }}.Model;
+﻿using {{ rootNamespacename }}.Core.Entities;
 
 namespace {{ namespacename }}
 {
@@ -7,16 +7,12 @@ namespace {{ namespacename }}
         public int {{ entityNamePascalCase }}Id { get; set; }
         public string Name { get; set; }
 
-        public static TModel From{{ entityNamePascalCase }}<TModel>({{ entityNamePascalCase }} {{ entityNameCamelCase }}) where
-            TModel : {{ entityNamePascalCase }}ApiModel, new()
+        public static {{ entityNamePascalCase }}ApiModel From{{ entityNamePascalCase }}({{ entityNamePascalCase }} {{ entityNameCamelCase }})
         {
-            var model = new TModel();
+            var model = new {{ entityNamePascalCase }}ApiModel();
             model.{{ entityNamePascalCase }}Id = {{ entityNameCamelCase }}.{{ entityNamePascalCase }}Id;
             model.Name = {{ entityNameCamelCase }}.Name;
             return model;
         }
-
-        public static {{ entityNamePascalCase }}ApiModel From{{ entityNamePascalCase }}({{ entityNamePascalCase }} {{ entityNameCamelCase }})
-            => From{{ entityNamePascalCase }}<{{ entityNamePascalCase }}ApiModel>({{ entityNameCamelCase }});
     }
 }
