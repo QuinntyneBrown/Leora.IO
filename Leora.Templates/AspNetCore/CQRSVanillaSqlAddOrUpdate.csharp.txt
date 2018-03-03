@@ -1,103 +1,88 @@
-﻿using {{ rootNamespacename }}.Data;
-using {{ rootNamespacename }}.Extensions;
-using {{ rootNamespacename }}.Features.Core;
-using {{ rootNamespacename }}.Features.Concurrency;
-using {{ rootNamespacename }}.Infrastructure.Exceptions;
-using Dapper;
-using Hangfire.Server;
-using Hangfire;
-using MediatR;
-using Microsoft.AspNetCore.SignalR;
-using static System.Data.ParameterDirection;
+﻿using MediatR;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Data;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+using Dapper;
+using System;
+using {{ rootNamespacename }}.Infrastructure.Services;
+using {{ rootNamespacename }}.Core.Entities;
+using {{ rootNamespacename }}.Infrastructure.Data;
+using FluentValidation;
 
-namespace namespace {{ namespacename }}
+namespace {{ namespacename }}
 {
-    public class Save{{ entityNamePascalCase }}Command
+    public class {{ namePascalCase }}Command
     {
-        public class Request : BaseAuthenticatedRequest, IRequest<Response> {
-            public {{ entityNamePascalCase }}ApiModel Dashboard { get; set; }
-        }
-
-        public class Response {
-            public string CorrelationId { get; set; }
-        }
-
-        public class Handler : IRequestHandler<Request,Response>
-        {
-            private readonly ISqlConnectionManager _sqlConnectionManager;
-            private readonly IHubContext<EventsHub> _hub;
-            private readonly IRequestHandler<HasConcurrencyConflictQuery.Request,HasConcurrencyConflictQuery.Response> _hasConcurrencyConflictHandler;
-            private readonly IRequestHandler<SaveConcurrencyCommand.Request, SaveConcurrencyCommand.Response> _saveConcurrencyHandler;
-            
-			public Handler(
-                ISqlConnectionManager sqlConnectionManager,
-                IHubContext<EventsHub> hub,
-                IRequestHandler<HasConcurrencyConflictQuery.Request, HasConcurrencyConflictQuery.Response> hasConcurrencyConflictHandler,
-                IRequestHandler<SaveConcurrencyCommand.Request, SaveConcurrencyCommand.Response> saveConcurrencyHandler
-                )
+        public class Validator: AbstractValidator<Request> {
+            public Validator()
             {
-                _hub = hub;
-                _sqlConnectionManager = sqlConnectionManager;
-                _hasConcurrencyConflictHandler = hasConcurrencyConflictHandler;
-                _saveConcurrencyHandler = saveConcurrencyHandler;
+                RuleFor(request => request.{{ entityNamePascalCase }}.Code).NotNull();
             }
+        }
 
-            public async Task PerformSave(Request request, PerformContext context)
+        public class Request : IRequest<Response> {
+            public {{ entityNamePascalCase }}ApiModel {{ entityNamePascalCase }} { get; set; }
+        }
+
+        public class Response
+        {			
+            public int {{ entityNamePascalCase }}Id { get; set; }
+        }
+
+        public class Handler : IRequestHandler<Request, Response>
+        {
+            private readonly IAggregateVersionManager _aggregateVersionManager;
+            private readonly ISqlConnectionManager _sqlConnectionManager;
+            public Handler(IAggregateVersionManager aggregateVersionManager, ISqlConnectionManager sqlConnectionManager)
             {
-                var hasConcurrencyConflictResponse = await _hasConcurrencyConflictHandler.Handle(new HasConcurrencyConflictQuery.Request()
-                {
-                    Domain = "{{ entityNamePascalCase }}",
-                    Id = request.{{ entityNamePascalCase }}.{{ entityNamePascalCase }}Id,
-                    Version = request.{{ entityNamePascalCase }}.ConcurrencyVersion
-                }, default(CancellationToken));
-
-                if (hasConcurrencyConflictResponse.HasConflict)
-                    throw new ConcurrencyDomainException("Has Concurrency Conflict");
-
-                using (var sqlConnection = _sqlConnectionManager.GetConnection())
-                {
-                    var dynamicParameters = new DynamicParameters();
-
-                    dynamicParameters.AddDynamicParams(new
-                    {
-                        request.{{ entityNamePascalCase }}.Code,
-                        request.{{ entityNamePascalCase }}.Sort,
-                        request.UserId
-                    });
-
-                    dynamicParameters.Add("{{ entityNamePascalCase }}Id", request.{{ entityNamePascalCase }}.{{ entityNamePascalCase }}Id, DbType.Int16, Output);
-
-                    await sqlConnection.OpenAsync();
-
-                    await sqlConnection.ExecuteProcAsync(Constants.PROC_{{ entityNameAllCaps }}_SAVE, dynamicParameters);
-
-                    sqlConnection.Close();
-
-                    request.{{ entityNamePascalCase }}.{{ entityNamePascalCase }}Id = dynamicParameters.Get<short>("@{{ entityNamePascalCase }}Id");
-                }
-                var saveConcurrencyResponse = await _saveConcurrencyHandler.Handle(new SaveConcurrencyCommand.Request() {
-                    Concurrency = new ConcurrencyApiModel() { Domain = "{{ entityNamePascalCase }}", Id = request.{{ entityNamePascalCase }}.{{ entityNamePascalCase }}Id }
-                }, default(CancellationToken));
-
-                request.{{ entityNamePascalCase }}.ConcurrencyVersion = saveConcurrencyResponse.ConcurrencyVersion;
-                
-                await _hub.Clients.All.InvokeAsync(ServerEvents.DEFAULT, JsonConvert.SerializeObject(
-                    new ServerEventResponse(context.BackgroundJob.Id, request.{{ entityNamePascalCase }}), new JsonSerializerSettings
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
-                }));
+                _aggregateVersionManager = aggregateVersionManager;
+                _sqlConnectionManager = sqlConnectionManager;
             }
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
-                => await Task.FromResult(new Response()
+            {
+                Concurrency concurrency = default(Concurrency);
+
+                try
                 {
-                    CorrelationId = BackgroundJob.Enqueue(() => PerformSave(request, null))
-                });
+                    using (var connection = _sqlConnectionManager.GetConnection())
+                    {
+                        concurrency = _aggregateVersionManager.Reserve("{{ entityNamePascalCase }}", request.{{ entityNamePascalCase }}.{{ entityNamePascalCase }}Id, request.{{ entityNamePascalCase }}.ConcurrencyVersion);
+
+                        var dynamicParameters = new DynamicParameters();
+
+                        dynamicParameters.AddDynamicParams(new
+                        {
+                            request.{{ entityNamePascalCase }}.{{ entityNamePascalCase }}Id,
+                            request.{{ entityNamePascalCase }}.Code
+                        });
+
+                        var parameterDirection = request.{{ entityNamePascalCase }}.{{ entityNamePascalCase }}Id == 0 ? ParameterDirection.Output : ParameterDirection.InputOutput;
+
+                        dynamicParameters.Add("{{ entityNamePascalCase }}Id",  request.{{ entityNamePascalCase }}.{{ entityNamePascalCase }}Id, DbType.Int16, parameterDirection);
+                        
+                        await connection.ExecuteAsync("[Common].[Proc{{ entityNamePascalCase }}Save]", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                        concurrency.Id = dynamicParameters.Get<short>("@{{ entityNamePascalCase }}Id");
+
+                        await _aggregateVersionManager.Save(concurrency);
+
+                        return new Response()
+                        {
+                            {{ entityNamePascalCase }}Id = dynamicParameters.Get<short>("@{{ entityNamePascalCase }}Id")
+                        };
+                    }
+
+                }
+                catch (Exception exception)
+                {
+                    if(concurrency != default(Concurrency))
+                        _aggregateVersionManager.CancelReservation(concurrency);
+
+                    throw exception;
+                }
+            }
+
         }
     }
 }

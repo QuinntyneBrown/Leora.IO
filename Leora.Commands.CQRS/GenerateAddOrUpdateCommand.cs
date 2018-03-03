@@ -51,12 +51,27 @@ namespace Leora.Commands.CQRS
 
             Console.WriteLine("Is Vanilla SQL" + IsVanillaSql(directory));
 
+            if(IsVanillaSql(directory)) {
+                name = name.Replace("AddOrUpdate", "Save");
+            }
+
             var templateCs = IsVanillaSql(directory)
                 ? _templateManager.Get(FileType.CSharp, "CQRSVanillaSqlAddOrUpdate", "Commands", _namingConventionConverter.Convert(NamingConvention.PascalCase, name), framework)
                 : _templateManager.Get(FileType.CSharp, "CQRSAddOrUpdate", "Commands", _namingConventionConverter.Convert(NamingConvention.PascalCase, name), framework);
 
-            _fileWriter.WriteAllLines($"{directory}//{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Command.cs", _templateProcessor.ProcessTemplate(templateCs, entityName, name, namespacename, rootNamespace));
-            _projectManager.Process(directory, $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Command.cs", FileType.CSharp);
+            if(IsVanillaSql(directory))
+            {
+                var filename = $"{directory}//{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Command.cs";
+                filename = filename.Replace("AddOrUpdate", "Save");
+                _fileWriter.WriteAllLines(filename, _templateProcessor.ProcessTemplate(templateCs, entityName, name, namespacename, rootNamespace));
+                
+
+            } else
+            {
+                _fileWriter.WriteAllLines($"{directory}//{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Command.cs", _templateProcessor.ProcessTemplate(templateCs, entityName, name, namespacename, rootNamespace));
+                _projectManager.Process(directory, $"{_namingConventionConverter.Convert(NamingConvention.PascalCase, name)}Command.cs", FileType.CSharp);
+            }
+
             return exitCode;
         }
 
